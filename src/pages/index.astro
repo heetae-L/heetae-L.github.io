@@ -1,467 +1,466 @@
 ---
 const profile = {
-  name: "Heetae Lee",
-  role: "Software Engineer",
-  headline: "서비스를 안정적으로 만들고, 문제를 끝까지 추적하는 개발자",
-  summary:
-    "운영 가능한 소프트웨어, 읽기 쉬운 코드, 현실적인 문제 해결을 중요하게 생각합니다. 이 사이트는 경력, 프로젝트, 기술적 관심사를 정리하는 개인 PR 페이지입니다.",
-  keywords: ["Backend", "Java", "Spring", "Database", "Operations"],
-  links: [
-    { label: "GitHub", href: "https://github.com/heetae-L" },
-    { label: "Email", href: "mailto:your.email@example.com" }
-  ]
+    name: "Heetae Lee",
+    role: "Software Engineer",
+    headline: "서비스를 안정적으로 만들고, 문제를 끝까지 추적하는 개발자",
+    summary:
+        "운영 가능한 소프트웨어, 읽기 쉬운 코드, 현실적인 문제 해결을 중요하게 생각합니다. 이 사이트는 경력, 프로젝트, 기술적 관심사를 정리하는 개인 PR 페이지입니다.",
+    keywords: ["Backend", "Java", "Spring", "Database", "Operations"],
+    links: [
+        {label: "GitHub", href: "https://github.com/heetae-L"},
+        {label: "Email", href: "mailto:heetaelee93@gmail.com"}
+    ]
 };
 
 const highlights = [
-  {
-    title: "Experience",
-    body: "회사, 역할, 담당 업무, 문제 해결 사례를 경력기술서 형태로 정리할 영역입니다."
-  },
-  {
-    title: "Projects",
-    body: "대표 프로젝트를 단순 목록이 아니라 문제, 역할, 구현, 결과 중심으로 보여줄 영역입니다."
-  },
-  {
-    title: "Resume",
-    body: "웹 레쥬메와 PDF 다운로드를 연결해 채용 담당자나 협업자가 빠르게 확인할 수 있게 합니다."
-  }
+    {
+        title: "Experience",
+        body: "회사, 역할, 담당 업무, 문제 해결 사례를 경력기술서 형태로 정리할 영역입니다."
+    },
+    {
+        title: "Projects",
+        body: "대표 프로젝트를 단순 목록이 아니라 문제, 역할, 구현, 결과 중심으로 보여줄 영역입니다."
+    },
+    {
+        title: "Resume",
+        body: "웹 레쥬메와 PDF 다운로드를 연결해 채용 담당자나 협업자가 빠르게 확인할 수 있게 합니다."
+    }
 ];
 
 const projectPlaceholders = [
-  "대표 프로젝트 1",
-  "대표 프로젝트 2",
-  "대표 프로젝트 3"
+    "대표 프로젝트 1",
+    "대표 프로젝트 2",
+    "대표 프로젝트 3"
 ];
 ---
 
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta
-      name="description"
-      content="Heetae Lee의 경력, 프로젝트, 기술 스택을 소개하는 개인 PR 사이트입니다."
+            name="description"
+            content="Heetae Lee의 경력, 프로젝트, 기술 스택을 소개하는 개인 PR 사이트입니다."
     />
     <title>{profile.name} | {profile.role}</title>
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="/">{profile.name}</a>
-      <nav aria-label="주요 메뉴">
+</head>
+<body>
+<header class="site-header">
+    <a class="brand" href="/">{profile.name}</a>
+    <nav aria-label="주요 메뉴">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-      </nav>
-    </header>
+    </nav>
+</header>
 
-    <main>
-      <section class="hero" id="about">
+<main>
+    <section class="hero" id="about">
         <div class="hero-copy">
-          <p class="eyebrow">{profile.role}</p>
-          <h1>{profile.headline}</h1>
-          <p class="summary">{profile.summary}</p>
+            <p class="eyebrow">{profile.role}</p>
+            <h1>{profile.headline}</h1>
+            <p class="summary">{profile.summary}</p>
 
-          <div class="keyword-list" aria-label="핵심 키워드">
-            {profile.keywords.map((keyword) => <span>{keyword}</span>)}
-          </div>
+            <div class="keyword-list" aria-label="핵심 키워드">
+                {profile.keywords.map((keyword) => <span>{keyword}</span>)}
+            </div>
 
-          <div class="actions">
-            <a class="button primary" href="#projects">프로젝트 보기</a>
-            <a class="button secondary" href="#contact">연락하기</a>
-          </div>
+            <div class="actions">
+                <a class="button primary" href="#projects">프로젝트 보기</a>
+                <a class="button secondary" href="#contact">연락하기</a>
+            </div>
         </div>
 
         <aside class="profile-panel" aria-label="프로필 요약">
-          <p class="panel-label">Current Focus</p>
-          <ul>
-            <li>경력과 프로젝트를 명확하게 보여주는 개인 사이트 구축</li>
-            <li>운영 경험과 문제 해결 과정을 읽기 쉽게 정리</li>
-            <li>나중에 블로그와 기술 노트로 확장 가능한 구조 마련</li>
-          </ul>
+            <p class="panel-label">Current Focus</p>
+            <ul>
+                <li>경력과 프로젝트를 명확하게 보여주는 개인 사이트 구축</li>
+                <li>운영 경험과 문제 해결 과정을 읽기 쉽게 정리</li>
+                <li>나중에 블로그와 기술 노트로 확장 가능한 구조 마련</li>
+            </ul>
         </aside>
-      </section>
+    </section>
 
-      <section class="section" id="experience">
+    <section class="section" id="experience">
         <div class="section-heading">
-          <p class="eyebrow">Career</p>
-          <h2>경력기술서로 확장될 영역</h2>
+            <p class="eyebrow">Career</p>
+            <h2>경력기술서로 확장될 영역</h2>
         </div>
 
         <div class="highlight-grid">
-          {highlights.map((item) => (
-            <article class="highlight-card">
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </article>
-          ))}
+            {highlights.map((item) => (
+                    <article class="highlight-card">
+                        <h3>{item.title}</h3>
+                        <p>{item.body}</p>
+                    </article>
+            ))}
         </div>
-      </section>
+    </section>
 
-      <section class="section project-section" id="projects">
+    <section class="section project-section" id="projects">
         <div class="section-heading">
-          <p class="eyebrow">Selected Work</p>
-          <h2>대표 프로젝트</h2>
+            <p class="eyebrow">Selected Work</p>
+            <h2>대표 프로젝트</h2>
         </div>
 
         <div class="project-list">
-          {projectPlaceholders.map((project, index) => (
-            <article class="project-item">
-              <div>
-                <p class="project-number">0{index + 1}</p>
-                <h3>{project}</h3>
-              </div>
-              <p>
-                문제 상황, 맡은 역할, 사용 기술, 구현 내용, 결과를 요약해서 넣을 자리입니다.
-              </p>
-            </article>
-          ))}
+            {projectPlaceholders.map((project, index) => (
+                    <article class="project-item">
+                        <div>
+                            <p class="project-number">0{index + 1}</p>
+                            <h3>{project}</h3>
+                        </div>
+                        <p>
+                            문제 상황, 맡은 역할, 사용 기술, 구현 내용, 결과를 요약해서 넣을 자리입니다.
+                        </p>
+                    </article>
+            ))}
         </div>
-      </section>
+    </section>
 
-      <section class="contact-section" id="contact">
+    <section class="contact-section" id="contact">
         <div>
-          <p class="eyebrow">Contact</p>
-          <h2>함께 일할 수 있는 맥락을 남겨두는 곳</h2>
-          <p>
-            GitHub, 이메일, 이력서 PDF, LinkedIn 같은 외부 링크를 이 영역에 연결하면 됩니다.
-          </p>
+            <p class="eyebrow">Contact</p>
+            <h2>함께 일할 수 있는 맥락을 남겨두는 곳</h2>
+            <p>
+                GitHub, 이메일, 이력서 PDF, LinkedIn 같은 외부 링크를 이 영역에 연결하면 됩니다.
+            </p>
         </div>
         <div class="contact-links">
-          {profile.links.map((link) => (
-            <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined}>
-              {link.label}
-            </a>
-          ))}
+            {profile.links.map((link) => (
+                    <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined}>
+                        {link.label}
+                    </a>
+            ))}
         </div>
-      </section>
-    </main>
-  </body>
+    </section>
+</main>
+</body>
 </html>
 
 <style>
-  :root {
-    color-scheme: light;
-    --bg: #f7f5f0;
-    --text: #202124;
-    --muted: #666b73;
-    --line: #d9d6cf;
-    --panel: #ffffff;
-    --accent: #0f766e;
-    --accent-dark: #115e59;
-    --ink: #172033;
-  }
+    :root {
+        color-scheme: light;
+        --bg: #f7f5f0;
+        --text: #202124;
+        --muted: #666b73;
+        --line: #d9d6cf;
+        --panel: #ffffff;
+        --accent: #0f766e;
+        --accent-dark: #115e59;
+        --ink: #172033;
+    }
 
-  * {
-    box-sizing: border-box;
-  }
+    * {
+        box-sizing: border-box;
+    }
 
-  html {
-    scroll-behavior: smooth;
-  }
+    html {
+        scroll-behavior: smooth;
+    }
 
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family:
-      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
-    line-height: 1.6;
-  }
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+        line-height: 1.6;
+    }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 
-  .site-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 28px 24px;
-  }
-
-  .brand {
-    color: var(--ink);
-    font-size: 18px;
-    font-weight: 800;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    color: var(--muted);
-    font-size: 14px;
-    font-weight: 650;
-  }
-
-  nav a:hover {
-    color: var(--accent-dark);
-  }
-
-  main {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 36px 24px 72px;
-  }
-
-  .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
-    gap: 48px;
-    align-items: center;
-    min-height: calc(100vh - 120px);
-    padding-bottom: 48px;
-  }
-
-  .eyebrow {
-    margin: 0 0 12px;
-    color: var(--accent-dark);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0;
-    text-transform: uppercase;
-  }
-
-  h1,
-  h2,
-  h3,
-  p {
-    overflow-wrap: anywhere;
-  }
-
-  h1 {
-    max-width: 760px;
-    margin: 0;
-    color: var(--ink);
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 1.04;
-    letter-spacing: 0;
-  }
-
-  h2 {
-    margin: 0;
-    color: var(--ink);
-    font-size: 32px;
-    line-height: 1.2;
-    letter-spacing: 0;
-  }
-
-  h3 {
-    margin: 0 0 12px;
-    color: var(--ink);
-    font-size: 19px;
-    letter-spacing: 0;
-  }
-
-  .summary {
-    max-width: 690px;
-    margin: 26px 0 0;
-    color: var(--muted);
-    font-size: 18px;
-  }
-
-  .keyword-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 28px;
-  }
-
-  .keyword-list span {
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    padding: 8px 13px;
-    color: var(--ink);
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 34px;
-  }
-
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 46px;
-    border-radius: 8px;
-    padding: 0 18px;
-    font-weight: 800;
-  }
-
-  .button.primary {
-    background: var(--accent);
-    color: #ffffff;
-  }
-
-  .button.secondary {
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.7);
-    color: var(--ink);
-  }
-
-  .profile-panel,
-  .highlight-card,
-  .project-item,
-  .contact-section {
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    background: var(--panel);
-  }
-
-  .profile-panel {
-    padding: 28px;
-    box-shadow: 0 24px 60px rgba(23, 32, 51, 0.08);
-  }
-
-  .panel-label {
-    margin: 0 0 18px;
-    color: var(--accent-dark);
-    font-size: 13px;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-
-  ul {
-    display: grid;
-    gap: 14px;
-    margin: 0;
-    padding-left: 20px;
-    color: var(--muted);
-  }
-
-  .section {
-    padding: 72px 0 0;
-  }
-
-  .section-heading {
-    max-width: 680px;
-    margin-bottom: 28px;
-  }
-
-  .highlight-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-  }
-
-  .highlight-card {
-    padding: 24px;
-  }
-
-  .highlight-card p,
-  .project-item p,
-  .contact-section p {
-    margin: 0;
-    color: var(--muted);
-  }
-
-  .project-list {
-    display: grid;
-    gap: 14px;
-  }
-
-  .project-item {
-    display: grid;
-    grid-template-columns: 260px minmax(0, 1fr);
-    gap: 28px;
-    padding: 24px;
-  }
-
-  .project-number {
-    color: var(--accent-dark) !important;
-    font-size: 13px;
-    font-weight: 850;
-  }
-
-  .contact-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 28px;
-    margin-top: 72px;
-    padding: 30px;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .contact-links a {
-    border-radius: 8px;
-    background: var(--ink);
-    padding: 11px 14px;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 800;
-  }
-
-  @media (max-width: 860px) {
     .site-header {
-      align-items: flex-start;
-      flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 28px 24px;
     }
 
-    .hero {
-      grid-template-columns: 1fr;
-      min-height: auto;
-      padding-top: 32px;
-    }
-
-    .profile-panel {
-      max-width: 100%;
-    }
-
-    .highlight-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .project-item {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-section {
-      align-items: flex-start;
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 520px) {
-    .site-header,
-    main {
-      padding-right: 18px;
-      padding-left: 18px;
+    .brand {
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 800;
     }
 
     nav {
-      gap: 12px;
-      font-size: 13px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+    }
+
+    nav a:hover {
+        color: var(--accent-dark);
+    }
+
+    main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 36px 24px 72px;
+    }
+
+    .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        gap: 48px;
+        align-items: center;
+        min-height: calc(100vh - 120px);
+        padding-bottom: 48px;
+    }
+
+    .eyebrow {
+        margin: 0 0 12px;
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        overflow-wrap: anywhere;
     }
 
     h1 {
-      font-size: 40px;
+        max-width: 760px;
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(42px, 7vw, 76px);
+        line-height: 1.04;
+        letter-spacing: 0;
     }
 
     h2 {
-      font-size: 26px;
+        margin: 0;
+        color: var(--ink);
+        font-size: 32px;
+        line-height: 1.2;
+        letter-spacing: 0;
+    }
+
+    h3 {
+        margin: 0 0 12px;
+        color: var(--ink);
+        font-size: 19px;
+        letter-spacing: 0;
     }
 
     .summary {
-      font-size: 16px;
+        max-width: 690px;
+        margin: 26px 0 0;
+        color: var(--muted);
+        font-size: 18px;
     }
-  }
+
+    .keyword-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+    }
+
+    .keyword-list span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        padding: 8px 13px;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        border-radius: 8px;
+        padding: 0 18px;
+        font-weight: 800;
+    }
+
+    .button.primary {
+        background: var(--accent);
+        color: #ffffff;
+    }
+
+    .button.secondary {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--ink);
+    }
+
+    .profile-panel,
+    .highlight-card,
+    .project-item,
+    .contact-section {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+    }
+
+    .profile-panel {
+        padding: 28px;
+        box-shadow: 0 24px 60px rgba(23, 32, 51, 0.08);
+    }
+
+    .panel-label {
+        margin: 0 0 18px;
+        color: var(--accent-dark);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    ul {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
+    }
+
+    .section {
+        padding: 72px 0 0;
+    }
+
+    .section-heading {
+        max-width: 680px;
+        margin-bottom: 28px;
+    }
+
+    .highlight-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .highlight-card {
+        padding: 24px;
+    }
+
+    .highlight-card p,
+    .project-item p,
+    .contact-section p {
+        margin: 0;
+        color: var(--muted);
+    }
+
+    .project-list {
+        display: grid;
+        gap: 14px;
+    }
+
+    .project-item {
+        display: grid;
+        grid-template-columns: 260px minmax(0, 1fr);
+        gap: 28px;
+        padding: 24px;
+    }
+
+    .project-number {
+        color: var(--accent-dark) !important;
+        font-size: 13px;
+        font-weight: 850;
+    }
+
+    .contact-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 28px;
+        margin-top: 72px;
+        padding: 30px;
+    }
+
+    .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .contact-links a {
+        border-radius: 8px;
+        background: var(--ink);
+        padding: 11px 14px;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    @media (max-width: 860px) {
+        .site-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .hero {
+            grid-template-columns: 1fr;
+            min-height: auto;
+            padding-top: 32px;
+        }
+
+        .profile-panel {
+            max-width: 100%;
+        }
+
+        .highlight-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .project-item {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-section {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 520px) {
+        .site-header,
+        main {
+            padding-right: 18px;
+            padding-left: 18px;
+        }
+
+        nav {
+            gap: 12px;
+            font-size: 13px;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        h2 {
+            font-size: 26px;
+        }
+
+        .summary {
+            font-size: 16px;
+        }
+    }
 </style>
