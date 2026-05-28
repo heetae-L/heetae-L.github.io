@@ -1,0 +1,19 @@
+---
+import IconBadge from "./IconBadge.astro";
+
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<article class="soft-card-flat flex min-h-[96px] items-center gap-4 rounded-2xl p-5">
+  <IconBadge name={icon} />
+  <div>
+    <h3 class="text-sm font-extrabold text-ink-950">{title}</h3>
+    <p class="mt-1 text-xs font-semibold leading-5 text-ink-500">{description}</p>
+  </div>
+</article>

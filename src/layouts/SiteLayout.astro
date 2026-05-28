@@ -1,0 +1,48 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+import type { Locale } from "../i18n/config";
+import type { SiteContent } from "../i18n/content";
+
+interface Props {
+  locale: Locale;
+  content: SiteContent;
+  title?: string;
+  description?: string;
+}
+
+const { locale, content, title = content.meta.title, description = content.meta.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://heetae-l.github.io").toString();
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header locale={locale} content={content} currentPath={Astro.url.pathname} />
+    <slot />
+    <footer class="mx-auto max-w-6xl px-5 py-10 text-center text-xs font-semibold text-ink-400 sm:px-6 lg:px-8">
+      {content.footer}
+    </footer>
+  </body>
+</html>

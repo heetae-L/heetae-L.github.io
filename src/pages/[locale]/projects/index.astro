@@ -1,0 +1,46 @@
+---
+import ProjectCard from "../../../components/ProjectCard.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { locales, type Locale, withLocale } from "../../../i18n/config";
+import { getContent } from "../../../i18n/content";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const t = getContent(locale);
+---
+
+<SiteLayout locale={locale} content={t} title={`${t.projects.title} | Heetae Lee`} description={t.projects.description}>
+  <main class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <section class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
+      <SectionHeading eyebrow={t.projects.eyebrow} title={t.projects.title} description={t.projects.description} />
+      <div class="no-print mb-6 flex flex-wrap gap-2">
+        {
+          t.projects.filters.map((filter, index) => (
+            <button
+              type="button"
+              class:list={[
+                "rounded-xl border px-4 py-2 text-xs font-extrabold transition",
+                index === 0
+                  ? "border-blue-accent bg-blue-accent text-white"
+                  : "border-line-200 bg-white text-ink-600 hover:border-blue-accent/30 hover:text-blue-accent"
+              ]}
+            >
+              {filter}
+            </button>
+          ))
+        }
+      </div>
+      <div class="grid gap-4">
+        {
+          t.projects.items.map((project) => (
+            <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} variant="wide" />
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</SiteLayout>

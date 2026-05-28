@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  lines: readonly string[];
+}
+
+const { title, lines } = Astro.props;
+---
+
+<div class="relative mx-auto hidden min-h-[320px] w-full max-w-[430px] lg:block" aria-label={title}>
+  <div class="absolute left-7 top-20 h-28 w-28 rounded-full bg-blue-accent/10 blur-2xl"></div>
+  <div class="absolute right-3 top-8 h-16 w-16 rounded-full border border-blue-accent/15 bg-white shadow-xl"></div>
+  <div class="absolute bottom-16 left-4 h-28 w-28 rounded-[34px] border border-line-200 bg-white shadow-2xl">
+    <div class="absolute left-1/2 top-5 h-3 w-16 -translate-x-1/2 rounded-full bg-line-200"></div>
+    <div class="absolute bottom-0 h-16 w-full rounded-b-[34px] border-t border-line-200 bg-gradient-to-b from-blue-soft to-white"></div>
+  </div>
+  <div class="absolute right-0 top-16 w-[320px] rotate-3 rounded-[32px] border border-line-200 bg-white/92 p-6 shadow-[0_34px_80px_rgba(72,104,168,0.18)]">
+    <div class="mb-5 flex items-center gap-2">
+      <span class="h-3 w-3 rounded-full bg-red-300"></span>
+      <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
+      <span class="h-3 w-3 rounded-full bg-emerald-300"></span>
+    </div>
+    <div class="grid gap-3">
+      {
+        lines.map((line, index) => (
+          <div class="flex items-center gap-3">
+            <span class:list={["h-2.5 w-2.5 rounded-full", index % 2 === 0 ? "bg-blue-accent" : "bg-line-300"]}></span>
+            <span class:list={["h-3 rounded-full", index === 0 ? "w-44 bg-blue-accent/80" : "w-52 bg-line-200"]}></span>
+            <span class="sr-only">{line}</span>
+          </div>
+        ))
+      }
+    </div>
+    <div class="mt-7 grid grid-cols-3 gap-2">
+      <span class="h-12 rounded-2xl bg-blue-soft"></span>
+      <span class="h-12 rounded-2xl bg-slate-100"></span>
+      <span class="h-12 rounded-2xl bg-blue-soft"></span>
+    </div>
+  </div>
+  <div class="absolute bottom-4 right-10 h-24 w-36 rounded-[32px] border border-line-200 bg-white shadow-2xl">
+    <div class="absolute bottom-0 left-0 right-0 h-12 rounded-b-[32px] bg-blue-soft"></div>
+    <div class="absolute left-7 top-7 h-10 w-20 rounded-full bg-white shadow-inner"></div>
+  </div>
+</div>

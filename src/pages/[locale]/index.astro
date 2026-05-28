@@ -1,0 +1,116 @@
+---
+import { ArrowRight, GraduationCap, Mail } from "@lucide/astro";
+import ExperienceTimeline from "../../components/ExperienceTimeline.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import ResumeVisual from "../../components/ResumeVisual.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import SummaryCard from "../../components/SummaryCard.astro";
+import TechStackGrid from "../../components/TechStackGrid.astro";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { locales, type Locale, withLocale } from "../../i18n/config";
+import { getContent } from "../../i18n/content";
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const t = getContent(locale);
+---
+
+<SiteLayout locale={locale} content={t}>
+  <main class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <div class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
+      <section class="grid min-h-[480px] items-center gap-10 lg:grid-cols-[1fr_460px]">
+        <div>
+          <span class="inline-flex rounded-full bg-blue-soft px-3 py-1.5 text-xs font-extrabold text-blue-accent">
+            {t.home.badge}
+          </span>
+          <h1 class="mt-6 text-5xl font-black leading-[0.98] tracking-tight text-ink-950 sm:text-6xl lg:text-7xl">
+            {t.home.name}
+            <span class="mt-2 block text-blue-accent">{t.home.role}</span>
+          </h1>
+          <p class="mt-6 max-w-2xl text-base font-medium leading-8 text-ink-600 sm:text-lg">
+            {t.home.summary}
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <button
+              type="button"
+              data-print-resume
+              class="no-print inline-flex h-12 items-center gap-2 rounded-xl bg-blue-accent px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(15,91,255,0.24)] transition hover:bg-blue-700"
+            >
+              {t.common.downloadResume}
+            </button>
+            <a
+              href={withLocale(locale, "/projects")}
+              class="no-print inline-flex h-12 items-center gap-2 rounded-xl border border-line-200 bg-white px-5 text-sm font-extrabold text-ink-900 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent"
+            >
+              {t.common.viewProjects}
+              <ArrowRight class="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+        <ResumeVisual title={t.home.visual.title} lines={t.home.visual.lines} />
+      </section>
+
+      <section class="mt-10">
+        <SectionHeading title={t.home.careerSummaryTitle} />
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {t.home.summaryCards.map((item) => <SummaryCard icon={item.icon} title={item.title} description={item.description} />)}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <SectionHeading title={t.home.workTitle} />
+        <ExperienceTimeline items={t.experience.items} />
+      </section>
+
+      <section class="mt-12">
+        <SectionHeading title={t.home.projectsTitle} actionHref={withLocale(locale, "/projects")} actionLabel={t.common.viewAllProjects} />
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {t.projects.items.map((project) => <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} label={t.common.details} />)}
+        </div>
+      </section>
+
+      <section class="mt-12">
+        <SectionHeading title={t.home.techTitle} />
+        <TechStackGrid groups={t.techStack.groups} />
+      </section>
+
+      <section class="mt-12 soft-card rounded-3xl p-6 sm:p-8">
+        <SectionHeading title={t.home.educationTitle} />
+        <div class="grid gap-8 md:grid-cols-2">
+          <div class="flex gap-4">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
+              <GraduationCap class="h-5 w-5" />
+            </span>
+            <div>
+              <h3 class="text-base font-extrabold text-ink-950">Education</h3>
+              <p class="mt-3 text-sm font-bold text-ink-800">{t.home.education.school}</p>
+              <p class="mt-1 text-sm font-semibold text-ink-500">{t.home.education.period}</p>
+            </div>
+          </div>
+          <div class="flex gap-4 border-line-200 md:border-l md:pl-8">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
+              <Mail class="h-5 w-5" />
+            </span>
+            <div>
+              <h3 class="text-base font-extrabold text-ink-950">Contact</h3>
+              <ul class="mt-3 grid gap-2 text-sm font-semibold text-ink-600">
+                {
+                  t.home.contact.map((item) => (
+                    <li>
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" class="hover:text-blue-accent">
+                        {item.value}
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</SiteLayout>

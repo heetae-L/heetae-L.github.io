@@ -1,0 +1,28 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  actionHref?: string;
+  actionLabel?: string;
+}
+
+const { eyebrow, title, description, actionHref, actionLabel } = Astro.props;
+---
+
+<div class="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+  <div>
+    {eyebrow && <p class="mb-2 text-xs font-extrabold uppercase tracking-normal text-blue-accent">{eyebrow}</p>}
+    <h2 class="section-marker text-2xl font-extrabold tracking-tight text-ink-950 sm:text-[28px]">
+      {title}
+    </h2>
+    {description && <p class="mt-3 max-w-2xl text-sm leading-7 text-ink-500">{description}</p>}
+  </div>
+  {
+    actionHref && actionLabel && (
+      <a href={actionHref} class="text-sm font-extrabold text-blue-accent hover:text-blue-700">
+        {actionLabel} →
+      </a>
+    )
+  }
+</div>

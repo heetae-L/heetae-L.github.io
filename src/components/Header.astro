@@ -1,0 +1,128 @@
+---
+import { Download, GitBranch, Menu, X } from "@lucide/astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+import { type Locale, withLocale } from "../i18n/config";
+import type { SiteContent } from "../i18n/content";
+
+interface Props {
+  locale: Locale;
+  content: SiteContent;
+  currentPath: string;
+}
+
+const { locale, content, currentPath } = Astro.props;
+
+const navItems = [
+  { label: content.nav.home, href: withLocale(locale) },
+  { label: content.nav.projects, href: withLocale(locale, "/projects") },
+  { label: content.nav.experience, href: withLocale(locale, "/experience") },
+  { label: content.nav.techStack, href: withLocale(locale, "/tech-stack") }
+];
+
+const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
+---
+
+<header class="no-print sticky top-0 z-40 border-b border-line-200/80 bg-white/86 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
+    <a href={withLocale(locale)} class="text-xl font-extrabold tracking-tight text-ink-950">
+      <span class="text-blue-accent">Heetae</span> Lee
+    </a>
+
+    <nav class="hidden items-center gap-7 text-[13px] font-bold text-ink-600 md:flex" aria-label="Primary navigation">
+      {
+        navItems.map((item) => {
+          const itemPath = item.href.replace(/\/$/, "") || `/${locale}`;
+          const active = normalizedPath === itemPath;
+
+          return (
+            <a
+              href={item.href}
+              aria-current={active ? "page" : undefined}
+              class:list={[
+                "relative py-6 transition hover:text-blue-accent",
+                active && "text-blue-accent after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-7 after:-translate-x-1/2 after:rounded-full after:bg-blue-accent"
+              ]}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="hidden items-center gap-3 md:flex">
+      <button
+        type="button"
+        data-print-resume
+        class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
+      >
+        <Download class="h-4 w-4" />
+        {content.common.downloadResume}
+      </button>
+      <LanguageSwitcher locale={locale} currentPath={currentPath} />
+      <a
+        href="https://github.com/heetae-L"
+        target="_blank"
+        rel="noreferrer"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent"
+        aria-label="GitHub"
+      >
+        <GitBranch class="h-5 w-5" />
+      </a>
+    </div>
+
+    <button
+      type="button"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-900 md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      data-menu-toggle
+    >
+      <Menu class="h-5 w-5" data-menu-icon="open" />
+      <X class="hidden h-5 w-5" data-menu-icon="close" />
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-line-200 bg-white px-5 py-5 md:hidden" data-mobile-menu>
+    <nav class="grid gap-2 text-sm font-bold text-ink-700" aria-label="Mobile navigation">
+      {
+        navItems.map((item) => (
+          <a href={item.href} class="rounded-xl px-3 py-3 hover:bg-blue-soft hover:text-blue-accent">
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <div class="mt-5 flex flex-wrap items-center gap-3">
+      <button
+        type="button"
+        data-print-resume
+        class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white"
+      >
+        <Download class="h-4 w-4" />
+        {content.common.downloadResume}
+      </button>
+      <LanguageSwitcher locale={locale} currentPath={currentPath} />
+    </div>
+  </div>
+</header>
+
+<script>
+  const menuButton = document.querySelector("[data-menu-toggle]");
+  const mobileMenu = document.querySelector("[data-mobile-menu]");
+  const openIcon = document.querySelector('[data-menu-icon="open"]');
+  const closeIcon = document.querySelector('[data-menu-icon="close"]');
+
+  menuButton?.addEventListener("click", () => {
+    const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
+    menuButton.setAttribute("aria-expanded", String(!isExpanded));
+    mobileMenu?.classList.toggle("hidden", isExpanded);
+    openIcon?.classList.toggle("hidden", !isExpanded);
+    closeIcon?.classList.toggle("hidden", isExpanded);
+  });
+
+  document.querySelectorAll("[data-print-resume]").forEach((button) => {
+    button.addEventListener("click", () => window.print());
+  });
+</script>

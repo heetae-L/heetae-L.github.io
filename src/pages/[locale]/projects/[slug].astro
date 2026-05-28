@@ -1,0 +1,107 @@
+---
+import { ArrowLeft } from "@lucide/astro";
+import ArchitectureDiagram from "../../../components/ArchitectureDiagram.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { locales, type Locale, withLocale } from "../../../i18n/config";
+import { getContent, getProject } from "../../../i18n/content";
+
+export function getStaticPaths() {
+  return locales.flatMap((locale) => {
+    const t = getContent(locale);
+
+    return t.projects.items.map((project) => ({
+      params: { locale, slug: project.slug }
+    }));
+  });
+}
+
+const locale = Astro.params.locale as Locale;
+const slug = Astro.params.slug as string;
+const t = getContent(locale);
+const project = getProject(locale, slug) ?? t.projects.items[0];
+const detail = t.projectDetail;
+
+const overview = "overview" in project ? project.overview : project.summary;
+const role = "role" in project ? project.role : [project.summary];
+const contributions = "contributions" in project ? project.contributions : project.tags.map((tag) => `${tag} based implementation note`);
+const architecture = "architecture" in project ? project.architecture : ["Client", "API", "Service", "Database"];
+---
+
+<SiteLayout locale={locale} content={t} title={`${project.title} | Heetae Lee`} description={project.summary}>
+  <main class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
+    <article class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
+      <a href={withLocale(locale, "/projects")} class="no-print inline-flex items-center gap-2 text-sm font-extrabold text-ink-500 hover:text-blue-accent">
+        <ArrowLeft class="h-4 w-4" />
+        {t.common.backToProjects}
+      </a>
+
+      <div class="mt-7 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
+        <div>
+          <h1 class="text-3xl font-black tracking-tight text-ink-950 sm:text-4xl">{project.title}</h1>
+          <div class="mt-4 flex flex-wrap gap-2">
+            {project.tags.map((tag) => <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-ink-600">{tag}</span>)}
+          </div>
+
+          <div class="mt-7 grid gap-4">
+            <section id="overview" class="soft-card rounded-3xl p-6">
+              <SectionHeading title={detail.overview} />
+              <p class="text-sm font-medium leading-7 text-ink-600">{overview}</p>
+            </section>
+
+            <section id="role" class="soft-card rounded-3xl p-6">
+              <SectionHeading title={detail.role} />
+              <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
+                {role.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
+              </ul>
+            </section>
+
+            <section id="contributions" class="soft-card rounded-3xl p-6">
+              <SectionHeading title={detail.contributions} />
+              <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
+                {contributions.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
+              </ul>
+            </section>
+
+            <section id="tech-stack" class="soft-card rounded-3xl p-6">
+              <SectionHeading title={t.common.techTags} />
+              <div class="flex flex-wrap gap-2">
+                {project.tags.map((tag) => <span class="rounded-full bg-blue-soft px-3 py-1.5 text-xs font-extrabold text-blue-accent">{tag}</span>)}
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <aside class="grid content-start gap-4 lg:sticky lg:top-24">
+          <section>
+            <h2 class="mb-3 text-sm font-extrabold text-ink-950">{detail.architecture}</h2>
+            <ArchitectureDiagram nodes={architecture} />
+          </section>
+          <section class="soft-card rounded-3xl p-5">
+            <h2 class="mb-4 text-sm font-extrabold text-ink-950">{detail.screenshots}</h2>
+            <div class="rounded-2xl border border-line-200 bg-slate-50 p-3">
+              <div class="grid gap-2">
+                {Array.from({ length: 7 }).map((_, index) => (
+                  <div class="grid grid-cols-[1fr_2fr_1fr] gap-2">
+                    <span class="h-3 rounded-full bg-white"></span>
+                    <span class="h-3 rounded-full bg-white"></span>
+                    <span class:list={["h-3 rounded-full", index % 3 === 0 ? "bg-emerald-200" : "bg-line-200"]}></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+          <nav class="no-print soft-card-flat rounded-3xl p-5 text-sm font-bold text-ink-600" aria-label={t.common.onThisPage}>
+            <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>
+            <div class="grid gap-2">
+              <a href="#overview" class="hover:text-blue-accent">{detail.overview}</a>
+              <a href="#role" class="hover:text-blue-accent">{detail.role}</a>
+              <a href="#contributions" class="hover:text-blue-accent">{detail.contributions}</a>
+              <a href="#tech-stack" class="hover:text-blue-accent">{t.common.techTags}</a>
+            </div>
+          </nav>
+        </aside>
+      </div>
+    </article>
+  </main>
+</SiteLayout>

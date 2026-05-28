@@ -1,0 +1,27 @@
+---
+import { localeLabels, locales, switchLocalePath, type Locale } from "../i18n/config";
+
+interface Props {
+  locale: Locale;
+  currentPath: string;
+}
+
+const { locale, currentPath } = Astro.props;
+---
+
+<div class="inline-flex rounded-xl border border-line-200 bg-white p-1 text-xs font-bold text-ink-500 shadow-sm">
+  {
+    locales.map((item) => (
+      <a
+        href={switchLocalePath(currentPath, item)}
+        aria-current={item === locale ? "page" : undefined}
+        class:list={[
+          "rounded-lg px-2.5 py-1.5 transition",
+          item === locale ? "bg-blue-accent text-white" : "hover:bg-blue-soft hover:text-blue-accent"
+        ]}
+      >
+        {localeLabels[item]}
+      </a>
+    ))
+  }
+</div>

@@ -1,0 +1,73 @@
+---
+import {
+  ArrowRight,
+  Bot,
+  BrainCircuit,
+  BriefcaseBusiness,
+  ChartNoAxesCombined,
+  Cloud,
+  Code2,
+  Database,
+  GraduationCap,
+  Infinity,
+  Link,
+  Mail,
+  Server,
+  ShoppingCart,
+  Sparkles,
+  UserRound
+} from "@lucide/astro";
+
+interface Props {
+  name?: string;
+  size?: "sm" | "md" | "lg";
+  tone?: "blue" | "green" | "purple" | "orange" | "neutral";
+}
+
+const { name = "code", size = "md", tone = "blue" } = Astro.props;
+
+const icons = {
+  arrow: ArrowRight,
+  bot: Bot,
+  brain: BrainCircuit,
+  briefcase: BriefcaseBusiness,
+  cart: ShoppingCart,
+  chart: ChartNoAxesCombined,
+  cloud: Cloud,
+  code: Code2,
+  database: Database,
+  education: GraduationCap,
+  infinity: Infinity,
+  link: Link,
+  mail: Mail,
+  server: Server,
+  sparkles: Sparkles,
+  user: UserRound
+};
+
+const Icon = icons[name as keyof typeof icons] ?? Code2;
+
+const sizeClass = {
+  sm: "h-8 w-8 rounded-xl",
+  md: "h-11 w-11 rounded-2xl",
+  lg: "h-14 w-14 rounded-3xl"
+}[size];
+
+const iconClass = {
+  sm: "h-4 w-4",
+  md: "h-5 w-5",
+  lg: "h-7 w-7"
+}[size];
+
+const toneClass = {
+  blue: "bg-blue-accent/10 text-blue-accent ring-blue-accent/10",
+  green: "bg-emerald-50 text-emerald-600 ring-emerald-100",
+  purple: "bg-violet-50 text-violet-600 ring-violet-100",
+  orange: "bg-orange-50 text-orange-500 ring-orange-100",
+  neutral: "bg-slate-50 text-ink-700 ring-line-200"
+}[tone];
+---
+
+<span class:list={["inline-flex shrink-0 items-center justify-center ring-1", sizeClass, toneClass]}>
+  <Icon class={iconClass} stroke-width="2.2" />
+</span>
