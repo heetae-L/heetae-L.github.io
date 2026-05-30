@@ -7,10 +7,10 @@ const { nodes } = Astro.props;
 ---
 
 <div class="soft-card rounded-3xl p-5">
-  <div class="flex flex-wrap items-center gap-3">
+  <div class="grid gap-3 sm:flex sm:flex-wrap sm:items-center">
     {
       nodes.map((node, index) => (
-        <>
+        <div class="flex items-center gap-3">
           <div class:list={[
             "min-w-[96px] rounded-2xl border px-3 py-3 text-center text-xs font-extrabold",
             index === 0 && "border-emerald-200 bg-emerald-50 text-emerald-700",
@@ -21,8 +21,8 @@ const { nodes } = Astro.props;
           ]}>
             {node}
           </div>
-          {index < nodes.length - 1 && <span class="text-blue-accent">→</span>}
-        </>
+          {index < nodes.length - 1 && <span class="text-blue-accent sm:inline">→</span>}
+        </div>
       ))
     }
   </div>

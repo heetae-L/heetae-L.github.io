@@ -7,8 +7,8 @@ import SectionHeading from "../../components/SectionHeading.astro";
 import SummaryCard from "../../components/SummaryCard.astro";
 import TechStackGrid from "../../components/TechStackGrid.astro";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import { getContent, getFeaturedProjects, getFeaturedTechStack, getResumeExperience } from "../../data";
 import { locales, type Locale, withLocale } from "../../i18n/config";
-import { getContent } from "../../i18n/content";
 
 export function getStaticPaths() {
   return locales.map((locale) => ({ params: { locale } }));
@@ -16,6 +16,9 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const t = getContent(locale);
+const resumeExperience = getResumeExperience(locale);
+const featuredProjects = getFeaturedProjects(locale, 4);
+const featuredTechStack = getFeaturedTechStack(locale);
 ---
 
 <SiteLayout locale={locale} content={t}>
@@ -62,19 +65,19 @@ const t = getContent(locale);
 
       <section class="mt-12">
         <SectionHeading title={t.home.workTitle} />
-        <ExperienceTimeline items={t.experience.items} />
+        <ExperienceTimeline items={resumeExperience} />
       </section>
 
       <section class="mt-12">
         <SectionHeading title={t.home.projectsTitle} actionHref={withLocale(locale, "/projects")} actionLabel={t.common.viewAllProjects} />
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {t.projects.items.map((project) => <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} label={t.common.details} />)}
+          {featuredProjects.map((project) => <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} label={t.common.details} />)}
         </div>
       </section>
 
       <section class="mt-12">
         <SectionHeading title={t.home.techTitle} />
-        <TechStackGrid groups={t.techStack.groups} />
+        <TechStackGrid groups={featuredTechStack} />
       </section>
 
       <section class="mt-12 soft-card rounded-3xl p-6 sm:p-8">

@@ -3,8 +3,8 @@ import { ArrowLeft } from "@lucide/astro";
 import ArchitectureDiagram from "../../../components/ArchitectureDiagram.astro";
 import SectionHeading from "../../../components/SectionHeading.astro";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { getContent, getProject } from "../../../data";
 import { locales, type Locale, withLocale } from "../../../i18n/config";
-import { getContent, getProject } from "../../../i18n/content";
 
 export function getStaticPaths() {
   return locales.flatMap((locale) => {
