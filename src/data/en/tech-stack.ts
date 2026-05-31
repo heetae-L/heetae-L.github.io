@@ -3,35 +3,110 @@ import type { TechStackData } from "../types";
 export const techStack: TechStackData = {
   eyebrow: "Skills",
   title: "Tech Stack",
-  description: "A role-oriented view of technologies used in practical backend work.",
+  description: "A technology-first view of the stacks I use in production work and expansion projects.",
   groups: [
     {
+      id: "backend",
       icon: "server",
       title: "Backend",
+      summary: "Primary backend technologies used for Java-based web applications and service logic.",
       featured: true,
       homeOrder: 1,
-      items: ["Java", "Spring", "Spring Boot", "MyBatis", "REST API"]
+      items: [
+        { name: "Java", description: "Primary language for service development and operational logic" },
+        { name: "Spring Boot", description: "Backend application and service API development" },
+        { name: "Spring Framework", description: "Existing service structure and business logic development" },
+        { name: "REST API", description: "Service features and external system integration APIs" },
+        { name: "Batch", description: "Scheduled processing, data collection, and post-processing flows" }
+      ]
     },
     {
-      icon: "database",
-      title: "Database",
+      id: "web",
+      icon: "code",
+      title: "Web",
+      summary: "Web technologies used for server-rendered pages and operational/admin interfaces.",
       featured: true,
       homeOrder: 2,
-      items: ["Oracle", "SQL", "PL/SQL"]
+      items: [
+        { name: "JSP", description: "Java-based server-rendered business pages" },
+        { name: "JavaScript", description: "Screen behavior and user input handling" },
+        { name: "jQuery", description: "DOM manipulation and event handling in existing services" },
+        { name: "AJAX", description: "Asynchronous screen requests and partial updates" },
+        { name: "JSTL", description: "Conditional rendering, loops, and data output in JSP pages" }
+      ]
     },
     {
-      icon: "cloud",
-      title: "Infra / DevOps",
+      id: "database",
+      icon: "database",
+      title: "Database",
+      summary: "Database-centered technologies for service data processing, querying, and consistency checks.",
       featured: true,
       homeOrder: 3,
-      items: ["Linux", "Docker", "GitLab CI/CD", "Nginx"]
+      items: [
+        { name: "Oracle", description: "Main database for service operation data" },
+        { name: "MyBatis", description: "SQL-centric business logic and Java object mapping" },
+        { name: "SQL", description: "Data lookup, validation, operational checks, and reporting criteria" },
+        { name: "PL/SQL / Procedure", description: "Database-side processing logic and batch post-processing analysis" },
+        { name: "MERGE", description: "Reference data reflection and bulk correction processing" }
+      ]
     },
     {
-      icon: "brain",
-      title: "AI / Python",
+      id: "cicd-deploy",
+      icon: "cloud",
+      title: "CI/CD & Deploy",
+      summary: "Technologies for understanding and validating build, deployment, container runtime, and release flows.",
       featured: true,
       homeOrder: 4,
-      items: ["Python", "Flask", "Azure OpenAI"]
+      items: [
+        { name: "GitLab CI/CD", description: "Build/deploy pipeline configuration and execution flow validation" },
+        { name: "Jenkins", description: "CI/CD job-based build and deployment flow usage" },
+        { name: "Docker", description: "Container runtime configuration and validation" },
+        { name: "Tomcat", description: "Java web application runtime" },
+        { name: "Maven / WAR", description: "Java project build and deployment packaging" },
+        { name: "Linux", description: "Server-side logs, configuration, and runtime status checks" }
+      ]
+    },
+    {
+      id: "ai-llm",
+      icon: "brain",
+      title: "AI / LLM",
+      summary: "LLM API integration and AI-assisted analysis, documentation, and verification workflows.",
+      featured: true,
+      homeOrder: 5,
+      items: [
+        { name: "AI-assisted Engineering", description: "Using AI for issue analysis, documentation, and verification workflows" },
+        { name: "AI-DLC", description: "Structuring work context, code flow, and test cases into AI-readable knowledge" },
+        { name: "Prompt Design", description: "Input constraints and response criteria aligned with service goals" },
+        { name: "Structured AI Response", description: "Designing AI responses as service-friendly JSON structures" },
+        { name: "OpenAI API", description: "LLM request/response flow, call structure, and error handling" },
+        { name: "Azure OpenAI", description: "LLM API integration and response generation flow implementation" }
+      ]
+    },
+    {
+      id: "python",
+      icon: "code",
+      title: "Python",
+      summary: "Expansion stack used to build APIs quickly and connect with external AI APIs outside the Java-centered environment.",
+      featured: false,
+      items: [
+        { name: "Python", description: "API prototyping and AI API integration implementation" },
+        { name: "Flask", description: "Lightweight API server and request/response handling" },
+        { name: "pip", description: "Python dependency setup and runtime environment checks" },
+        { name: "Oracle Client", description: "Oracle connectivity validation from Python applications" }
+      ]
+    },
+    {
+      id: "enterprise-systems",
+      icon: "briefcase",
+      title: "Enterprise Systems",
+      summary: "Supporting technologies from internal business systems and enterprise environments.",
+      featured: false,
+      items: [
+        { name: "WebSquare", description: "Internal business screen development experience" },
+        { name: "DB2", description: "Data lookup and workflow understanding in internal enterprise systems" },
+        { name: "RPG(IBM)", description: "Experience with business flows connected to existing core systems" },
+        { name: "Windows / Office Runtime", description: "Understanding of internal user environments and operational workflows" }
+      ]
     }
   ]
 };

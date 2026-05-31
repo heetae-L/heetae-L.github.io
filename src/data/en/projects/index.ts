@@ -1,6 +1,6 @@
 import type { ProjectsData } from "../../types";
-import { dbLockPerformanceImprovement } from "./db-lock-performance-improvement";
-import { deploymentExperience } from "./deployment-experience";
+import { aiDlcKnowledgeWorkflow } from "./ai-dlc-knowledge-workflow";
+import { ktoHygashopQualityReporting } from "./kto-hygashop-quality-reporting";
 import { partnerOrderProductIntegration } from "./partner-order-product-integration";
 import { tourgptAiChatbotApi } from "./tourgpt-ai-chatbot-api";
 
@@ -9,11 +9,11 @@ export const projects: ProjectsData = {
   title: "Projects",
   description:
     "Engineering case studies that support the resume with practical backend problem solving.",
-  filters: ["All", "Integration", "AI", "Database", "DevOps"],
+  filters: ["All", "Integration", "AI", "Operations"],
   items: [
     partnerOrderProductIntegration,
     tourgptAiChatbotApi,
-    dbLockPerformanceImprovement,
-    deploymentExperience
+    aiDlcKnowledgeWorkflow,
+    ktoHygashopQualityReporting
   ]
 };

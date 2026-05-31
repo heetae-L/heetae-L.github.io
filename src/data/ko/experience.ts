@@ -4,19 +4,30 @@ export const experience: ExperienceData = {
   eyebrow: "Career",
   title: "Work Experience",
   description:
-    "실제 운영 환경에서 백엔드 시스템을 개발하고 유지보수한 경험을 중심으로 정리합니다.",
+    "물류/주문 내부 시스템에서 시작해 복지·여행 플랫폼의 백엔드, 제휴 연동, 데이터 흐름 개선으로 확장해 온 경력입니다.",
   items: [
     {
-      period: "2021.02 - Present",
-      company: "Example Company",
+      period: "2021.12 - Present",
+      company: "SK m&service",
       role: "Software Engineer",
       featured: true,
       homeOrder: 1,
       bullets: [
-        "주문/상품 데이터 연동 API 설계 및 운영",
-        "Oracle 기반 대용량 데이터 처리 로직 개선",
-        "장애 원인 분석과 재발 방지를 위한 운영 도구 개선",
-        "외부 서비스 연동과 배치 처리 안정화"
+        "SK m&service의 복지·여행 플랫폼에서 여행/레저 제휴 연동의 주문수집 API, 상품수집 배치, 검색 노출 흐름을 API·Batch·DB 관점으로 분석하고 개선",
+        "2026년부터 여행/레저 제휴 연동 메인 담당으로 신규 연동 온보딩, 오류 원인 분리, 대외 커뮤니케이션을 주도",
+        "TourGPT 여행 AI Q&A API를 Python/Flask와 Azure OpenAI 기반으로 구축하고 Docker·GitLab CI·Nomad 배포 검증 수행",
+        "Benepia와 KTO/휴가샵 서비스에서 웹·모바일·관리자·DB를 넘나드는 기능 개선, 리포트/데이터 품질, ISMS 대응 경험 축적"
+      ]
+    },
+    {
+      period: "2020.11 - 2021.06",
+      company: "한성기업",
+      role: "Software Engineer",
+      featured: true,
+      homeOrder: 2,
+      bullets: [
+        "식품 제조/유통 기업의 물류·주문 관련 사내 업무 웹 시스템 개발 및 운영",
+        "내부 사용자 요청을 처리하며 업무 화면과 데이터 흐름이 실제 운영에 연결되는 방식을 경험"
       ]
     }
   ]

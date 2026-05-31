@@ -11,7 +11,7 @@ export const home: HomeData = {
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
   techTitle: "Tech Stack",
-  educationTitle: "Education & Contact",
+  educationTitle: "Education, Certifications & Contact",
   summaryCards: [
     {
       icon: "user",
@@ -39,12 +39,16 @@ export const home: HomeData = {
     lines: ["Order API", "Batch Processor", "Oracle DB", "Monitoring", "AI Integration"]
   },
   education: {
-    school: "B.S. in Computer Science",
-    period: "2016.03 - 2021.02"
+    school: "B.S. in Software",
+    period: "2013.03 - 2019.02"
   },
+  certifications: [
+    { name: "Information Processing Engineer", issued: "2019.11" },
+    { name: "SQLD", issued: "2024.09" }
+  ],
   contact: [
-    { label: "Email", value: "ht9407@gmail.com", href: "mailto:ht9407@gmail.com" },
+    { label: "Email", value: "heetaelee93@gmail.com", href: "mailto:heetaelee93@gmail.com" },
     { label: "GitHub", value: "github.com/heetae-L", href: "https://github.com/heetae-L" },
-    { label: "LinkedIn", value: "linkedin.com/in/heetae-lee", href: "https://linkedin.com" }
+    // { label: "LinkedIn", value: "linkedin.com/in/heetae-lee-33641b133", href: "https://www.linkedin.com/in/heetae-lee-33641b133/" }
   ]
 };

@@ -13,9 +13,12 @@ interface Props {
 const { project, href, variant = "compact", label = "Details" } = Astro.props;
 
 const tone = {
+  brain: "purple",
   cart: "green",
   bot: "purple",
   chart: "orange",
+  cloud: "blue",
+  database: "orange",
   infinity: "blue"
 }[project.icon] ?? "blue";
 ---

@@ -11,17 +11,17 @@ export const home: HomeData = {
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
   techTitle: "Tech Stack",
-  educationTitle: "Education & Contact",
+  educationTitle: "Education, Certifications & Contact",
   summaryCards: [
     {
       icon: "user",
-      title: "4+ Years",
-      description: "of Experience"
+      title: "5+ Years",
+      description: "Software Engineering"
     },
     {
       icon: "link",
-      title: "Integration",
-      description: "Operation Focus"
+      title: "Backend",
+      description: "Platform & Integration"
     },
     {
       icon: "code",
@@ -31,20 +31,24 @@ export const home: HomeData = {
     {
       icon: "sparkles",
       title: "AI API",
-      description: "Backend Integration"
+      description: "Flask · Docker"
     }
   ],
   visual: {
-    title: "Resume-first engineering profile",
-    lines: ["Order API", "Batch Processor", "Oracle DB", "Monitoring", "AI Integration"]
+    title: "Backend-focused engineering profile",
+    lines: ["Partner APIs", "Batch Jobs", "Oracle Data Flow", "Docker Deploy", "AI Integration"]
   },
   education: {
-    school: "컴퓨터공학 학사",
-    period: "2016.03 - 2021.02"
+    school: "소프트웨어학 학사",
+    period: "2013.03 - 2019.02"
   },
+  certifications: [
+    { name: "정보처리기사", issued: "2019.11" },
+    { name: "SQLD", issued: "2024.09" }
+  ],
   contact: [
-    { label: "Email", value: "ht9407@gmail.com", href: "mailto:ht9407@gmail.com" },
+    { label: "Email", value: "heetaelee93@gmail.com", href: "mailto:heetaelee93@gmail.com" },
     { label: "GitHub", value: "github.com/heetae-L", href: "https://github.com/heetae-L" },
-    { label: "LinkedIn", value: "linkedin.com/in/heetae-lee", href: "https://linkedin.com" }
+    // { label: "LinkedIn", value: "linkedin.com/in/heetae-lee-33641b133", href: "https://www.linkedin.com/in/heetae-lee-33641b133/" }
   ]
 };

@@ -10,6 +10,11 @@ export interface ContactLinkData {
   href: string;
 }
 
+export interface CertificationData {
+  name: string;
+  issued: string;
+}
+
 export interface HomeData {
   badge: string;
   name: string;
@@ -30,6 +35,7 @@ export interface HomeData {
     school: string;
     period: string;
   };
+  certifications: CertificationData[];
   contact: ContactLinkData[];
 }
 
@@ -72,10 +78,17 @@ export interface ProjectsData {
   items: ProjectData[];
 }
 
+export interface TechStackItemData {
+  name: string;
+  description: string;
+}
+
 export interface TechStackGroupData {
+  id: string;
   icon: string;
   title: string;
-  items: string[];
+  summary: string;
+  items: TechStackItemData[];
   featured?: boolean;
   homeOrder?: number;
 }

@@ -3,35 +3,110 @@ import type { TechStackData } from "../types";
 export const techStack: TechStackData = {
   eyebrow: "Skills",
   title: "Tech Stack",
-  description: "실무에서 사용한 기술을 역할 중심으로 정리합니다.",
+  description: "실무에서 반복적으로 사용한 기술과 확장 경험을 기술명 중심으로 정리합니다.",
   groups: [
     {
+      id: "backend",
       icon: "server",
       title: "Backend",
+      summary: "Java 기반 웹 애플리케이션과 서비스 로직 개발에 사용하는 주력 백엔드 기술입니다.",
       featured: true,
       homeOrder: 1,
-      items: ["Java", "Spring", "Spring Boot", "MyBatis", "REST API"]
+      items: [
+        { name: "Java", description: "주요 서비스 개발과 운영 로직 구현에 사용하는 주력 언어" },
+        { name: "Spring Boot", description: "서비스 API와 백엔드 애플리케이션 개발에 사용" },
+        { name: "Spring Framework", description: "기존 서비스 구조와 업무 로직 개발에 사용" },
+        { name: "REST API", description: "서비스 기능과 외부 시스템 연동 API 구현" },
+        { name: "Batch", description: "정기 처리, 데이터 수집, 후처리성 업무 흐름 구현" }
+      ]
     },
     {
-      icon: "database",
-      title: "Database",
+      id: "web",
+      icon: "code",
+      title: "Web",
+      summary: "서버 렌더링 화면과 운영/관리 화면의 사용자 인터랙션을 구현하는 웹 기술입니다.",
       featured: true,
       homeOrder: 2,
-      items: ["Oracle", "SQL", "PL/SQL"]
+      items: [
+        { name: "JSP", description: "Java 기반 서버 렌더링 업무 화면 개발" },
+        { name: "JavaScript", description: "화면 동작과 사용자 입력 처리 구현" },
+        { name: "jQuery", description: "기존 서비스 화면의 DOM 처리와 이벤트 제어" },
+        { name: "AJAX", description: "화면 단위 비동기 요청과 부분 갱신 처리" },
+        { name: "JSTL", description: "JSP 화면의 조건, 반복, 데이터 출력 처리" }
+      ]
     },
     {
-      icon: "cloud",
-      title: "Infra / DevOps",
+      id: "database",
+      icon: "database",
+      title: "Database",
+      summary: "서비스 데이터 처리, 조회, 정합성 확인에 사용하는 DB 중심 기술입니다.",
       featured: true,
       homeOrder: 3,
-      items: ["Linux", "Docker", "GitLab CI/CD", "Nginx"]
+      items: [
+        { name: "Oracle", description: "서비스 운영 데이터 저장과 조회에 사용하는 주요 DB" },
+        { name: "MyBatis", description: "SQL 중심 업무 로직과 Java 객체 매핑에 사용" },
+        { name: "SQL", description: "데이터 조회, 검증, 운영 확인, 리포트 기준 분석" },
+        { name: "PL/SQL / Procedure", description: "DB 내부 처리 로직과 배치 후처리 흐름 분석" },
+        { name: "MERGE", description: "기준 데이터 반영과 대량 데이터 보정 처리" }
+      ]
     },
     {
-      icon: "brain",
-      title: "AI / Python",
+      id: "cicd-deploy",
+      icon: "cloud",
+      title: "CI/CD & Deploy",
+      summary: "빌드, 배포, 컨테이너 실행, 운영 반영 흐름을 이해하고 검증하기 위한 기술입니다.",
       featured: true,
       homeOrder: 4,
-      items: ["Python", "Flask", "Azure OpenAI"]
+      items: [
+        { name: "GitLab CI/CD", description: "빌드/배포 파이프라인 구성과 실행 흐름 확인" },
+        { name: "Jenkins", description: "CI/CD job 기반 빌드와 배포 흐름 사용" },
+        { name: "Docker", description: "애플리케이션 컨테이너 실행 환경 구성과 검증" },
+        { name: "Tomcat", description: "Java 웹 애플리케이션 실행 런타임" },
+        { name: "Maven / WAR", description: "Java 프로젝트 빌드와 배포 패키징" },
+        { name: "Linux", description: "서버 환경에서 로그, 설정, 실행 상태 확인" }
+      ]
+    },
+    {
+      id: "ai-llm",
+      icon: "brain",
+      title: "AI / LLM",
+      summary: "LLM API 연동과 AI를 활용한 분석/문서화/검증 업무 흐름을 다룹니다.",
+      featured: true,
+      homeOrder: 5,
+      items: [
+        { name: "AI-assisted Engineering", description: "이슈 분석, 문서화, 검증 흐름에 AI를 활용하는 개발 방식" },
+        { name: "AI-DLC", description: "업무 맥락, 코드 흐름, 테스트 케이스를 AI가 읽을 수 있는 지식으로 구조화" },
+        { name: "Prompt Design", description: "서비스 목적에 맞는 입력 조건과 응답 기준 설계" },
+        { name: "Structured AI Response", description: "AI 응답을 서비스에서 처리 가능한 JSON 구조로 설계" },
+        { name: "OpenAI API", description: "LLM 호출 구조, 요청/응답 흐름, 오류 처리 방식 이해" },
+        { name: "Azure OpenAI", description: "LLM API 기반 기능 연동과 응답 생성 흐름 구현" }
+      ]
+    },
+    {
+      id: "python",
+      icon: "code",
+      title: "Python",
+      summary: "Java 중심 환경 밖에서 API를 빠르게 구성하고 외부 AI API와 연결하기 위해 사용한 확장 기술입니다.",
+      featured: false,
+      items: [
+        { name: "Python", description: "API 프로토타이핑과 AI API 연동 구현에 사용" },
+        { name: "Flask", description: "경량 API 서버와 요청/응답 처리 구조 구현" },
+        { name: "pip", description: "Python dependency 구성과 실행 환경 확인" },
+        { name: "Oracle Client", description: "Python 애플리케이션에서 Oracle 연결 검증" }
+      ]
+    },
+    {
+      id: "enterprise-systems",
+      icon: "briefcase",
+      title: "Enterprise Systems",
+      summary: "사내 업무 시스템과 기업 환경에서 다뤄 본 보조 기술입니다.",
+      featured: false,
+      items: [
+        { name: "WebSquare", description: "사내 업무 화면 개발 경험" },
+        { name: "DB2", description: "기업 내부 시스템의 데이터 조회와 업무 흐름 이해" },
+        { name: "RPG(IBM)", description: "기존 기간계 시스템과 연결된 업무 환경 경험" },
+        { name: "Windows / Office Runtime", description: "현업 사용자 환경과 내부 업무 시스템 운영 이해" }
+      ]
     }
   ]
 };
