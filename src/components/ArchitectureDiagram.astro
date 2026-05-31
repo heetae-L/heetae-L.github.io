@@ -1,29 +1,77 @@
 ---
+import {
+  ArrowDown,
+  Bot,
+  CloudCog,
+  Database,
+  FileCheck2,
+  Network,
+  Search,
+  Server,
+  ShieldCheck,
+  Workflow
+} from "@lucide/astro";
+
 interface Props {
   nodes: readonly string[];
+  note?: string;
 }
 
-const { nodes } = Astro.props;
+const { nodes, note } = Astro.props;
+
+function getNodeIcon(node: string, index: number) {
+  const value = node.toLowerCase();
+
+  if (value.includes("partner") || value.includes("client")) return Network;
+  if (value.includes("api") || value.includes("batch") || value.includes("ingestion")) return CloudCog;
+  if (value.includes("validation") || value.includes("mapping")) return FileCheck2;
+  if (value.includes("db") || value.includes("database") || value.includes("oracle") || value.includes("store")) return Database;
+  if (value.includes("search") || value.includes("exposure") || value.includes("index") || value.includes("record")) return Search;
+  if (value.includes("ai") || value.includes("openai") || value.includes("gpt")) return Bot;
+  if (value.includes("deploy") || value.includes("nomad") || value.includes("server")) return Server;
+
+  return index === 0 ? Network : Workflow;
+}
 ---
 
-<div class="soft-card rounded-3xl p-5">
-  <div class="grid gap-3 sm:flex sm:flex-wrap sm:items-center">
+<div class="soft-card rounded-3xl p-4 sm:p-5">
+  <div class="grid gap-2">
     {
-      nodes.map((node, index) => (
-        <div class="flex items-center gap-3">
-          <div class:list={[
-            "min-w-[96px] rounded-2xl border px-3 py-3 text-center text-xs font-extrabold",
-            index === 0 && "border-emerald-200 bg-emerald-50 text-emerald-700",
-            index === 1 && "border-blue-200 bg-blue-soft text-blue-accent",
-            index === 2 && "border-red-200 bg-red-50 text-red-500",
-            index === 3 && "border-indigo-200 bg-indigo-50 text-indigo-600",
-            index === 4 && "border-slate-200 bg-slate-50 text-ink-700"
-          ]}>
-            {node}
-          </div>
-          {index < nodes.length - 1 && <span class="text-blue-accent sm:inline">→</span>}
-        </div>
-      ))
+      nodes.map((node, index) => {
+        const Icon = getNodeIcon(node, index);
+
+        return (
+          <>
+            <div class="rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+              <div class="flex items-center gap-3">
+                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
+                  <Icon class="h-5 w-5" />
+                </span>
+                <div class="min-w-0">
+                  <p class="text-[11px] font-black uppercase text-ink-400">{String(index + 1).padStart(2, "0")}</p>
+                  <p class="text-sm font-black leading-snug text-ink-950">{node}</p>
+                </div>
+              </div>
+            </div>
+            {
+              index < nodes.length - 1 && (
+                <div class="flex justify-center text-blue-accent" aria-hidden="true">
+                  <ArrowDown class="h-4 w-4" />
+                </div>
+              )
+            }
+          </>
+        );
+      })
     }
   </div>
+
+  {
+    note && (
+      <div class="mt-4 flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-soft/60 px-4 py-3 text-sm font-extrabold text-blue-accent">
+        <ShieldCheck class="h-5 w-5 shrink-0" />
+        <span>{note}</span>
+      </div>
+    )
+  }
 </div>

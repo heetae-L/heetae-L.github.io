@@ -66,16 +66,18 @@ const detailSections: DetailSection[] = [
     id: "devops",
     title: detail.devops,
     items: projectData.devops
-  },
-  {
-    id: "public-scope",
-    title: detail.privacyNotes,
-    items: projectData.privacyNotes
   }
 ].filter((section) => Boolean(section.body) || Boolean(section.items?.length));
 
 const techStack = projectData.techStack?.length ? projectData.techStack : projectData.tags;
 const architecture = projectData.architecture?.length ? projectData.architecture : ["Client", "API", "Service", "Database"];
+
+function splitParagraphs(body: string) {
+  return body
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+}
 ---
 
 <SiteLayout locale={locale} content={t} title={`${project.title} | Heetae Lee`} description={project.summary}>
@@ -98,7 +100,13 @@ const architecture = projectData.architecture?.length ? projectData.architecture
               detailSections.map((section) => (
                 <section id={section.id} class="soft-card rounded-3xl p-6 scroll-mt-28">
                   <SectionHeading title={section.title} />
-                  {section.body && <p class="text-sm font-medium leading-7 text-ink-600">{section.body}</p>}
+                  {
+                    section.body && (
+                      <div class="grid gap-3 text-sm font-medium leading-7 text-ink-600">
+                        {splitParagraphs(section.body).map((paragraph) => <p>{paragraph}</p>)}
+                      </div>
+                    )
+                  }
                   {
                     section.items && (
                       <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
@@ -122,21 +130,7 @@ const architecture = projectData.architecture?.length ? projectData.architecture
         <aside class="grid content-start gap-4 lg:sticky lg:top-24">
           <section>
             <h2 class="mb-3 text-sm font-extrabold text-ink-950">{detail.architecture}</h2>
-            <ArchitectureDiagram nodes={architecture} />
-          </section>
-          <section class="soft-card rounded-3xl p-5">
-            <h2 class="mb-4 text-sm font-extrabold text-ink-950">{detail.screenshots}</h2>
-            <div class="rounded-2xl border border-line-200 bg-slate-50 p-3">
-              <div class="grid gap-2">
-                {Array.from({ length: 7 }).map((_, index) => (
-                  <div class="grid grid-cols-[1fr_2fr_1fr] gap-2">
-                    <span class="h-3 rounded-full bg-white"></span>
-                    <span class="h-3 rounded-full bg-white"></span>
-                    <span class:list={["h-3 rounded-full", index % 3 === 0 ? "bg-emerald-200" : "bg-line-200"]}></span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <ArchitectureDiagram nodes={architecture} note={projectData.architectureNote} />
           </section>
           <nav class="no-print soft-card-flat rounded-3xl p-5 text-sm font-bold text-ink-600" aria-label={t.common.onThisPage}>
             <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>

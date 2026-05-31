@@ -5,11 +5,11 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   category: "Operations",
   icon: "chart",
   title: "한국관광공사(KTO) 휴가샵 서비스 운영 개발",
-  summary: "한국관광공사(KTO) 휴가샵과 Benepia 운영 과정에서 데이터 정합성, 리포트, 관리자 기능, ISMS 대응을 함께 다룬 서비스 품질 개선 경험입니다.",
+  summary: "한국관광공사(KTO) 휴가샵과 Benepia 운영 과정에서 데이터 정합성, 리포트, 관리자 기능, ISMS 대응을 함께 다룬 서비스 품질 개선 경험",
   tags: ["Java", "Oracle", "Report", "Operations"],
   featured: true,
   homeOrder: 4,
-  overview: "한국관광공사(KTO) 휴가샵 관련 서비스 운영 과정에서 웹/모바일/관리자 화면, RawData, 리포트, 고객 응대 데이터가 서로 맞물리는 흐름을 다뤘습니다.",
+  overview: "한국관광공사(KTO) 휴가샵 관련 서비스 운영 과정에서 웹/모바일/관리자 화면, RawData, 리포트, 고객 응대 데이터가 서로 맞물리는 흐름을 정리.\n\n상품 품질, 통계, 리포트, 운영 데이터 기준을 함께 다룬 서비스 품질 개선 경험",
   role: [
     "한국관광공사(KTO) 휴가샵과 Benepia 서비스의 기능 개선 및 운영 이슈 대응",
     "관리자 화면, 데이터 조회, 리포트 생성 흐름 확인",

@@ -5,7 +5,7 @@ export const ui = {
         meta: {
             title: "Heetae Lee | Software Engineer",
             description:
-                "Heetae Lee의 경력, 프로젝트, 기술 스택을 정리한 웹 기반 이력서입니다."
+                "Heetae Lee의 경력, 프로젝트, 기술 스택을 정리한 웹 기반 이력서"
         },
         nav: {
             home: "Home",
@@ -33,9 +33,7 @@ export const ui = {
             troubleshooting: "Troubleshooting",
             results: "Results",
             devops: "DevOps / Deployment",
-            privacyNotes: "Public Scope",
             architecture: "System Architecture",
-            screenshots: "Screenshots",
             navItems: ["Overview", "Problem", "My Role", "Key Contributions", "Troubleshooting", "Results", "Tech Stack"]
         },
         footer: "© 2026 Heetae Lee. All rights reserved."
@@ -72,9 +70,7 @@ export const ui = {
             troubleshooting: "Troubleshooting",
             results: "Results",
             devops: "DevOps / Deployment",
-            privacyNotes: "Public Scope",
             architecture: "System Architecture",
-            screenshots: "Screenshots",
             navItems: ["Overview", "Problem", "My Role", "Key Contributions", "Troubleshooting", "Results", "Tech Stack"]
         },
         footer: "© 2026 Heetae Lee. All rights reserved."

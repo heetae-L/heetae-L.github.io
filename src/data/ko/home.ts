@@ -6,7 +6,7 @@ export const home: HomeData = {
   role: "Software Engineer",
   headline: "신뢰할 수 있는 시스템을 만드는 엔지니어",
   summary:
-    "비즈니스 흐름을 이해하고, 신뢰할 수 있는 시스템으로 구현하는 Software Engineer입니다.",
+    "비즈니스 흐름을 이해하고, 신뢰할 수 있는 시스템으로 구현하는 Software Engineer",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",

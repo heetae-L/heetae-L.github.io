@@ -7,7 +7,7 @@ import { travelAiQaApi } from "./travel-ai-qa-api";
 export const projects: ProjectsData = {
   eyebrow: "Selected Work",
   title: "Projects",
-  description: "실제 서비스에서 마주친 연동, 데이터 흐름, AI API, 운영 품질 개선 사례를 정리합니다.",
+  description: "실제 서비스에서 마주친 연동, 데이터 흐름, AI API, 운영 품질 개선 사례",
   filters: ["All", "Integration", "AI", "Operations"],
   items: [
     partnerOrderProductIntegration,

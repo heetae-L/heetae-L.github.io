@@ -10,7 +10,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   featured: true,
   homeOrder: 4,
   overview:
-    "Worked across web, mobile, and admin screens, raw data, reports, and customer-support data that support KTO Hyugashop service delivery.",
+    "Worked across web, mobile, and admin screens, raw data, reports, and customer-support data that support KTO Hyugashop service delivery.\n\nFocused on service quality through product quality, statistics, reports, and operational data standards.",
   role: [
     "Developed feature improvements and handled service issues for KTO Hyugashop and Benepia",
     "Reviewed admin screens, data queries, and report-generation flows",

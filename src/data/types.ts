@@ -81,9 +81,9 @@ export interface ProjectData {
   results?: string[];
   techStack?: string[];
   devops?: string[];
-  privacyNotes?: string[];
   links?: ContactLinkData[];
   architecture?: string[];
+  architectureNote?: string;
 }
 
 export interface ProjectsData {

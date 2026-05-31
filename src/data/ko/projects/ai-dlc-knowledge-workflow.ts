@@ -5,11 +5,11 @@ export const aiDlcKnowledgeWorkflow: ProjectData = {
   category: "AI",
   icon: "brain",
   title: "AI-DLC Knowledge Workflow",
-  summary: "업무 맥락, 이슈 원인, 처리 기준을 Markdown 기반 지식으로 정리해 AI와 함께 재사용 가능한 분석 흐름으로 만든 개인 프로젝트입니다.",
+  summary: "업무 맥락, 이슈 원인, 처리 기준을 Markdown 기반 지식으로 정리한 AI-assisted 분석 흐름 개인 프로젝트",
   tags: ["Markdown", "AI", "Knowledge Base", "Workflow"],
   featured: true,
   homeOrder: 3,
-  overview: "회사에서 경험한 복잡한 업무 흐름을 그대로 공개하지 않고, 이슈 분석 방식과 의사결정 기준을 재사용 가능한 개인 지식 체계로 정리하는 프로젝트입니다.",
+  overview: "회사에서 경험한 복잡한 업무 흐름을 그대로 공개하지 않고, 이슈 분석 방식과 의사결정 기준을 재사용 가능한 개인 지식 체계로 정리",
   role: [
     "업무 단위별 Markdown 문서 구조와 TODO 관리 기준 설계",
     "AI가 읽기 쉬운 형태로 문제 배경, 원인 후보, 확인 결과를 분리",
