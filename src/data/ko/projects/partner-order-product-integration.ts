@@ -10,9 +10,9 @@ export const partnerOrderProductIntegration: ProjectData = {
   featured: true,
   homeOrder: 1,
   overview:
-    "KTO/휴가샵과 Benepia에 연결되는 여행·레저 제휴 연동 영역에서 주문수집 API, 상품수집 배치, 숙박상품 매핑, 검색 노출, 외부 이동, IP whitelist 흐름을 함께 다뤘습니다.",
+    "복지·여행 플랫폼의 여행·레저 제휴 연동 영역에서 주문수집 API, 상품수집 배치, 숙박상품 매핑, 검색 노출, 외부 이동, IP whitelist 흐름을 함께 다뤘습니다.",
   role: [
-    "2025년 KTO/휴가샵 업무와 병행하며 제휴 연동 영역 확장",
+    "2025년 한국관광공사(KTO) 휴가샵 업무와 별도로 병행하며 제휴 연동 영역 확장",
     "2026년부터 여행/레저 제휴 연동 메인 담당으로 신규 연동 온보딩과 운영 이슈 대응 주도",
     "사업팀과 외부 제휴사 커뮤니케이션에 필요한 기술 확인과 재현 정보 정리"
   ],

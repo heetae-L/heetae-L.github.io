@@ -15,8 +15,8 @@ export const experience: ExperienceData = {
       bullets: [
         "SK m&service의 복지·여행 플랫폼에서 여행/레저 제휴 연동의 주문수집 API, 상품수집 배치, 검색 노출 흐름을 API·Batch·DB 관점으로 분석하고 개선",
         "2026년부터 여행/레저 제휴 연동 메인 담당으로 신규 연동 온보딩, 오류 원인 분리, 대외 커뮤니케이션을 주도",
-        "TourGPT 여행 AI Q&A API를 Python/Flask와 Azure OpenAI 기반으로 구축하고 Docker·GitLab CI·Nomad 배포 검증 수행",
-        "Benepia와 KTO/휴가샵 서비스에서 웹·모바일·관리자·DB를 넘나드는 기능 개선, 리포트/데이터 품질, ISMS 대응 경험 축적"
+        "여행 AI Q&A API를 Python/Flask와 Azure OpenAI 기반으로 구축하고 Docker·GitLab CI·Nomad 배포 검증 수행",
+        "Benepia와 한국관광공사(KTO) 휴가샵 관련 서비스에서 웹·모바일·관리자·DB를 넘나드는 기능 개선, 리포트/데이터 품질, ISMS 대응 경험 축적"
       ]
     },
     {

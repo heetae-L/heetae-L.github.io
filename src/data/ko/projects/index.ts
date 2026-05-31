@@ -1,8 +1,8 @@
 import type { ProjectsData } from "../../types";
 import { aiDlcKnowledgeWorkflow } from "./ai-dlc-knowledge-workflow";
-import { ktoHygashopQualityReporting } from "./kto-hygashop-quality-reporting";
+import { ktoHyugashopQualityReporting } from "./kto-hyugashop-quality-reporting";
 import { partnerOrderProductIntegration } from "./partner-order-product-integration";
-import { tourgptAiChatbotApi } from "./tourgpt-ai-chatbot-api";
+import { travelAiQaApi } from "./travel-ai-qa-api";
 
 export const projects: ProjectsData = {
   eyebrow: "Selected Work",
@@ -11,8 +11,8 @@ export const projects: ProjectsData = {
   filters: ["All", "Integration", "AI", "Operations"],
   items: [
     partnerOrderProductIntegration,
-    tourgptAiChatbotApi,
+    travelAiQaApi,
     aiDlcKnowledgeWorkflow,
-    ktoHygashopQualityReporting
+    ktoHyugashopQualityReporting
   ]
 };
