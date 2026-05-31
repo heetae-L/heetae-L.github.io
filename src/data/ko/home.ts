@@ -4,9 +4,9 @@ export const home: HomeData = {
   badge: "Software Engineer",
   name: "Heetae Lee",
   role: "Software Engineer",
-  headline: "운영 가능한 백엔드 시스템을 만들고 개선하는 엔지니어",
+  headline: "신뢰할 수 있는 시스템을 만드는 엔지니어",
   summary:
-    "주문, 데이터 처리, 외부 연동, 운영 자동화처럼 실제 서비스에서 반복적으로 마주치는 문제를 안정적으로 해결하는 데 집중합니다.",
+    "비즈니스 흐름을 이해하고, 신뢰할 수 있는 시스템으로 구현하는 Software Engineer입니다.",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",

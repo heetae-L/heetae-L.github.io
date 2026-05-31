@@ -4,9 +4,9 @@ export const home: HomeData = {
   badge: "Software Engineer",
   name: "Heetae Lee",
   role: "Software Engineer",
-  headline: "Building reliable backend systems for real-world operations",
+  headline: "Building reliable software systems",
   summary:
-    "I focus on backend systems that support orders, data processing, external integrations, and operational workflows in production environments.",
+    "I understand business workflows and turn them into reliable software systems.",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
