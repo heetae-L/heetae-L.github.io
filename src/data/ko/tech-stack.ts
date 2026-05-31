@@ -3,13 +3,13 @@ import type { TechStackData } from "../types";
 export const techStack: TechStackData = {
   eyebrow: "Skills",
   title: "Tech Stack",
-  description: "실무에서 반복적으로 사용한 기술과 확장 경험을 기술명 중심으로 정리합니다.",
+  description: "Backend · Web · Database · CI/CD · AI",
   groups: [
     {
       id: "backend",
       icon: "server",
       title: "Backend",
-      summary: "Java 기반 웹 애플리케이션과 서비스 로직 개발에 사용하는 주력 백엔드 기술입니다.",
+      summary: "Java 기반 서비스 API · 업무 로직",
       featured: true,
       homeOrder: 1,
       items: [
@@ -24,7 +24,7 @@ export const techStack: TechStackData = {
       id: "web",
       icon: "code",
       title: "Web",
-      summary: "서버 렌더링 화면과 운영/관리 화면의 사용자 인터랙션을 구현하는 웹 기술입니다.",
+      summary: "JSP 화면 · JavaScript 인터랙션",
       featured: true,
       homeOrder: 2,
       items: [
@@ -39,7 +39,7 @@ export const techStack: TechStackData = {
       id: "database",
       icon: "database",
       title: "Database",
-      summary: "서비스 데이터 처리, 조회, 정합성 확인에 사용하는 DB 중심 기술입니다.",
+      summary: "Oracle · SQL · 데이터 정합성",
       featured: true,
       homeOrder: 3,
       items: [
@@ -54,7 +54,7 @@ export const techStack: TechStackData = {
       id: "cicd-deploy",
       icon: "cloud",
       title: "CI/CD & Deploy",
-      summary: "빌드, 배포, 컨테이너 실행, 운영 반영 흐름을 이해하고 검증하기 위한 기술입니다.",
+      summary: "빌드 · 배포 · 컨테이너 · 런타임",
       featured: true,
       homeOrder: 4,
       items: [
@@ -70,7 +70,7 @@ export const techStack: TechStackData = {
       id: "ai-llm",
       icon: "brain",
       title: "AI / LLM",
-      summary: "LLM API 연동과 AI를 활용한 분석/문서화/검증 업무 흐름을 다룹니다.",
+      summary: "AI 활용 개발 흐름 · LLM API 연동",
       featured: true,
       homeOrder: 5,
       items: [
@@ -86,7 +86,7 @@ export const techStack: TechStackData = {
       id: "python",
       icon: "code",
       title: "Python",
-      summary: "Java 중심 환경 밖에서 API를 빠르게 구성하고 외부 AI API와 연결하기 위해 사용한 확장 기술입니다.",
+      summary: "API 프로토타입 · AI API 연동",
       featured: false,
       items: [
         { name: "Python", description: "API 프로토타이핑과 AI API 연동 구현에 사용" },
@@ -99,7 +99,7 @@ export const techStack: TechStackData = {
       id: "enterprise-systems",
       icon: "briefcase",
       title: "Enterprise Systems",
-      summary: "사내 업무 시스템과 기업 환경에서 다뤄 본 보조 기술입니다.",
+      summary: "기업 업무 시스템 · 내부 운영 환경",
       featured: false,
       items: [
         { name: "WebSquare", description: "사내 업무 화면 개발 경험" },

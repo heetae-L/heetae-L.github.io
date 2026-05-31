@@ -3,13 +3,13 @@ import type { TechStackData } from "../types";
 export const techStack: TechStackData = {
   eyebrow: "Skills",
   title: "Tech Stack",
-  description: "A technology-first view of the stacks I use in production work and expansion projects.",
+  description: "Backend · Web · Database · CI/CD · AI",
   groups: [
     {
       id: "backend",
       icon: "server",
       title: "Backend",
-      summary: "Primary backend technologies used for Java-based web applications and service logic.",
+      summary: "Java-based service APIs · business logic",
       featured: true,
       homeOrder: 1,
       items: [
@@ -24,7 +24,7 @@ export const techStack: TechStackData = {
       id: "web",
       icon: "code",
       title: "Web",
-      summary: "Web technologies used for server-rendered pages and operational/admin interfaces.",
+      summary: "JSP screens · JavaScript interactions",
       featured: true,
       homeOrder: 2,
       items: [
@@ -39,7 +39,7 @@ export const techStack: TechStackData = {
       id: "database",
       icon: "database",
       title: "Database",
-      summary: "Database-centered technologies for service data processing, querying, and consistency checks.",
+      summary: "Oracle · SQL · data consistency",
       featured: true,
       homeOrder: 3,
       items: [
@@ -54,7 +54,7 @@ export const techStack: TechStackData = {
       id: "cicd-deploy",
       icon: "cloud",
       title: "CI/CD & Deploy",
-      summary: "Technologies for understanding and validating build, deployment, container runtime, and release flows.",
+      summary: "Build · deploy · containers · runtime",
       featured: true,
       homeOrder: 4,
       items: [
@@ -70,7 +70,7 @@ export const techStack: TechStackData = {
       id: "ai-llm",
       icon: "brain",
       title: "AI / LLM",
-      summary: "LLM API integration and AI-assisted analysis, documentation, and verification workflows.",
+      summary: "AI-assisted engineering · LLM API integration",
       featured: true,
       homeOrder: 5,
       items: [
@@ -86,7 +86,7 @@ export const techStack: TechStackData = {
       id: "python",
       icon: "code",
       title: "Python",
-      summary: "Expansion stack used to build APIs quickly and connect with external AI APIs outside the Java-centered environment.",
+      summary: "API prototypes · AI API integration",
       featured: false,
       items: [
         { name: "Python", description: "API prototyping and AI API integration implementation" },
@@ -99,7 +99,7 @@ export const techStack: TechStackData = {
       id: "enterprise-systems",
       icon: "briefcase",
       title: "Enterprise Systems",
-      summary: "Supporting technologies from internal business systems and enterprise environments.",
+      summary: "Enterprise systems · internal operations",
       featured: false,
       items: [
         { name: "WebSquare", description: "Internal business screen development experience" },
