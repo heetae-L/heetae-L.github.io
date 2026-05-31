@@ -3,3 +3,7 @@ dist/
 .astro/
 .idea/
 .DS_Store
+
+# Qodana local/IDE-generated files
+qodana.yaml
+.github/workflows/qodana_code_quality.yml
