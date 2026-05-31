@@ -52,7 +52,10 @@ export function getFeaturedProjects(locale: Locale, limit = 4): ProjectData[] {
 export function getResumeExperience(locale: Locale): ExperienceItemData[] {
   return sortByHomeOrder(
     pageData[locale].experience.items.filter((item) => item.featured)
-  );
+  ).map((item) => ({
+    ...item,
+    bullets: item.homeBullets ?? item.bullets
+  }));
 }
 
 export function getFeaturedTechStack(locale: Locale): TechStackGroupData[] {

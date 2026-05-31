@@ -35,15 +35,22 @@ export interface HomeData {
     school: string;
     period: string;
   };
+  militaryService?: {
+    label: string;
+    value: string;
+  };
   certifications: CertificationData[];
   contact: ContactLinkData[];
 }
 
 export interface ExperienceItemData {
   period: string;
+  startDate?: string;
+  endDate?: string;
   company: string;
   role: string;
   bullets: string[];
+  homeBullets?: string[];
   featured?: boolean;
   homeOrder?: number;
 }

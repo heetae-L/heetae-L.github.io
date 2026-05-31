@@ -4,30 +4,40 @@ export const experience: ExperienceData = {
   eyebrow: "Career",
   title: "Work Experience",
   description:
-    "물류/주문 내부 시스템에서 시작해 복지·여행 플랫폼의 백엔드, 제휴 연동, 데이터 흐름 개선으로 확장해 온 경력입니다.",
+    "복지·여행 이커머스의 상품·주문·검색 흐름을 백엔드 서비스와 외부 제휴 연동으로 연결하고 안정화해 온 커리어",
   items: [
     {
       period: "2021.12 - Present",
+      startDate: "2021-12-06",
       company: "SK m&service",
       role: "Software Engineer",
       featured: true,
       homeOrder: 1,
+      homeBullets: [
+        "복지·여행 이커머스 플랫폼에서 API, Batch, DB, 검색 노출, 관리자 기능을 연결하는 백엔드 서비스 개발 담당",
+        "상품·주문·검색 데이터 흐름과 외부 제휴 연동을 서비스 관점에서 설계·운영·개선",
+        "Python/Flask, Azure OpenAI 기반 여행 AI Q&A API를 구축하고 Docker, GitLab CI, Nomad 배포 검증까지 수행"
+      ],
       bullets: [
-        "SK m&service의 복지·여행 플랫폼에서 여행/레저 제휴 연동의 주문수집 API, 상품수집 배치, 검색 노출 흐름을 API·Batch·DB 관점으로 분석하고 개선",
-        "2026년부터 여행/레저 제휴 연동 메인 담당으로 신규 연동 온보딩, 오류 원인 분리, 대외 커뮤니케이션을 주도",
-        "여행 AI Q&A API를 Python/Flask와 Azure OpenAI 기반으로 구축하고 Docker·GitLab CI·Nomad 배포 검증 수행",
-        "Benepia와 한국관광공사(KTO) 휴가샵 관련 서비스에서 웹·모바일·관리자·DB를 넘나드는 기능 개선, 리포트/데이터 품질, ISMS 대응 경험 축적"
+        "2026년부터 여행/레저 제휴 연동 메인 담당으로 상품·주문 수집 API/Batch와 검색 노출 흐름을 주도하고, 한국관광공사(KTO) 휴가샵 서비스 개발과 데이터 품질 개선을 병행",
+        "2025년부터 한국관광공사(KTO) 휴가샵 업무를 유지하면서 여행/레저 제휴 연동으로 책임 범위를 확장하고, 외부 제휴사와 연결되는 상품·주문·검색 데이터 처리 흐름을 이커머스 서비스 기준으로 체계화",
+        "2024.04부터 한국관광공사(KTO) 휴가샵 서비스 개발을 담당하며 상품 품질, 통계, 리포트, 운영 데이터 기준을 개선",
+        "2023년 하반기 여행 AI Q&A API TF에서 전사 최초 Python/Flask, Azure OpenAI 기반 AI API 프로젝트를 개발하고 Docker, GitLab CI, Nomad 배포 검증까지 end-to-end로 수행",
+        "2022.02부터 Benepia 복지 이커머스 서비스 개발을 담당하며 고객사별 복지몰 차별화 기능을 개발·운영",
+        "ISMS/e-privacy 보안 진단 대응 과정에서 XSS/CSRF, 접근제어, 인증/세션, 정보노출 취약점을 서비스 영향 범위에 맞춰 조치"
       ]
     },
     {
       period: "2020.11 - 2021.06",
+      startDate: "2020-11-09",
+      endDate: "2021-06-11",
       company: "한성기업",
       role: "Software Engineer",
       featured: true,
       homeOrder: 2,
       bullets: [
-        "식품 제조/유통 기업의 물류·주문 관련 사내 업무 웹 시스템 개발 및 운영",
-        "내부 사용자 요청을 처리하며 업무 화면과 데이터 흐름이 실제 운영에 연결되는 방식을 경험"
+        "식품 제조/유통 기업의 물류·주문 관련 사내 업무 웹 시스템을 개발·운영한 첫 실무 경력",
+        "주문정보 프로그램의 사용자 접근 범위를 업무 역할에 맞게 확장하며 내부 업무 흐름과 데이터 처리 구조를 경험"
       ]
     }
   ]

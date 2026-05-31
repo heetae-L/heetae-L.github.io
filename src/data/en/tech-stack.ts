@@ -9,11 +9,11 @@ export const techStack: TechStackData = {
       id: "backend",
       icon: "server",
       title: "Backend",
-      summary: "Java-based service APIs · business logic",
+      summary: "Java-based service APIs and business logic",
       featured: true,
       homeOrder: 1,
       items: [
-        { name: "Java", description: "Primary language for service development and operational logic" },
+        { name: "Java", description: "Primary language for service development and operational business logic" },
         { name: "Spring Boot", description: "Backend application and service API development" },
         { name: "Spring Framework", description: "Existing service structure and business logic development" },
         { name: "REST API", description: "Service features and external system integration APIs" },
@@ -47,7 +47,7 @@ export const techStack: TechStackData = {
         { name: "MyBatis", description: "SQL-centric business logic and Java object mapping" },
         { name: "SQL", description: "Data lookup, validation, operational checks, and reporting criteria" },
         { name: "PL/SQL / Procedure", description: "Database-side processing logic and batch post-processing analysis" },
-        { name: "MERGE", description: "Reference data reflection and bulk correction processing" }
+        { name: "MERGE", description: "Reference-data updates and bulk data correction" }
       ]
     },
     {
@@ -59,7 +59,7 @@ export const techStack: TechStackData = {
       homeOrder: 4,
       items: [
         { name: "GitLab CI/CD", description: "Build/deploy pipeline configuration and execution flow validation" },
-        { name: "Jenkins", description: "CI/CD job-based build and deployment flow usage" },
+        { name: "Jenkins", description: "CI/CD job-based build and deployment workflows" },
         { name: "Docker", description: "Container runtime configuration and validation" },
         { name: "Tomcat", description: "Java web application runtime" },
         { name: "Maven / WAR", description: "Java project build and deployment packaging" },
@@ -75,7 +75,7 @@ export const techStack: TechStackData = {
       homeOrder: 5,
       items: [
         { name: "AI-assisted Engineering", description: "Using AI for issue analysis, documentation, and verification workflows" },
-        { name: "AI-DLC", description: "Structuring work context, code flow, and test cases into AI-readable knowledge" },
+        { name: "AI-DLC", description: "Structuring work context, code flow, and test cases as AI-readable knowledge" },
         { name: "Prompt Design", description: "Input constraints and response criteria aligned with service goals" },
         { name: "Structured AI Response", description: "Designing AI responses as service-friendly JSON structures" },
         { name: "OpenAI API", description: "LLM request/response flow, call structure, and error handling" },
@@ -105,7 +105,7 @@ export const techStack: TechStackData = {
         { name: "WebSquare", description: "Internal business screen development experience" },
         { name: "DB2", description: "Data lookup and workflow understanding in internal enterprise systems" },
         { name: "RPG(IBM)", description: "Experience with business flows connected to existing core systems" },
-        { name: "Windows / Office Runtime", description: "Understanding of internal user environments and operational workflows" }
+        { name: "Windows / Office Runtime", description: "Understanding of internal user environments and business-system operations" }
       ]
     }
   ]

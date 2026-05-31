@@ -8,7 +8,7 @@ export const projects: ProjectsData = {
   eyebrow: "Selected Work",
   title: "Projects",
   description:
-    "Engineering case studies that support the resume with practical backend problem solving.",
+    "Case studies from real service work covering integrations, data flows, AI APIs, and service quality improvements.",
   filters: ["All", "Integration", "AI", "Operations"],
   items: [
     partnerOrderProductIntegration,

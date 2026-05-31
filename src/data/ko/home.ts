@@ -42,6 +42,10 @@ export const home: HomeData = {
     school: "소프트웨어학 학사",
     period: "2013.03 - 2019.02"
   },
+  militaryService: {
+    label: "Military Service",
+    value: "2014.10 - 2016.07 · 육군 병장 만기전역"
+  },
   certifications: [
     { name: "정보처리기사", issued: "2019.11" },
     { name: "SQLD", issued: "2024.09" }

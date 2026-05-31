@@ -4,23 +4,24 @@ export const partnerOrderProductIntegration: ProjectData = {
   slug: "partner-order-product-integration",
   category: "Integration",
   icon: "cart",
-  title: "Partner Order/Product Integration",
+  title: "Travel & Leisure Partner Integration",
   summary:
-    "A backend integration project for synchronizing partner order and product data with internal systems.",
-  tags: ["Java", "Spring", "Oracle", "MyBatis"],
+    "A representative backend integration project connecting travel, accommodation, and leisure partner order/product/search flows across APIs, batch jobs, databases, and search exposure.",
+  tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 1,
   overview:
-    "Designed API and batch processing flows to collect partner order and product data and synchronize it with internal operation systems.",
+    "Worked across order collection APIs, product collection batches, accommodation product mapping, search exposure, external redirects, and IP whitelist flows in the travel/leisure partner-integration domain of a welfare and travel platform.",
   role: [
-    "Designed request and response models for integration APIs",
-    "Defined batch processing flow and exception handling rules",
-    "Investigated data mismatch issues observed in production"
+    "Expanded the partner-integration scope in parallel with KTO Hyugashop work in 2025",
+    "Since 2026, have led travel/leisure partner integrations, including new integration onboarding and operational issue response",
+    "Organized technical checks and reproduction details for communication with business teams and external partners"
   ],
   contributions: [
-    "Separated duplicate handling and retry criteria into explicit flows",
-    "Added traceable logs and operational status values",
-    "Improved validation queries and review workflows for data consistency"
+    "Defined consistency checks between real-time order APIs and daily order batches",
+    "Separated the product flow into source ingestion, product reflection, post-processing, and search-data generation",
+    "Traced cases where accommodation mapping was correct but search results differed through data-generation and screen-call flows",
+    "Reduced integration risk by separating development/production IP whitelists and validating network conditions"
   ],
-  architecture: ["Partner API", "Collector API", "Queue", "Batch Processor", "Oracle DB"]
+  architecture: ["Partner API", "Order Collector", "Product Batch", "Oracle DB", "Search Exposure"]
 };

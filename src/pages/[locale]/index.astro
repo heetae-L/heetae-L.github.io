@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Award, GraduationCap, Mail } from "@lucide/astro";
+import { ArrowRight, Award, GraduationCap, Mail, ShieldCheck } from "@lucide/astro";
 import ExperienceTimeline from "../../components/ExperienceTimeline.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import ResumeVisual from "../../components/ResumeVisual.astro";
@@ -19,6 +19,7 @@ const t = getContent(locale);
 const resumeExperience = getResumeExperience(locale);
 const featuredProjects = getFeaturedProjects(locale, 4);
 const featuredTechStack = getFeaturedTechStack(locale);
+const militaryServiceParts = t.home.militaryService?.value.split(" · ");
 ---
 
 <SiteLayout locale={locale} content={t}>
@@ -64,8 +65,8 @@ const featuredTechStack = getFeaturedTechStack(locale);
       </section>
 
       <section class="mt-12">
-        <SectionHeading title={t.home.workTitle} />
-        <ExperienceTimeline items={resumeExperience} />
+        <SectionHeading title={t.home.workTitle} actionHref={withLocale(locale, "/experience")} actionLabel={t.common.viewFullExperience} />
+        <ExperienceTimeline items={resumeExperience} locale={locale} linkHref={withLocale(locale, "/experience")} />
       </section>
 
       <section class="mt-12">
@@ -76,7 +77,7 @@ const featuredTechStack = getFeaturedTechStack(locale);
       </section>
 
       <section class="mt-12">
-        <SectionHeading title={t.home.techTitle} />
+        <SectionHeading title={t.home.techTitle} actionHref={withLocale(locale, "/tech-stack")} actionLabel={t.common.viewFullTechStack} />
         <TechStackGrid groups={featuredTechStack} baseHref={withLocale(locale, "/tech-stack")} />
       </section>
 
@@ -91,6 +92,20 @@ const featuredTechStack = getFeaturedTechStack(locale);
               <h3 class="text-base font-extrabold text-ink-950">Education</h3>
               <p class="mt-3 text-sm font-bold text-ink-800">{t.home.education.school}</p>
               <p class="mt-1 text-sm font-semibold text-ink-500">{t.home.education.period}</p>
+              {
+                t.home.militaryService && (
+                  <div class="mt-4 grid grid-cols-[16px_1fr] gap-3 border-t border-line-200 pt-4">
+                    <ShieldCheck class="mt-0.5 h-4 w-4 text-blue-accent" />
+                    <div>
+                      <p class="text-[11px] font-extrabold leading-4 text-ink-500">{t.home.militaryService.label}</p>
+                      <p class="mt-1 text-[13px] font-bold leading-5 text-ink-800">
+                        <span class="block">{militaryServiceParts?.[0] ?? t.home.militaryService.value}</span>
+                        {militaryServiceParts?.[1] && <span class="block">{militaryServiceParts[1]}</span>}
+                      </p>
+                    </div>
+                  </div>
+                )
+              }
             </div>
           </div>
           <div class="flex gap-4 border-line-200 md:border-l md:pl-8">

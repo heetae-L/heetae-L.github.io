@@ -4,9 +4,9 @@ export const home: HomeData = {
   badge: "Software Engineer",
   name: "Heetae Lee",
   role: "Software Engineer",
-  headline: "Building reliable software systems",
+  headline: "Engineering reliable software systems",
   summary:
-    "I understand business workflows and turn them into reliable software systems.",
+    "I understand business workflows and turn them into reliable software systems as a Software Engineer.",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
@@ -15,13 +15,13 @@ export const home: HomeData = {
   summaryCards: [
     {
       icon: "user",
-      title: "4+ Years",
-      description: "of Experience"
+      title: "5+ Years",
+      description: "Software Engineering"
     },
     {
       icon: "link",
-      title: "Integration",
-      description: "Operation Focus"
+      title: "Backend",
+      description: "Platform & Integration"
     },
     {
       icon: "code",
@@ -31,16 +31,20 @@ export const home: HomeData = {
     {
       icon: "sparkles",
       title: "AI API",
-      description: "Backend Integration"
+      description: "Flask · Docker"
     }
   ],
   visual: {
-    title: "Resume-first engineering profile",
-    lines: ["Order API", "Batch Processor", "Oracle DB", "Monitoring", "AI Integration"]
+    title: "Backend-focused engineering profile",
+    lines: ["Partner APIs", "Batch Jobs", "Oracle Data Flow", "Docker Deploy", "AI Integration"]
   },
   education: {
-    school: "B.S. in Software",
+    school: "B.S. in Software Engineering",
     period: "2013.03 - 2019.02"
+  },
+  militaryService: {
+    label: "Military Service",
+    value: "2014.10 - 2016.07 · ROK Army, Sergeant, Honorable Discharge"
   },
   certifications: [
     { name: "Information Processing Engineer", issued: "2019.11" },
