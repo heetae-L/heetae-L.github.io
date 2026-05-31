@@ -4,6 +4,7 @@ import ArchitectureDiagram from "../../../components/ArchitectureDiagram.astro";
 import SectionHeading from "../../../components/SectionHeading.astro";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import { getContent, getProject } from "../../../data";
+import type { ProjectData } from "../../../data/types";
 import { locales, type Locale, withLocale } from "../../../i18n/config";
 
 export function getStaticPaths() {
@@ -20,12 +21,61 @@ const locale = Astro.params.locale as Locale;
 const slug = Astro.params.slug as string;
 const t = getContent(locale);
 const project = getProject(locale, slug) ?? t.projects.items[0];
+const projectData = project as ProjectData;
 const detail = t.projectDetail;
 
-const overview = "overview" in project ? project.overview : project.summary;
-const role = "role" in project ? project.role : [project.summary];
-const contributions = "contributions" in project ? project.contributions : project.tags.map((tag) => `${tag} based implementation note`);
-const architecture = "architecture" in project ? project.architecture : ["Client", "API", "Service", "Database"];
+type DetailSection = {
+  id: string;
+  title: string;
+  body?: string;
+  items?: string[];
+};
+
+const detailSections: DetailSection[] = [
+  {
+    id: "overview",
+    title: detail.overview,
+    body: projectData.overview ?? projectData.summary
+  },
+  {
+    id: "problem",
+    title: detail.problem,
+    body: projectData.problem
+  },
+  {
+    id: "role",
+    title: detail.role,
+    items: projectData.myRole ?? projectData.role ?? [projectData.summary]
+  },
+  {
+    id: "contributions",
+    title: detail.contributions,
+    items: projectData.keyContributions ?? projectData.contributions ?? projectData.tags.map((tag) => `${tag} based implementation note`)
+  },
+  {
+    id: "troubleshooting",
+    title: detail.troubleshooting,
+    items: projectData.troubleshooting
+  },
+  {
+    id: "results",
+    title: detail.results,
+    items: projectData.results
+  },
+  {
+    id: "devops",
+    title: detail.devops,
+    items: projectData.devops
+  },
+  {
+    id: "public-scope",
+    title: detail.privacyNotes,
+    items: projectData.privacyNotes
+  }
+].filter((section) => Boolean(section.body) || Boolean(section.items?.length));
+
+const techStack = projectData.techStack?.length ? projectData.techStack : projectData.tags;
+const architecture = projectData.architecture?.length ? projectData.architecture : ["Client", "API", "Service", "Database"];
 ---
 
 <SiteLayout locale={locale} content={t} title={`${project.title} | Heetae Lee`} description={project.summary}>
@@ -44,29 +94,26 @@ const architecture = "architecture" in project ? project.architecture : ["Client
           </div>
 
           <div class="mt-7 grid gap-4">
-            <section id="overview" class="soft-card rounded-3xl p-6">
-              <SectionHeading title={detail.overview} />
-              <p class="text-sm font-medium leading-7 text-ink-600">{overview}</p>
-            </section>
-
-            <section id="role" class="soft-card rounded-3xl p-6">
-              <SectionHeading title={detail.role} />
-              <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
-                {role.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
-              </ul>
-            </section>
-
-            <section id="contributions" class="soft-card rounded-3xl p-6">
-              <SectionHeading title={detail.contributions} />
-              <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
-                {contributions.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
-              </ul>
-            </section>
+            {
+              detailSections.map((section) => (
+                <section id={section.id} class="soft-card rounded-3xl p-6 scroll-mt-28">
+                  <SectionHeading title={section.title} />
+                  {section.body && <p class="text-sm font-medium leading-7 text-ink-600">{section.body}</p>}
+                  {
+                    section.items && (
+                      <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
+                        {section.items.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
+                      </ul>
+                    )
+                  }
+                </section>
+              ))
+            }
 
             <section id="tech-stack" class="soft-card rounded-3xl p-6">
               <SectionHeading title={t.common.techTags} />
               <div class="flex flex-wrap gap-2">
-                {project.tags.map((tag) => <span class="rounded-full bg-blue-soft px-3 py-1.5 text-xs font-extrabold text-blue-accent">{tag}</span>)}
+                {techStack.map((tag) => <span class="rounded-full bg-blue-soft px-3 py-1.5 text-xs font-extrabold text-blue-accent">{tag}</span>)}
               </div>
             </section>
           </div>
@@ -94,9 +141,7 @@ const architecture = "architecture" in project ? project.architecture : ["Client
           <nav class="no-print soft-card-flat rounded-3xl p-5 text-sm font-bold text-ink-600" aria-label={t.common.onThisPage}>
             <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>
             <div class="grid gap-2">
-              <a href="#overview" class="hover:text-blue-accent">{detail.overview}</a>
-              <a href="#role" class="hover:text-blue-accent">{detail.role}</a>
-              <a href="#contributions" class="hover:text-blue-accent">{detail.contributions}</a>
+              {detailSections.map((section) => <a href={`#${section.id}`} class="hover:text-blue-accent">{section.title}</a>)}
               <a href="#tech-stack" class="hover:text-blue-accent">{t.common.techTags}</a>
             </div>
           </nav>

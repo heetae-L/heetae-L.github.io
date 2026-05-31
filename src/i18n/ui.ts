@@ -25,11 +25,16 @@ export const ui = {
     },
     projectDetail: {
       overview: "Overview",
+      problem: "Problem",
       role: "My Role",
       contributions: "Key Contributions",
+      troubleshooting: "Troubleshooting",
+      results: "Results",
+      devops: "DevOps / Deployment",
+      privacyNotes: "Public Scope",
       architecture: "System Architecture",
       screenshots: "Screenshots",
-      navItems: ["Overview", "My Role", "Key Contributions", "Tech Stack"]
+      navItems: ["Overview", "Problem", "My Role", "Key Contributions", "Troubleshooting", "Results", "Tech Stack"]
     },
     footer: "© 2026 Heetae Lee. All rights reserved."
   },
@@ -57,11 +62,16 @@ export const ui = {
     },
     projectDetail: {
       overview: "Overview",
+      problem: "Problem",
       role: "My Role",
       contributions: "Key Contributions",
+      troubleshooting: "Troubleshooting",
+      results: "Results",
+      devops: "DevOps / Deployment",
+      privacyNotes: "Public Scope",
       architecture: "System Architecture",
       screenshots: "Screenshots",
-      navItems: ["Overview", "My Role", "Key Contributions", "Tech Stack"]
+      navItems: ["Overview", "Problem", "My Role", "Key Contributions", "Troubleshooting", "Results", "Tech Stack"]
     },
     footer: "© 2026 Heetae Lee. All rights reserved."
   }

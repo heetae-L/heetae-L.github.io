@@ -65,8 +65,17 @@ export interface ProjectData {
   featured?: boolean;
   homeOrder?: number;
   overview?: string;
+  problem?: string;
   role?: string[];
+  myRole?: string[];
   contributions?: string[];
+  keyContributions?: string[];
+  troubleshooting?: string[];
+  results?: string[];
+  techStack?: string[];
+  devops?: string[];
+  privacyNotes?: string[];
+  links?: ContactLinkData[];
   architecture?: string[];
 }
 
