@@ -32,7 +32,7 @@ export const ui = {
             contributions: "Key Contributions",
             troubleshooting: "Troubleshooting",
             results: "Results",
-            devops: "DevOps / Deployment",
+            devops: "Technical Notes",
             architecture: "System Architecture",
             navItems: ["Overview", "Problem", "My Role", "Key Contributions", "Troubleshooting", "Results", "Tech Stack"]
         },
@@ -69,7 +69,7 @@ export const ui = {
             contributions: "Key Contributions",
             troubleshooting: "Troubleshooting",
             results: "Results",
-            devops: "DevOps / Deployment",
+            devops: "Technical Notes",
             architecture: "System Architecture",
             navItems: ["Overview", "Problem", "My Role", "Key Contributions", "Troubleshooting", "Results", "Tech Stack"]
         },

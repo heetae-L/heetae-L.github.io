@@ -23,6 +23,7 @@ const t = getContent(locale);
 const project = getProject(locale, slug) ?? t.projects.items[0];
 const projectData = project as ProjectData;
 const detail = t.projectDetail;
+const sectionLabels = projectData.sectionLabels ?? {};
 
 type DetailSection = {
   id: string;
@@ -34,37 +35,37 @@ type DetailSection = {
 const detailSections: DetailSection[] = [
   {
     id: "overview",
-    title: detail.overview,
+    title: sectionLabels.overview ?? detail.overview,
     body: projectData.overview ?? projectData.summary
   },
   {
     id: "problem",
-    title: detail.problem,
+    title: sectionLabels.problem ?? detail.problem,
     body: projectData.problem
   },
   {
     id: "role",
-    title: detail.role,
+    title: sectionLabels.role ?? detail.role,
     items: projectData.myRole ?? projectData.role ?? [projectData.summary]
   },
   {
     id: "contributions",
-    title: detail.contributions,
+    title: sectionLabels.contributions ?? detail.contributions,
     items: projectData.keyContributions ?? projectData.contributions ?? projectData.tags.map((tag) => `${tag} based implementation note`)
   },
   {
     id: "troubleshooting",
-    title: detail.troubleshooting,
+    title: sectionLabels.troubleshooting ?? detail.troubleshooting,
     items: projectData.troubleshooting
   },
   {
     id: "results",
-    title: detail.results,
+    title: sectionLabels.results ?? detail.results,
     items: projectData.results
   },
   {
     id: "devops",
-    title: detail.devops,
+    title: sectionLabels.devops ?? detail.devops,
     items: projectData.devops
   }
 ].filter((section) => Boolean(section.body) || Boolean(section.items?.length));
@@ -119,7 +120,7 @@ function splitParagraphs(body: string) {
             }
 
             <section id="tech-stack" class="soft-card rounded-3xl p-6">
-              <SectionHeading title={t.common.techTags} />
+              <SectionHeading title={sectionLabels.techStack ?? t.common.techTags} />
               <div class="flex flex-wrap gap-2">
                 {techStack.map((tag) => <span class="rounded-full bg-blue-soft px-3 py-1.5 text-xs font-extrabold text-blue-accent">{tag}</span>)}
               </div>
@@ -136,7 +137,7 @@ function splitParagraphs(body: string) {
             <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>
             <div class="grid gap-2">
               {detailSections.map((section) => <a href={`#${section.id}`} class="hover:text-blue-accent">{section.title}</a>)}
-              <a href="#tech-stack" class="hover:text-blue-accent">{t.common.techTags}</a>
+              <a href="#tech-stack" class="hover:text-blue-accent">{sectionLabels.techStack ?? t.common.techTags}</a>
             </div>
           </nav>
         </aside>

@@ -81,6 +81,16 @@ export interface ProjectData {
   results?: string[];
   techStack?: string[];
   devops?: string[];
+  sectionLabels?: {
+    overview?: string;
+    problem?: string;
+    role?: string;
+    contributions?: string;
+    troubleshooting?: string;
+    results?: string;
+    devops?: string;
+    techStack?: string;
+  };
   links?: ContactLinkData[];
   architecture?: string[];
   architectureNote?: string;
