@@ -6,12 +6,12 @@ export const partnerOrderProductIntegration: ProjectData = {
   icon: "cart",
   title: "Travel & Leisure Partner Integration Platform",
   summary:
-    "Backend platform project connecting multiple travel, accommodation, and leisure partners to order, product, and search flows, standardizing API, batch, database, and search-exposure criteria for tens of thousands of monthly records.",
+    "Backend integration platform project connecting multiple travel, accommodation, and leisure partners to order, product, and search flows, verifying recurring partner data and a large product pool across API, batch, database, and search-exposure criteria.",
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 1,
   overview:
-    "Connected partner-provided order/cancellation data, product information, search exposure, and external redirect flows with internal APIs, batch jobs, databases, and search structures on an employee-benefit and travel commerce platform.\n\nWorked in an environment where tens of thousands of order and product records recurred monthly, standardizing API responses, batch correction, DB persistence, exception-data reprocessing, and search-exposure criteria to strengthen service data reliability.\n\nThe core value was platformizing partner integration: onboarding new partners faster while absorbing partner-specific integration differences into a shared backend verification flow.",
+    "Connected partner-provided order/cancellation data, product information, search exposure, and external redirect flows with internal APIs, batch jobs, databases, and search structures on an employee-benefit and travel commerce platform.\n\nWorked in an environment where order and product data from multiple partners repeatedly flowed through real-time APIs and scheduled batches, verifying API responses, batch correction, DB persistence, exception-data reprocessing, product normalization, and search-exposure criteria together.\n\nThe core value was platformizing partner integration: not a one-off feature build, but a shared backend verification flow for onboarding new partners and absorbing partner-specific integration differences.",
   problem:
     "Each partner had different API response formats, file-transfer methods, product types, search conditions, and connectivity requirements, so a one-off integration approach could not guarantee consistent service quality.\n\nEven when data was received successfully, the platform still needed to verify that orders, products, and search exposure were reflected consistently across API, batch, database, and search layers.",
   role: [
@@ -21,8 +21,8 @@ export const partnerOrderProductIntegration: ProjectData = {
   ],
   contributions: [
     "Designed consistency-verification criteria for order, cancellation, and correction data where a real-time order API and a daily batch coexist",
-    "Established criteria for API responses, batch correction, DB persistence, and exception-data reprocessing across order and product flows recurring at monthly tens-of-thousands scale",
-    "Standardized an end-to-end data verification flow from file receipt to ingestion, normalization, post-processing, and search exposure",
+    "Established criteria for API responses, batch correction, DB persistence, and exception-data reprocessing across recurring partner order and product flows",
+    "Standardized an end-to-end data verification flow for a large product pool, from file receipt to ingestion, normalization, post-processing, and search exposure",
     "Separated search-validation calls from user-facing external redirect paths so search quality and partner redirect quality could be verified independently",
     "Established an analysis standard for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure layers",
     "Standardized the checks required for new partner onboarding into a reusable checklist and integration-verification guide"
@@ -36,7 +36,7 @@ export const partnerOrderProductIntegration: ProjectData = {
   results: [
     "Turned partner-specific handling into a shared verification system, improving readiness and reliability for new integrations",
     "Clarified observation points across order, product, and search-data flows to narrow the investigation scope when data inconsistencies occur",
-    "Established a consistent foundation for managing API, batch, database, and search-exposure criteria across tens of thousands of monthly records",
+    "Established a verification system for consistently managing API, batch, database, and search-exposure criteria across large recurring order and product data flows",
     "Improved partner collaboration quality by defining technical criteria that business teams and external partners could share"
   ],
   devops: [
@@ -48,6 +48,13 @@ export const partnerOrderProductIntegration: ProjectData = {
     devops: "Integration Reliability"
   },
   techStack: ["Java", "Spring", "Oracle", "MyBatis", "REST API", "Batch", "SQL", "Data Pipeline"],
-  architecture: ["Partner Systems", "API / Batch Collection", "Product Normalization / Post-processing", "Oracle Data Flow", "Search Records / Exposure"],
-  architectureNote: "Integration Reliability Checks"
+  architecture: [
+    "External Partner Systems",
+    "Order API / Product Files",
+    "API & Batch Ingestion",
+    "Product Normalization / Oracle Flow",
+    "Search Records / Validation API",
+    "Service Exposure / External Redirect"
+  ],
+  architectureNote: "API / Batch / DB / Search Reliability Checks"
 };
