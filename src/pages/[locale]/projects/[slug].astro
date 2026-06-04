@@ -54,6 +54,11 @@ const detailSections: DetailSection[] = [
     items: projectData.keyContributions ?? projectData.contributions ?? projectData.tags.map((tag) => `${tag} based implementation note`)
   },
   {
+    id: "devops",
+    title: sectionLabels.devops ?? detail.devops,
+    items: projectData.devops
+  },
+  {
     id: "troubleshooting",
     title: sectionLabels.troubleshooting ?? detail.troubleshooting,
     items: projectData.troubleshooting
@@ -62,16 +67,12 @@ const detailSections: DetailSection[] = [
     id: "results",
     title: sectionLabels.results ?? detail.results,
     items: projectData.results
-  },
-  {
-    id: "devops",
-    title: sectionLabels.devops ?? detail.devops,
-    items: projectData.devops
   }
 ].filter((section) => Boolean(section.body) || Boolean(section.items?.length));
 
 const techStack = projectData.techStack?.length ? projectData.techStack : projectData.tags;
 const architecture = projectData.architecture?.length ? projectData.architecture : ["Client", "API", "Service", "Database"];
+const screenshots = projectData.screenshots ?? [];
 
 function splitParagraphs(body: string) {
   return body
@@ -99,23 +100,55 @@ function splitParagraphs(body: string) {
           <div class="mt-7 grid gap-4">
             {
               detailSections.map((section) => (
-                <section id={section.id} class="soft-card rounded-3xl p-6 scroll-mt-28">
-                  <SectionHeading title={section.title} />
+                <>
+                  <section id={section.id} class="soft-card rounded-3xl p-6 scroll-mt-28">
+                    <SectionHeading title={section.title} />
+                    {
+                      section.body && (
+                        <div class="grid gap-3 text-sm font-medium leading-7 text-ink-600">
+                          {splitParagraphs(section.body).map((paragraph) => <p>{paragraph}</p>)}
+                        </div>
+                      )
+                    }
+                    {
+                      section.items && (
+                        <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
+                          {section.items.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
+                        </ul>
+                      )
+                    }
+                  </section>
                   {
-                    section.body && (
-                      <div class="grid gap-3 text-sm font-medium leading-7 text-ink-600">
-                        {splitParagraphs(section.body).map((paragraph) => <p>{paragraph}</p>)}
-                      </div>
+                    section.id === "overview" && screenshots.length > 0 && (
+                      <section id="screenshots" class="scroll-mt-28">
+                        <SectionHeading title={sectionLabels.screenshots ?? "Service Screenshots"} />
+                        <div class="grid gap-4 sm:grid-cols-2">
+                          {
+                            screenshots.map((screenshot) => (
+                              <figure class="overflow-hidden rounded-3xl border border-line-200 bg-white shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+                                <div class="bg-slate-50 px-4 py-4">
+                                  <img
+                                    src={screenshot.src}
+                                    alt={screenshot.alt}
+                                    width={screenshot.width}
+                                    height={screenshot.height}
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="mx-auto max-h-[620px] w-auto max-w-full rounded-2xl object-contain"
+                                  />
+                                </div>
+                                <figcaption class="border-t border-line-200 px-4 py-4">
+                                  <p class="text-sm font-black text-ink-950">{screenshot.title}</p>
+                                  <p class="mt-1 text-xs font-bold leading-6 text-ink-500">{screenshot.caption}</p>
+                                </figcaption>
+                              </figure>
+                            ))
+                          }
+                        </div>
+                      </section>
                     )
                   }
-                  {
-                    section.items && (
-                      <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
-                        {section.items.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
-                      </ul>
-                    )
-                  }
-                </section>
+                </>
               ))
             }
 
@@ -136,7 +169,14 @@ function splitParagraphs(body: string) {
           <nav class="no-print soft-card-flat rounded-3xl p-5 text-sm font-bold text-ink-600" aria-label={t.common.onThisPage}>
             <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>
             <div class="grid gap-2">
-              {detailSections.map((section) => <a href={`#${section.id}`} class="hover:text-blue-accent">{section.title}</a>)}
+              {
+                detailSections.map((section) => (
+                  <>
+                    <a href={`#${section.id}`} class="hover:text-blue-accent">{section.title}</a>
+                    {section.id === "overview" && screenshots.length > 0 && <a href="#screenshots" class="hover:text-blue-accent">{sectionLabels.screenshots ?? "Service Screenshots"}</a>}
+                  </>
+                ))
+              }
               <a href="#tech-stack" class="hover:text-blue-accent">{sectionLabels.techStack ?? t.common.techTags}</a>
             </div>
           </nav>

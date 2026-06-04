@@ -10,6 +10,15 @@ export interface ContactLinkData {
   href: string;
 }
 
+export interface ProjectScreenshotData {
+  src: string;
+  alt: string;
+  title: string;
+  caption: string;
+  width?: number;
+  height?: number;
+}
+
 export interface CertificationData {
   name: string;
   issued: string;
@@ -90,10 +99,12 @@ export interface ProjectData {
     results?: string;
     devops?: string;
     techStack?: string;
+    screenshots?: string;
   };
   links?: ContactLinkData[];
   architecture?: string[];
   architectureNote?: string;
+  screenshots?: ProjectScreenshotData[];
 }
 
 export interface ProjectsData {
