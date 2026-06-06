@@ -162,9 +162,15 @@ function splitParagraphs(body: string) {
         </div>
 
         <aside class="grid content-start gap-4 lg:sticky lg:top-24">
-          <section>
+          <section id="architecture" class="scroll-mt-28">
             <h2 class="mb-3 text-sm font-extrabold text-ink-950">{detail.architecture}</h2>
-            <ArchitectureDiagram nodes={architecture} note={projectData.architectureNote} />
+            <ArchitectureDiagram
+              nodes={architecture}
+              groups={projectData.architectureGroups}
+              variant={projectData.architectureVariant}
+              coreLabel={projectData.architectureCoreLabel}
+              note={projectData.architectureNote}
+            />
           </section>
           <nav class="no-print soft-card-flat rounded-3xl p-5 text-sm font-bold text-ink-600" aria-label={t.common.onThisPage}>
             <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>

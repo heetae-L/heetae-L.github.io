@@ -19,6 +19,11 @@ export interface ProjectScreenshotData {
   height?: number;
 }
 
+export interface ArchitectureGroupData {
+  title: string;
+  items: string[];
+}
+
 export interface CertificationData {
   name: string;
   issued: string;
@@ -103,6 +108,9 @@ export interface ProjectData {
   };
   links?: ContactLinkData[];
   architecture?: string[];
+  architectureGroups?: ArchitectureGroupData[];
+  architectureVariant?: "flow" | "hub";
+  architectureCoreLabel?: string;
   architectureNote?: string;
   screenshots?: ProjectScreenshotData[];
 }

@@ -72,7 +72,7 @@ export const travelAiQaApi: ProjectData = {
     "Structured AI Response"
   ],
   architecture: [
-    "Hyugashop Mobile Entry",
+    "휴가샵 Mobile Entry",
     "Chat UI / Usage Policy",
     "Service API Bridge",
     "TourGPT Gateway API Server (Python/Flask)",
@@ -82,7 +82,7 @@ export const travelAiQaApi: ProjectData = {
     "Docker Container / GitLab CI",
     "Nomad Runtime / Health Check / Canary"
   ],
-  architectureNote: "TourGPT Gateway API Server + Azure OpenAI + Container Runtime",
+  architectureNote: "휴가샵 AI여행정보 + TourGPT Gateway API Server + Azure OpenAI + Container Runtime",
   screenshots: [
     {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-entry.jpg",

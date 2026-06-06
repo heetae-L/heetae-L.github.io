@@ -21,5 +21,29 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "Tracked operational issues by separating screen, database, batch, and external-integration factors",
     "Documented data-check procedures and operating notes to reduce repeated requests"
   ],
-  architecture: ["Service UI", "Admin", "Oracle DB", "Report", "Operation Review"]
+  architecture: ["KTO Hyugashop Web/App Commerce Service"],
+  architectureGroups: [
+    {
+      title: "User Channel",
+      items: ["Product Search / Exposure", "Orders / Cancellations", "Point Use / Balance"]
+    },
+    {
+      title: "Operations Channel",
+      items: ["Product / Exposure Management", "Operator Bulk Processing", "Message Target Management"]
+    },
+    {
+      title: "Customer / Reporting Channel",
+      items: ["Customer Admin", "Order / Point Views", "Statistics / Public-sector Reporting"]
+    },
+    {
+      title: "Service Integration Layer",
+      items: ["Screen APIs", "Search API Calls", "Admin / Customer Feature Integration"]
+    },
+    {
+      title: "Data Processing Foundation",
+      items: ["Oracle DB", "Batch / Raw Data", "Order / Point / Statistics Criteria"]
+    }
+  ],
+  architectureVariant: "hub",
+  architectureNote: "Commerce service structure connecting user, operations, customer, API, and data-processing flows"
 };

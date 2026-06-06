@@ -5,37 +5,100 @@ import {
   CloudCog,
   Database,
   FileCheck2,
+  Globe2,
+  Layers3,
   Network,
+  PanelTop,
   Search,
   Server,
   ShieldCheck,
+  UsersRound,
   Workflow
 } from "@lucide/astro";
+import type { ArchitectureGroupData } from "../data/types";
 
 interface Props {
-  nodes: readonly string[];
+  nodes?: readonly string[];
+  groups?: readonly ArchitectureGroupData[];
+  variant?: "flow" | "hub";
+  coreLabel?: string;
   note?: string;
 }
 
-const { nodes, note } = Astro.props;
+const { nodes = [], groups = [], variant, coreLabel = "Core Service", note } = Astro.props;
+const diagramVariant = variant ?? (groups.length > 0 ? "hub" : "flow");
+const serviceNode = nodes[0] ?? "Service";
 
 function getNodeIcon(node: string, index: number) {
   const value = node.toLowerCase();
 
-  if (value.includes("partner") || value.includes("client")) return Network;
-  if (value.includes("api") || value.includes("batch") || value.includes("ingestion")) return CloudCog;
-  if (value.includes("validation") || value.includes("mapping")) return FileCheck2;
-  if (value.includes("db") || value.includes("database") || value.includes("oracle") || value.includes("store")) return Database;
-  if (value.includes("search") || value.includes("exposure") || value.includes("index") || value.includes("record")) return Search;
+  if (value.includes("user") || value.includes("web") || value.includes("app") || value.includes("mobile") || value.includes("사용자") || value.includes("웹") || value.includes("앱") || value.includes("모바일")) return PanelTop;
+  if (value.includes("admin") || value.includes("customer") || value.includes("운영") || value.includes("관리자") || value.includes("고객사")) return UsersRound;
+  if (value.includes("partner") || value.includes("client") || value.includes("제휴")) return Network;
+  if (value.includes("api") || value.includes("batch") || value.includes("ingestion") || value.includes("배치") || value.includes("연계")) return CloudCog;
+  if (value.includes("validation") || value.includes("mapping") || value.includes("classifier") || value.includes("검증") || value.includes("매핑") || value.includes("정합성") || value.includes("판별")) return FileCheck2;
+  if (value.includes("db") || value.includes("database") || value.includes("oracle") || value.includes("store") || value.includes("데이터")) return Database;
+  if (value.includes("search") || value.includes("exposure") || value.includes("index") || value.includes("record") || value.includes("검색") || value.includes("노출")) return Search;
   if (value.includes("ai") || value.includes("openai") || value.includes("gpt")) return Bot;
   if (value.includes("deploy") || value.includes("nomad") || value.includes("server")) return Server;
+  if (value.includes("service") || value.includes("서비스")) return Globe2;
 
   return index === 0 ? Network : Workflow;
+}
+
+function getGroupIcon(title: string, index: number) {
+  const value = title.toLowerCase();
+
+  if (value.includes("user") || value.includes("사용자")) return PanelTop;
+  if (value.includes("admin") || value.includes("customer") || value.includes("운영") || value.includes("고객사") || value.includes("보고")) return UsersRound;
+  if (value.includes("api") || value.includes("batch") || value.includes("연계") || value.includes("배치")) return CloudCog;
+  if (value.includes("data") || value.includes("데이터")) return Database;
+  if (value.includes("service") || value.includes("서비스")) return Globe2;
+
+  return index === 0 ? Layers3 : Workflow;
 }
 ---
 
 <div class="soft-card rounded-3xl p-4 sm:p-5">
-  <div class="grid gap-2">
+  {
+    diagramVariant === "hub" && groups.length > 0 ? (
+      <div>
+        <div class="rounded-3xl border border-blue-100 bg-blue-soft/60 px-4 py-4 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+          <div class="flex items-center gap-3">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-accent shadow-[0_10px_24px_rgba(15,91,255,0.12)]">
+              <Globe2 class="h-5 w-5" />
+            </span>
+            <div class="min-w-0">
+              <p class="text-[11px] font-black uppercase text-blue-accent">{coreLabel}</p>
+              <p class="text-sm font-black leading-snug text-ink-950">{serviceNode}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+          {
+            groups.map((group, index) => {
+              const Icon = getGroupIcon(group.title, index);
+
+              return (
+                <section class="rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_12px_30px_rgba(15,91,255,0.045)]">
+                  <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
+                      <Icon class="h-4 w-4" />
+                    </span>
+                    <p class="text-sm font-black leading-snug text-ink-950">{group.title}</p>
+                  </div>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {group.items.map((item) => <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-extrabold leading-5 text-ink-600">{item}</span>)}
+                  </div>
+                </section>
+              );
+            })
+          }
+        </div>
+      </div>
+    ) : (
+      <div class="grid gap-2">
     {
       nodes.map((node, index) => {
         const Icon = getNodeIcon(node, index);
@@ -64,7 +127,9 @@ function getNodeIcon(node: string, index: number) {
         );
       })
     }
-  </div>
+      </div>
+    )
+  }
 
   {
     note && (
