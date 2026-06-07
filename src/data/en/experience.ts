@@ -19,9 +19,9 @@ export const experience: ExperienceData = {
         "Built a Travel AI Q&A API with Python/Flask and Azure OpenAI, covering Docker, GitLab CI, and Nomad deployment validation"
       ],
       bullets: [
-        "Since 2026, have led travel and leisure partner integrations across product/order collection APIs, batch flows, and search exposure while continuing KTO Hyugashop service development and data-quality work",
+        "Since 2026, have led travel and leisure partner integrations across product/order collection APIs, batch flows, and search exposure while continuing KTO Hyugashop web/app service development",
         "In 2025, expanded from KTO Hyugashop into travel and leisure partner integrations, structuring partner-facing product, order, and search-data flows around commerce-service requirements",
-        "Since 2024.04, have developed KTO Hyugashop service features around product quality, statistics, reporting, and operational data standards",
+        "Since 2024.04, have developed KTO Hyugashop web/app commerce service features across user/admin/customer screens, APIs, DB/batch flows, point usage, and statistics",
         "In 2023 H2, developed the company's first Python/Flask and Azure OpenAI based AI API project, covering Docker, GitLab CI, and Nomad deployment validation end-to-end",
         "Since 2022.02, owned Benepia welfare-commerce service development, building and operating customer-specific welfare-mall features",
         "Resolved ISMS and e-privacy security findings across XSS/CSRF, access control, authentication/session behavior, and information exposure while preserving service behavior"
