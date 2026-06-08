@@ -4,9 +4,9 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   slug: "kto-hyugashop-quality-reporting",
   category: "Commerce",
   icon: "cart",
-  title: "한국관광공사(KTO) 휴가샵 Web/App Service 개발/운영",
+  title: "한국관광공사(KTO) 휴가샵 Web/App 커머스 서비스 개발",
   summary:
-    "한국관광공사(KTO) 휴가샵 Web/App Commerce Service에서 사용자 채널, 운영/고객사 채널, API, DB/batch, 포인트/통계 흐름을 함께 다룬 서비스 개발 경험",
+    "한국관광공사(KTO) 휴가샵 Web/App 커머스 서비스에서 사용자·관리자·고객사 기능과 상품·주문·포인트·통계 데이터 흐름을 연결하는 기능 프로젝트 설계·구현",
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 4,
