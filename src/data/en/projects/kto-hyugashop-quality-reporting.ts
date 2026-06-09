@@ -6,43 +6,44 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   icon: "cart",
   title: "KTO Hyugashop Web/App Commerce Service Development",
   summary:
-    "Service development experience across user web/app channels, operations/customer channels, APIs, DB/batch flows, and point/statistics data for Korea Tourism Organization (KTO) Hyugashop, a vacation-benefit commerce service.",
+    "Feature development for Korea Tourism Organization (KTO) Hyugashop, connecting user, admin, and customer-portal functions with product, order, point, and statistics data flows.",
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 4,
   overview:
-    "Korea Tourism Organization (KTO) Hyugashop is a vacation-benefit web/app commerce service where participating employees use travel points to purchase domestic travel, lodging, and leisure products.\n\nThe service connects product discovery, order and point usage, search exposure, admin/customer portals, APIs, DB/batch processing, statistics, and reporting flows.\n\nSince April 2024, I have worked across both user-facing and operations-facing channels, developing service features, refining data criteria, and improving screen-to-batch data flows.",
+    "Korea Tourism Organization (KTO) Hyugashop is a vacation-benefit web/app commerce service where participating employees use travel points to purchase domestic travel, lodging, and leisure products.\n\nThe service connects product discovery, order and point usage, search exposure, admin screens, customer portals, APIs, DB/batch processing, statistics, and reporting flows.\n\nSince April 2024, I have worked on the Hyugashop service track, developing user-facing, operations-facing, and customer-facing features while improving how screen changes are reflected through DB/batch flows.",
   problem:
-    "Hyugashop changes rarely stop at a single screen. Web/app screens, admin tools, customer portals, APIs, DB/batch jobs, search exposure, and statistics data often move together.\n\nTravel benefit points are structured as KRW 200,000 from the employee, KRW 100,000 from the employer, and KRW 100,000 from the government. Because each funding source has its own point criteria, order, usage, cancellation, and statistics flows require more than simple amount aggregation; they need to match service screens and funding-source rules.",
+    "Hyugashop feature changes rarely stop at a single screen. User screens, admin screens, customer portals, APIs, DB/batch jobs, search exposure, and statistics data often move together.\n\nTravel benefit points are structured as KRW 200,000 from the employee, KRW 100,000 from the employer, and KRW 100,000 from the government. Because each funding source is separated internally, order, usage, cancellation, and statistics flows require more than simple amount aggregation; they need to align funding-source handling with how results are reflected in service screens.",
   role: [
-    "Owned KTO Hyugashop web/app commerce service development across user and operations channels",
-    "Translated requirements into feature and data criteria across web/app screens, admin screens, customer portals, APIs, and DB/batch flows",
-    "Developed service features while validating how product, order, point, and statistics data are reflected in user and operations workflows",
-    "Continued KTO Hyugashop service ownership while extending responsibility into travel/leisure partner integration and product/search criteria refinement"
+    "Handled development and operations for the KTO Hyugashop web/app commerce service",
+    "Coordinated functional requirements and development scope across web/app, admin screens, customer portals, APIs, and DB/batch flows",
+    "Developed service features by connecting how product, order, point, and statistics data are reflected in screens and operations functions",
+    "Developed operations-facing feature projects including unsuitable-product management, message-target uploads, National Assembly statistics, and daily reporting",
+    "Continued KTO Hyugashop responsibilities while expanding into travel/leisure partner integration and product/search refinement"
   ],
   contributions: [
-    "Built an unsuitable-product management flow connecting keyword-based candidate review, operator decisions, and exposure-exclusion criteria",
-    "Implemented Excel upload workflow for message target lists, turning repeated bulk admin work into a system-supported process",
-    "Built a public-sector statistics workflow for National Assembly data requests by restructuring order and point transaction sources by date, product type, region, and point group, then connecting the flow to search and Excel export",
+    "Implemented a National Assembly statistics workflow by restructuring order and point source data by date, product type, region, and point group, then connecting it to query and Excel export flows",
+    "Reflected employee, employer, and government funding-source point structures in order/point usage views and statistics flows",
+    "Built an unsuitable-product management flow connecting keyword-based candidate review, operator decisions, and exposure-exclusion handling",
+    "Converted repeated bulk-processing work into admin functionality through Excel upload for message target lists",
     "Extended daily report source-data loading and statistics screen criteria for participating companies/workers, purchases/cancellations, and remaining-point ranges",
-    "Validated order/point usage history and statistics criteria with source-specific employee, employer, and government point structures",
-    "Refined representative-product, duplicate-product, and search-exposure criteria to improve product data and service exposure flows"
+    "Refined representative-product, duplicate-product, and search-exposure criteria as a Hyugashop product/search data improvement case"
   ],
   troubleshooting: [
-    "Covered user-facing product discovery, order, and point-usage flows together with admin and customer-portal management flows",
-    "Traced product, order, point, member, and statistics data across APIs, Oracle DB, batch jobs, and reporting screens",
-    "Reviewed feature changes for impact across user screens, admin/customer screens, statistics criteria, and search/exposure criteria"
+    "Structured the National Assembly statistics flow around order/point transaction sources, participant criteria, product type, region, and point group",
+    "Reworked mixed employee, employer, and government point transactions so they could be queried and exported through a consistent statistics flow",
+    "Separated validation checkpoints across daily report source data, order/point usage views, and public-sector statistics screens"
   ],
   results: [
-    "Delivered commerce-service features connecting web/app user channels with operations and customer channels",
-    "Strengthened service data criteria so product, order, point, and statistics data are reflected consistently across screens, admin functions, and batch flows",
-    "Shipped practical service features including message target upload, National Assembly statistics, daily reporting, and product/search criteria refinement",
-    "Expanded backend responsibility from KTO Hyugashop service ownership into travel/leisure partner integration across welfare and travel commerce"
+    "Implemented feature projects connecting user-facing and operations-facing functions in a public-sector vacation-benefit commerce service",
+    "Implemented public reporting flows such as National Assembly statistics, order/point usage views, and daily reports with query and Excel export support",
+    "Converted repeated bulk-processing work into Excel-upload functionality and implemented operations features for unsuitable-product management and product/search refinement",
+    "Expanded backend responsibility from the KTO Hyugashop service scope into travel/leisure partner integration across welfare and travel commerce"
   ],
   sectionLabels: {
     problem: "Service Context",
     contributions: "Representative Feature Projects",
-    troubleshooting: "Service Ownership"
+    troubleshooting: "Deep Dive"
   },
   techStack: [
     "Java",
@@ -80,5 +81,5 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   ],
   architectureVariant: "hub",
   architectureCoreLabel: "Core Service",
-  architectureNote: "KTO Hyugashop Web/App Service connecting user, operations, customer, API, DB, and batch data criteria"
+  architectureNote: "KTO Hyugashop Web/App Service connecting user, operations, customer, API, DB, and batch data flows"
 };
