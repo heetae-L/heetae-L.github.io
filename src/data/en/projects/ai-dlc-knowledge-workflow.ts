@@ -4,7 +4,7 @@ export const aiDlcKnowledgeWorkflow: ProjectData = {
   slug: "ai-dlc-knowledge-workflow",
   category: "AI",
   icon: "brain",
-  title: "AI-DLC Knowledge Workflow",
+  title: "AI-DLC: AI-Assisted Engineering Workflow",
   summary: "A personal project that turns work context, issue causes, and decision criteria into a reusable Markdown-based analysis workflow with AI.",
   tags: ["Markdown", "AI", "Knowledge Base", "Workflow"],
   featured: true,
