@@ -59,18 +59,18 @@ function getGroupIcon(title: string, index: number) {
 }
 ---
 
-<div class="soft-card rounded-3xl p-4 sm:p-5">
+<div class="soft-card min-w-0 rounded-3xl p-4 sm:p-5">
   {
     diagramVariant === "hub" && groups.length > 0 ? (
       <div>
-        <div class="rounded-3xl border border-blue-100 bg-blue-soft/60 px-4 py-4 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
-          <div class="flex items-center gap-3">
+        <div class="min-w-0 rounded-3xl border border-blue-100 bg-blue-soft/60 px-4 py-4 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+          <div class="flex min-w-0 items-center gap-3">
             <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-accent shadow-[0_10px_24px_rgba(15,91,255,0.12)]">
               <Globe2 class="h-5 w-5" />
             </span>
             <div class="min-w-0">
               <p class="text-[11px] font-black uppercase text-blue-accent">{coreLabel}</p>
-              <p class="text-sm font-black leading-snug text-ink-950">{serviceNode}</p>
+              <p class="break-words text-sm font-black leading-snug text-ink-950 [overflow-wrap:anywhere]">{serviceNode}</p>
             </div>
           </div>
         </div>
@@ -81,12 +81,12 @@ function getGroupIcon(title: string, index: number) {
               const Icon = getGroupIcon(group.title, index);
 
               return (
-                <section class="rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_12px_30px_rgba(15,91,255,0.045)]">
-                  <div class="flex items-center gap-3">
+                <section class="min-w-0 rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_12px_30px_rgba(15,91,255,0.045)]">
+                  <div class="flex min-w-0 items-center gap-3">
                     <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
                       <Icon class="h-4 w-4" />
                     </span>
-                    <p class="text-sm font-black leading-snug text-ink-950">{group.title}</p>
+                    <p class="break-words text-sm font-black leading-snug text-ink-950 [overflow-wrap:anywhere]">{group.title}</p>
                   </div>
                   <div class="mt-3 flex flex-wrap gap-2">
                     {group.items.map((item) => <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-extrabold leading-5 text-ink-600">{item}</span>)}
@@ -98,21 +98,21 @@ function getGroupIcon(title: string, index: number) {
         </div>
       </div>
     ) : (
-      <div class="grid gap-2">
+      <div class="grid min-w-0 gap-2">
     {
       nodes.map((node, index) => {
         const Icon = getNodeIcon(node, index);
 
         return (
           <>
-            <div class="rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
-              <div class="flex items-center gap-3">
+            <div class="min-w-0 rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+              <div class="flex min-w-0 items-center gap-3">
                 <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
                   <Icon class="h-5 w-5" />
                 </span>
                 <div class="min-w-0">
                   <p class="text-[11px] font-black uppercase text-ink-400">{String(index + 1).padStart(2, "0")}</p>
-                  <p class="text-sm font-black leading-snug text-ink-950">{node}</p>
+                  <p class="break-words text-sm font-black leading-snug text-ink-950 [overflow-wrap:anywhere]">{node}</p>
                 </div>
               </div>
             </div>
@@ -133,7 +133,7 @@ function getGroupIcon(title: string, index: number) {
 
   {
     note && (
-      <div class="mt-4 flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-soft/60 px-4 py-3 text-sm font-extrabold text-blue-accent">
+      <div class="mt-4 flex min-w-0 items-center gap-3 rounded-2xl border border-blue-100 bg-blue-soft/60 px-4 py-3 text-sm font-extrabold text-blue-accent [overflow-wrap:anywhere]">
         <ShieldCheck class="h-5 w-5 shrink-0" />
         <span>{note}</span>
       </div>

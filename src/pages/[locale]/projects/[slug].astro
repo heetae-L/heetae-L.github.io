@@ -84,35 +84,35 @@ function splitParagraphs(body: string) {
 
 <SiteLayout locale={locale} content={t} title={`${project.title} | Heetae Lee`} description={project.summary}>
   <main class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
-    <article class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
+    <article class="resume-shell w-full max-w-full rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
       <a href={withLocale(locale, "/projects")} class="no-print inline-flex items-center gap-2 text-sm font-extrabold text-ink-500 hover:text-blue-accent">
         <ArrowLeft class="h-4 w-4" />
         {t.common.backToProjects}
       </a>
 
       <div class="mt-7 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
-        <div>
-          <h1 class="text-3xl font-black tracking-tight text-ink-950 sm:text-4xl">{project.title}</h1>
+        <div class="min-w-0">
+          <h1 class="break-words text-3xl font-black tracking-tight text-ink-950 [overflow-wrap:anywhere] sm:text-4xl">{project.title}</h1>
           <div class="mt-4 flex flex-wrap gap-2">
-            {project.tags.map((tag) => <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-ink-600">{tag}</span>)}
+            {project.tags.map((tag) => <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-ink-600 [overflow-wrap:anywhere]">{tag}</span>)}
           </div>
 
-          <div class="mt-7 grid gap-4">
+          <div class="mt-7 grid min-w-0 gap-4">
             {
               detailSections.map((section) => (
                 <>
-                  <section id={section.id} class="soft-card rounded-3xl p-6 scroll-mt-28">
+                  <section id={section.id} class="soft-card min-w-0 rounded-3xl p-6 scroll-mt-28">
                     <SectionHeading title={section.title} />
                     {
                       section.body && (
-                        <div class="grid gap-3 text-sm font-medium leading-7 text-ink-600">
+                        <div class="grid gap-3 break-words text-sm font-medium leading-7 text-ink-600 [overflow-wrap:anywhere]">
                           {splitParagraphs(section.body).map((paragraph) => <p>{paragraph}</p>)}
                         </div>
                       )
                     }
                     {
                       section.items && (
-                        <ul class="grid gap-2.5 text-sm font-medium leading-7 text-ink-700">
+                        <ul class="grid gap-2.5 break-words text-sm font-medium leading-7 text-ink-700 [overflow-wrap:anywhere]">
                           {section.items.map((item) => <li class="flex gap-3"><span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-accent"></span>{item}</li>)}
                         </ul>
                       )
@@ -161,7 +161,7 @@ function splitParagraphs(body: string) {
           </div>
         </div>
 
-        <aside class="grid content-start gap-4 lg:sticky lg:top-24">
+        <aside class="grid min-w-0 content-start gap-4 lg:sticky lg:top-24">
           <section id="architecture" class="scroll-mt-28">
             <h2 class="mb-3 text-sm font-extrabold text-ink-950">{detail.architecture}</h2>
             <ArchitectureDiagram
