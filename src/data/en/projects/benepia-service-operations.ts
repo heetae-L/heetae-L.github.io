@@ -22,7 +22,7 @@ export const benepiaServiceOperations: ProjectData = {
   ],
   contributions: [
     "For financial-customer welfare-card changes, checked customer card master data, member card-selection history, PC/Mobile card-change flow, and card communication history together",
-    "For in-house clinic reservations, vaccination, and other healthcare-related application features, connected reservation windows, reception windows, time-slot capacity, duplicate-application limits, privacy consent, and application history",
+    "For healthcare-related reservation and application features for client employees, connected reservation windows, reception windows, time-slot capacity, duplicate-application limits, privacy consent, and application history",
     "For privacy data completion and marketing-consent improvements, handled post-login identity verification, member-data updates, terms/consent persistence, and channel-level reception status",
     "For public welfare menu creation, structured application rounds, application forms, attachments, processing status, history records, and admin inquiries across applicant screens and backoffice features",
     "Applied customer-specific web/mobile menus, screen changes, and launch requests on top of the shared Benepia operating flow while reducing conflict with common service behavior"
@@ -35,14 +35,14 @@ export const benepiaServiceOperations: ProjectData = {
   troubleshooting: [
     "When applying one client's exception policy, separated menu, application, consent, and history changes so they did not affect the shared platform or other client journeys",
     "For features that changed both PC/Mobile screens and backoffice behavior, checked potential mismatches between user-facing values and operator-managed values first",
-    "For security-fix work, went beyond closing vulnerabilities and verified that existing login, application, inquiry, and consent-persistence flows remained intact"
+    "When applying security-review items, verified that existing login, application, inquiry, and consent-persistence flows remained intact"
   ],
   results: [
     "Implemented finance, public-sector, and telecom client requirements as service features on top of a shared welfare-commerce platform",
     "Connected screen behavior, backoffice features, internal processing/API, and database history flows across major domains such as welfare cards, reservations/applications, privacy/consent, and public welfare menus",
-    "Applied ISMS/e-privacy security work without breaking existing login, application, inquiry, and consent-persistence flows",
-    "Built impact-analysis capability for production services by handling client-specific exception policies together with shared-platform structure",
-    "Expanded this welfare-commerce and operations-platform perspective into later KTO Hyugashop and travel/leisure partner integration work"
+    "Applied temporal data patterns that manage both current state and change history across welfare-card, application, and consent features, making operational tracing and inquiry handling easier",
+    "Masked sensitive fields in operations-facing inquiry flows for public welfare applications, balancing ISMS/e-privacy criteria with operational usability",
+    "Applied ISMS/e-privacy security work without breaking existing login, application, inquiry, and consent-persistence flows"
   ],
   sectionLabels: {
     problem: "Service Context",
