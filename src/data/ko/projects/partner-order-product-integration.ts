@@ -2,7 +2,7 @@ import type { ProjectData } from "../../types";
 
 export const partnerOrderProductIntegration: ProjectData = {
   slug: "partner-order-product-integration",
-  category: "Integration",
+  categories: ["development", "integration", "operations"],
   icon: "cart",
   title: "여행·레저 제휴 연동 플랫폼",
   summary:

@@ -2,7 +2,7 @@ import type { ProjectData } from "../../types";
 
 export const aiDlcKnowledgeWorkflow: ProjectData = {
   slug: "ai-dlc-knowledge-workflow",
-  category: "AI",
+  categories: ["ai"],
   icon: "brain",
   title: "AI-DLC: Personal AI-Assisted Engineering Workflow",
   summary:

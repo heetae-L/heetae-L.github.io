@@ -11,6 +11,9 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as Locale;
 const t = getContent(locale);
+
+const activeFilterClasses = "border-blue-accent bg-blue-accent text-white";
+const inactiveFilterClasses = "border-line-200 bg-white text-ink-600 hover:border-blue-accent/30 hover:text-blue-accent";
 ---
 
 <SiteLayout locale={locale} content={t} title={`${t.projects.title} | Heetae Lee`} description={t.projects.description}>
@@ -22,14 +25,15 @@ const t = getContent(locale);
           t.projects.filters.map((filter, index) => (
             <button
               type="button"
+              data-project-filter
+              data-filter-key={filter.key}
+              aria-pressed={index === 0 ? "true" : "false"}
               class:list={[
                 "rounded-xl border px-4 py-2 text-xs font-extrabold transition",
-                index === 0
-                  ? "border-blue-accent bg-blue-accent text-white"
-                  : "border-line-200 bg-white text-ink-600 hover:border-blue-accent/30 hover:text-blue-accent"
+                index === 0 ? activeFilterClasses : inactiveFilterClasses
               ]}
             >
-              {filter}
+              {filter.label}
             </button>
           ))
         }
@@ -37,10 +41,47 @@ const t = getContent(locale);
       <div class="grid gap-4">
         {
           t.projects.items.map((project) => (
-            <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} variant="wide" />
+            <div data-project-card data-categories={project.categories.join(" ")}>
+              <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} variant="wide" />
+            </div>
           ))
         }
       </div>
     </section>
   </main>
 </SiteLayout>
+
+<script>
+  const filterButtons = Array.from(document.querySelectorAll("[data-project-filter]"));
+  const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
+
+  function setButtonState(button: Element, isActive: boolean) {
+    button.classList.toggle("border-blue-accent", isActive);
+    button.classList.toggle("bg-blue-accent", isActive);
+    button.classList.toggle("text-white", isActive);
+    button.classList.toggle("border-line-200", !isActive);
+    button.classList.toggle("bg-white", !isActive);
+    button.classList.toggle("text-ink-600", !isActive);
+    button.classList.toggle("hover:border-blue-accent/30", !isActive);
+    button.classList.toggle("hover:text-blue-accent", !isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  }
+
+  function applyProjectFilter(filterKey: string) {
+    filterButtons.forEach((button) => {
+      setButtonState(button, button.getAttribute("data-filter-key") === filterKey);
+    });
+
+    projectCards.forEach((card) => {
+      const categories = card.getAttribute("data-categories")?.split(" ") ?? [];
+      const shouldShow = filterKey === "all" || categories.includes(filterKey);
+      (card as HTMLElement).hidden = !shouldShow;
+    });
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyProjectFilter(button.getAttribute("data-filter-key") ?? "all");
+    });
+  });
+</script>

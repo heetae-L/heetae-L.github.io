@@ -2,7 +2,7 @@ import type { ProjectData } from "../../types";
 
 export const ktoHyugashopQualityReporting: ProjectData = {
   slug: "kto-hyugashop-quality-reporting",
-  category: "Commerce",
+  categories: ["development", "operations"],
   icon: "cart",
   title: "한국관광공사(KTO) 휴가샵 Web/App 커머스 서비스 개발",
   summary:

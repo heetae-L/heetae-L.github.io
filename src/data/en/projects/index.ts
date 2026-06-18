@@ -10,7 +10,14 @@ export const projects: ProjectsData = {
   title: "Projects",
   description:
     "Case studies from real service work covering integrations, commerce services, data flows, and AI APIs.",
-  filters: ["All", "Integration", "Commerce", "AI", "Operations"],
+  filters: [
+    { key: "all", label: "All" },
+    { key: "development", label: "Development" },
+    { key: "integration", label: "Integration" },
+    { key: "ai", label: "AI" },
+    { key: "operations", label: "Operations" },
+    { key: "devops", label: "DevOps" }
+  ],
   items: [
     partnerOrderProductIntegration,
     travelAiQaApi,

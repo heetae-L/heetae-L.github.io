@@ -2,7 +2,7 @@ import type { ProjectData } from "../../types";
 
 export const travelAiQaApi: ProjectData = {
   slug: "travel-ai-qa-api",
-  category: "AI",
+  categories: ["development", "ai", "operations", "devops"],
   icon: "bot",
   title: "여행 AI Q&A API 구축",
   summary:

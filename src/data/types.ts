@@ -76,9 +76,17 @@ export interface ExperienceData {
   items: ExperienceItemData[];
 }
 
+export type ProjectFilterKey = "all" | "development" | "integration" | "ai" | "operations" | "devops";
+export type ProjectCategoryKey = Exclude<ProjectFilterKey, "all">;
+
+export interface ProjectFilterData {
+  key: ProjectFilterKey;
+  label: string;
+}
+
 export interface ProjectData {
   slug: string;
-  category: string;
+  categories: ProjectCategoryKey[];
   icon: string;
   title: string;
   summary: string;
@@ -119,7 +127,7 @@ export interface ProjectsData {
   eyebrow: string;
   title: string;
   description: string;
-  filters: string[];
+  filters: ProjectFilterData[];
   items: ProjectData[];
 }
 

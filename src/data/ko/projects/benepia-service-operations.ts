@@ -2,7 +2,7 @@ import type { ProjectData } from "../../types";
 
 export const benepiaServiceOperations: ProjectData = {
   slug: "benepia-service-operations",
-  category: "Commerce",
+  categories: ["development", "operations"],
   icon: "briefcase",
   title: "Benepia 복지 커머스 플랫폼 개발",
   summary:
