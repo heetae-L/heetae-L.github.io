@@ -40,7 +40,7 @@ export const aiDlcKnowledgeWorkflow: ProjectData = {
     "Defined communication rules that separate partner-safe explanations from internal implementation notes"
   ],
   results: [
-    "Reduced the first-pass analysis flow for routine operational issues from 30+ minutes of context gathering and verification-order planning to a 5-10 minute workflow using the existing knowledge base and AI candidate analysis",
+    "Reduced initial root-cause candidate discovery from hours to minutes for data issues that require tracing database procedures and Java code flow together, using error-data-driven AI candidate analysis while validating final judgment through code, queries, and tests",
     "Narrowed the initial analysis scope for data-consistency issues that require manual code and data comparison by organizing comparison points and verification paths first",
     "Turned AI-suggested causes into code, query, and test checkpoints to narrow the investigation scope and reuse the verification flow in similar cases",
     "Accumulated AI misjudgments and disproven candidates in the knowledge base as conditions to check earlier in future analysis",
