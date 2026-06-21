@@ -84,12 +84,23 @@ export interface ProjectFilterData {
   label: string;
 }
 
+export interface ProjectMetaData {
+  sourceType: string;
+  company?: string;
+  service?: string;
+  period?: string;
+  role?: string;
+  scope: string[];
+  relatedExperience?: string;
+}
+
 export interface ProjectData {
   slug: string;
   categories: ProjectCategoryKey[];
   icon: string;
   title: string;
   summary: string;
+  meta: ProjectMetaData;
   tags: string[];
   featured?: boolean;
   homeOrder?: number;

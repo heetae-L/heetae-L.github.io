@@ -7,6 +7,15 @@ export const travelAiQaApi: ProjectData = {
   title: "여행 AI Q&A API 구축",
   summary:
     "2023년 ChatGPT 초기 확산기에 전사 첫 Python/Flask 기반 TourGPT Gateway API Server를 구축하고 GPT-3.5 Turbo(Azure OpenAI), Oracle, Docker/GitLab CI/Nomad 운영 배포까지 연결한 프로젝트",
+  meta: {
+    sourceType: "Professional Work / TF",
+    company: "SK M&Service",
+    service: "여행 AI Q&A API",
+    period: "2023",
+    role: "Software Engineer",
+    scope: ["Python", "Flask", "Azure OpenAI", "Docker", "GitLab CI", "Nomad"],
+    relatedExperience: "skmns"
+  },
   tags: ["Python", "Flask", "Azure OpenAI", "Docker/Nomad"],
   featured: true,
   homeOrder: 2,

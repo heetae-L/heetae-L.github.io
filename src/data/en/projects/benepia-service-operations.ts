@@ -7,6 +7,15 @@ export const benepiaServiceOperations: ProjectData = {
   title: "Benepia Welfare Commerce Platform Development",
   summary:
     "Developed and operated Benepia as a shared welfare-commerce platform where multiple clients run different benefit policies, while handling client-specific features and ISMS/e-privacy security work.",
+  meta: {
+    sourceType: "Professional Work",
+    company: "SK M&Service",
+    service: "Benepia",
+    period: "2022.02 - 2024.03",
+    role: "Software Engineer",
+    scope: ["Java", "Spring", "Oracle", "Web/Mobile", "ISMS"],
+    relatedExperience: "skmns"
+  },
   tags: ["Java", "Spring", "Oracle", "MyBatis", "JSP", "jQuery"],
   featured: false,
   overview:

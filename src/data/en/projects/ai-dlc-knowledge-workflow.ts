@@ -7,6 +7,12 @@ export const aiDlcKnowledgeWorkflow: ProjectData = {
   title: "AI-DLC: Personal AI-Assisted Engineering Workflow",
   summary:
     "A personal AI-assisted engineering workflow that runs AI-DLC through Context -> Analyze -> Verify -> Communicate -> Learn.",
+  meta: {
+    sourceType: "Personal Workflow",
+    service: "AI-DLC",
+    role: "Workflow Owner",
+    scope: ["Markdown", "Codex", "Claude Code", "Human-in-the-loop"]
+  },
   tags: ["Markdown", "Codex", "Claude Code", "Human-in-the-loop"],
   featured: true,
   homeOrder: 3,

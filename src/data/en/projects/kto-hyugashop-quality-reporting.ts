@@ -7,6 +7,15 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   title: "KTO Hyugashop Web/App Commerce Service Development",
   summary:
     "Feature development for Korea Tourism Organization (KTO) Hyugashop, connecting user, admin, and customer-portal functions with product, order, point, and statistics data flows.",
+  meta: {
+    sourceType: "Professional Work",
+    company: "SK M&Service",
+    service: "KTO Hyugashop",
+    period: "2024 - Present",
+    role: "Software Engineer",
+    scope: ["Web/App", "Admin", "Oracle", "Batch", "Statistics"],
+    relatedExperience: "skmns"
+  },
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 4,

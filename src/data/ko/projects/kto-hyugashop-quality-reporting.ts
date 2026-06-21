@@ -7,6 +7,15 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   title: "한국관광공사(KTO) 휴가샵 Web/App 커머스 서비스 개발",
   summary:
     "한국관광공사(KTO) 휴가샵 Web/App 커머스 서비스에서 사용자·관리자·고객사 기능과 상품·주문·포인트·통계 데이터 흐름을 연결하는 기능 프로젝트 개발",
+  meta: {
+    sourceType: "Professional Work",
+    company: "SK M&Service",
+    service: "한국관광공사(KTO) 휴가샵",
+    period: "2024 - Present",
+    role: "Software Engineer",
+    scope: ["Web/App", "Admin", "Oracle", "Batch", "Statistics"],
+    relatedExperience: "skmns"
+  },
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 4,

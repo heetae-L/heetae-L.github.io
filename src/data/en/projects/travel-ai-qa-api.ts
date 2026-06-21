@@ -7,6 +7,15 @@ export const travelAiQaApi: ProjectData = {
   title: "Travel AI Q&A API Development",
   summary:
     "Built the company's first Python/Flask-based TourGPT Gateway API Server during the early ChatGPT adoption wave in 2023, connecting GPT-3.5 Turbo on Azure OpenAI, Oracle, Docker/GitLab CI/Nomad, and production deployment validation.",
+  meta: {
+    sourceType: "Professional Work / TF",
+    company: "SK M&Service",
+    service: "Travel AI Q&A API",
+    period: "2023",
+    role: "Software Engineer",
+    scope: ["Python", "Flask", "Azure OpenAI", "Docker", "GitLab CI", "Nomad"],
+    relatedExperience: "skmns"
+  },
   tags: ["Python", "Flask", "Azure OpenAI", "Docker/Nomad"],
   featured: true,
   homeOrder: 2,

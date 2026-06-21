@@ -7,6 +7,12 @@ export const aiDlcKnowledgeWorkflow: ProjectData = {
   title: "AI-DLC: Personal AI-Assisted Engineering Workflow",
   summary:
     "AI-DLC를 Context -> Analyze -> Verify -> Communicate -> Learn 흐름으로 운영하는 personal AI-assisted engineering workflow",
+  meta: {
+    sourceType: "Personal Workflow",
+    service: "AI-DLC",
+    role: "Workflow Owner",
+    scope: ["Markdown", "Codex", "Claude Code", "Human-in-the-loop"]
+  },
   tags: ["Markdown", "Codex", "Claude Code", "Human-in-the-loop"],
   featured: true,
   homeOrder: 3,

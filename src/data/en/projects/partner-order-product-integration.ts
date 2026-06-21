@@ -7,6 +7,15 @@ export const partnerOrderProductIntegration: ProjectData = {
   title: "Travel & Leisure Partner Integration Platform",
   summary:
     "Backend integration platform project connecting multiple travel, accommodation, and leisure partners to order, product, and search flows, verifying recurring partner data and a large product pool across API, batch, database, and search-exposure criteria.",
+  meta: {
+    sourceType: "Professional Work",
+    company: "SK M&Service",
+    service: "Travel & Leisure Partner Integration",
+    period: "2025 - Present",
+    role: "Software Engineer",
+    scope: ["Partner API", "Batch", "Oracle", "Search"],
+    relatedExperience: "skmns"
+  },
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 1,

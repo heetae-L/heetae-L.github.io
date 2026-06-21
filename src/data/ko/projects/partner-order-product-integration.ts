@@ -7,6 +7,15 @@ export const partnerOrderProductIntegration: ProjectData = {
   title: "여행·레저 제휴 연동 플랫폼",
   summary:
     "다수의 여행·숙박·레저 제휴사를 주문·상품·검색 흐름에 연결하고, 복수 제휴사의 주문 데이터와 대규모 상품 pool을 API·배치·DB·검색 노출 기준으로 검증한 백엔드 연동 플랫폼 프로젝트",
+  meta: {
+    sourceType: "Professional Work",
+    company: "SK M&Service",
+    service: "여행·레저 제휴 연동",
+    period: "2025 - Present",
+    role: "Software Engineer",
+    scope: ["Partner API", "Batch", "Oracle", "Search"],
+    relatedExperience: "skmns"
+  },
   tags: ["Java", "Spring", "Oracle", "Batch"],
   featured: true,
   homeOrder: 1,

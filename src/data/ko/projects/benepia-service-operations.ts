@@ -7,6 +7,15 @@ export const benepiaServiceOperations: ProjectData = {
   title: "Benepia 복지 커머스 플랫폼 개발",
   summary:
     "여러 고객사가 공통 플랫폼 위에서 서로 다른 복지 정책으로 운영되는 Benepia 복지 커머스를 개발·운영하고, 고객사별 기능과 ISMS/e-privacy 보안 조치까지 함께 다룬 서비스",
+  meta: {
+    sourceType: "Professional Work",
+    company: "SK M&Service",
+    service: "Benepia",
+    period: "2022.02 - 2024.03",
+    role: "Software Engineer",
+    scope: ["Java", "Spring", "Oracle", "Web/Mobile", "ISMS"],
+    relatedExperience: "skmns"
+  },
   tags: ["Java", "Spring", "Oracle", "MyBatis", "JSP", "jQuery"],
   featured: false,
   overview:
