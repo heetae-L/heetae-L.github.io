@@ -13,7 +13,7 @@ export const techStack: TechStackData = {
       featured: true,
       homeOrder: 1,
       items: [
-        { name: "Java", description: "주요 서비스 개발과 운영 로직 구현에 사용하는 주력 언어" },
+        { name: "Java", description: "서비스 API와 업무 로직 구현에 사용하는 주력 언어" },
         { name: "Spring Boot", description: "서비스 API와 백엔드 애플리케이션 개발에 사용" },
         { name: "Spring Framework", description: "기존 서비스 구조와 업무 로직 개발에 사용" },
         { name: "REST API", description: "서비스 기능과 외부 시스템 연동 API 구현" },
@@ -43,9 +43,9 @@ export const techStack: TechStackData = {
       featured: true,
       homeOrder: 3,
       items: [
-        { name: "Oracle", description: "서비스 운영 데이터 저장과 조회에 사용하는 주요 DB" },
+        { name: "Oracle", description: "주문·상품·포인트·통계 데이터 저장/조회 구조 구현에 사용하는 주요 DB" },
         { name: "MyBatis", description: "SQL 중심 업무 로직과 Java 객체 매핑에 사용" },
-        { name: "SQL", description: "데이터 조회, 검증, 운영 확인, 리포트 기준 분석" },
+        { name: "SQL", description: "데이터 정합성 검증, 리포트 기준 쿼리 작성, 배치 결과 분석" },
         { name: "PL/SQL / Procedure", description: "DB 내부 처리 로직과 배치 후처리 흐름 분석" },
         { name: "MERGE", description: "기준 데이터 반영과 대량 데이터 보정 처리" }
       ]
@@ -58,12 +58,12 @@ export const techStack: TechStackData = {
       featured: true,
       homeOrder: 4,
       items: [
-        { name: "GitLab CI/CD", description: "빌드/배포 파이프라인 구성과 실행 흐름 확인" },
+        { name: "GitLab CI/CD", description: "빌드/배포 파이프라인 구성과 배포 검증" },
         { name: "Jenkins", description: "CI/CD job 기반 빌드와 배포 흐름 사용" },
         { name: "Docker", description: "애플리케이션 컨테이너 실행 환경 구성과 검증" },
         { name: "Tomcat", description: "Java 웹 애플리케이션 실행 런타임" },
         { name: "Maven / WAR", description: "Java 프로젝트 빌드와 배포 패키징" },
-        { name: "Linux", description: "서버 환경에서 로그, 설정, 실행 상태 확인" }
+        { name: "Linux", description: "서버 로그 분석, 설정 점검, 런타임 이슈 대응" }
       ]
     },
     {
@@ -78,7 +78,7 @@ export const techStack: TechStackData = {
         { name: "AI-DLC", description: "업무 맥락, 코드 흐름, 테스트 케이스를 AI가 읽을 수 있는 지식으로 구조화" },
         { name: "Prompt Design", description: "서비스 목적에 맞는 입력 조건과 응답 기준 설계" },
         { name: "Structured AI Response", description: "AI 응답을 서비스에서 처리 가능한 JSON 구조로 설계" },
-        { name: "OpenAI API", description: "LLM 호출 구조, 요청/응답 흐름, 오류 처리 방식 이해" },
+        { name: "OpenAI API", description: "LLM 요청/응답 흐름과 오류 처리 기준 구현" },
         { name: "Azure OpenAI", description: "LLM API 기반 기능 연동과 응답 생성 흐름 구현" }
       ]
     },
@@ -91,7 +91,7 @@ export const techStack: TechStackData = {
       items: [
         { name: "Python", description: "API 프로토타이핑과 AI API 연동 구현에 사용" },
         { name: "Flask", description: "경량 API 서버와 요청/응답 처리 구조 구현" },
-        { name: "pip", description: "Python dependency 구성과 실행 환경 확인" },
+        { name: "pip", description: "Python dependency 구성과 재현 가능한 실행 환경 관리" },
         { name: "Oracle Client", description: "Python 애플리케이션에서 Oracle 연결 검증" }
       ]
     },
@@ -99,13 +99,13 @@ export const techStack: TechStackData = {
       id: "enterprise-systems",
       icon: "briefcase",
       title: "Enterprise Systems",
-      summary: "기업 업무 시스템 · 내부 운영 환경",
+      summary: "기업 업무 시스템 · 내부 실행 환경",
       featured: false,
       items: [
         { name: "WebSquare", description: "사내 업무 화면 개발 경험" },
-        { name: "DB2", description: "기업 내부 시스템의 데이터 조회와 업무 흐름 이해" },
+        { name: "DB2", description: "기업 내부 시스템의 데이터 조회와 업무 흐름 분석" },
         { name: "RPG(IBM)", description: "기존 기간계 시스템과 연결된 업무 환경 경험" },
-        { name: "Windows / Office Runtime", description: "현업 사용자 환경과 내부 업무 시스템 운영 이해" }
+        { name: "Windows / Office Runtime", description: "현업 사용자 환경과 내부 업무 시스템 실행 환경 분석" }
       ]
     }
   ]

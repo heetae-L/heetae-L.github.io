@@ -20,14 +20,14 @@ export const travelAiQaApi: ProjectData = {
   featured: true,
   homeOrder: 2,
   overview:
-    "2023년 ChatGPT가 막 서비스 적용 대상으로 떠오르던 시점에 GPT-3.5 Turbo 기반 여행 Q&A 기능의 핵심 처리 서버인 TourGPT Gateway API Server를 신규 구축.\n\n휴가샵 모바일 화면은 AI 여행정보의 사용자 접점이고, 직접 구현 범위는 그 뒤에서 호출을 받아 질문 범위 판별, GPT 답변 생성, 응답 JSON 구성, 대화 이력 저장을 처리하는 Python/Flask 기반 Gateway API Server.\n\n기존 휴가샵/Benepia 서버 코드에 기능을 합친 방식이 아니라, 별도 Docker container로 실행되는 Python API 서버를 구성해 기존 서비스 API 뒤에 연결.\n\nJava/Spring 중심의 기존 운영 환경에서 전사 첫 Python/Flask 기반 GPT API Server를 맡아 Azure OpenAI 호출, 응답 상태 체계, Oracle 이력 저장, Docker image, GitLab CI, Nomad job, health check까지 직접 연결.\n\nPython 웹 API 운영 배포 레퍼런스가 사실상 전무한 상태에서 API 구현, 런타임 구성, CI/CD, 운영 검증 기준을 처음부터 만들어 간 프로젝트.",
+    "2023년 ChatGPT가 막 서비스 적용 대상으로 떠오르던 시점에 GPT-3.5 Turbo 기반 여행 Q&A 기능의 핵심 처리 서버인 TourGPT Gateway API Server를 신규 구축.\n\n휴가샵 모바일 화면은 AI 여행정보의 사용자 접점이고, 직접 구현 범위는 그 뒤에서 호출을 받아 질문 범위 판별, GPT 답변 생성, 응답 JSON 구성, 대화 이력 저장을 처리하는 Python/Flask 기반 Gateway API Server.\n\n기존 휴가샵/Benepia 서버 코드에 기능을 합친 방식이 아니라, 별도 Docker container로 실행되는 Python API 서버를 구성해 기존 서비스 API 뒤에 연결.\n\nJava/Spring 중심의 기존 운영 환경에서 전사 첫 Python/Flask 기반 GPT API Server를 맡아 지정된 Azure OpenAI 환경을 사용한 GPT 호출, 응답 상태 체계, Oracle 이력 저장, Docker image, GitLab CI, Nomad job, health check까지 연결.\n\nPython 웹 API 운영 배포 레퍼런스가 사실상 전무한 상태에서 API 구현, 런타임 구성, CI/CD, 운영 검증 기준을 처음부터 만들어 간 프로젝트.",
   problem:
     "ChatGPT와 GPT-3.5 Turbo를 서비스 기능으로 연결하던 2023년에는 지금처럼 LLM API 적용 패턴, structured response, 운영 배포 사례가 정리되어 있지 않던 상황.\n\n기존 사내 서비스는 Java/Spring 계열 중심이라 Python/Flask Gateway API Server를 별도 컨테이너로 운영 서버에 올리는 기준, Docker image 구성, 배포 job, health check, 로그 경로, Oracle client, proxy 설정까지 새로 잡아야 하는 과제.\n\n단순 GPT 호출 데모가 아니라 모바일/서비스 API에서 호출 가능한 Gateway API Server, 응답 상태 체계, 대화 이력 저장, 운영 배포 검증을 모두 포함한 전사 첫 Python 기반 AI API 구축 업무.",
   role: [
-    "입사 2년 차 시점에 전사 첫 Python/Flask 기반 TourGPT Gateway API Server 구축을 단독 주도",
-    "국내 여행 Q&A 서비스 범위, 요청/응답 JSON, 상태 코드, 오류·차단 메시지 기준 설계",
-    "GPT-3.5 Turbo 기반 Azure OpenAI 호출, 질문 범위 판별, 답변 생성, 응답 JSON 기준, 대화 이력 저장, 세션 cache 흐름 구현",
-    "인프라팀과 Docker image, GitLab CI, Nomad job, 로그 경로, health check, proxy, Oracle client를 함께 맞추며 운영 실행 기준 수립"
+    "전사 첫 Python/Flask 기반 TourGPT Gateway API Server의 API 구현과 응답 JSON 구조 설계 주도",
+    "국내 여행 Q&A 서비스 범위, 요청/응답 JSON 구조, 상태 코드, 오류·차단 메시지 기준 설계",
+    "지정된 Azure OpenAI 환경에서 GPT-3.5 Turbo 호출, 질문 범위 판별, 답변 생성, 응답 JSON 구성, 대화 이력 저장, 세션 cache 흐름 구현",
+    "Docker image, GitLab CI, Nomad job, 로그 경로, health check, proxy, Oracle client는 인프라팀과 런타임 검증 기준을 맞춤"
   ],
   contributions: [
     "TourGPT Gateway API Server에서 질문 적합성 판별과 답변 생성을 2단계 GPT 호출로 분리해 국내 여행 도메인에 맞지 않는 질문을 서버 계층에서 제어",
@@ -51,14 +51,14 @@ export const travelAiQaApi: ProjectData = {
     "ChatGPT 초기 확산기에 GPT-3.5 Turbo를 실제 서비스형 Gateway API Server로 연결하며 AI 기능을 사용자 화면, 서비스 API, 운영 DB, 배포 런타임까지 확장",
     "모바일 진입점, 대화 시작, 이용방법, 응답 대기, 답변 결과까지 이어지는 사용자 흐름 뒤에서 동작하는 핵심 Gateway 계층을 구현",
     "Java/Spring 중심 조직에서 Python 서비스 실행 기준과 운영 검증 흐름을 새로 만들며 후속 Python/AI API 도입의 기술 기준 확보",
-    "저연차 시점에 AI API, Python runtime, Oracle 연동, Docker/GitLab CI/Nomad DevOps를 한 번에 책임진 고난도 신규 기술 도입 경험"
+    "AI API 구현, Python runtime, Oracle 연동, Docker/GitLab CI/Nomad 배포 검증을 연결하며 신규 기술을 서비스 실행 기준까지 확장"
   ],
   devops: [
-    "Python/Flask 기반 TourGPT Gateway API Server를 별도 Docker container로 패키징하고, GitLab CI build/deploy job과 Nomad docker driver 실행 흐름을 직접 구성",
+    "Python/Flask 기반 TourGPT Gateway API Server를 별도 Docker container로 패키징하고, GitLab CI build/deploy job 실행 흐름을 구성",
     "개발/운영 branch, 환경별 config, image tag, 로그 volume, resource, service check를 분리해 운영 배포 가능한 실행 구조 설계",
     "기존 휴가샵/Benepia 운영 환경에 독립 실행 컨테이너로 붙일 수 있도록 Python dependency와 Oracle client 재현 제약을 Docker base image, package 구성, proxy 설정 검증으로 해결",
-    "Nomad health check, canary, auto revert 조건을 확인해 Python API를 단순 실험 코드가 아니라 배포·관측·복구 기준을 가진 서비스로 정리",
-    "인프라팀과 매일 실행 방식과 배포 구조를 맞추며 사내에 없던 Python API DevOps 레퍼런스를 구축"
+    "Nomad docker driver, health check, canary, auto revert 조건은 인프라팀과 함께 검증해 Python API를 배포·관측·복구 기준을 가진 서비스로 정리",
+    "인프라팀과 배포 실행 방식과 장애 대응 기준을 맞추며 사내에 없던 Python API 런타임 레퍼런스를 구축"
   ],
   sectionLabels: {
     screenshots: "Service Screenshots",
@@ -85,7 +85,7 @@ export const travelAiQaApi: ProjectData = {
     "Chat UI / Usage Policy",
     "Service API Bridge",
     "TourGPT Gateway API Server (Python/Flask)",
-    "Scope Classifier / Response Contract",
+    "Scope Classifier / Response JSON Rules",
     "Azure OpenAI GPT-3.5 Turbo",
     "Oracle Q/A History",
     "Docker Container / GitLab CI",

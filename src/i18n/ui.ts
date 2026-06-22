@@ -15,7 +15,7 @@ export const ui = {
             resume: "Resume"
         },
         common: {
-            downloadResume: "Download Resume",
+            downloadResume: "Print Resume",
             viewProjects: "View Projects",
             viewAllProjects: "View all projects",
             viewFullExperience: "View all experience",
@@ -52,7 +52,7 @@ export const ui = {
             resume: "Resume"
         },
         common: {
-            downloadResume: "Download Resume",
+            downloadResume: "Print Resume",
             viewProjects: "View Projects",
             viewAllProjects: "View all projects",
             viewFullExperience: "View all experience",

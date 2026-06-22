@@ -20,14 +20,14 @@ export const travelAiQaApi: ProjectData = {
   featured: true,
   homeOrder: 2,
   overview:
-    "Built the core processing server for a GPT-3.5 Turbo-based travel Q&A feature in 2023, when ChatGPT was just beginning to be considered for real service use.\n\nThe Hyugashop mobile screen was the user-facing AI travel information entry point. My direct implementation scope was the Python/Flask-based TourGPT Gateway API Server behind that flow, receiving service calls and handling question-scope classification, GPT answer generation calls, response JSON construction, and conversation-history persistence.\n\nRather than mixing the feature into the existing Hyugashop/Benepia service codebase, I packaged it as a separate Python API server running in its own Docker container and connected it behind the existing service API layer.\n\nIn a Java/Spring-centered operating environment, I led the company's first Python/Flask-based GPT API Server effort, connecting Azure OpenAI calls, response-state design, Oracle history storage, Docker images, GitLab CI, Nomad jobs, and health checks.\n\nBecause there was effectively no internal reference for operating a Python web API in production, this project required defining the implementation, runtime, CI/CD, and deployment validation standards from the ground up.",
+    "Built the core processing server for a GPT-3.5 Turbo-based travel Q&A feature in 2023, when ChatGPT was just beginning to be considered for real service use.\n\nThe Hyugashop mobile screen was the user-facing AI travel information entry point. My direct implementation scope was the Python/Flask-based TourGPT Gateway API Server behind that flow, receiving service calls and handling question-scope classification, GPT answer generation calls, response JSON construction, and conversation-history persistence.\n\nRather than mixing the feature into the existing Hyugashop/Benepia service codebase, I packaged it as a separate Python API server running in its own Docker container and connected it behind the existing service API layer.\n\nIn a Java/Spring-centered operating environment, I worked on the company's first Python/Flask-based GPT API Server effort, connecting GPT calls through the designated Azure OpenAI environment, response-state design, Oracle history storage, Docker images, GitLab CI, Nomad jobs, and health checks.\n\nBecause there was effectively no internal reference for operating a Python web API in production, this project required defining the implementation, runtime, CI/CD, and deployment validation standards from the ground up.",
   problem:
     "In 2023, service patterns for LLM APIs, structured responses, and production deployment were far less mature than they are now.\n\nThe existing internal service stack was centered on Java/Spring, so the team had to establish how to run a Python/Flask Gateway API Server as a separate production container, including Docker image design, deployment jobs, health checks, log paths, Oracle client setup, and proxy configuration.\n\nThis was not a simple GPT call demo. It was the company's first Python-based AI API effort that had to work as a Gateway API Server callable from mobile/service APIs, with response states, conversation-history storage, and production deployment validation.",
   role: [
-    "Led the build of the company's first Python/Flask-based TourGPT Gateway API Server as an early-career engineer",
-    "Defined the domestic travel Q&A service scope, request/response JSON, status codes, and error/blocking message rules",
-    "Implemented Azure OpenAI calls with GPT-3.5 Turbo, question-scope classification, answer-generation flow, response JSON rules, conversation-history persistence, and session cache handling",
-    "Worked with the infrastructure team to establish runtime standards for Docker images, GitLab CI, Nomad jobs, log paths, health checks, proxy configuration, and Oracle client setup"
+    "Led API implementation and response JSON structure design for the company's first Python/Flask-based TourGPT Gateway API Server",
+    "Defined the domestic travel Q&A service scope, request/response JSON structure, status codes, and error/blocking message rules",
+    "Implemented GPT-3.5 Turbo calls through the designated Azure OpenAI environment, question-scope classification, answer-generation flow, response JSON construction, conversation-history persistence, and session cache handling",
+    "Aligned runtime validation standards with the infrastructure team for Docker images, GitLab CI, Nomad jobs, log paths, health checks, proxy configuration, and Oracle client setup"
   ],
   contributions: [
     "Separated question eligibility classification from answer generation into a two-step GPT call flow, allowing the TourGPT Gateway API Server to block out-of-domain questions at the server layer",
@@ -51,14 +51,14 @@ export const travelAiQaApi: ProjectData = {
     "Connected GPT-3.5 Turbo during the early ChatGPT adoption period as a service-style Gateway API Server spanning user screens, service APIs, operational DB storage, and deployment runtime",
     "Implemented the core Gateway layer behind the user flow from mobile entry and question start to usage guidance, loading state, and answer result",
     "Established a new Python service runtime and deployment-validation pattern in a Java/Spring-centered organization, creating a technical reference for later Python/AI API adoption",
-    "Took responsibility for a high-difficulty new-technology adoption project that combined AI API design, Python runtime, Oracle integration, and Docker/GitLab CI/Nomad DevOps at an early career stage"
+    "Connected AI API implementation, Python runtime, Oracle integration, and Docker/GitLab CI/Nomad deployment validation into a service-ready new-technology adoption effort"
   ],
   devops: [
-    "Packaged the Python/Flask-based TourGPT Gateway API Server as a separate Docker container and configured GitLab CI build/deploy jobs with Nomad docker-driver execution",
+    "Packaged the Python/Flask-based TourGPT Gateway API Server as a separate Docker container and configured the GitLab CI build/deploy job flow",
     "Designed an operation-ready execution structure by separating development/production branches, environment-specific config, image tags, log volumes, resources, and service checks",
     "Solved reproducibility constraints around Python dependencies and Oracle client setup by validating Docker base images, package composition, and proxy configuration for deployment behind the existing Hyugashop/Benepia operating environment",
-    "Validated Nomad health checks, canary, and auto-revert conditions so the Python API was treated as a deployable, observable, recoverable service rather than experiment code",
-    "Worked closely with the infrastructure team to build a Python API DevOps reference that did not previously exist inside the organization"
+    "Validated Nomad docker-driver behavior, health checks, canary, and auto-revert conditions with the infrastructure team so the Python API was treated as a deployable, observable, recoverable service rather than experiment code",
+    "Worked with the infrastructure team to establish deployment execution and incident-response criteria for a Python API runtime reference that did not previously exist inside the organization"
   ],
   sectionLabels: {
     screenshots: "Service Screenshots",
@@ -85,7 +85,7 @@ export const travelAiQaApi: ProjectData = {
     "Chat UI / Usage Policy",
     "Service API Bridge",
     "TourGPT Gateway API Server (Python/Flask)",
-    "Scope Classifier / Response Contract",
+    "Scope Classifier / Response JSON Rules",
     "Azure OpenAI GPT-3.5 Turbo",
     "Oracle Q/A History",
     "Docker Container / GitLab CI",

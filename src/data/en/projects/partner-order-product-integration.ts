@@ -43,7 +43,7 @@ export const partnerOrderProductIntegration: ProjectData = {
     "Structured recurring verification cases and procedures as a Markdown knowledge base, then validated AI-DLC root-cause candidates with code, queries, and tests"
   ],
   results: [
-    "Turned partner-specific handling into a shared verification system, improving readiness and reliability for new integrations",
+    "Built a reusable partner-integration verification flow and checklist for new partner onboarding, turning partner-specific handling into a repeatable structure",
     "Clarified observation points across order, product, and search-data flows to narrow the investigation scope when data inconsistencies occur",
     "Established a verification system for consistently managing API, batch, database, and search-exposure criteria across large recurring order and product data flows",
     "Improved partner collaboration quality by defining technical criteria that business teams and external partners could share"

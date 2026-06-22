@@ -31,12 +31,12 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "Continued KTO Hyugashop responsibilities while expanding into travel/leisure partner integration and product/search refinement"
   ],
   contributions: [
-    "Implemented a National Assembly statistics workflow by restructuring order and point source data by date, product type, region, and point group, then connecting it to query and Excel export flows",
     "Reflected employee, employer, and government funding-source point structures in order/point usage views and statistics flows",
     "Built an unsuitable-product management flow connecting keyword-based candidate review, operator decisions, and exposure-exclusion handling",
-    "Converted repeated bulk-processing work into admin functionality through Excel upload for message target lists",
+    "Refined representative-product, duplicate-product, and search-exposure criteria as a Hyugashop product/search data improvement case",
+    "Implemented a National Assembly statistics workflow by restructuring order and point source data by date, product type, region, and point group, then connecting it to query and Excel export flows",
     "Extended daily report source-data loading and statistics screen criteria for participating companies/workers, purchases/cancellations, and remaining-point ranges",
-    "Refined representative-product, duplicate-product, and search-exposure criteria as a Hyugashop product/search data improvement case"
+    "Converted repeated bulk-processing work into admin functionality through Excel upload for message target lists"
   ],
   troubleshooting: [
     "Structured the National Assembly statistics flow around order/point transaction sources, participant criteria, product type, region, and point group",
@@ -44,7 +44,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "Separated validation checkpoints across daily report source data, order/point usage views, and public-sector statistics screens"
   ],
   results: [
-    "Implemented feature projects connecting user-facing and operations-facing functions in a public-sector vacation-benefit commerce service",
+    "Implemented feature projects connecting user-facing features, admin features, and point/statistics data flows in the KTO Hyugashop web/app commerce service",
     "Implemented public reporting flows such as National Assembly statistics, order/point usage views, and daily reports with query and Excel export support",
     "Converted repeated bulk-processing work into Excel-upload functionality and implemented operations features for unsuitable-product management and product/search refinement",
     "Expanded backend responsibility from the KTO Hyugashop service scope into travel/leisure partner integration across welfare and travel commerce"

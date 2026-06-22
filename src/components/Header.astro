@@ -1,5 +1,5 @@
 ---
-import { Download, GitBranch, Menu, X } from "@lucide/astro";
+import { GitBranch, Menu, Printer, X } from "@lucide/astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 import { type Locale, withLocale } from "../i18n/config";
 import type { SiteContent } from "../data";
@@ -32,7 +32,8 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
       {
         navItems.map((item) => {
           const itemPath = item.href.replace(/\/$/, "") || `/${locale}`;
-          const active = normalizedPath === itemPath;
+          const isHome = itemPath === `/${locale}`;
+          const active = isHome ? normalizedPath === itemPath : normalizedPath === itemPath || normalizedPath.startsWith(`${itemPath}/`);
 
           return (
             <a
@@ -56,7 +57,7 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
         data-print-resume
         class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
       >
-        <Download class="h-4 w-4" />
+        <Printer class="h-4 w-4" />
         {content.common.downloadResume}
       </button>
       <LanguageSwitcher locale={locale} currentPath={currentPath} />
@@ -100,7 +101,7 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
         data-print-resume
         class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white"
       >
-        <Download class="h-4 w-4" />
+        <Printer class="h-4 w-4" />
         {content.common.downloadResume}
       </button>
       <LanguageSwitcher locale={locale} currentPath={currentPath} />

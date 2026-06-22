@@ -4,7 +4,7 @@ export const experience: ExperienceData = {
   eyebrow: "Career",
   title: "Work Experience",
   description:
-    "A backend career connecting and stabilizing product, order, and search flows for welfare and travel commerce through service development and partner integrations.",
+    "A backend career designing, implementing, and reliably operating product, order, and search flows for welfare and travel commerce through service development and partner integrations.",
   items: [
     {
       period: "2021.12 - Present",
@@ -14,16 +14,16 @@ export const experience: ExperienceData = {
       featured: true,
       homeOrder: 1,
       homeBullets: [
-        "Developed backend services connecting APIs, batch jobs, databases, search exposure, and admin operations for welfare and travel commerce platforms",
-        "Designed, operated, and improved product, order, search-data, and external partner-integration flows from a service perspective",
+        "Implemented backend services connecting APIs, batch jobs, databases, search exposure, and admin features for welfare and travel commerce platforms",
+        "Designed and implemented product, order, search-data, and external partner-integration flows from a service perspective",
         "Built a Travel AI Q&A API with Python/Flask and Azure OpenAI, covering Docker, GitLab CI, and Nomad deployment validation"
       ],
       bullets: [
-        "Since 2026, have led travel and leisure partner integrations across product/order collection APIs, batch flows, and search exposure while continuing KTO Hyugashop web/app service development",
+        "Since 2026, have led travel and leisure partner integrations across product/order collection APIs, batch flows, and search exposure while continuing KTO Hyugashop web/app feature development",
         "In 2025, expanded from KTO Hyugashop into travel and leisure partner integrations, structuring partner-facing product, order, and search-data flows around commerce-service requirements",
-        "Since 2024.04, have developed KTO Hyugashop web/app commerce service features across user/admin/customer screens, APIs, DB/batch flows, point usage, and statistics",
+        "Since 2024.04, have implemented KTO Hyugashop web/app commerce features connecting user/admin/customer screens with APIs, DB/batch flows, point usage, and statistics",
         "In 2023 H2, developed the company's first Python/Flask and Azure OpenAI based AI API project, covering Docker, GitLab CI, and Nomad deployment validation end-to-end",
-        "Since 2022.02, owned Benepia welfare-commerce service development, building and operating customer-specific welfare-mall features",
+        "Since 2022.02, developed customer-specific welfare-mall features for the Benepia welfare-commerce service and connected them to the common platform flow",
         "Resolved ISMS and e-privacy security findings across XSS/CSRF, access control, authentication/session behavior, and information exposure while preserving service behavior"
       ]
     },
@@ -36,7 +36,7 @@ export const experience: ExperienceData = {
       featured: true,
       homeOrder: 2,
       bullets: [
-        "Developed and operated internal logistics and order-management web systems for a food manufacturing and distribution company",
+        "Developed internal logistics and order-management web systems for a food manufacturing and distribution company",
         "Expanded role-based access for an order-information system while working with internal business workflows and data-processing structures"
       ]
     }

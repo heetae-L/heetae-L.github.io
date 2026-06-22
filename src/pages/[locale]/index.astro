@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Award, GraduationCap, Mail, ShieldCheck } from "@lucide/astro";
+import { ArrowRight, Award, GraduationCap, Mail, Printer, ShieldCheck } from "@lucide/astro";
 import ExperienceTimeline from "../../components/ExperienceTimeline.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import ResumeVisual from "../../components/ResumeVisual.astro";
@@ -43,6 +43,7 @@ const militaryServiceParts = t.home.militaryService?.value.split(" · ");
               data-print-resume
               class="no-print inline-flex h-12 items-center gap-2 rounded-xl bg-blue-accent px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(15,91,255,0.24)] transition hover:bg-blue-700"
             >
+              <Printer class="h-4 w-4" />
               {t.common.downloadResume}
             </button>
             <a
