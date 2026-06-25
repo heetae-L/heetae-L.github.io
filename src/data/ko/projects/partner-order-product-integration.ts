@@ -16,7 +16,7 @@ export const partnerOrderProductIntegration: ProjectData = {
     scope: ["Partner API", "Batch", "Oracle", "Search"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring", "Oracle", "Batch"],
+  tags: ["Java", "Spring Boot", "Oracle", "Batch"],
   featured: true,
   homeOrder: 1,
   overview:
@@ -56,7 +56,7 @@ export const partnerOrderProductIntegration: ProjectData = {
   sectionLabels: {
     devops: "Integration Reliability"
   },
-  techStack: ["Java", "Spring", "Oracle", "MyBatis", "REST API", "Batch", "SQL", "Data Pipeline"],
+  techStack: ["Java", "Spring Boot", "Oracle", "MyBatis", "REST API", "Batch", "SQL", "Data Pipeline"],
   architecture: [
     "External Partner Systems",
     "Order API / Product Files",

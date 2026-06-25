@@ -13,10 +13,10 @@ export const benepiaServiceOperations: ProjectData = {
     service: "Benepia",
     period: "2022.02 - 2024.03",
     role: "Software Engineer",
-    scope: ["Java", "Spring", "Oracle", "Web/Mobile", "ISMS"],
+    scope: ["Java", "Spring Boot", "Oracle", "Web/Mobile", "ISMS"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring", "Oracle", "MyBatis", "JSP", "jQuery"],
+  tags: ["Java", "Spring Boot", "Oracle", "MyBatis", "JSP", "jQuery"],
   featured: false,
   overview:
     "Benepia는 금융·공공·통신 계열 등 여러 고객사 복지몰이 공통 플랫폼 위에서 각기 다른 복지 정책, 메뉴, 신청 흐름, 카드/동의 기준으로 운영되는 복지 커머스 플랫폼.\n\n2022년 2월 정규직 전환 이후 2024년 3월까지 Benepia를 메인 업무 축으로 담당하며 고객사별 기능 개발, Web/Mobile 화면 변경, 백오피스 기능, 내부 처리/API, DB 반영, ISMS/e-privacy 보안 조치를 함께 처리.\n\n핵심은 공통 플랫폼의 안정성을 유지하면서 고객사별 정책과 예외 요구사항을 서비스 기능으로 구현하고, 화면·운영 기능·데이터 저장·보안 영향 범위를 함께 검증한 업무.",
@@ -61,7 +61,7 @@ export const benepiaServiceOperations: ProjectData = {
   },
   techStack: [
     "Java",
-    "Spring",
+    "Spring Boot",
     "JSP",
     "JavaScript",
     "jQuery",

@@ -16,7 +16,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     scope: ["Web/App", "Admin", "Oracle", "Batch", "Statistics"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring", "Oracle", "Batch"],
+  tags: ["Java", "Spring Boot", "Oracle", "Batch"],
   featured: true,
   homeOrder: 4,
   overview:
@@ -56,7 +56,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
   },
   techStack: [
     "Java",
-    "Spring",
+    "Spring Boot",
     "Oracle",
     "MyBatis",
     "SQL",

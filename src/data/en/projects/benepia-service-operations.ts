@@ -13,10 +13,10 @@ export const benepiaServiceOperations: ProjectData = {
     service: "Benepia",
     period: "2022.02 - 2024.03",
     role: "Software Engineer",
-    scope: ["Java", "Spring", "Oracle", "Web/Mobile", "ISMS"],
+    scope: ["Java", "Spring Boot", "Oracle", "Web/Mobile", "ISMS"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring", "Oracle", "MyBatis", "JSP", "jQuery"],
+  tags: ["Java", "Spring Boot", "Oracle", "MyBatis", "JSP", "jQuery"],
   featured: false,
   overview:
     "Benepia is a welfare-commerce platform where multiple welfare malls for finance, public-sector, telecom, and other client groups run on top of a shared platform with different benefit policies, menus, application flows, card rules, and consent criteria.\n\nFrom February 2022 to March 2024, after converting to full-time employment, Benepia was my main workstream. I handled client-specific feature development, Web/Mobile screen changes, backoffice features, internal processing/API, database reflection, and ISMS/e-privacy security work together.\n\nThe core value was implementing client-specific policies and exception requirements as service features while preserving shared-platform stability, and verifying screen behavior, operations features, data persistence, and security impact together.",
@@ -61,7 +61,7 @@ export const benepiaServiceOperations: ProjectData = {
   },
   techStack: [
     "Java",
-    "Spring",
+    "Spring Boot",
     "JSP",
     "JavaScript",
     "jQuery",

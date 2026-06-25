@@ -25,7 +25,7 @@ export const home: HomeData = {
     },
     {
       icon: "code",
-      title: "Java · Spring",
+      title: "Java · Spring Boot",
       description: "Oracle · MyBatis"
     },
     {
