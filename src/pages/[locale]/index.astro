@@ -20,6 +20,8 @@ const resumeExperience = getResumeExperience(locale);
 const featuredProjects = getFeaturedProjects(locale, 4);
 const featuredTechStack = getFeaturedTechStack(locale);
 const militaryServiceParts = t.home.militaryService?.value.split(" · ");
+const backendFocus = t.home.visual.lines.slice(0, 2);
+const systemScope = t.home.visual.lines.slice(2);
 ---
 
 <SiteLayout locale={locale} content={t}>
@@ -37,14 +39,18 @@ const militaryServiceParts = t.home.militaryService?.value.split(" · ");
           <p class="mt-6 max-w-2xl text-base font-medium leading-8 text-ink-600 sm:text-lg">
             {t.home.summary}
           </p>
-          <div class="mt-5 grid max-w-2xl grid-cols-2 gap-2 sm:flex sm:flex-wrap">
-            {
-              t.home.visual.lines.map((line) => (
-                <span class="inline-flex h-8 min-w-0 items-center justify-center rounded-full bg-blue-soft px-2.5 text-center text-[10px] font-extrabold text-blue-accent ring-1 ring-blue-accent/10 sm:px-3 sm:text-xs">
-                  {line}
-                </span>
-              ))
-            }
+          <div class="mt-5 grid max-w-2xl gap-2 rounded-2xl border border-line-200 bg-white/85 px-4 py-3 shadow-sm">
+            <div class="grid gap-1 sm:grid-cols-[132px_1fr] sm:items-center">
+              <p class="text-[10px] font-black uppercase tracking-[0.14em] text-blue-accent">Backend Focus</p>
+              <p class="text-[13px] font-extrabold leading-6 text-ink-900 sm:text-sm">{backendFocus.join(" · ")}</p>
+            </div>
+            <div class="grid gap-1 border-t border-line-200 pt-2 sm:grid-cols-[132px_1fr] sm:items-center">
+              <p class="text-[10px] font-black uppercase tracking-[0.14em] text-blue-accent">System Scope</p>
+              <p class="hidden text-sm font-extrabold leading-6 text-ink-900 sm:block">{systemScope.join(" · ")}</p>
+              <p class="grid gap-0.5 text-[13px] font-extrabold leading-6 text-ink-900 sm:hidden">
+                {systemScope.map((item) => <span>{item}</span>)}
+              </p>
+            </div>
           </div>
           <div class="mt-8 flex flex-wrap gap-3">
             <button

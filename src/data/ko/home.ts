@@ -36,7 +36,7 @@ export const home: HomeData = {
   ],
   visual: {
     title: "Backend-focused engineering profile",
-    lines: ["Java/Spring Boot", "Partner API", "Batch/Oracle", "AI API", "CI/CD"]
+    lines: ["Java / Spring Boot", "Oracle / SQL", "Commerce Platform", "API / Batch", "CI/CD"]
   },
   education: {
     school: "소프트웨어학 학사",
