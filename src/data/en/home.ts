@@ -20,8 +20,8 @@ export const home: HomeData = {
     },
     {
       icon: "link",
-      title: "Backend",
-      description: "Platform & Integration"
+      title: "Partner Integration",
+      description: "API · Batch · Search"
     },
     {
       icon: "code",
@@ -36,7 +36,7 @@ export const home: HomeData = {
   ],
   visual: {
     title: "Backend-focused engineering profile",
-    lines: ["Partner APIs", "Batch Jobs", "Oracle Data Flow", "Docker Deploy", "AI Integration"]
+    lines: ["Java/Spring Boot", "Partner API", "Batch/Oracle", "AI API", "CI/CD"]
   },
   education: {
     school: "B.S. in Software Engineering",
