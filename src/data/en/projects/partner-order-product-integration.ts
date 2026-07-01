@@ -37,7 +37,7 @@ export const partnerOrderProductIntegration: ProjectData = {
     "Standardized the checks required for new partner onboarding into a reusable checklist and integration-verification guide"
   ],
   troubleshooting: [
-    "Built a verification model that follows data from ingestion through normalization, post-processing, search-record generation, and service exposure",
+    "Built a step-by-step verification system covering data ingestion, normalization, post-processing, search-record generation, and service exposure",
     "Defined root-cause analysis criteria for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure stages",
     "Separated collection direction and validation direction to classify partner-integration inconsistencies across data, API response, and connectivity layers",
     "Structured recurring verification cases and procedures as a Markdown knowledge base, then validated AI-DLC root-cause candidates with code, queries, and tests"
