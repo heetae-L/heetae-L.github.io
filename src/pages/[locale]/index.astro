@@ -1,6 +1,7 @@
 ---
 import { ArrowRight, Award, GraduationCap, Mail, Printer, ShieldCheck } from "@lucide/astro";
 import ExperienceTimeline from "../../components/ExperienceTimeline.astro";
+import IconBadge from "../../components/IconBadge.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import ResumeVisual from "../../components/ResumeVisual.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
@@ -20,39 +21,51 @@ const resumeExperience = getResumeExperience(locale);
 const featuredProjects = getFeaturedProjects(locale, 4);
 const featuredTechStack = getFeaturedTechStack(locale);
 const militaryServiceParts = t.home.militaryService?.value.split(" · ");
-const backendFocus = t.home.visual.lines.slice(0, 2);
-const systemScope = t.home.visual.lines.slice(2);
+const headlineLines = t.home.headline.split("\n");
+const summaryLines = t.home.summary.split("\n");
 ---
 
 <SiteLayout locale={locale} content={t}>
   <main class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
     <div class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
-      <section class="grid min-h-[480px] min-w-0 items-center gap-10 lg:grid-cols-[1fr_460px]">
+      <section class="grid min-h-[520px] min-w-0 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_400px]">
         <div class="min-w-0">
-          <span class="inline-flex rounded-full bg-blue-soft px-3 py-1.5 text-xs font-extrabold text-blue-accent">
+          <span class="inline-flex items-center rounded-full bg-blue-soft px-4 py-2 text-xs font-extrabold text-blue-accent ring-1 ring-blue-accent/10">
             {t.home.badge}
           </span>
-          <h1 class="mt-6 text-5xl font-black leading-[0.98] tracking-tight text-ink-950 sm:text-6xl lg:text-7xl">
+          <h1 class="mt-6 text-5xl font-black leading-[0.96] text-ink-950 sm:text-6xl lg:text-7xl">
             {t.home.name}
-            <span class="mt-2 block text-blue-accent">{t.home.role}</span>
           </h1>
-          <p class="mt-6 max-w-2xl text-base font-medium leading-8 text-ink-600 sm:text-lg">
-            {t.home.summary}
-          </p>
-          <div class="mt-5 grid max-w-2xl gap-2 rounded-2xl border border-line-200 bg-white/85 px-4 py-3 shadow-sm">
-            <div class="grid gap-1 sm:grid-cols-[132px_1fr] sm:items-center">
-              <p class="text-[10px] font-black uppercase tracking-[0.14em] text-blue-accent">Backend Focus</p>
-              <p class="text-[13px] font-extrabold leading-6 text-ink-900 sm:text-sm">{backendFocus.join(" · ")}</p>
-            </div>
-            <div class="grid gap-1 border-t border-line-200 pt-2 sm:grid-cols-[132px_1fr] sm:items-center">
-              <p class="text-[10px] font-black uppercase tracking-[0.14em] text-blue-accent">System Scope</p>
-              <p class="hidden text-sm font-extrabold leading-6 text-ink-900 sm:block">{systemScope.join(" · ")}</p>
-              <p class="grid gap-0.5 text-[13px] font-extrabold leading-6 text-ink-900 sm:hidden">
-                {systemScope.map((item) => <span>{item}</span>)}
+          <p class="mt-3 text-2xl font-black leading-tight text-blue-accent sm:text-3xl">{t.home.role}</p>
+          <div class="mt-8 text-5xl font-black leading-[1.02] text-ink-950 sm:text-6xl lg:text-6xl">
+            {headlineLines.map((line, index) => (
+              <p>
+                {index === headlineLines.length - 1 && line.includes("Last") ? (
+                  <>
+                    {line.replace("Last.", "")}
+                    <span class="text-blue-accent">Last.</span>
+                  </>
+                ) : (
+                  line
+                )}
               </p>
-            </div>
+            ))}
           </div>
-          <div class="mt-8 flex flex-wrap gap-3">
+          <p class="mt-5 grid max-w-2xl gap-1 text-base font-semibold leading-8 text-ink-700 [word-break:keep-all] sm:text-lg">
+            {summaryLines.map((line) => <span>{line}</span>)}
+          </p>
+          <div class="mt-6 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-5 lg:grid-cols-4">
+            {
+              t.home.heroSignals.map((item) => (
+                <div class="min-w-0 border-line-200 lg:border-r lg:pr-4 last:border-r-0">
+                  <IconBadge name={item.icon} size="sm" />
+                  <p class="mt-3 text-sm font-black leading-5 text-ink-950">{item.title}</p>
+                  <p class="mt-1 text-xs font-semibold leading-5 text-ink-500">{item.description}</p>
+                </div>
+              ))
+            }
+          </div>
+          <div class="mt-7 flex flex-wrap gap-3">
             <button
               type="button"
               data-print-resume

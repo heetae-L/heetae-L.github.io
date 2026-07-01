@@ -4,14 +4,36 @@ export const home: HomeData = {
   badge: "Software Engineer",
   name: "Heetae Lee",
   role: "Software Engineer",
-  headline: "신뢰할 수 있는 시스템을 만드는 엔지니어",
+  headline: "Built to Run.\nDesigned to Last.",
   summary:
-    "비즈니스 흐름을 이해하고, 신뢰할 수 있는 시스템으로 구현하는 Software Engineer",
+    "복잡한 요구사항을 단순한 구조로 정리하고,\n실제로 오래 돌아가는 백엔드 시스템을 만듭니다.",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
   techTitle: "Tech Stack",
   educationTitle: "Education, Certifications & Contact",
+  heroSignals: [
+    {
+      icon: "server",
+      title: "Backend Engineering",
+      description: "API · Batch · DB"
+    },
+    {
+      icon: "link",
+      title: "API Integration",
+      description: "Service · Partner"
+    },
+    {
+      icon: "database",
+      title: "Data Flow",
+      description: "Process · Verify"
+    },
+    {
+      icon: "chart",
+      title: "Issue Analysis",
+      description: "Trace · Improve"
+    }
+  ],
   summaryCards: [
     {
       icon: "user",
@@ -36,7 +58,7 @@ export const home: HomeData = {
   ],
   visual: {
     title: "Backend-focused engineering profile",
-    lines: ["Java / Spring Boot", "Oracle / SQL", "Commerce Platform", "API / Batch", "CI/CD"]
+    lines: ["analyze();", "designFlow();", "implement();", "deploy();", "monitor();", "improve();"]
   },
   education: {
     school: "소프트웨어학 학사",

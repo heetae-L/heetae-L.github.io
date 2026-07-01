@@ -4,6 +4,12 @@ export interface SummaryCardData {
   description: string;
 }
 
+export interface HeroSignalData {
+  icon: string;
+  title: string;
+  description: string;
+}
+
 export interface ContactLinkData {
   label: string;
   value: string;
@@ -40,6 +46,7 @@ export interface HomeData {
   projectsTitle: string;
   techTitle: string;
   educationTitle: string;
+  heroSignals: HeroSignalData[];
   summaryCards: SummaryCardData[];
   visual: {
     title: string;

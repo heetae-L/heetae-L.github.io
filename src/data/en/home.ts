@@ -4,14 +4,36 @@ export const home: HomeData = {
   badge: "Software Engineer",
   name: "Heetae Lee",
   role: "Software Engineer",
-  headline: "Engineering reliable software systems",
+  headline: "Built to Run.\nDesigned to Last.",
   summary:
-    "I understand business workflows and turn them into reliable software systems as a Software Engineer.",
+    "I organize complex requirements into simple structures and build backend systems that keep running in real service environments.",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
   techTitle: "Tech Stack",
   educationTitle: "Education, Certifications & Contact",
+  heroSignals: [
+    {
+      icon: "server",
+      title: "Backend Engineering",
+      description: "API · Batch · DB"
+    },
+    {
+      icon: "link",
+      title: "API Integration",
+      description: "Service · Partner"
+    },
+    {
+      icon: "database",
+      title: "Data Flow",
+      description: "Process · Verify"
+    },
+    {
+      icon: "chart",
+      title: "Issue Analysis",
+      description: "Trace · Improve"
+    }
+  ],
   summaryCards: [
     {
       icon: "user",
@@ -36,7 +58,7 @@ export const home: HomeData = {
   ],
   visual: {
     title: "Backend-focused engineering profile",
-    lines: ["Java / Spring Boot", "Oracle / SQL", "Commerce Platform", "API / Batch", "CI/CD"]
+    lines: ["analyze();", "designFlow();", "implement();", "deploy();", "monitor();", "improve();"]
   },
   education: {
     school: "B.S. in Software Engineering",
