@@ -8,12 +8,14 @@ interface Props {
   locale: Locale;
   content: SiteContent;
   currentPath: string;
+  portfolioMode?: boolean;
 }
 
-const { locale, content, currentPath } = Astro.props;
+const { locale, content, currentPath, portfolioMode = false } = Astro.props;
+const homeHref = portfolioMode ? withLocale(locale, "/portfolio") : withLocale(locale);
 
 const navItems = [
-  { label: content.nav.home, href: withLocale(locale) },
+  { label: content.nav.home, href: homeHref, isHome: true },
   { label: content.nav.projects, href: withLocale(locale, "/projects") },
   { label: content.nav.experience, href: withLocale(locale, "/experience") },
   { label: content.nav.techStack, href: withLocale(locale, "/tech-stack") }
@@ -24,7 +26,7 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
 
 <header class="no-print sticky top-0 z-40 border-b border-line-200/80 bg-white/86 backdrop-blur-xl">
   <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
-    <a href={withLocale(locale)} class="text-xl font-extrabold tracking-tight text-ink-950">
+    <a href={homeHref} data-portfolio-home={locale} class="text-xl font-extrabold tracking-tight text-ink-950">
       <span class="text-blue-accent">Heetae</span> Lee
     </a>
 
@@ -38,6 +40,7 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
           return (
             <a
               href={item.href}
+              data-portfolio-home={item.isHome ? locale : undefined}
               aria-current={active ? "page" : undefined}
               class:list={[
                 "relative py-6 transition hover:text-blue-accent",
@@ -61,15 +64,20 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
         {content.common.downloadResume}
       </button>
       <LanguageSwitcher locale={locale} currentPath={currentPath} />
-      <a
-        href="https://github.com/heetae-L"
-        target="_blank"
-        rel="noreferrer"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent"
-        aria-label="GitHub"
-      >
-        <GitBranch class="h-5 w-5" />
-      </a>
+      {
+        !portfolioMode && (
+          <a
+            href="https://github.com/heetae-L"
+            data-hide-in-portfolio
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent"
+            aria-label="GitHub"
+          >
+            <GitBranch class="h-5 w-5" />
+          </a>
+        )
+      }
     </div>
 
     <button
@@ -89,7 +97,11 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
     <nav class="grid gap-2 text-sm font-bold text-ink-700" aria-label="Mobile navigation">
       {
         navItems.map((item) => (
-          <a href={item.href} class="rounded-xl px-3 py-3 hover:bg-blue-soft hover:text-blue-accent">
+          <a
+            href={item.href}
+            data-portfolio-home={item.isHome ? locale : undefined}
+            class="rounded-xl px-3 py-3 hover:bg-blue-soft hover:text-blue-accent"
+          >
             {item.label}
           </a>
         ))
@@ -110,6 +122,16 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
 </header>
 
 <script>
+  if (document.documentElement.classList.contains("portfolio-mode")) {
+    document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-home]").forEach((link) => {
+      const locale = link.dataset.portfolioHome;
+
+      if (locale) {
+        link.href = `/${locale}/portfolio`;
+      }
+    });
+  }
+
   const menuButton = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const openIcon = document.querySelector('[data-menu-icon="open"]');

@@ -12,6 +12,6 @@ const locale = Astro.params.locale as Locale;
 const t = getContent(locale);
 ---
 
-<SiteLayout locale={locale} content={t}>
-  <HomeContent locale={locale} content={t} />
+<SiteLayout locale={locale} content={t} portfolioMode noIndex>
+  <HomeContent locale={locale} content={t} hideContact />
 </SiteLayout>
