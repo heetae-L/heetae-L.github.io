@@ -17,7 +17,11 @@ export const techStack: TechStackData = {
         { name: "Spring Boot", description: "서비스 API와 백엔드 애플리케이션 개발에 사용" },
         { name: "Spring Framework", description: "기존 서비스 구조와 업무 로직 개발에 사용" },
         { name: "REST API", description: "서비스 기능과 외부 시스템 연동 API 구현" },
-        { name: "Batch", description: "정기 처리, 데이터 수집, 후처리성 업무 흐름 구현" }
+        { name: "Batch", description: "정기 처리, 데이터 수집, 후처리성 업무 흐름 구현" },
+        {
+          name: "Java Concurrency",
+          description: "CompletableFuture와 전용 Thread Pool 기반 외부 API 병렬 처리 흐름을 다룬 경험"
+        }
       ]
     },
     {
@@ -39,7 +43,7 @@ export const techStack: TechStackData = {
       id: "database",
       icon: "database",
       title: "Database",
-      summary: "Oracle · SQL · 데이터 정합성",
+      summary: "Oracle · SQL · Redis",
       featured: true,
       homeOrder: 3,
       items: [
@@ -47,7 +51,11 @@ export const techStack: TechStackData = {
         { name: "MyBatis", description: "SQL 중심 업무 로직과 Java 객체 매핑에 사용" },
         { name: "SQL", description: "데이터 정합성 검증, 리포트 기준 쿼리 작성, 배치 결과 분석" },
         { name: "PL/SQL / Procedure", description: "DB 내부 처리 로직과 배치 후처리 흐름 분석" },
-        { name: "MERGE", description: "기준 데이터 반영과 대량 데이터 보정 처리" }
+        { name: "MERGE", description: "기준 데이터 반영과 대량 데이터 보정 처리" },
+        {
+          name: "Redis",
+          description: "Spring Session과 조회 결과 캐시에 Redis가 적용된 서비스 개발·운영 경험"
+        }
       ]
     },
     {

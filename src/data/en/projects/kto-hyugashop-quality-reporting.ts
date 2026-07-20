@@ -16,7 +16,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     scope: ["Web/App", "Admin", "Oracle", "Batch", "Statistics"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring Boot", "Oracle", "Batch"],
+  tags: ["Java", "Spring Boot", "Oracle", "Batch", "Redis"],
   featured: true,
   homeOrder: 4,
   overview:
@@ -34,6 +34,8 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "Reflected employee, employer, and government funding-source point structures in order/point usage views and statistics flows",
     "Built an unsuitable-product management flow connecting keyword-based candidate review, operator decisions, and exposure-exclusion handling",
     "Refined representative-product, duplicate-product, and search-exposure criteria as a Hyugashop product/search data improvement case",
+    "Developed and operated related features while tracing login-session and accommodation-search/external-API response-cache flows in a service using Redis-backed Spring Session and Spring Cache",
+    "Traced the membership flow from client participant pre-registration and database-procedure-based account creation through KCB identity verification and account activation using code and SQL",
     "Implemented a National Assembly statistics workflow by restructuring order and point source data by date, product type, region, and point group, then connecting it to query and Excel export flows",
     "Extended daily report source-data loading and statistics screen criteria for participating companies/workers, purchases/cancellations, and remaining-point ranges",
     "Converted repeated bulk-processing work into admin functionality through Excel upload for message target lists"
@@ -61,6 +63,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "MyBatis",
     "SQL",
     "Batch",
+    "Redis",
     "Admin / Customer Portal",
     "Report / Source Data",
     "Point Funding Logic"

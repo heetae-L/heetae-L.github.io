@@ -16,7 +16,7 @@ export const benepiaServiceOperations: ProjectData = {
     scope: ["Java", "Spring Boot", "Oracle", "Web/Mobile", "ISMS"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring Boot", "Oracle", "MyBatis", "JSP", "jQuery"],
+  tags: ["Java", "Spring Boot", "Oracle", "MyBatis", "Redis", "JSP", "jQuery"],
   featured: false,
   overview:
     "Benepia is a welfare-commerce platform where multiple welfare malls for finance, public-sector, telecom, and other client groups run on top of a shared platform with different benefit policies, menus, application flows, card rules, and consent criteria.\n\nFrom February 2022 to March 2024, after converting to full-time employment, Benepia was my main workstream. I handled client-specific feature development, Web/Mobile screen changes, backoffice features, internal processing/API, database reflection, and ISMS/e-privacy security work together.\n\nThe core value was implementing client-specific policies and exception requirements as service features while preserving shared-platform stability, and verifying screen behavior, operations features, data persistence, and security impact together.",
@@ -38,6 +38,7 @@ export const benepiaServiceOperations: ProjectData = {
   ],
   devops: [
     "Validated internal processing/API plus member, application, consent, and history-data read/write flows by feature using Oracle DB and MyBatis/SQL, including whether operational tracking remained possible",
+    "Developed and operated client-specific features and verified data flows in a service environment using Redis for session and content caching",
     "Separated release risk by checking how client-specific exception features affected existing menu, application, consent, and history flows on the shared platform",
     "For ISMS/e-privacy work, reviewed security-risk items such as authentication, session, authorization, information exposure, and XSS/CSRF together with service-feature impact"
   ],
@@ -68,6 +69,7 @@ export const benepiaServiceOperations: ProjectData = {
     "Oracle",
     "MyBatis",
     "SQL",
+    "Redis",
     "PC / Mobile Web",
     "Admin / Backoffice",
     "ISMS / e-privacy"

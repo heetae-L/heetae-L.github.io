@@ -16,7 +16,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     scope: ["Web/App", "Admin", "Oracle", "Batch", "Statistics"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring Boot", "Oracle", "Batch"],
+  tags: ["Java", "Spring Boot", "Oracle", "Batch", "Redis"],
   featured: true,
   homeOrder: 4,
   overview:
@@ -34,6 +34,8 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "근로자·기업·정부 재원별 포인트 구조를 주문/포인트 사용내역과 통계 기준에 반영해 포인트 흐름을 구분 가능한 형태로 정리",
     "부적합 상품 관리 기능에서 키워드 기준 후보 상품 확인, 운영자 판정, 노출 제외 흐름을 연결해 상품 관리와 검색 노출 기준 구현",
     "대표상품/중복상품/검색 노출 기준 정비를 휴가샵 상품·검색 데이터 보강 사례로 정리",
+    "Redis 기반 Spring Session과 Spring Cache를 사용하는 서비스에서 로그인 세션과 숙소 검색·외부 API 응답 캐시 흐름을 분석하고 관련 기능 개발·운영",
+    "고객사 참여자 선등록, DB 프로시저 기반 회원 생성, KCB 본인인증, 회원정보 활성화로 이어지는 가입 흐름을 코드·SQL 기준으로 분석",
     "국회요구자료 통계 산출 기능에서 주문·포인트 원천 데이터를 일자, 상품 유형, 지역, 포인트 그룹 기준으로 재구성하고 조회/엑셀 출력 흐름 구현",
     "일일 리포트 원천 데이터 적재와 통계 화면 기준을 확장해 참여 기업/근로자, 구매/취소, 잔여 포인트 구간 확인 흐름 보강",
     "메시지 발송 대상 엑셀 업로드 기능으로 반복 대량 처리 업무를 관리자 기능으로 전환"
@@ -61,6 +63,7 @@ export const ktoHyugashopQualityReporting: ProjectData = {
     "MyBatis",
     "SQL",
     "Batch",
+    "Redis",
     "Admin / Customer Portal",
     "Report / Source Data",
     "Point Funding Logic"

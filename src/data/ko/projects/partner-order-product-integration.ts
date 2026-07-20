@@ -16,7 +16,7 @@ export const partnerOrderProductIntegration: ProjectData = {
     scope: ["Partner API", "Batch", "Oracle", "Search"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring Boot", "Oracle", "Batch"],
+  tags: ["Java", "Spring Boot", "Oracle", "Batch", "Java Concurrency"],
   featured: true,
   homeOrder: 1,
   overview:
@@ -31,8 +31,9 @@ export const partnerOrderProductIntegration: ProjectData = {
   contributions: [
     "실시간 주문 API와 일배치가 공존하는 구조에서 주문·취소·보정 데이터의 정합성 검증 기준을 설계",
     "복수 제휴사의 주문·상품 데이터 흐름에서 API 응답, 배치 보정, DB 저장, 예외 데이터 재처리 기준을 수립",
+    "CompletableFuture와 전용 ThreadPoolTaskExecutor로 복수 제휴사 API를 병렬 검증하는 통합검색 기능 개발·운영",
     "대규모 상품 pool의 파일 수신부터 적재·정규화·후처리·검색 노출까지 이어지는 end-to-end 데이터 검증 흐름을 표준 절차로 정립",
-    "검색 검증 호출과 사용자 외부 이동 경로를 분리해 검색 품질과 제휴사 이동 품질을 독립적으로 검증 가능한 구조 마련",
+    "검색 검증 호출과 사용자 외부 이동 경로를 분리하고 메뉴 노출·제휴사 설정·SSO·접속 조건을 단계별로 확인하는 진단 기준 정립",
     "상품 데이터가 정상 적재된 이후에도 검색 결과가 중복·상이 노출되는 문제를 상품 수집, 데이터 정규화, 검색 레코드 생성, 화면 노출 단계로 분리해 분석 기준 확립",
     "신규 제휴 온보딩에 필요한 점검 항목을 재사용 가능한 체크리스트와 연동 검증 가이드로 표준화"
   ],
@@ -56,7 +57,19 @@ export const partnerOrderProductIntegration: ProjectData = {
   sectionLabels: {
     devops: "Integration Reliability"
   },
-  techStack: ["Java", "Spring Boot", "Oracle", "MyBatis", "REST API", "Batch", "SQL", "Data Pipeline"],
+  techStack: [
+    "Java",
+    "Spring Boot",
+    "Oracle",
+    "MyBatis",
+    "REST API",
+    "Batch",
+    "SQL",
+    "Data Pipeline",
+    "Java Concurrency",
+    "CompletableFuture",
+    "ThreadPoolTaskExecutor"
+  ],
   architecture: [
     "External Partner Systems",
     "Order API / Product Files",

@@ -16,7 +16,7 @@ export const partnerOrderProductIntegration: ProjectData = {
     scope: ["Partner API", "Batch", "Oracle", "Search"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring Boot", "Oracle", "Batch"],
+  tags: ["Java", "Spring Boot", "Oracle", "Batch", "Java Concurrency"],
   featured: true,
   homeOrder: 1,
   overview:
@@ -31,8 +31,9 @@ export const partnerOrderProductIntegration: ProjectData = {
   contributions: [
     "Designed consistency-verification criteria for order, cancellation, and correction data where a real-time order API and a daily batch coexist",
     "Established criteria for API responses, batch correction, DB persistence, and exception-data reprocessing across recurring partner order and product flows",
+    "Developed and operated an integrated-search flow that validates multiple partner APIs in parallel using CompletableFuture and a dedicated ThreadPoolTaskExecutor",
     "Standardized an end-to-end data verification flow for a large product pool, from file receipt to ingestion, normalization, post-processing, and search exposure",
-    "Separated search-validation calls from user-facing external redirect paths so search quality and partner redirect quality could be verified independently",
+    "Separated search-validation calls from user-facing external redirects and established step-by-step checks for menu exposure, partner settings, SSO, and connectivity conditions",
     "Established an analysis standard for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure layers",
     "Standardized the checks required for new partner onboarding into a reusable checklist and integration-verification guide"
   ],
@@ -56,7 +57,19 @@ export const partnerOrderProductIntegration: ProjectData = {
   sectionLabels: {
     devops: "Integration Reliability"
   },
-  techStack: ["Java", "Spring Boot", "Oracle", "MyBatis", "REST API", "Batch", "SQL", "Data Pipeline"],
+  techStack: [
+    "Java",
+    "Spring Boot",
+    "Oracle",
+    "MyBatis",
+    "REST API",
+    "Batch",
+    "SQL",
+    "Data Pipeline",
+    "Java Concurrency",
+    "CompletableFuture",
+    "ThreadPoolTaskExecutor"
+  ],
   architecture: [
     "External Partner Systems",
     "Order API / Product Files",

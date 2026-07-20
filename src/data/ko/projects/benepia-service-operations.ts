@@ -16,7 +16,7 @@ export const benepiaServiceOperations: ProjectData = {
     scope: ["Java", "Spring Boot", "Oracle", "Web/Mobile", "ISMS"],
     relatedExperience: "skmns"
   },
-  tags: ["Java", "Spring Boot", "Oracle", "MyBatis", "JSP", "jQuery"],
+  tags: ["Java", "Spring Boot", "Oracle", "MyBatis", "Redis", "JSP", "jQuery"],
   featured: false,
   overview:
     "Benepia는 금융·공공·통신 계열 등 여러 고객사 복지몰이 공통 플랫폼 위에서 각기 다른 복지 정책, 메뉴, 신청 흐름, 카드/동의 기준으로 운영되는 복지 커머스 플랫폼.\n\n2022년 2월 정규직 전환 이후 2024년 3월까지 Benepia를 메인 업무 축으로 담당하며 고객사별 기능 개발, Web/Mobile 화면 변경, 백오피스 기능, 내부 처리/API, DB 반영, ISMS/e-privacy 보안 조치를 함께 처리.\n\n핵심은 공통 플랫폼의 안정성을 유지하면서 고객사별 정책과 예외 요구사항을 서비스 기능으로 구현하고, 화면·운영 기능·데이터 저장·보안 영향 범위를 함께 검증한 업무.",
@@ -38,6 +38,7 @@ export const benepiaServiceOperations: ProjectData = {
   ],
   devops: [
     "Oracle DB와 MyBatis/SQL 기반으로 내부 처리/API, 회원, 신청, 동의, 이력 데이터의 조회/저장 흐름과 운영 추적 가능 여부를 기능 단위로 검증",
+    "세션과 콘텐츠 캐시에 Redis를 사용하는 서비스 환경에서 고객사 기능 개발·운영과 데이터 흐름 검증",
     "공통 플랫폼 위 고객사별 예외 기능이 기존 메뉴, 신청, 동의, 이력 흐름에 미치는 영향 범위를 확인하고 릴리즈 리스크를 분리",
     "ISMS/e-privacy 조치에서 인증, 세션, 권한, 정보노출, XSS/CSRF 등 보안 리스크 항목을 서비스 기능 영향과 함께 점검"
   ],
@@ -68,6 +69,7 @@ export const benepiaServiceOperations: ProjectData = {
     "Oracle",
     "MyBatis",
     "SQL",
+    "Redis",
     "PC / Mobile Web",
     "Admin / Backoffice",
     "ISMS / e-privacy"

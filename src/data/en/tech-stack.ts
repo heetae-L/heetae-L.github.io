@@ -17,7 +17,11 @@ export const techStack: TechStackData = {
         { name: "Spring Boot", description: "Backend application and service API development" },
         { name: "Spring Framework", description: "Existing service structure and business logic development" },
         { name: "REST API", description: "Service features and external system integration APIs" },
-        { name: "Batch", description: "Scheduled processing, data collection, and post-processing flows" }
+        { name: "Batch", description: "Scheduled processing, data collection, and post-processing flows" },
+        {
+          name: "Java Concurrency",
+          description: "Worked with parallel external API processing flows built with CompletableFuture and dedicated thread pools"
+        }
       ]
     },
     {
@@ -39,7 +43,7 @@ export const techStack: TechStackData = {
       id: "database",
       icon: "database",
       title: "Database",
-      summary: "Oracle · SQL · data consistency",
+      summary: "Oracle · SQL · Redis",
       featured: true,
       homeOrder: 3,
       items: [
@@ -47,7 +51,11 @@ export const techStack: TechStackData = {
         { name: "MyBatis", description: "SQL-centric business logic and Java object mapping" },
         { name: "SQL", description: "Data consistency checks, reporting queries, and batch-result analysis" },
         { name: "PL/SQL / Procedure", description: "Database-side processing logic and batch post-processing analysis" },
-        { name: "MERGE", description: "Reference-data updates and bulk data correction" }
+        { name: "MERGE", description: "Reference-data updates and bulk data correction" },
+        {
+          name: "Redis",
+          description: "Development and operations experience with services using Redis for Spring Session and query-result caching"
+        }
       ]
     },
     {
