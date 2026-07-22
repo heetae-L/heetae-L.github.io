@@ -20,7 +20,8 @@ export const techStack: TechStackData = {
         { name: "Batch", description: "정기 처리, 데이터 수집, 후처리성 업무 흐름 구현" },
         {
           name: "Java Concurrency",
-          description: "CompletableFuture와 전용 Thread Pool 기반 외부 API 병렬 처리 흐름을 다룬 경험"
+          description:
+            "CompletableFuture·전용 Thread Pool과 WebFlux 기반 병렬 검색 구조가 적용된 서비스 개발·운영 및 흐름 분석"
         }
       ]
     },

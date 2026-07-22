@@ -20,7 +20,8 @@ export const techStack: TechStackData = {
         { name: "Batch", description: "Scheduled processing, data collection, and post-processing flows" },
         {
           name: "Java Concurrency",
-          description: "Worked with parallel external API processing flows built with CompletableFuture and dedicated thread pools"
+          description:
+            "Development, operations, and flow analysis for a search service using CompletableFuture, a dedicated thread pool, and WebFlux-based parallel processing"
         }
       ]
     },
