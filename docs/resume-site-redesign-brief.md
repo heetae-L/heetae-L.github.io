@@ -198,15 +198,14 @@ Groups:
 
 ## Resume Download Strategy
 
-현재 별도 PDF 파일은 없습니다.
+제출용 포트폴리오 PDF를 정적 파일로 제공합니다.
 
-정적 GitHub Pages 환경에서는 서버에서 PDF를 동적으로 생성하는 방식은 적합하지 않습니다. 대신 1차 구현에서는 다음 방식을 사용합니다.
+정적 GitHub Pages 환경에 맞춰 다음 방식을 사용합니다.
 
-- `Download Resume` 버튼은 브라우저 인쇄 기능(`window.print()`)을 호출
-- 사용자는 브라우저의 `Save as PDF` 기능으로 현재 페이지를 PDF 저장
-- print stylesheet를 별도로 다듬어 웹 이력서가 PDF로도 읽히게 만듦
-
-나중에 필요하면 `public/resume.pdf` 같은 정적 PDF 파일을 추가하고 버튼을 직접 다운로드 링크로 바꿀 수 있습니다.
+- PDF는 `public/downloads/heetae-lee-portfolio.pdf`에서 관리
+- 헤더와 메인 화면의 `Download Portfolio` 버튼이 PDF를 직접 다운로드
+- 현재 PDF는 한국어 버전이므로 영문 화면에는 `Download Portfolio (KO)`로 표시
+- 브라우저 인쇄는 전용 버튼 없이 기본 인쇄 기능을 사용
 
 ## Internationalization
 
@@ -397,6 +396,6 @@ locale-aware metadata를 지원합니다.
 - 한국어가 기본 locale
 - `/`는 `/ko`로 redirect
 - `Capture` 버튼은 제거
-- PDF 파일은 당장 만들지 않고 `window.print()` 기반으로 시작
+- 제출용 포트폴리오 PDF를 `public/downloads`에서 정적 파일로 제공
 - 실제 프로젝트 데이터는 나중에 반영
 - 우선 디자인과 구조를 먼저 잡음

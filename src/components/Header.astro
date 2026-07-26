@@ -1,7 +1,7 @@
 ---
-import { GitBranch, Menu, Printer, X } from "@lucide/astro";
+import { Download, GitBranch, Menu, X } from "@lucide/astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { type Locale, withLocale } from "../i18n/config";
+import { portfolioDownloadPath, type Locale, withLocale } from "../i18n/config";
 import type { SiteContent } from "../data";
 
 interface Props {
@@ -55,14 +55,14 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
     </nav>
 
     <div class="hidden items-center gap-3 md:flex">
-      <button
-        type="button"
-        data-print-resume
+      <a
+        href={portfolioDownloadPath}
+        download="heetae-lee-portfolio.pdf"
         class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
       >
-        <Printer class="h-4 w-4" />
-        {content.common.downloadResume}
-      </button>
+        <Download class="h-4 w-4" />
+        {content.common.downloadPortfolio}
+      </a>
       <LanguageSwitcher locale={locale} currentPath={currentPath} />
       {
         !portfolioMode && (
@@ -108,14 +108,14 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
       }
     </nav>
     <div class="mt-5 flex flex-wrap items-center gap-3">
-      <button
-        type="button"
-        data-print-resume
+      <a
+        href={portfolioDownloadPath}
+        download="heetae-lee-portfolio.pdf"
         class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white"
       >
-        <Printer class="h-4 w-4" />
-        {content.common.downloadResume}
-      </button>
+        <Download class="h-4 w-4" />
+        {content.common.downloadPortfolio}
+      </a>
       <LanguageSwitcher locale={locale} currentPath={currentPath} />
     </div>
   </div>
@@ -143,9 +143,5 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
     mobileMenu?.classList.toggle("hidden", isExpanded);
     openIcon?.classList.toggle("hidden", !isExpanded);
     closeIcon?.classList.toggle("hidden", isExpanded);
-  });
-
-  document.querySelectorAll("[data-print-resume]").forEach((button) => {
-    button.addEventListener("click", () => window.print());
   });
 </script>
