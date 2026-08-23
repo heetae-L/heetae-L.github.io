@@ -16,6 +16,10 @@ export const techStack: TechStackData = {
         { name: "Java", description: "Primary language for implementing service APIs and business logic" },
         { name: "Spring Boot", description: "Backend application and service API development" },
         { name: "Spring Framework", description: "Existing service structure and business logic development" },
+        {
+          name: "Spring Transaction",
+          description: "Analyzed transaction boundaries across service operations and isolated failure impact"
+        },
         { name: "REST API", description: "Service features and external system integration APIs" },
         { name: "Batch", description: "Scheduled processing, data collection, and post-processing flows" },
         {

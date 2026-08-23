@@ -16,6 +16,10 @@ export const techStack: TechStackData = {
         { name: "Java", description: "서비스 API와 업무 로직 구현에 사용하는 주력 언어" },
         { name: "Spring Boot", description: "서비스 API와 백엔드 애플리케이션 개발에 사용" },
         { name: "Spring Framework", description: "기존 서비스 구조와 업무 로직 개발에 사용" },
+        {
+          name: "Spring Transaction",
+          description: "서비스 처리 간 트랜잭션 경계를 분석하고 실패 영향 범위를 분리"
+        },
         { name: "REST API", description: "서비스 기능과 외부 시스템 연동 API 구현" },
         { name: "Batch", description: "정기 처리, 데이터 수집, 후처리성 업무 흐름 구현" },
         {

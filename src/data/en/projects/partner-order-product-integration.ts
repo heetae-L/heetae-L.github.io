@@ -31,13 +31,14 @@ export const partnerOrderProductIntegration: ProjectData = {
   contributions: [
     "Designed consistency-verification criteria for order, cancellation, and correction data where a real-time order API and a daily batch coexist",
     "Established criteria for API responses, batch correction, DB persistence, and exception-data reprocessing across recurring partner order and product flows",
-    "Developed and operated an integrated search service that calls multiple partner APIs in parallel, contributed to stabilizing asynchronous task and result aggregation order, and directly improved partner-level failure isolation for malformed responses",
+    "Improved task and result aggregation order and partner-level failure isolation in asynchronous integrated search, and analyzed and operated Thread/WebFlux-based search paths",
     "Standardized an end-to-end data verification flow for a large product pool, from file receipt to ingestion, normalization, post-processing, and search exposure",
     "Separated search-validation calls from user-facing external redirects and established step-by-step checks for menu exposure, partner settings, SSO, and connectivity conditions",
     "Established an analysis standard for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure layers",
     "Standardized the checks required for new partner onboarding into a reusable checklist and integration-verification guide"
   ],
   troubleshooting: [
+    "Separated transaction boundaries between order persistence and follow-up processing so downstream failures would not affect the order transaction",
     "Validated required fields, arrays, and price formats in partner responses and isolated parsing failures per partner so a malformed response would not fail the entire search",
     "Built a step-by-step verification system covering data ingestion, normalization, post-processing, search-record generation, and service exposure",
     "Defined root-cause analysis criteria for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure stages",
@@ -61,6 +62,7 @@ export const partnerOrderProductIntegration: ProjectData = {
   techStack: [
     "Java",
     "Spring Boot",
+    "Spring Transaction",
     "Oracle",
     "MyBatis",
     "REST API",
@@ -78,8 +80,9 @@ export const partnerOrderProductIntegration: ProjectData = {
     "Order API / Product Files",
     "API & Batch Ingestion",
     "Product Normalization / Oracle Flow",
-    "Search Records / Parallel Partner Validation",
+    "Elasticsearch Search Records",
+    "Parallel Partner Validation APIs",
     "Service Exposure / External Redirect"
   ],
-  architectureNote: "API / Batch / DB / Parallel Search Reliability Checks"
+  architectureNote: "API / Batch / DB / Elasticsearch / Partner API Reliability Checks"
 };

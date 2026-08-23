@@ -20,6 +20,7 @@ export const experience: ExperienceData = {
       ],
       bullets: [
         "Since 2026, have led travel and leisure partner integrations across product/order collection APIs, batch flows, and search exposure while continuing KTO Hyugashop web/app feature development",
+        "Separated transaction boundaries between order persistence and follow-up processing so downstream failures would not affect the order transaction",
         "In 2025, expanded from KTO Hyugashop into travel and leisure partner integrations, structuring partner-facing product, order, and search-data flows around commerce-service requirements",
         "Since 2024.04, have implemented KTO Hyugashop web/app commerce features connecting user/admin/customer screens with APIs, DB/batch flows, point usage, and statistics",
         "In 2023 H2, developed the company's first Python/Flask and Azure OpenAI based AI API project, covering Docker, GitLab CI, and Nomad deployment validation end-to-end",

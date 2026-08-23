@@ -31,13 +31,14 @@ export const partnerOrderProductIntegration: ProjectData = {
   contributions: [
     "실시간 주문 API와 일배치가 공존하는 구조에서 주문·취소·보정 데이터의 정합성 검증 기준을 설계",
     "복수 제휴사의 주문·상품 데이터 흐름에서 API 응답, 배치 보정, DB 저장, 예외 데이터 재처리 기준을 수립",
-    "복수 제휴사 API를 병렬 호출하는 통합검색을 개발·운영하고, 비동기 작업·결과 집계 순서 안정화에 참여했으며 비정상 응답의 제휴사 단위 실패 격리를 직접 개선",
+    "비동기 통합검색의 작업·결과 집계 순서와 제휴사 단위 실패 격리를 개선하고, Thread/WebFlux 기반 검색 경로를 분석·운영",
     "대규모 상품 pool의 파일 수신부터 적재·정규화·후처리·검색 노출까지 이어지는 end-to-end 데이터 검증 흐름을 표준 절차로 정립",
     "검색 검증 호출과 사용자 외부 이동 경로를 분리하고 메뉴 노출·제휴사 설정·SSO·접속 조건을 단계별로 확인하는 진단 기준 정립",
     "상품 데이터가 정상 적재된 이후에도 검색 결과가 중복·상이 노출되는 문제를 상품 수집, 데이터 정규화, 검색 레코드 생성, 화면 노출 단계로 분리해 분석 기준 확립",
     "신규 제휴 온보딩에 필요한 점검 항목을 재사용 가능한 체크리스트와 연동 검증 가이드로 표준화"
   ],
   troubleshooting: [
+    "주문 저장과 후속 처리의 트랜잭션 경계를 분리해 후속 처리 실패가 주문 트랜잭션에 영향을 주지 않도록 개선",
     "제휴사 응답의 필수 필드·배열·가격 형식을 검증하고 파싱 예외를 제휴사 단위로 격리해 일부 비정상 응답이 전체 검색 실패로 확산되지 않도록 개선",
     "데이터 적재, 정규화, 후처리, 검색 레코드 생성, 서비스 노출까지 이어지는 단계별 검증 체계를 구성",
     "검색 결과 중복·상이 노출 문제를 상품 수집, 데이터 정규화, 검색 레코드 생성, 화면 노출 단계로 분리해 원인 분석 기준 정립",
@@ -61,6 +62,7 @@ export const partnerOrderProductIntegration: ProjectData = {
   techStack: [
     "Java",
     "Spring Boot",
+    "Spring Transaction",
     "Oracle",
     "MyBatis",
     "REST API",
@@ -78,8 +80,9 @@ export const partnerOrderProductIntegration: ProjectData = {
     "Order API / Product Files",
     "API & Batch Ingestion",
     "Product Normalization / Oracle Flow",
-    "Search Records / Parallel Partner Validation",
+    "Elasticsearch Search Records",
+    "Parallel Partner Validation APIs",
     "Service Exposure / External Redirect"
   ],
-  architectureNote: "API / Batch / DB / Parallel Search Reliability Checks"
+  architectureNote: "API / Batch / DB / Elasticsearch / Partner API Reliability Checks"
 };
