@@ -88,7 +88,7 @@ export const techStack: TechStackData = {
       homeOrder: 5,
       items: [
         { name: "AI-assisted Engineering", description: "Using AI for issue analysis, documentation, and verification workflows" },
-        { name: "AI-DLC", description: "Structuring work context, code flow, and test cases as AI-readable knowledge" },
+        { name: "AI-DLC / AI Harness", description: "Building an AI-assisted environment around shared knowledge, work rules, and verification criteria" },
         { name: "Prompt Design", description: "Input constraints and response criteria aligned with service goals" },
         { name: "Structured AI Response", description: "Designing AI responses as service-friendly JSON structures" },
         { name: "OpenAI API", description: "LLM request/response flow and error-handling rule implementation" },
