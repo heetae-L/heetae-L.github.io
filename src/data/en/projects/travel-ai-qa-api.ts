@@ -6,7 +6,7 @@ export const travelAiQaApi: ProjectData = {
   icon: "bot",
   title: "Travel AI Q&A API Development",
   summary:
-    "Built the company's first Python/Flask-based TourGPT Gateway API Server during the early ChatGPT adoption wave in 2023, connecting GPT-3.5 Turbo on Azure OpenAI, Oracle, Docker/GitLab CI/Nomad, and production deployment validation.",
+    "Built the company's first Python/Flask travel Q&A API, leading Azure OpenAI integration, conversation-history persistence, Docker packaging, and production deployment validation.",
   meta: {
     sourceType: "Professional Work / TF",
     company: "SK M&Service",
@@ -20,45 +20,35 @@ export const travelAiQaApi: ProjectData = {
   featured: true,
   homeOrder: 2,
   overview:
-    "Built the core processing server for a GPT-3.5 Turbo-based travel Q&A feature in 2023, when ChatGPT was just beginning to be considered for real service use.\n\nThe Hyugashop mobile screen was the user-facing AI travel information entry point. My direct implementation scope was the Python/Flask-based TourGPT Gateway API Server behind that flow, receiving service calls and handling question-scope classification, GPT answer generation calls, response JSON construction, and conversation-history persistence.\n\nRather than mixing the feature into the existing Hyugashop/Benepia service codebase, I packaged it as a separate Python API server running in its own Docker container and connected it behind the existing service API layer.\n\nIn an operating environment centered on Java and Spring Boot, I worked on the company's first Python/Flask-based GPT API Server effort, connecting GPT calls through the designated Azure OpenAI environment, response-state design, Oracle history storage, Docker images, GitLab CI, Nomad jobs, and health checks.\n\nBecause there was effectively no internal reference for operating a Python web API in production, this project required defining the implementation, runtime, CI/CD, and deployment validation standards from the ground up.",
+    "Built the company's first Python/Flask travel Q&A Gateway API in 2023, as ChatGPT was beginning to be adopted in real services.\n\nLearned Python, Flask, and Azure OpenAI beyond my primary Java/Spring stack while leading requirements refinement, API design and implementation, database integration, and production deployment validation. With no internal Python web API deployment reference, worked with the infrastructure team to establish runtime and deployment practices.\n\nImplemented question-scope classification, answer generation, response JSON construction, and conversation-history persistence in a standalone server called by the existing service API, then packaged and deployed it as a separate Docker container.",
   problem:
-    "In 2023, service patterns for LLM APIs, structured responses, and production deployment were far less mature than they are now.\n\nThe existing internal service stack was centered on Java and Spring Boot, so the team had to establish how to run a Python/Flask Gateway API Server as a separate production container, including Docker image design, deployment jobs, health checks, log paths, Oracle client setup, and proxy configuration.\n\nThis was not a simple GPT call demo. It was the company's first Python-based AI API effort that had to work as a Gateway API Server callable from mobile/service APIs, with response states, conversation-history storage, and production deployment validation.",
+    "The API needed to distinguish questions outside the domestic-travel scope and convert inconsistent model output into status values and JSON that the service could handle. Classification results had to drive the actual answer-generation and guidance-message flow.\n\nIn a Java/Spring-centered environment without a Python production deployment reference, container execution, Oracle connectivity, external AI API calls, logging, and health checks all required validation. The central challenge was turning a locally working API into a deployment that the existing service could call.",
   role: [
-    "Led API implementation and response JSON structure design for the company's first Python/Flask-based TourGPT Gateway API Server",
-    "Defined the domestic travel Q&A service scope, request/response JSON structure, status codes, and error/blocking message rules",
-    "Implemented GPT-3.5 Turbo calls through the designated Azure OpenAI environment, question-scope classification, answer-generation flow, response JSON construction, conversation-history persistence, and session cache handling",
-    "Aligned runtime validation standards with the infrastructure team for Docker images, GitLab CI, Nomad jobs, log paths, health checks, proxy configuration, and Oracle client setup"
+    "Led requirements refinement, API design and implementation, database integration, and deployment validation in a two-person task force with the CTO",
+    "Owned the Gateway API called by the mobile service, implementing question classification, answer generation, response-state handling, and history persistence",
+    "Worked with the infrastructure team to validate container execution, external API and database connectivity, health checks, and rollback conditions"
   ],
   contributions: [
-    "Separated question eligibility classification from answer generation into a two-step GPT call flow, allowing the TourGPT Gateway API Server to block out-of-domain questions at the server layer",
-    "Shaped AI responses into service-consumable fields such as status, answer, keywords, and system message",
-    "Connected Gateway response states and guide messages to the user flow covering question input, loading, answer display, and usage policy screens",
-    "Stored conversation history in Oracle and maintained recent session context through an in-process cache structure",
-    "Validated dependencies, Oracle client setup, Docker base images, GitLab CI jobs, Nomad jobs, and environment-specific configuration in an organization with no established Python service deployment standard",
-    "Separated proxy, logging, health check, and canary/rollback concerns into production deployment checkpoints for the Python API",
-    "Identified early operationalization standards for GPT APIs, including sensitive configuration separation, dependency reproducibility, and response schema validation"
+    "Designed a two-stage Azure OpenAI flow for question classification and answer generation. Sent eligible domestic-travel questions to answer generation and returned guidance messages for out-of-scope questions",
+    "Defined an API contract with status values and JSON for successful, out-of-scope, and error responses, including answers, keywords, and guidance so the existing service could handle each response appropriately",
+    "Implemented persistent question and answer history in Oracle and recent per-session context in a process-local LRU cache, supporting both history retention and conversation context across requests",
+    "Packaged the standalone Gateway in its own Docker container and verified the integration from request receipt through model calls, response delivery, and database persistence"
   ],
   troubleshooting: [
-    "Prepared validation and correction flows for cases where GPT-3.5 Turbo returned responses outside the intended JSON structure",
-    "Separated Azure OpenAI call failures by network, authentication, and response-handling layers to handle internal proxy constraints",
-    "Aligned daily question limits, domestic travel scope, privacy-entry warnings, and answer-limit notices with Gateway response states and service guide messages",
-    "Reduced development/production connection risk by repeatedly validating Oracle client behavior inside the Python container runtime",
-    "Worked through the lack of Python service operating references by validating Docker images, package installation, log volumes, and Nomad resource/service checks one by one",
-    "Extended simple runtime success into production-readiness by adding health check paths and deployment validation flow"
+    "Implemented parsing, validation, and correction logic for inconsistent classification JSON and iterated on prompts so classification results could drive answer-generation and guidance branches",
+    "Investigated external AI API failures by distinguishing Azure OpenAI call and authentication requirements from network proxy configuration, then adjusted settings for the runtime environment",
+    "Repeatedly validated image composition and connection settings so Python packages and Oracle Client worked together inside the container, resolving differences between development and production"
   ],
   results: [
-    "Built the company's first Python/Flask-based TourGPT Gateway API Server end to end, from requirement shaping and API implementation to DB integration, container execution, CI/CD, and Nomad deployment validation",
-    "Connected GPT-3.5 Turbo during the early ChatGPT adoption period as a service-style Gateway API Server spanning user screens, service APIs, operational DB storage, and deployment runtime",
-    "Implemented the core Gateway layer behind the user flow from mobile entry and question start to usage guidance, loading state, and answer result",
-    "Established a new Python service runtime and deployment-validation pattern in an organization centered on Java and Spring Boot, creating a technical reference for later Python/AI API adoption",
-    "Connected AI API implementation, Python runtime, Oracle integration, and Docker/GitLab CI/Nomad deployment validation into a service-ready new-technology adoption effort"
+    "Delivered the company's first Python-based AI API, covering question classification, answer generation, and history persistence, in a form the existing service could call and deploy to production",
+    "Validated runtime configuration including logging, health checks, and rollback conditions, creating a deployment reference for future Python services",
+    "Led a project that combined learning a new language and AI API with service requirements, backend implementation, and production-environment validation"
   ],
   devops: [
-    "Packaged the Python/Flask-based TourGPT Gateway API Server as a separate Docker container and configured the GitLab CI build/deploy job flow",
-    "Designed an operation-ready execution structure by separating development/production branches, environment-specific config, image tags, log volumes, resources, and service checks",
-    "Solved reproducibility constraints around Python dependencies and Oracle client setup by validating Docker base images, package composition, and proxy configuration for deployment behind the existing Hyugashop/Benepia operating environment",
-    "Validated Nomad docker-driver behavior, health checks, canary, and auto-revert conditions with the infrastructure team so the Python API was treated as a deployable, observable, recoverable service rather than experiment code",
-    "Worked with the infrastructure team to establish deployment execution and incident-response criteria for a Python API runtime reference that did not previously exist inside the organization"
+    "Configured Docker images and GitLab CI build and deployment jobs, connecting the Python API's container build to deployment execution",
+    "Separated development and production configuration and Nomad runtime settings, validating execution requirements for containers with Python dependencies and Oracle Client",
+    "Configured log storage outside the container and configuration loading to support post-deployment runtime checks and error investigation",
+    "Implemented a health-check endpoint and validated health checks, canary deployment, and rollback conditions with the infrastructure team to establish deployment verification and recovery criteria"
   ],
   sectionLabels: {
     screenshots: "Service Screenshots",
@@ -84,20 +74,20 @@ export const travelAiQaApi: ProjectData = {
     "Hyugashop Mobile Entry",
     "Chat UI / Usage Policy",
     "Service API Bridge",
-    "TourGPT Gateway API Server (Python/Flask)",
+    "AI Q&A Gateway API (Python/Flask)",
     "Scope Classifier / Response JSON Rules",
     "Azure OpenAI GPT-3.5 Turbo",
     "Oracle Q/A History",
     "Docker Container / GitLab CI",
     "Nomad Runtime / Health Check / Canary"
   ],
-  architectureNote: "TourGPT Gateway API Server + Azure OpenAI + Container Runtime",
+  architectureNote: "AI Q&A Gateway API + Azure OpenAI + Container Runtime",
   screenshots: [
     {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-entry.jpg",
       alt: "Hyugashop mobile main screen showing the AI travel information menu",
       title: "Mobile Entry Point",
-      caption: "The mobile entry point for AI travel information connected to the TourGPT Gateway API Server. User questions start at this touchpoint and pass through the service API to the Gateway API Server.",
+      caption: "Mobile entry point for travel Q&A. The API I built processes questions behind the existing service.",
       width: 904,
       height: 2232
     },
@@ -105,7 +95,7 @@ export const travelAiQaApi: ProjectData = {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-chat-start.jpg",
       alt: "Initial AI travel information chat screen",
       title: "Chat Start",
-      caption: "The question-entry screen before the TourGPT Gateway API Server call. After submission, the Gateway API Server handles scope classification and the GPT answer-generation flow.",
+      caption: "Question-entry screen. The server classifies the question's scope before generating an answer.",
       width: 904,
       height: 2232
     },
@@ -113,7 +103,7 @@ export const travelAiQaApi: ProjectData = {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-guide.jpg",
       alt: "AI travel information usage guide screen",
       title: "Usage Policy",
-      caption: "A policy screen where question limits, domestic travel scope, privacy-entry warnings, and answer limitations connect back to TourGPT Gateway API Server response states and guide-message rules.",
+      caption: "Service guidance on domestic-travel scope and usage conditions, used when defining out-of-scope responses and guidance messages.",
       width: 904,
       height: 2232
     },
@@ -121,7 +111,7 @@ export const travelAiQaApi: ProjectData = {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-loading.jpg",
       alt: "AI travel information answer loading screen",
       title: "Loading State",
-      caption: "The waiting state shown while the TourGPT Gateway API Server processes an Azure OpenAI GPT-3.5 Turbo call, with timeout and response-state handling reflected in the user feedback flow.",
+      caption: "Waiting screen during answer generation. Model output is returned through the Gateway API.",
       width: 904,
       height: 2232
     },
@@ -129,7 +119,7 @@ export const travelAiQaApi: ProjectData = {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-answer.jpg",
       alt: "AI travel information question and answer result screen",
       title: "Answer Result",
-      caption: "The result screen where Azure OpenAI GPT-3.5 Turbo output is shaped by the TourGPT Gateway API Server into the service response contract and displayed in the mobile chat UI, including long answers, status messages, and history persistence.",
+      caption: "Answer and guidance display. The existing service presents response data generated by the Gateway API.",
       width: 903,
       height: 3516
     }

@@ -6,7 +6,7 @@ export const partnerOrderProductIntegration: ProjectData = {
   icon: "cart",
   title: "Travel & Leisure Partner Integration Platform",
   summary:
-    "Backend integration platform project connecting multiple travel, accommodation, and leisure partners to order, product, and search flows, verifying recurring partner data and a large product pool across API, batch, database, and search-exposure criteria.",
+    "Developed order and product integrations with travel, accommodation, and leisure partners, improving API and batch reliability through transaction separation and isolation of malformed partner responses.",
   meta: {
     sourceType: "Professional Work",
     company: "SK M&Service",
@@ -20,41 +20,35 @@ export const partnerOrderProductIntegration: ProjectData = {
   featured: true,
   homeOrder: 1,
   overview:
-    "Connected partner-provided order/cancellation data, product information, search exposure, and external redirect flows with internal APIs, batch jobs, databases, and search structures on an employee-benefit and travel commerce platform.\n\nWorked in an environment where order and product data from multiple partners repeatedly flowed through real-time APIs and scheduled batches, verifying API responses, batch correction, DB persistence, exception-data reprocessing, product normalization, and search-exposure criteria together.\n\nThe core value was platformizing partner integration: not a one-off feature build, but a shared backend verification flow for onboarding new partners and absorbing partner-specific integration differences.",
+    "A backend integration project connecting travel, accommodation, and leisure partners to order and cancellation APIs, product collection batches, integrated search, and external redirects on an employee-benefit and travel commerce platform.\n\nReal-time order collection ran alongside batch correction, while product data passed through persistence, normalization, and search-data generation before reaching the service. Adapted partner-specific responses and product requirements to these flows, checking both database updates and actual search results.\n\nOwned new partner integration development alongside reliability improvements to existing processing. Focused on limiting the impact of external integration failures through transaction separation, malformed-response isolation, and tracing of search-data issues.",
   problem:
-    "Each partner had different API response formats, file-transfer methods, product types, search conditions, and connectivity requirements, so a one-off integration approach could not guarantee consistent service quality.\n\nEven when data was received successfully, the platform still needed to verify that orders, products, and search exposure were reflected consistently across API, batch, database, and search layers.",
+    "Partner APIs, product data, and connectivity requirements varied, requiring explicit handling of integration-specific exceptions.\n\nSuccessful data collection alone did not establish that orders were saved or products appeared correctly in search. Verification needed to connect the outcomes of API calls, batch jobs, and database processing.",
   role: [
-    "Expanded responsibility into travel/leisure partner integration while continuing service development for Korea Tourism Organization (KTO) Hyugashop",
-    "Since 2026, designed and led new partner onboarding while owning integration-quality criteria and partner-facing technical communication standards",
-    "Standardized communication with business teams and external partners by sharing request/response context, data state, and connectivity conditions in a consistent format"
+    "Expanded into partner integration while developing KTO Hyugashop services in 2025, then became the primary engineer for travel and leisure partner integration in 2026",
+    "Led new integrations from requirements review through API and batch development, pre-launch verification, and production issue investigation",
+    "Coordinated specifications, data processing results, and connectivity requirements with business teams and external partners, using code and data findings to guide technical decisions and responses"
   ],
   contributions: [
-    "Designed consistency-verification criteria for order, cancellation, and correction data where a real-time order API and a daily batch coexist",
-    "Established criteria for API responses, batch correction, DB persistence, and exception-data reprocessing across recurring partner order and product flows",
-    "Improved task and result aggregation order and partner-level failure isolation in asynchronous integrated search, and analyzed and operated Thread/WebFlux-based search paths",
-    "Standardized an end-to-end data verification flow for a large product pool, from file receipt to ingestion, normalization, post-processing, and search exposure",
-    "Separated search-validation calls from user-facing external redirects and established step-by-step checks for menu exposure, partner settings, SSO, and connectivity conditions",
-    "Established an analysis standard for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure layers",
-    "Standardized the checks required for new partner onboarding into a reusable checklist and integration-verification guide"
+    "Developed and improved real-time order collection and batch correction flows, verifying order and cancellation states against database results",
+    "Analyzed product collection, persistence, normalization, and search-data generation to define partner-specific processing and reprocessing checks",
+    "Stabilized task registration order in asynchronous search and analyzed timeouts and result aggregation in CompletableFuture and WebClient call paths to implement new partner API integrations",
+    "Distinguished search API calls from user-facing redirects, verifying menu visibility, partner settings, authentication, and connectivity at each stage",
+    "Documented request and response specifications, exception cases, and pre-launch checks in a reusable integration guide"
   ],
   troubleshooting: [
-    "Separated transaction boundaries between order persistence and follow-up processing so downstream failures would not affect the order transaction",
+    "Separated transaction boundaries between order persistence and follow-up processing so downstream failures would not affect the order transaction. To preserve the synchronous flow and control the scope of the change, designed and implemented a separate Facade that invokes follow-up processing after the order transaction completes",
     "Validated required fields, arrays, and price formats in partner responses and isolated parsing failures per partner so a malformed response would not fail the entire search",
-    "Built a step-by-step verification system covering data ingestion, normalization, post-processing, search-record generation, and service exposure",
-    "Defined root-cause analysis criteria for duplicate or inconsistent search results by separating product collection, data normalization, search-record generation, and screen exposure stages",
-    "Separated collection direction and validation direction to classify partner-integration inconsistencies across data, API response, and connectivity layers",
-    "Structured recurring verification cases and procedures as a Markdown knowledge base, then validated AI-DLC root-cause candidates with code, queries, and tests"
+    "Investigated unexpected search results despite correct product mappings. Traced mapping data separately from post-processing and search-data generation, identifying the stage that created additional searchable products"
   ],
   results: [
-    "Built a reusable partner-integration verification flow and checklist for new partner onboarding, turning partner-specific handling into a repeatable structure",
-    "Clarified observation points across order, product, and search-data flows to narrow the investigation scope when data inconsistencies occur",
-    "Established a verification system for consistently managing API, batch, database, and search-exposure criteria across large recurring order and product data flows",
-    "Improved partner collaboration quality by defining technical criteria that business teams and external partners could share"
+    "Improved order-processing and integrated-search reliability by limiting the impact of downstream failures and malformed partner responses",
+    "Established checkpoints from collection to search results to support root-cause investigation and reprocessing decisions",
+    "Consolidated partner-specific integration requirements and exception cases into shared verification procedures and checklists, establishing reusable checks for onboarding new partners"
   ],
   devops: [
-    "Separated integration settings by environment to manage test stability and service risk",
-    "Defined partner-call direction, data verification criteria, and connectivity requirements as explicit integration-quality checks",
-    "Standardized batch execution, exception history, DB persistence, and search-record generation as service data verification checkpoints"
+    "Distinguished environment settings and call direction to diagnose external API issues across response handling, networking, and access requirements",
+    "Connected batch execution history with database results to verify reprocessing and successful data updates",
+    "Structured integration specifications and verification cases in Markdown, then personally checked AI-suggested causes against code, queries, and tests before applying them"
   ],
   sectionLabels: {
     devops: "Integration Reliability"
