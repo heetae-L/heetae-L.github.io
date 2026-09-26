@@ -4,9 +4,9 @@ export const home: HomeData = {
   badge: "Software Engineer",
   name: "Heetae Lee",
   role: "Software Engineer",
-  headline: "Built to Run.\nDesigned to Last.",
+  headline: "Built to Run.\nBuilt to Last.",
   summary:
-    "복잡한 요구사항을 단순한 구조로 정리하고,\n실제로 오래 돌아가는 백엔드 시스템을 만듭니다.",
+    "복잡한 요구사항을 단순한 구조로 정리하고,\n안정적으로 운영하고 개선할 수 있는 백엔드 시스템을 만듭니다.",
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
