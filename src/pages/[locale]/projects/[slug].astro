@@ -1,6 +1,7 @@
 ---
 import { ArrowLeft } from "@lucide/astro";
 import ArchitectureDiagram from "../../../components/ArchitectureDiagram.astro";
+import ProjectSectionNav from "../../../components/ProjectSectionNav.astro";
 import SectionHeading from "../../../components/SectionHeading.astro";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import { getContent, getProject } from "../../../data";
@@ -74,6 +75,13 @@ const detailSections: DetailSection[] = [
 const techStack = projectData.techStack?.length ? projectData.techStack : projectData.tags;
 const architecture = projectData.architecture?.length ? projectData.architecture : ["Client", "API", "Service", "Database"];
 const screenshots = projectData.screenshots ?? [];
+const sectionLinks = detailSections.flatMap((section) => [
+  { href: `#${section.id}`, title: section.title },
+  ...(section.id === "overview" && screenshots.length > 0
+    ? [{ href: "#screenshots", title: sectionLabels.screenshots ?? "Service Screenshots" }]
+    : [])
+]);
+sectionLinks.push({ href: "#tech-stack", title: sectionLabels.techStack ?? t.common.techTags });
 const metadataItems = [
   { label: "Source", value: projectMeta.sourceType },
   { label: "Company", value: projectMeta.company },
@@ -122,6 +130,8 @@ function splitParagraphs(body: string) {
           <div class="mt-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-ink-600 [overflow-wrap:anywhere]">{tag}</span>)}
           </div>
+
+          <ProjectSectionNav label={t.common.onThisPage} links={sectionLinks} class="mt-5 lg:hidden" />
 
           <div class="mt-7 grid min-w-0 gap-4">
             {
@@ -187,7 +197,7 @@ function splitParagraphs(body: string) {
           </div>
         </div>
 
-        <aside class="grid min-w-0 content-start gap-4 lg:sticky lg:top-24">
+        <aside class="grid min-w-0 content-start gap-4">
           <section id="architecture" class="scroll-mt-28">
             <h2 class="mb-3 text-sm font-extrabold text-ink-950">{detail.architecture}</h2>
             <ArchitectureDiagram
@@ -198,20 +208,11 @@ function splitParagraphs(body: string) {
               note={projectData.architectureNote}
             />
           </section>
-          <nav class="no-print soft-card-flat rounded-3xl p-5 text-sm font-bold text-ink-600" aria-label={t.common.onThisPage}>
-            <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{t.common.onThisPage}</p>
-            <div class="grid gap-2">
-              {
-                detailSections.map((section) => (
-                  <>
-                    <a href={`#${section.id}`} class="hover:text-blue-accent">{section.title}</a>
-                    {section.id === "overview" && screenshots.length > 0 && <a href="#screenshots" class="hover:text-blue-accent">{sectionLabels.screenshots ?? "Service Screenshots"}</a>}
-                  </>
-                ))
-              }
-              <a href="#tech-stack" class="hover:text-blue-accent">{sectionLabels.techStack ?? t.common.techTags}</a>
-            </div>
-          </nav>
+          <ProjectSectionNav
+            label={t.common.onThisPage}
+            links={sectionLinks}
+            class="hidden lg:sticky lg:top-24 lg:block lg:self-start lg:bg-white"
+          />
         </aside>
       </div>
     </article>

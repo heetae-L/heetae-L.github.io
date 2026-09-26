@@ -1,0 +1,25 @@
+---
+interface Props {
+  label: string;
+  links: { href: string; title: string }[];
+  class?: string;
+}
+
+const { label, links, class: className = "" } = Astro.props;
+---
+
+<nav class:list={["no-print soft-card-flat rounded-2xl p-4 text-sm font-bold text-ink-600", className]} aria-label={label}>
+  <p class="mb-3 text-xs font-extrabold uppercase text-ink-400">{label}</p>
+  <div class="flex gap-2 overflow-x-auto pb-1 lg:grid lg:gap-2 lg:overflow-visible lg:pb-0">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class="shrink-0 rounded-lg bg-blue-soft px-3 py-2 text-blue-accent hover:bg-blue-accent hover:text-white lg:rounded-none lg:bg-transparent lg:px-0 lg:py-0 lg:text-ink-600 lg:hover:bg-transparent lg:hover:text-blue-accent"
+        >
+          {link.title}
+        </a>
+      ))
+    }
+  </div>
+</nav>
