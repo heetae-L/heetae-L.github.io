@@ -2,7 +2,11 @@ export const locales = ["ko", "en"] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "ko";
-export const portfolioDownloadPath = "/downloads/heetae-lee-portfolio.pdf";
+export function portfolioDownloadPath(submissionMode = false) {
+  return submissionMode
+    ? "/downloads/heetae-lee-portfolio-submission.pdf"
+    : "/downloads/heetae-lee-portfolio.pdf";
+}
 
 export const localeLabels: Record<Locale, string> = {
   ko: "KO",

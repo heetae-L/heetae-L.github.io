@@ -17,6 +17,8 @@ interface Props {
 }
 
 const { locale, content: t, hideContact = false } = Astro.props;
+const downloadPath = portfolioDownloadPath(hideContact);
+const downloadFileName = downloadPath.split("/").at(-1);
 const resumeExperience = getResumeExperience(locale);
 const featuredProjects = getFeaturedProjects(locale, 4);
 const featuredTechStack = getFeaturedTechStack(locale);
@@ -67,8 +69,9 @@ const educationTitle = hideContact ? t.home.educationTitle.replace(/\s*&\s*Conta
         </div>
         <div class="mt-7 flex flex-wrap gap-3">
           <a
-            href={portfolioDownloadPath}
-            download="heetae-lee-portfolio.pdf"
+            href={downloadPath}
+            download={downloadFileName}
+            data-portfolio-download
             class="no-print inline-flex h-12 items-center gap-2 rounded-xl bg-blue-accent px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(15,91,255,0.24)] transition hover:bg-blue-700"
           >
             <Download class="h-4 w-4" />

@@ -13,6 +13,8 @@ interface Props {
 
 const { locale, content, currentPath, portfolioMode = false } = Astro.props;
 const homeHref = portfolioMode ? withLocale(locale, "/portfolio") : withLocale(locale);
+const downloadPath = portfolioDownloadPath(portfolioMode);
+const downloadFileName = downloadPath.split("/").at(-1);
 
 const navItems = [
   { label: content.nav.home, href: homeHref, isHome: true },
@@ -57,8 +59,9 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
     <div class="hidden shrink-0 items-center gap-3 min-[640px]:flex">
       <div class="hidden items-center gap-3 min-[900px]:flex">
         <a
-          href={portfolioDownloadPath}
-          download="heetae-lee-portfolio.pdf"
+          href={downloadPath}
+          download={downloadFileName}
+          data-portfolio-download
           class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
         >
           <Download class="h-4 w-4" />
@@ -111,8 +114,9 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
     </nav>
     <div class="mt-5 flex flex-wrap items-center gap-3 min-[640px]:mt-0 min-[640px]:justify-end">
       <a
-        href={portfolioDownloadPath}
-        download="heetae-lee-portfolio.pdf"
+        href={downloadPath}
+        download={downloadFileName}
+        data-portfolio-download
         class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-accent px-4 text-sm font-extrabold text-white"
       >
         <Download class="h-4 w-4" />
@@ -138,6 +142,8 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
 </header>
 
 <script>
+  import { portfolioDownloadPath } from "../i18n/config";
+
   if (document.documentElement.classList.contains("portfolio-mode")) {
     document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-home]").forEach((link) => {
       const locale = link.dataset.portfolioHome;
@@ -145,6 +151,11 @@ const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
       if (locale) {
         link.href = `/${locale}/portfolio`;
       }
+    });
+    document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-download]").forEach((link) => {
+      const path = portfolioDownloadPath(true);
+      link.href = path;
+      link.download = path.split("/").at(-1) ?? "heetae-lee-portfolio-submission.pdf";
     });
   }
 
