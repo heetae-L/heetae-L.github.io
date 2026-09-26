@@ -20,7 +20,7 @@ export const partnerOrderProductIntegration: ProjectData = {
   featured: true,
   homeOrder: 1,
   overview:
-    "A backend integration project connecting travel, accommodation, and leisure partners to order and cancellation APIs, product collection batches, integrated search, and external redirects on an employee-benefit and travel commerce platform.\n\nReal-time order collection ran alongside batch correction, while product data passed through persistence, normalization, and search-data generation before reaching the service. Adapted partner-specific responses and product requirements to these flows, checking both database updates and actual search results.\n\nOwned new partner integration development alongside reliability improvements to existing processing. Focused on limiting the impact of external integration failures through transaction separation, malformed-response isolation, and tracing of search-data issues.",
+    "A backend integration project connecting travel, accommodation, and leisure partners through order and cancellation collection APIs, product collection batch jobs, integrated search, and redirects to partner sites on an employee-benefit and travel commerce platform.\n\nReal-time order collection runs alongside batch jobs that recover missed orders. Product data is stored, normalized, and prepared for search before appearing in the service. Adapted partner-specific response formats and product requirements to these processing steps, checking both database updates and actual search results.\n\nHandled new partner integrations alongside reliability improvements to existing processing. Focused on limiting the impact of external integration failures on core service operations by separating transaction boundaries, isolating malformed responses, and tracing search data.",
   problem:
     "Partner APIs, product data, and connectivity requirements varied, requiring explicit handling of integration-specific exceptions.\n\nSuccessful data collection alone did not establish that orders were saved or products appeared correctly in search. Verification needed to connect the outcomes of API calls, batch jobs, and database processing.",
   role: [
@@ -29,25 +29,25 @@ export const partnerOrderProductIntegration: ProjectData = {
     "Coordinated specifications, data processing results, and connectivity requirements with business teams and external partners, using code and data findings to guide technical decisions and responses"
   ],
   contributions: [
-    "Developed and improved real-time order collection and batch correction flows, verifying order and cancellation states against database results",
-    "Analyzed product collection, persistence, normalization, and search-data generation to define partner-specific processing and reprocessing checks",
+    "Developed and improved real-time order collection APIs and batch jobs that recover missed orders, verifying order and cancellation status and database updates",
+    "Analyzed product collection, storage, normalization, and search-data generation, documenting how each partner's products reach the service and when to reprocess problem records",
     "Stabilized task registration order in asynchronous search and analyzed timeouts and result aggregation in CompletableFuture and WebClient call paths to implement new partner API integrations",
     "Distinguished search API calls from user-facing redirects, verifying menu visibility, partner settings, authentication, and connectivity at each stage",
     "Documented request and response specifications, exception cases, and pre-launch checks in a reusable integration guide"
   ],
   troubleshooting: [
-    "Separated transaction boundaries between order persistence and follow-up processing so downstream failures would not affect the order transaction. To preserve the synchronous flow and control the scope of the change, designed and implemented a separate Facade that invokes follow-up processing after the order transaction completes",
+    "Separated transaction boundaries between order persistence and follow-up processing so downstream failures would not affect the order transaction. Given the existing synchronous flow and scope of the change, designed and implemented a separate facade that invokes follow-up processing after the order is saved",
     "Validated required fields, arrays, and price formats in partner responses and isolated parsing failures per partner so a malformed response would not fail the entire search",
-    "Investigated unexpected search results despite correct product mappings. Traced mapping data separately from post-processing and search-data generation, identifying the stage that created additional searchable products"
+    "Investigated unexpected search results despite correct product mappings. Traced mapping data separately from post-processing and search-data generation, identifying the stage that created additional product records for search"
   ],
   results: [
     "Improved order-processing and integrated-search reliability by limiting the impact of downstream failures and malformed partner responses",
-    "Established checkpoints from collection to search results to support root-cause investigation and reprocessing decisions",
+    "Established checkpoints from collection to search results to trace data inconsistencies and decide when reprocessing was needed",
     "Consolidated partner-specific integration requirements and exception cases into shared verification procedures and checklists, establishing reusable checks for onboarding new partners"
   ],
   devops: [
-    "Distinguished environment settings and call direction to diagnose external API issues across response handling, networking, and access requirements",
-    "Connected batch execution history with database results to verify reprocessing and successful data updates",
+    "Checked integration settings for each environment and the direction of API calls to distinguish response-handling, network, and access issues",
+    "Compared batch execution history with database results to determine whether problem records needed reprocessing and whether updates had been applied correctly",
     "Structured integration specifications and verification cases in Markdown, then personally checked AI-suggested causes against code, queries, and tests before applying them"
   ],
   sectionLabels: {

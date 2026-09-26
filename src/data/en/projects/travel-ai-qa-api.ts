@@ -8,7 +8,7 @@ export const travelAiQaApi: ProjectData = {
   summary:
     "Built the company's first Python/Flask travel Q&A API, leading Azure OpenAI integration, conversation-history persistence, Docker packaging, and production deployment validation.",
   meta: {
-    sourceType: "Professional Work / TF",
+    sourceType: "Professional Work / Task Force",
     company: "SK M&Service",
     service: "Travel AI Q&A API",
     period: "2023",
@@ -20,16 +20,16 @@ export const travelAiQaApi: ProjectData = {
   featured: true,
   homeOrder: 2,
   overview:
-    "Built the company's first Python/Flask travel Q&A Gateway API in 2023, as ChatGPT was beginning to be adopted in real services.\n\nLearned Python, Flask, and Azure OpenAI beyond my primary Java/Spring stack while leading requirements refinement, API design and implementation, database integration, and production deployment validation. With no internal Python web API deployment reference, worked with the infrastructure team to establish runtime and deployment practices.\n\nImplemented question-scope classification, answer generation, response JSON construction, and conversation-history persistence in a standalone server called by the existing service API, then packaged and deployed it as a separate Docker container.",
+    "Built the company's first Python/Flask travel Q&A Gateway API in 2023, when ChatGPT was beginning to appear in production services.\n\nLearned Python, Flask, and Azure OpenAI alongside my primary Java/Spring stack while leading requirements refinement, API design and implementation, database integration, and production deployment validation. With no prior internal example of deploying a Python web API, worked with the infrastructure team to establish runtime and deployment practices.\n\nImplemented question classification, answer generation, JSON responses, and conversation-history storage in a standalone server called by the existing service API, then packaged and deployed it in a separate Docker container.",
   problem:
-    "The API needed to distinguish questions outside the domestic-travel scope and convert inconsistent model output into status values and JSON that the service could handle. Classification results had to drive the actual answer-generation and guidance-message flow.\n\nIn a Java/Spring-centered environment without a Python production deployment reference, container execution, Oracle connectivity, external AI API calls, logging, and health checks all required validation. The central challenge was turning a locally working API into a deployment that the existing service could call.",
+    "The API needed to identify questions outside the scope of travel within Korea and convert inconsistent model output into status values and JSON that the service could process. The API contract had to use classification results to select either answer generation or a guidance message.\n\nIn a Java/Spring environment with no prior Python production deployment, container execution, Oracle connectivity, external AI API calls, logging, and health checks all required validation. The central challenge was preparing a locally working API for deployment and use by the existing service.",
   role: [
     "Led requirements refinement, API design and implementation, database integration, and deployment validation in a two-person task force with the CTO",
-    "Owned the Gateway API called by the mobile service, implementing question classification, answer generation, response-state handling, and history persistence",
+    "Was responsible for the Gateway API called by the mobile service, implementing question classification, answer generation, response status handling, and conversation-history storage",
     "Worked with the infrastructure team to validate container execution, external API and database connectivity, health checks, and rollback conditions"
   ],
   contributions: [
-    "Designed a two-stage Azure OpenAI flow for question classification and answer generation. Sent eligible domestic-travel questions to answer generation and returned guidance messages for out-of-scope questions",
+    "Separated question classification and answer generation into two Azure OpenAI calls. Sent questions about travel within Korea to answer generation and returned guidance messages for out-of-scope questions",
     "Defined an API contract with status values and JSON for successful, out-of-scope, and error responses, including answers, keywords, and guidance so the existing service could handle each response appropriately",
     "Implemented persistent question and answer history in Oracle and recent per-session context in a process-local LRU cache, supporting both history retention and conversation context across requests",
     "Packaged the standalone Gateway in its own Docker container and verified the integration from request receipt through model calls, response delivery, and database persistence"
@@ -37,17 +37,17 @@ export const travelAiQaApi: ProjectData = {
   troubleshooting: [
     "Implemented parsing, validation, and correction logic for inconsistent classification JSON and iterated on prompts so classification results could drive answer-generation and guidance branches",
     "Investigated external AI API failures by distinguishing Azure OpenAI call and authentication requirements from network proxy configuration, then adjusted settings for the runtime environment",
-    "Repeatedly validated image composition and connection settings so Python packages and Oracle Client worked together inside the container, resolving differences between development and production"
+    "Repeatedly checked Docker image contents and connection settings so Python packages and Oracle Client worked together inside the container, resolving runtime differences between development and production"
   ],
   results: [
-    "Delivered the company's first Python-based AI API, covering question classification, answer generation, and history persistence, in a form the existing service could call and deploy to production",
+    "Delivered the company's first Python-based AI API for travel question classification, answer generation, and history storage, ready for production deployment and integration with the existing service",
     "Validated runtime configuration including logging, health checks, and rollback conditions, creating a deployment reference for future Python services",
     "Led a project that combined learning a new language and AI API with service requirements, backend implementation, and production-environment validation"
   ],
   devops: [
-    "Configured Docker images and GitLab CI build and deployment jobs, connecting the Python API's container build to deployment execution",
+    "Configured Docker images and GitLab CI jobs to build and deploy the containerized Python API",
     "Separated development and production configuration and Nomad runtime settings, validating execution requirements for containers with Python dependencies and Oracle Client",
-    "Configured log storage outside the container and configuration loading to support post-deployment runtime checks and error investigation",
+    "Configured external log storage and runtime configuration injection to support post-deployment status checks and error investigation",
     "Implemented a health-check endpoint and validated health checks, canary deployment, and rollback conditions with the infrastructure team to establish deployment verification and recovery criteria"
   ],
   sectionLabels: {
@@ -81,7 +81,7 @@ export const travelAiQaApi: ProjectData = {
     "Docker Container / GitLab CI",
     "Nomad Runtime / Health Check / Canary"
   ],
-  architectureNote: "AI Q&A Gateway API + Azure OpenAI + Container Runtime",
+  architectureNote: "Hyugashop AI Travel Information + AI Q&A Gateway API + Azure OpenAI + Container Runtime",
   screenshots: [
     {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-entry.jpg",
@@ -103,7 +103,7 @@ export const travelAiQaApi: ProjectData = {
       src: "/assets/projects/travel-ai-qa-api/hyugashop-ai-guide.jpg",
       alt: "AI travel information usage guide screen",
       title: "Usage Policy",
-      caption: "Service guidance on domestic-travel scope and usage conditions, used when defining out-of-scope responses and guidance messages.",
+      caption: "Service guidance on travel within Korea and usage conditions, referenced when designing out-of-scope responses and guidance messages.",
       width: 904,
       height: 2232
     },

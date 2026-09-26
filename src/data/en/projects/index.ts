@@ -9,7 +9,7 @@ export const projects: ProjectsData = {
   eyebrow: "Selected Work",
   title: "Projects",
   description:
-    "Case studies from real service work covering integrations, commerce services, data flows, and AI APIs.",
+    "Case studies in service integration, commerce, data processing, and AI API development.",
   filters: [
     { key: "all", label: "All" },
     { key: "development", label: "Development" },
