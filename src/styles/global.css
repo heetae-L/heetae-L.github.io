@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans:
     "Inter", "Pretendard", ui-sans-serif, system-ui, -apple-system,
@@ -16,13 +18,40 @@
   --color-line-200: #dfe7f5;
   --color-line-300: #cfd9ea;
   --color-blue-accent: #0f5bff;
+  --color-blue-action: #0f5bff;
   --color-blue-soft: #eef5ff;
   --color-page: #f6f9ff;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-tag: #f1f5f9;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --color-ink-950: #f8fafc;
+    --color-ink-900: #edf2f5;
+    --color-ink-800: #e0e7ec;
+    --color-ink-700: #ccd6de;
+    --color-ink-600: #bac7d0;
+    --color-ink-500: #a8b7c3;
+    --color-ink-400: #94a6b4;
+    --color-line-100: #29323a;
+    --color-line-200: #37434d;
+    --color-line-300: #46535d;
+    --color-blue-accent: #88adff;
+    --color-blue-action: #2956ca;
+    --color-blue-soft: #222f45;
+    --color-page: #121417;
+    --color-surface: #1c2025;
+    --color-surface-raised: #242a31;
+    --color-surface-muted: #20262c;
+    --color-tag: #2b333b;
   }
 
   body {
@@ -33,6 +62,11 @@
     color: #10152a;
     font-family: var(--font-sans);
     text-rendering: geometricPrecision;
+  }
+
+  html.dark body {
+    background: var(--color-page);
+    color: var(--color-ink-900);
   }
 
   a {
@@ -48,6 +82,10 @@
     outline: 3px solid rgba(15, 91, 255, 0.24);
     outline-offset: 3px;
   }
+
+  html.dark :focus-visible {
+    outline-color: rgba(136, 173, 255, 0.7);
+  }
 }
 
 @layer utilities {
@@ -56,6 +94,10 @@
     box-shadow:
       0 28px 80px rgba(29, 55, 108, 0.08),
       0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  }
+
+  html.dark .resume-shell {
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
   }
 
   .soft-card {
@@ -73,6 +115,13 @@
     background: rgba(255, 255, 255, 0.74);
   }
 
+  html.dark .soft-card,
+  html.dark .soft-card-flat {
+    border-color: var(--color-line-200);
+    background: var(--color-surface-raised);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
   .section-marker {
     position: relative;
     padding-left: 14px;
@@ -85,7 +134,7 @@
     width: 4px;
     height: 1.05em;
     border-radius: 999px;
-    background: #0f5bff;
+    background: var(--color-blue-accent);
     content: "";
   }
 
@@ -95,8 +144,36 @@
 }
 
 @media print {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+
+  html.dark {
+    color-scheme: light;
+    --color-ink-950: #070b1d;
+    --color-ink-900: #10152a;
+    --color-ink-800: #18203a;
+    --color-ink-700: #2c3657;
+    --color-ink-600: #46506d;
+    --color-ink-500: #687089;
+    --color-ink-400: #8a91a8;
+    --color-line-100: #edf2fb;
+    --color-line-200: #dfe7f5;
+    --color-line-300: #cfd9ea;
+    --color-blue-accent: #0f5bff;
+    --color-blue-action: #0f5bff;
+    --color-blue-soft: #eef5ff;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-surface-muted: #f8fafc;
+    --color-tag: #f1f5f9;
+  }
+
   body {
     background: #ffffff !important;
+    color: #10152a !important;
   }
 
   .no-print {
@@ -108,8 +185,17 @@
   }
 
   .resume-shell {
+    background: #ffffff !important;
     box-shadow: none !important;
     border: 0 !important;
+  }
+
+  html.dark .resume-shell,
+  html.dark .soft-card,
+  html.dark .soft-card-flat {
+    background: #ffffff !important;
+    border-color: #dfe7f5 !important;
+    box-shadow: none !important;
   }
 
   .soft-card,

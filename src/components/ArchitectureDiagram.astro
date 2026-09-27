@@ -63,9 +63,9 @@ function getGroupIcon(title: string, index: number) {
   {
     diagramVariant === "hub" && groups.length > 0 ? (
       <div>
-        <div class="min-w-0 rounded-3xl border border-blue-100 bg-blue-soft/60 px-4 py-4 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+        <div class="min-w-0 rounded-3xl border border-blue-100 bg-blue-soft/60 px-4 py-4 shadow-[0_16px_38px_rgba(15,91,255,0.06)] dark:border-line-200">
           <div class="flex min-w-0 items-center gap-3">
-            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-accent shadow-[0_10px_24px_rgba(15,91,255,0.12)]">
+            <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white text-blue-accent shadow-[0_10px_24px_rgba(15,91,255,0.12)] dark:bg-surface-raised">
               <Globe2 class="h-5 w-5" />
             </span>
             <div class="min-w-0">
@@ -81,7 +81,7 @@ function getGroupIcon(title: string, index: number) {
               const Icon = getGroupIcon(group.title, index);
 
               return (
-                <section class="min-w-0 rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_12px_30px_rgba(15,91,255,0.045)]">
+                <section class="min-w-0 rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_12px_30px_rgba(15,91,255,0.045)] dark:bg-surface-raised">
                   <div class="flex min-w-0 items-center gap-3">
                     <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
                       <Icon class="h-4 w-4" />
@@ -89,7 +89,7 @@ function getGroupIcon(title: string, index: number) {
                     <p class="break-words text-sm font-black leading-snug text-ink-950 [overflow-wrap:anywhere]">{group.title}</p>
                   </div>
                   <div class="mt-3 flex flex-wrap gap-2">
-                    {group.items.map((item) => <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-extrabold leading-5 text-ink-600">{item}</span>)}
+                    {group.items.map((item) => <span class="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-extrabold leading-5 text-ink-600 dark:bg-tag">{item}</span>)}
                   </div>
                 </section>
               );
@@ -105,7 +105,7 @@ function getGroupIcon(title: string, index: number) {
 
         return (
           <>
-            <div class="min-w-0 rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_16px_38px_rgba(15,91,255,0.06)]">
+            <div class="min-w-0 rounded-2xl border border-line-200 bg-white px-4 py-3 shadow-[0_16px_38px_rgba(15,91,255,0.06)] dark:bg-surface-raised">
               <div class="flex min-w-0 items-center gap-3">
                 <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-blue-soft text-blue-accent">
                   <Icon class="h-5 w-5" />
@@ -133,7 +133,7 @@ function getGroupIcon(title: string, index: number) {
 
   {
     note && (
-      <div class="mt-4 flex min-w-0 items-center gap-3 rounded-2xl border border-blue-100 bg-blue-soft/60 px-4 py-3 text-sm font-extrabold text-blue-accent [overflow-wrap:anywhere]">
+      <div class="mt-4 flex min-w-0 items-center gap-3 rounded-2xl border border-blue-100 bg-blue-soft/60 px-4 py-3 text-sm font-extrabold text-blue-accent [overflow-wrap:anywhere] dark:border-line-200">
         <ShieldCheck class="h-5 w-5 shrink-0" />
         <span>{note}</span>
       </div>

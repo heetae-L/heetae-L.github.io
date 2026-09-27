@@ -29,7 +29,7 @@ const educationTitle = hideContact ? t.home.educationTitle.replace(/\s*&\s*Conta
 ---
 
 <main class="mx-auto max-w-6xl px-5 py-8 sm:px-6 sm:py-10 lg:px-8">
-  <div class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10">
+  <div class="resume-shell rounded-[28px] border border-line-200 bg-white/92 p-5 sm:p-8 lg:p-10 dark:bg-surface">
     <section class="grid min-h-[520px] min-w-0 items-center gap-8 lg:grid-cols-[minmax(0,1fr)_400px]">
       <div class="min-w-0">
         <span class="inline-flex items-center rounded-full bg-blue-soft px-4 py-2 text-xs font-extrabold text-blue-accent ring-1 ring-blue-accent/10">
@@ -72,14 +72,14 @@ const educationTitle = hideContact ? t.home.educationTitle.replace(/\s*&\s*Conta
             href={downloadPath}
             download={downloadFileName}
             data-portfolio-download
-            class="no-print inline-flex h-12 items-center gap-2 rounded-xl bg-blue-accent px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(15,91,255,0.24)] transition hover:bg-blue-700"
+            class="no-print inline-flex h-12 items-center gap-2 rounded-xl bg-blue-action px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_rgba(15,91,255,0.24)] transition hover:bg-blue-700"
           >
             <Download class="h-4 w-4" />
             {t.common.downloadPortfolio}
           </a>
           <a
             href={withLocale(locale, "/projects")}
-            class="no-print inline-flex h-12 items-center gap-2 rounded-xl border border-line-200 bg-white px-5 text-sm font-extrabold text-ink-900 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent"
+            class="no-print inline-flex h-12 items-center gap-2 rounded-xl border border-line-200 bg-white px-5 text-sm font-extrabold text-ink-900 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent dark:bg-surface-raised"
           >
             {t.common.viewProjects}
             <ArrowRight class="h-4 w-4" />

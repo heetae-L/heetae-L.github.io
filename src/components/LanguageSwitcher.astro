@@ -9,7 +9,7 @@ interface Props {
 const { locale, currentPath } = Astro.props;
 ---
 
-<div class="inline-flex rounded-xl border border-line-200 bg-white p-1 text-xs font-bold text-ink-500 shadow-sm">
+<div class="inline-flex rounded-xl border border-line-200 bg-white p-1 text-xs font-bold text-ink-500 shadow-sm dark:bg-surface-raised">
   {
     locales.map((item) => (
       <a
@@ -17,7 +17,7 @@ const { locale, currentPath } = Astro.props;
         aria-current={item === locale ? "page" : undefined}
         class:list={[
           "rounded-lg px-2.5 py-1.5 transition",
-          item === locale ? "bg-blue-accent text-white" : "hover:bg-blue-soft hover:text-blue-accent"
+          item === locale ? "bg-blue-action text-white" : "hover:bg-blue-soft hover:text-blue-accent"
         ]}
       >
         {localeLabels[item]}

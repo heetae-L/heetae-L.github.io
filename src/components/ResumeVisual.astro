@@ -21,7 +21,7 @@ const nodes = [
   <div class="absolute left-12 top-36 hidden h-64 w-64 rounded-full border border-blue-accent/10 lg:block"></div>
   <div class="absolute left-4 top-48 hidden h-48 w-48 rounded-full border border-blue-accent/10 lg:block"></div>
 
-  <div class="absolute right-3 top-2 z-20 w-[calc(100%-24px)] max-w-[320px] rotate-2 rounded-[24px] border border-slate-700/30 bg-[#07142b] p-3 shadow-[0_24px_48px_rgba(8,21,48,0.18)] sm:p-5 lg:right-0 lg:top-6 lg:w-[320px] lg:rounded-[28px] lg:shadow-[0_34px_90px_rgba(8,21,48,0.28)]">
+  <div class="absolute right-3 top-2 z-20 w-[calc(100%-24px)] max-w-[320px] rotate-2 rounded-[24px] border border-slate-700/30 bg-[#07142b] p-3 shadow-[0_24px_48px_rgba(8,21,48,0.18)] sm:p-5 lg:right-0 lg:top-6 lg:w-[320px] lg:rounded-[28px] lg:shadow-[0_34px_90px_rgba(8,21,48,0.28)] dark:border-line-300 dark:shadow-[0_34px_90px_rgba(0,0,0,0.45)]">
     <div class="mb-5 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="h-3 w-3 rounded-full bg-red-400"></span>
@@ -39,12 +39,12 @@ const nodes = [
 {"}"}</code></pre>
   </div>
 
-  <div class="absolute bottom-7 left-2 right-2 z-10 h-16 rounded-[24px] border border-line-200 bg-white/70 shadow-[0_28px_70px_rgba(48,80,145,0.14)] backdrop-blur-sm lg:bottom-9 lg:left-4 lg:right-4 lg:h-28 lg:rounded-[34px]"></div>
-  <div class="absolute bottom-3 left-5 right-1 z-0 h-12 rounded-[24px] bg-blue-accent/70 shadow-[0_20px_36px_rgba(15,91,255,0.18)] lg:bottom-1 lg:left-9 lg:right-0 lg:h-16 lg:rounded-[34px] lg:shadow-[0_28px_54px_rgba(15,91,255,0.24)]"></div>
+  <div class="absolute bottom-7 left-2 right-2 z-10 h-16 rounded-[24px] border border-line-200 bg-white/70 shadow-[0_28px_70px_rgba(48,80,145,0.14)] backdrop-blur-sm lg:bottom-9 lg:left-4 lg:right-4 lg:h-28 lg:rounded-[34px] dark:bg-surface-raised/90"></div>
+  <div class="absolute bottom-3 left-5 right-1 z-0 h-12 rounded-[24px] bg-blue-accent/70 shadow-[0_20px_36px_rgba(15,91,255,0.18)] lg:bottom-1 lg:left-9 lg:right-0 lg:h-16 lg:rounded-[34px] lg:shadow-[0_28px_54px_rgba(15,91,255,0.24)] dark:bg-blue-action/80"></div>
 
   {
     nodes.map((node) => (
-      <div class:list={["absolute z-30 grid h-[60px] w-[52px] place-items-center rounded-2xl border border-line-200 bg-white text-center shadow-lg lg:h-20 lg:w-20 lg:rounded-3xl lg:shadow-xl", node.className]}>
+      <div class:list={["absolute z-30 grid h-[60px] w-[52px] place-items-center rounded-2xl border border-line-200 bg-white text-center shadow-lg lg:h-20 lg:w-20 lg:rounded-3xl lg:shadow-xl dark:bg-surface-raised dark:shadow-[0_14px_32px_rgba(0,0,0,0.3)]", node.className]}>
         <div>
           <node.icon class="mx-auto h-4 w-4 text-blue-accent lg:hidden" aria-hidden="true" />
           <span class="mx-auto hidden h-6 w-6 rounded-xl bg-blue-accent/12 ring-1 ring-blue-accent/15 lg:block"></span>
@@ -53,7 +53,7 @@ const nodes = [
       </div>
     ))
   }
-  <div class="absolute bottom-12 left-[58%] z-20 hidden h-20 w-20 -translate-x-1/2 rounded-3xl border border-line-200 bg-white shadow-xl lg:block">
-    <div class="absolute inset-5 rounded-2xl bg-blue-accent shadow-inner"></div>
+  <div class="absolute bottom-12 left-[58%] z-20 hidden h-20 w-20 -translate-x-1/2 rounded-3xl border border-line-200 bg-white shadow-xl lg:block dark:bg-surface-raised">
+    <div class="absolute inset-5 rounded-2xl bg-blue-accent shadow-inner dark:bg-blue-action"></div>
   </div>
 </div>

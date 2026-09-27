@@ -47,6 +47,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://heetae-l.gi
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
     />
     <title>{title}</title>
+    <script is:inline>
+      try {
+        if (localStorage.getItem("heetae-theme") === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      } catch {
+        // The light theme remains usable when storage is unavailable.
+      }
+    </script>
     <script is:inline define:vars={{ portfolioMode, locale }}>
       (() => {
         const storageKey = "heetae-portfolio-mode";
