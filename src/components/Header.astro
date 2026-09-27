@@ -26,17 +26,15 @@ const navItems = [
 const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
 const switchToDarkLabel = locale === "ko" ? "다크 모드로 전환" : "Switch to dark mode";
 const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Switch to light mode";
-const darkModeLabel = locale === "ko" ? "다크 모드" : "Dark mode";
-const lightModeLabel = locale === "ko" ? "라이트 모드" : "Light mode";
 ---
 
 <header class="no-print sticky top-0 z-40 border-b border-line-200/80 bg-white/86 backdrop-blur-xl dark:bg-surface/95">
-  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-6 lg:px-8">
-    <a href={homeHref} data-portfolio-home={locale} class="shrink-0 whitespace-nowrap text-xl font-extrabold tracking-tight text-ink-950">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <a href={homeHref} data-portfolio-home={locale} class="shrink-0 whitespace-nowrap text-lg font-extrabold tracking-tight text-ink-950 sm:text-xl">
       <span class="text-blue-accent">Heetae</span> Lee
     </a>
 
-    <nav class="hidden shrink-0 items-center gap-7 text-[13px] font-bold text-ink-600 min-[640px]:flex" aria-label="Primary navigation">
+    <nav class="hidden shrink-0 items-center gap-7 text-[13px] font-bold text-ink-600 min-[700px]:flex" aria-label="Primary navigation">
       {
         navItems.map((item) => {
           const itemPath = item.href.replace(/\/$/, "") || `/${locale}`;
@@ -60,62 +58,75 @@ const lightModeLabel = locale === "ko" ? "라이트 모드" : "Light mode";
       }
     </nav>
 
-    <div class="hidden shrink-0 items-center gap-3 min-[640px]:flex">
-      <div class="hidden items-center gap-3 min-[900px]:flex">
+    <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
+      <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
+        <div class="hidden items-center gap-3 min-[940px]:flex">
+          <a
+            href={downloadPath}
+            download={downloadFileName}
+            data-portfolio-download
+            class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-action px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
+          >
+            <Download class="h-4 w-4" />
+            {content.common.downloadPortfolio}
+          </a>
+          <LanguageSwitcher locale={locale} currentPath={currentPath} />
+        </div>
         <a
           href={downloadPath}
           download={downloadFileName}
           data-portfolio-download
-          class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-action px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-action text-white shadow-sm transition hover:bg-blue-700 sm:h-10 sm:w-10 min-[940px]:hidden"
+          aria-label={content.common.downloadPortfolio}
+          title={content.common.downloadPortfolio}
         >
-          <Download class="h-4 w-4" />
-          {content.common.downloadPortfolio}
+          <Download class="h-4 w-4" aria-hidden="true" />
         </a>
-        <LanguageSwitcher locale={locale} currentPath={currentPath} />
+        <button
+          type="button"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/40 hover:text-blue-accent sm:h-10 sm:w-10 dark:bg-surface-raised"
+          aria-label={switchToDarkLabel}
+          title={switchToDarkLabel}
+          data-theme-toggle
+          data-light-label={switchToDarkLabel}
+          data-dark-label={switchToLightLabel}
+        >
+          <Moon class="h-5 w-5 dark:hidden" aria-hidden="true" />
+          <Sun class="hidden h-5 w-5 dark:block" aria-hidden="true" />
+        </button>
+        {
+          !portfolioMode && (
+            <a
+              href="https://github.com/heetae-L"
+              data-hide-in-portfolio
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent sm:h-10 sm:w-10 dark:bg-surface-raised"
+              aria-label="GitHub"
+              title="GitHub"
+            >
+              <GitBranch class="h-5 w-5" />
+            </a>
+          )
+        }
       </div>
+
       <button
         type="button"
-        class="hidden h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/40 hover:text-blue-accent min-[900px]:inline-flex dark:bg-surface-raised"
-        aria-label={switchToDarkLabel}
-        title={switchToDarkLabel}
-        data-theme-toggle
-        data-light-label={switchToDarkLabel}
-        data-dark-label={switchToLightLabel}
+        class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-900 sm:h-10 sm:w-10 min-[940px]:hidden dark:bg-surface-raised"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-menu-toggle
       >
-        <Moon class="h-5 w-5 dark:hidden" aria-hidden="true" />
-        <Sun class="hidden h-5 w-5 dark:block" aria-hidden="true" />
+        <Menu class="h-5 w-5" data-menu-icon="open" />
+        <X class="hidden h-5 w-5" data-menu-icon="close" />
       </button>
-      {
-        !portfolioMode && (
-          <a
-            href="https://github.com/heetae-L"
-            data-hide-in-portfolio
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent dark:bg-surface-raised"
-            aria-label="GitHub"
-          >
-            <GitBranch class="h-5 w-5" />
-          </a>
-        )
-      }
     </div>
-
-    <button
-      type="button"
-      class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-900 min-[900px]:hidden dark:bg-surface-raised"
-      aria-label="Open menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-      data-menu-toggle
-    >
-      <Menu class="h-5 w-5" data-menu-icon="open" />
-      <X class="hidden h-5 w-5" data-menu-icon="close" />
-    </button>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-line-200 bg-white px-5 py-5 min-[900px]:hidden dark:bg-surface" data-mobile-menu>
-    <nav class="grid gap-2 text-sm font-bold text-ink-700 min-[640px]:hidden" aria-label="Mobile navigation">
+  <div id="mobile-menu" class="hidden border-t border-line-200 bg-white px-4 py-5 sm:px-6 min-[940px]:hidden dark:bg-surface" data-mobile-menu>
+    <nav class="grid gap-2 text-sm font-bold text-ink-700 min-[700px]:hidden" aria-label="Mobile navigation">
       {
         navItems.map((item) => (
           <a
@@ -128,46 +139,8 @@ const lightModeLabel = locale === "ko" ? "라이트 모드" : "Light mode";
         ))
       }
     </nav>
-    <div class="mt-5 flex flex-wrap items-center gap-3 min-[640px]:mt-0 min-[640px]:justify-end">
-      <a
-        href={downloadPath}
-        download={downloadFileName}
-        data-portfolio-download
-        class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-action px-4 text-sm font-extrabold text-white"
-      >
-        <Download class="h-4 w-4" />
-        {content.common.downloadPortfolio}
-      </a>
+    <div class="mt-5 flex items-center min-[700px]:mt-0 min-[700px]:justify-end">
       <LanguageSwitcher locale={locale} currentPath={currentPath} />
-      <button
-        type="button"
-        class="inline-flex h-10 items-center gap-2 rounded-xl border border-line-200 bg-white px-3 text-ink-800 transition hover:border-blue-accent/40 hover:text-blue-accent dark:bg-surface-raised"
-        aria-label={switchToDarkLabel}
-        title={switchToDarkLabel}
-        data-theme-toggle
-        data-light-label={switchToDarkLabel}
-        data-dark-label={switchToLightLabel}
-        data-light-text={darkModeLabel}
-        data-dark-text={lightModeLabel}
-      >
-        <Moon class="h-4 w-4 dark:hidden" aria-hidden="true" />
-        <Sun class="hidden h-4 w-4 dark:block" aria-hidden="true" />
-        <span data-theme-label>{darkModeLabel}</span>
-      </button>
-      {
-        !portfolioMode && (
-          <a
-            href="https://github.com/heetae-L"
-            data-hide-in-portfolio
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent min-[640px]:hidden dark:bg-surface-raised"
-            aria-label="GitHub"
-          >
-            <GitBranch class="h-5 w-5" />
-          </a>
-        )
-      }
     </div>
   </div>
 </header>
@@ -205,8 +178,6 @@ const lightModeLabel = locale === "ko" ? "라이트 모드" : "Light mode";
         button.setAttribute("aria-label", label);
         button.title = label;
       }
-      const text = button.querySelector("[data-theme-label]");
-      if (text) text.textContent = isDark ? button.dataset.darkText ?? "" : button.dataset.lightText ?? "";
     });
   }
 
