@@ -169,6 +169,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
   const closeIcon = document.querySelector('[data-menu-icon="close"]');
 
   const themeButtons = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
+  let manualTheme: "light" | "dark" | null = null;
 
   function syncThemeButtons() {
     const isDark = document.documentElement.classList.contains("dark");
@@ -185,6 +186,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
   themeButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const isDark = document.documentElement.classList.toggle("dark");
+      manualTheme = isDark ? "dark" : "light";
       try {
         localStorage.setItem("heetae-theme", isDark ? "dark" : "light");
       } catch {
@@ -192,6 +194,18 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
       }
       syncThemeButtons();
     });
+  });
+
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+    let savedTheme: string | null = null;
+    try {
+      savedTheme = localStorage.getItem("heetae-theme");
+    } catch {
+      // An unavailable storage API leaves the theme in automatic mode.
+    }
+    if (manualTheme || savedTheme === "light" || savedTheme === "dark") return;
+    document.documentElement.classList.toggle("dark", event.matches);
+    syncThemeButtons();
   });
 
   menuButton?.addEventListener("click", () => {

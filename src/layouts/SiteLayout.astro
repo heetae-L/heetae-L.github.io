@@ -48,13 +48,14 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://heetae-l.gi
     />
     <title>{title}</title>
     <script is:inline>
+      let savedTheme = null;
       try {
-        if (localStorage.getItem("heetae-theme") === "dark") {
-          document.documentElement.classList.add("dark");
-        }
+        savedTheme = localStorage.getItem("heetae-theme");
       } catch {
-        // The light theme remains usable when storage is unavailable.
+        // Fall back to the system preference when storage is unavailable.
       }
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", savedTheme === "dark" || (savedTheme !== "light" && systemPrefersDark));
     </script>
     <script is:inline define:vars={{ portfolioMode, locale }}>
       (() => {
