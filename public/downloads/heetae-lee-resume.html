@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>이희태 | Backend Engineer Resume</title>
+  <style>
+    :root { color-scheme: light; --ink: #172033; --muted: #617087; --line: #dce3ed; --blue: #365f8c; --soft: #f0f4f9; --accent-line: #b8c9dc; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #eaf0f6; color: var(--ink); font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", "Malgun Gothic", sans-serif; font-size: 13px; font-weight: 400; line-height: 1.75; letter-spacing: -.015em; word-break: keep-all; overflow-wrap: break-word; -webkit-font-smoothing: antialiased; }
+    a { color: var(--ink); text-decoration: none; }
+    a:hover { color: var(--blue); text-decoration: underline; }
+    .page { position: relative; width: 210mm; min-height: 297mm; margin: 0 auto 24px; padding: 16mm 17mm 20mm; background: #fff; box-shadow: 0 8px 36px #14294c12; }
+    .page-header { display: flex; justify-content: space-between; gap: 20px; align-items: center; margin-bottom: 26px; padding-bottom: 12px; border-bottom: 1px solid var(--accent-line); }
+    .page-header span { font-size: 11px; font-weight: 700; letter-spacing: .07em; color: var(--muted); }
+    .page-header .label { color: var(--blue); }
+    .page-header, .section-title, .project h2, .workflow h2 { font-family: "Segoe UI", "Noto Sans KR", sans-serif; }
+    .identity { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; align-items: start; padding-bottom: 26px; border-bottom: 1px solid var(--accent-line); }
+    .profile-main { min-width: 0; }
+    h1 { font-size: 34px; font-weight: 700; letter-spacing: -.025em; line-height: 1.2; margin: 0; }
+    .english-name { margin-left: 12px; font-size: 13px; font-weight: 500; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
+    .role { margin: 10px 0 0; color: #475569; font-size: 14px; font-weight: 500; }
+    .contact { display: grid; gap: 10px; margin: 4px 0 0; padding-left: 20px; border-left: 1px solid var(--line); font-size: 11.5px; }
+    .contact div { min-width: 0; }
+    .contact dt { margin-bottom: 1px; color: var(--muted); font-size: 9.5px; font-weight: 600; letter-spacing: .035em; }
+    .contact dd { margin: 0; }
+    .intro { margin-top: 20px; }
+    .intro .intro-headline { font-size: 17px; font-weight: 600; line-height: 1.65; margin: 0 0 10px; letter-spacing: -.02em; }
+    .intro p { margin: 0; color: #475569; font-size: 12.5px; }
+    .section { margin-top: 22px; }
+    .section-title { margin: 0 0 11px; padding-bottom: 7px; border-bottom: 1px solid var(--accent-line); color: var(--blue); font-size: 15px; font-weight: 800; letter-spacing: -.025em; }
+    .section-title small { margin-left: 9px; color: var(--muted); font-weight: 400; font-size: 10.5px; letter-spacing: 0; }
+    .identity + .section { margin-top: 26px; }
+    .identity + .section > .section-title { padding-bottom: 0; border-bottom: 0; }
+    .job + .job { margin-top: 13px; }
+    .heading-row { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; }
+    h3 { font-size: 14px; margin: 0; letter-spacing: -.02em; }
+    .date { color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .job-meta { color: var(--muted); font-size: 11.5px; margin: 1px 0 4px; }
+    .job p { margin: 0; font-size: 12px; }
+    .skills { display: grid; grid-template-columns: 98px 1fr; margin: 0; font-size: 12px; }
+    .skills dt { color: var(--muted); padding: 4px 0; font-weight: 600; }
+    .skills dd { margin: 0; padding: 4px 0; }
+    .bottom-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+    .bottom-grid .section { margin-top: 22px; }
+    .education-row + .education-row { margin-top: 9px; }
+    .education-row strong, .certificate strong { font-size: 12px; }
+    .education-row p, .certificate p { margin: 1px 0 0; font-size: 11.5px; color: var(--muted); }
+    .certificate + .certificate { margin-top: 9px; }
+    .military { margin: 11px 0 0; padding-top: 9px; border-top: 1px solid var(--line); font-size: 11px; color: var(--muted); }
+    .project + .project { margin-top: 26px; padding-top: 21px; border-top: 1px solid var(--line); }
+    .project h2 { margin: 0; color: var(--blue); font-size: 19px; line-height: 1.5; letter-spacing: -.04em; }
+    .project-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .project-name { margin: 4px 0 9px; font-size: 11.5px; color: var(--muted); }
+    .project-section { margin-top: 14px; }
+    .project-section h3 { margin: 0 0 6px; font-family: "Segoe UI", "Noto Sans KR", sans-serif; font-size: 11px; color: var(--blue); letter-spacing: .035em; }
+    .project-section h4 { margin: 12px 0 4px; font-size: 12.5px; font-weight: 700; }
+    .project-section p { margin: 5px 0; font-size: 12px; line-height: 1.75; }
+    .project-section h3, .project-section h4 { break-after: avoid; }
+    .project-section p { break-inside: avoid; }
+    .stack { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0 12px; }
+    .stack span { padding: 2px 7px; background: var(--soft); border-radius: 4px; color: var(--blue); font-size: 10px; font-weight: 600; }
+    .scope { margin: 10px 0 12px; color: var(--muted); font-size: 11.5px; }
+    .achievements { margin: 0; padding: 0; list-style: none; }
+    .achievements li { position: relative; margin: 10px 0; padding-left: 12px; font-size: 12.5px; }
+    .achievements li::before { content: ""; width: 4px; height: 4px; background: var(--blue); border-radius: 50%; position: absolute; left: 0; top: 10px; }
+    .achievements strong { font-weight: 700; }
+    .compact li { margin: 8px 0; font-size: 12px; }
+    .workflow { margin-top: 24px; padding: 15px 17px; background: var(--soft); }
+    .workflow h2 { margin: 0 0 6px; color: var(--blue); font-size: 15px; }
+    .workflow p { margin: 6px 0 0; font-size: 12px; }
+    .page-footer { position: absolute; bottom: 10mm; left: 17mm; right: 17mm; display: flex; justify-content: space-between; padding-top: 7px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    @page { size: A4; margin: 0; }
+    @media print {
+      html { scroll-behavior: auto; }
+      body { background: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .page { margin: 0; width: 210mm; min-height: 297mm; box-shadow: none; break-after: page; }
+      .page:last-child { break-after: auto; }
+      .page-header { margin-bottom: 20px; padding-bottom: 10px; }
+      .identity { padding-bottom: 16px; }
+      .identity + .section { margin-top: 16px; }
+      .project-section { margin-top: 8px; }
+      .project-section h3 { margin-bottom: 4px; }
+      .project-section h4 { margin-top: 8px; margin-bottom: 3px; }
+      .project-section p { margin-top: 2px; margin-bottom: 2px; line-height: 1.7; }
+      .project + .project { margin-top: 16px; padding-top: 12px; }
+      .stack { margin-top: 6px; margin-bottom: 8px; }
+      .project-top, .heading-row, .section-title { break-after: avoid; }
+      .achievements li, .education-row, .certificate, .workflow { break-inside: avoid; }
+      a { color: inherit; }
+    }
+    @media screen and (max-width: 820px) {
+      body { background: #fff; }
+      .page { width: 100%; min-height: 0; padding: 28px 22px; margin: 0; box-shadow: none; border-bottom: 8px solid #eaf0f6; }
+      .page-footer { position: static; margin-top: 28px; }
+      .identity { grid-template-columns: 1fr; gap: 20px; }
+      .bottom-grid { gap: 20px; }
+      .project-top { flex-direction: column; gap: 3px; }
+      .contact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; margin: 0; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+    }
+    @media screen and (max-width: 480px) {
+      .bottom-grid { grid-template-columns: 1fr; gap: 0; }
+      .heading-row { flex-wrap: wrap; gap: 1px 12px; }
+      .skills { grid-template-columns: 80px 1fr; }
+      h1 { font-size: 30px; }
+      .project h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="page" aria-label="기본정보와 경력 요약">
+      <header class="page-header">
+        <span>Resume</span>
+      </header>
+      <section class="identity" aria-labelledby="candidate-name">
+        <div class="profile-main">
+          <h1 id="candidate-name">이희태 <span class="english-name">Heetae Lee</span></h1>
+          <p class="role">Backend Engineer · 5+ Years</p>
+          <div class="intro">
+            <p class="intro-headline">문제를 끝까지 파고들고,<br>필요한 기술을 익혀 해결하는 개발자입니다.</p>
+            <p>문제가 생기면 코드와 데이터, 실행 환경을 따라가며 원인을 찾습니다. <br>
+              새로운 기술이 필요한 과제도 직접 익혀 구현하고, 검증을 거쳐 실제 서비스에 적용해 왔습니다.</p>
+          </div>
+        </div>
+        <dl class="contact">
+          <div><dt>Email</dt><dd><a href="mailto:heetaelee93@gmail.com">heetaelee93@gmail.com</a></dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:01045885433">010-4588-5433</a></dd></div>
+          <div><dt>Profile</dt><dd><a href="https://heetae-l.github.io/ko/">heetae-l.github.io</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/heetae-L">github.com/heetae-L</a></dd></div>
+          <div><dt>Portfolio PDF</dt><dd><a href="https://heetae-l.github.io/downloads/heetae-lee-portfolio-submission.pdf">프로젝트 포트폴리오 보기</a></dd></div>
+        </dl>
+      </section>
+
+      <section class="section" aria-labelledby="experience-title">
+        <h2 class="section-title" id="experience-title">Work Experience <small>총 웹 개발 경력 5년 이상</small></h2>
+        <article class="job">
+          <div class="heading-row"><h3>SK M&amp;Service</h3><span class="date">2021.12.06 – 현재</span></div>
+          <p class="job-meta">개발팀 / 매니저</p>
+          <p>복지와 여행 이커머스의 사용자, 관리자, 고객사 기능 및 백엔드 개발과 운영.<br>외부 API 연동, 배치, DB와 검색 데이터 처리, 트랜잭션 및 통합검색 안정성 개선.</p>
+        </article>
+        <article class="job">
+          <div class="heading-row"><h3>한성기업 주식회사</h3><span class="date">2020.11.09 – 2021.06.11</span></div>
+          <p class="job-meta">T&amp;D팀 IT Part / 사원</p>
+          <p>물류와 주문 관련 사내 업무 웹 시스템 개발과 운영, 사용자 구분별 접근 범위 확장.<br>WebSquare, DB2, IBM RPG를 사용하는 업무 환경에서 개발 및 전산관리 수행.</p>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="skills-title">
+        <h2 class="section-title" id="skills-title">Tech Stack</h2>
+        <dl class="skills">
+          <dt>Backend</dt><dd>Java, Spring Boot, Spring Framework, REST API, Spring Batch</dd>
+          <dt>Data</dt><dd>Oracle, SQL, Stored Procedure, MyBatis, Spring Data JPA, Redis</dd>
+          <dt>Integration</dt><dd>Feign, WebClient, CompletableFuture</dd>
+          <dt>Dev / Deploy</dt><dd>Git, Docker, Jenkins, GitLab CI/CD, Nomad, JUnit, Mockito</dd>
+          <dt>AI API</dt><dd>Python, Flask, Azure OpenAI</dd>
+        </dl>
+      </section>
+
+      <div class="bottom-grid">
+        <section class="section" aria-labelledby="education-title">
+          <h2 class="section-title" id="education-title">Education <small>최종학력: 학사(공학사)</small></h2>
+          <div class="education-row">
+            <strong>동서울대학교 / 소프트웨어학과</strong>
+            <p>2018.02 – 2019.02 / 공학사</p>
+            <p>학사학위전공심화과정</p>
+          </div>
+          <div class="education-row">
+            <strong>동서울대학교 / 컴퓨터소프트웨어과</strong>
+            <p>2013.02 – 2018.02 / 공업전문학사</p>
+            <p>3년제 전문학사과정</p>
+          </div>
+        </section>
+        <section class="section" aria-labelledby="certifications-title">
+          <h2 class="section-title" id="certifications-title">Certifications</h2>
+          <div class="certificate"><strong>정보처리기사</strong><p>한국산업인력공단 / 2019.11</p></div>
+          <div class="certificate"><strong>SQL개발자(SQLD)</strong><p>한국데이터산업진흥원 / 2024.09</p></div>
+          <p class="military"><strong>Military Service</strong><br>육군 병장 만기전역 / 2014.10 – 2016.07</p>
+        </section>
+      </div>
+      <footer class="page-footer"><span>Heetae Lee / Career Overview</span><span>1 / 4</span></footer>
+    </section>
+
+    <section class="page" aria-label="경력기술서 1">
+      <header class="page-header"><span class="label">PROJECT EXPERIENCE</span><span>SK M&amp;Service</span></header>
+
+      <article class="project" data-source-block="1">
+        <div class="project-top"><h2>Travel &amp; Leisure Partner Integration</h2><span class="date">2025.01 ~ 현재</span></div>
+        <p class="project-name">여행 레저 제휴 연동 플랫폼 개발 및 운영</p>
+        <div class="stack"><span>Java</span><span>Spring Boot</span><span>Spring Data JPA</span><span>Spring Batch</span><span>Oracle</span><span>CompletableFuture</span></div>
+        <section class="project-section">
+          <h3>Responsibilities</h3>
+          <p>외부 제휴 연동 API·배치 개발, 주문·상품 데이터 처리, 트랜잭션 경계와 통합검색 안정성 개선</p>
+        </section>
+        <section class="project-section">
+          <h3>Implementation</h3>
+          <p>베네피아와 휴가샵의 여행·숙박·레저 제휴 연동 시스템을 개발·운영하며, 월 수만 건의 주문과 수십만 건 규모의 활성 상품을 다룹니다. 2026년부터 신규 연동과 기존 서비스 개선을 단독 전담하고 있습니다.</p>
+          <p>Java/Spring Boot·Spring Data JPA 기반 주문 수집 API와 Spring Batch 기반 누락 주문 보정·상품수집 배치를 개발·운영하고, Oracle 적재부터 숙박상품 매핑·검색 데이터 생성·서비스 노출까지 맡았습니다.</p>
+          <p>제휴사별 API 규격·데이터 형식과 Proxy·방화벽·IP 허용 조건을 분석해 신규 연동을 개발했습니다.</p>
+          <p>ThreadPoolTaskExecutor·CompletableFuture 기반 제휴사 병렬 조회에 신규 연동을 추가하고, 주요 로직과 예외 상황을 JUnit·Mockito로 검증했습니다.</p>
+        </section>
+        <section class="project-section">
+          <h3>Results</h3>
+          <h4>주문 저장·알림 트랜잭션 분리</h4>
+          <p>알림 프로시저의 트랜잭션 간섭으로 주문 저장이 실패하던 문제를 분석하고, 비트랜잭션 Facade에서 주문 저장과 알림 발송을 분리 호출하도록 개선했습니다.</p>
+          <p>주문 커밋 후 알림을 별도 트랜잭션으로 처리해, 알림 실패가 주문 저장과 API 응답에 영향을 주지 않도록 했습니다.</p>
+          <h4>통합검색 응답 검증·오류 격리</h4>
+          <p>제휴사별 응답의 상태·객실·가격 정보를 검증하고 비정상 결과만 제외하도록 개선해, 한 제휴사의 오류가 전체 검색 실패로 이어지지 않도록 했습니다. 비동기 작업 등록·순회 순서도 안정화했습니다.</p>
+          <h4>제휴사 Proxy 정책 설정화</h4>
+          <p>코드에 분산돼 있던 제휴사별 Proxy 사용 기준을 DB 설정과 공통 정책 컴포넌트로 일원화해 운영에 배포했습니다. 대상 변경을 코드 배포 없이 DB 설정으로 처리할 수 있도록 개선했습니다.</p>
+          <h4>간헐적 502 오류 원인 규명</h4>
+          <p>제휴 연동 개발 환경에서 반복되던 502 오류를 Apache·WAS 로그와 프로세스별 연결 이력으로 추적해, 끊어진 커넥션 재사용이 원인임을 규명했습니다. 이를 바탕으로 커넥션 TTL 조정안과 반영 후 검증 기준을 수립했습니다.</p>
+          <h4>숙박상품 노출 설정 관리자화</h4>
+          <p>숙박상품 노출 오류를 채널 분류와 검색 데이터 생성 로직에서 추적하고, 채널별 노출 설정을 관리자 기능으로 구현했습니다. 운영자가 DB 변경 요청 없이 상품 노출 여부를 직접 관리하도록 개선했습니다.</p>
+        </section>
+      </article>
+      <footer class="page-footer"><span>Heetae Lee / Partner Integration &amp; Reliability</span><span>2 / 4</span></footer>
+    </section>
+
+    <section class="page" aria-label="경력기술서 2">
+      <header class="page-header"><span class="label">PROJECT EXPERIENCE</span><span>SK M&amp;Service</span></header>
+
+      <article class="project" data-source-block="2">
+        <div class="project-top"><h2>AI Q&amp;A Gateway API</h2><span class="date">2023.06 ~ 2023.10</span></div>
+        <p class="project-name">여행 AI Q&amp;A Gateway API 구축</p>
+        <div class="stack"><span>Python</span><span>Flask</span><span>Azure OpenAI</span><span>Oracle</span><span>Docker</span><span>GitLab CI</span><span>Nomad</span></div>
+        <section class="project-section">
+          <h3>Responsibilities</h3>
+          <p>Python 기반 생성형 AI API 설계·구현, Oracle 연동, 컨테이너·CI/CD 구성과 운영 배포 검증</p>
+        </section>
+        <section class="project-section">
+          <h3>Implementation</h3>
+          <p>생성형 AI의 서비스 적용이 확산되기 시작한 2023년, CTO와 2인 TF로 사내 최초의 Python 기반 생성형 AI API를 구축했습니다.</p>
+          <p>입사 2년차에 요구사항 구체화부터 API 설계와 구현, DB 연동, 컨테이너 구성과 CI/CD, 운영 배포 검증까지 대부분을 주도했습니다.</p>
+          <p>Python과 Flask로 국내 여행 관련 질문인지 먼저 판별한 뒤 답변을 생성하는 2단계 Azure OpenAI GPT-3.5 Turbo 호출 구조를 설계하고 구현했습니다.</p>
+          <p>기존 서비스가 호출할 수 있도록 요청과 응답 JSON, 상태값과 예외 처리 기준을 정의했습니다.</p>
+          <p>모델 응답이 정해진 JSON 형식을 벗어나는 경우를 검증하고 보정하는 로직도 구현했습니다.</p>
+          <p>질문과 답변 이력은 Oracle 테이블과 저장 로직을 설계해 보관하고, 세션별 최근 대화는 인메모리 LRU Cache에 유지했습니다.</p>
+        </section>
+        <section class="project-section">
+          <h3>Results</h3>
+          <h4>Python 서비스 배포 환경 구축·서비스 연계</h4>
+          <p>Docker 이미지와 GitLab CI 파이프라인, Nomad 실행 환경을 구성했습니다.</p>
+          <p>Java와 Spring 중심의 사내 환경에서 Python 서비스의 배포 규격과 운영 사례가 전무한 상황이었지만, 인프라팀과 실행 조건을 확인하고 문제를 해결해 기존 서비스에서 호출할 수 있는 Gateway API를 완성했습니다.</p>
+        </section>
+      </article>
+
+      <article class="project" data-source-block="3">
+        <div class="project-top"><h2>KTO Hyugashop Web/App</h2><span class="date">2024.04 ~ 현재</span></div>
+        <p class="project-name">한국관광공사 휴가샵 Web/App 백엔드 개발 및 운영</p>
+        <div class="stack"><span>Java</span><span>Spring Boot</span><span>Oracle</span><span>MyBatis</span><span>Redis</span></div>
+        <section class="project-section">
+          <h3>Responsibilities</h3>
+          <p>사용자·관리자·고객사 기능 개발, 통계·리포트 데이터 처리, 상품 품질관리와 대량 업로드 구현</p>
+        </section>
+        <section class="project-section">
+          <h3>Implementation</h3>
+          <p>Java/Spring Boot 기반 사용자 Web/App과 관리자·고객사 기능을 개발·운영하고, Oracle·MyBatis·프로시저로 상품·주문·포인트 데이터를 처리했습니다.</p>
+          <p>Redis Cluster 기반 세션 공유와 검색 캐시가 적용된 환경에서 기능을 개발·운영하며, 기존 캐시 키·TTL 설정과 사용 흐름을 분석했습니다.</p>
+        </section>
+        <section class="project-section">
+          <h3>Results</h3>
+          <h4>통계·리포트 집계 기준 구현</h4>
+          <p>국회 요구자료와 일일 리포트에 필요한 주문·취소·포인트 거래를 일자별로 적재·조회하는 기능을 구현했습니다.</p>
+          <p>상품 유형·지역과 근로자·기업·정부 재원 구분을 집계에 반영해, 화면과 엑셀에서 같은 기준의 통계를 제공했습니다.</p>
+          <h4>상품 품질관리 흐름 구현</h4>
+          <p>부적합 키워드로 상품을 선별하고 운영자의 판정 결과가 검색 노출 제외에 반영되도록 구현해, 상품 품질관리 절차를 마련했습니다.</p>
+          <h4>대량 업로드 검증·분할 처리</h4>
+          <p>최대 5만 명의 메시지 발송 대상 업로드에 회원·고객사 검증과 중복 확인, 분할 저장을 적용해 잘못된 대상 등록을 방지했습니다.</p>
+        </section>
+      </article>
+      <footer class="page-footer"><span>Heetae Lee / AI API &amp; Service Development</span><span>3 / 4</span></footer>
+    </section>
+
+    <section class="page" aria-label="경력기술서 3">
+      <header class="page-header"><span class="label">PROJECT EXPERIENCE</span><span>SK M&amp;Service</span></header>
+
+      <article class="project" data-source-block="4">
+        <div class="project-top"><h2>Benepia Welfare Commerce</h2><span class="date">2022.02 ~ 2024.03</span></div>
+        <p class="project-name">베네피아 복지 이커머스 개발 및 금융 고객사 카드 연동</p>
+        <div class="stack"><span>Java</span><span>Spring Boot</span><span>MyBatis</span><span>Oracle</span><span>Feign</span></div>
+        <section class="project-section">
+          <h3>Responsibilities</h3>
+          <p>Web/Mobile 백엔드 개발, 카드 전문 통신부와 내부 API 연계, 업무 상태·중복 요청·처리 이력 관리</p>
+        </section>
+        <section class="project-section">
+          <h3>Implementation</h3>
+          <p>Java/Spring Boot 기반 사용자 Web/Mobile과 관리자·고객사 기능을 개발·운영하고, 고객사별 요구사항에 맞춰 화면·API·DB 처리 로직을 구현했습니다.</p>
+          <p>금융 고객사의 복지카드 조회·변경 기능을 PC와 Mobile에 구현하고, Feign 기반 내부 REST API로 Java Socket 기반 카드 전문 통신부와 연계했습니다.</p>
+        </section>
+        <section class="project-section">
+          <h3>Results</h3>
+          <h4>업무 상태 검증·중복 요청 방지</h4>
+          <p>내부 API 호출 결과와 카드 전문의 업무 처리 결과를 구분해 사용자 안내와 저장 이력에 반영했습니다.</p>
+          <p>현재 카드와 변경 예정 카드, 기존 요청 상태를 확인해 중복 접수를 막고, 처리 이력으로 변경 내역을 추적할 수 있도록 했습니다.</p>
+        </section>
+      </article>
+
+      <article class="project" data-source-block="5">
+        <div class="project-top"><h2>AI-DLC &amp; Harness Engineering</h2><span class="date">2026 ~ 현재</span></div>
+        <p class="project-name">AI-DLC·하네스 기반 개발 방식</p>
+        <div class="stack"><span>Codex</span><span>Claude Code</span><span>Markdown</span><span>Git</span><span>Python</span></div>
+        <section class="project-section">
+          <h3>Responsibilities</h3>
+          <p>AI-DLC 적용·하네스 구성, 업무 지식·작업 규칙 정비, AI 협업 구현과 결과 검증</p>
+        </section>
+        <section class="project-section">
+          <h3>Implementation</h3>
+          <p>요구사항 분석부터 구현·테스트·기록까지 Codex와 Claude Code를 활용하는 AI-DLC 방식으로 일하고 있습니다.</p>
+          <p>API 규격·코드 흐름·작업 규칙·검증 절차를 공용 하네스로 구조화해, AI가 같은 업무 맥락을 참조하도록 했습니다.</p>
+          <p>변경 범위와 완료 기준은 제가 정하고, AI의 코드 제안은 검토·단위 테스트와 실제 API·DB 확인을 거쳐 반영합니다.</p>
+        </section>
+        <section class="project-section">
+          <h3>Results</h3>
+          <h4>공용 검증 도구 구현</h4>
+          <p>문서 링크와 변경 문서의 계정·토큰 패턴을 점검하는 Python 검사 도구를 AI와 함께 구현·검증했습니다.</p>
+        </section>
+      </article>
+      <footer class="page-footer"><span>Heetae Lee / Commerce &amp; Engineering Practices</span><span>4 / 4</span></footer>
+    </section>
+  </main>
+</body>
+</html>
