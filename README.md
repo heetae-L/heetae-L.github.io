@@ -35,6 +35,14 @@
 두 PDF는 표지와 마지막 페이지의 URL만 다르며, 사이트 다운로드 버튼은 일반·제출용 화면에 맞는 PDF를 제공. 제출용 PDF는 편집 정본에서 URL만 바꾼 임시 PPTX로 생성하고 임시 파일은 배포하지 않음.
 `public/downloads/`의 파일은 배포 후 직접 URL로 접근 가능.
 
+## Resume Files
+
+- 편집 정본: [heetae-lee-resume.html](public/downloads/heetae-lee-resume.html)
+- 제출용 PDF: [heetae-lee-resume.pdf](public/downloads/heetae-lee-resume.pdf) (A4 4페이지)
+- 2026-09-30 현대오토에버 지원에 사용한 범용 이력서. PDF 제출 시 파일명은 `heetae-lee_Resume.pdf`.
+- HTML의 인쇄 스타일을 적용해 PDF를 생성한다. HTML을 수정하면 PDF도 다시 생성해야 한다.
+- 현재 사이트에 Resume 다운로드 버튼은 없으며, 버튼 추가는 후속 작업이다.
+
 ## Deployment
 
 `main` 브랜치에 push, GitHub Actions가 정적 사이트를 빌드하고 GitHub Pages로 배포.
