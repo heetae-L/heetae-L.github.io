@@ -43,6 +43,15 @@
 - HTML의 인쇄 스타일을 적용해 PDF를 생성한다. HTML을 수정하면 PDF도 다시 생성해야 한다.
 - 현재 사이트에 Resume 다운로드 버튼은 없으며, 버튼 추가는 후속 작업이다.
 
+## Analytics
+
+- GA4 측정 ID: `G-B05RJDTZCM`. 공통 `src/layouts/SiteLayout.astro`에서 KO/EN과 제출용 페이지를 측정한다.
+- 운영 빌드의 `heetae-l.github.io`에서만 수집한다. 개발 서버와 로컬 production preview는 수집하지 않는다.
+- Google signals와 광고 개인화를 비활성화하고 기본 페이지 조회 URL에서 query/hash를 제외한다. 향상된 측정의 링크 URL 등은 별도 수집 항목이므로 GA4의 이메일 데이터 수정 설정도 확인한다.
+- 페이지 조회 및 GA4에서 켠 향상된 측정(스크롤, 외부 링크, PDF 링크 클릭)을 사용한다. 직접 PDF URL을 연 경우와 다운로드 완료는 이 태그로 측정하지 않는다. `public/downloads/`의 독립 레쥬메 HTML에는 태그를 넣지 않는다.
+- 내 운영 방문 제외와 데이터 보관·이메일 데이터 수정 설정은 GA4 관리 화면에서 별도로 설정한다. 배포 후 실시간 보고서에서 수신을 확인한다.
+- 운영 배포 전 Analytics 쿠키 사용 고지와 방문자 지역에 따른 동의 필요 여부를 점검한다. 광고 개인화 비활성화가 분석 쿠키의 비활성화를 의미하지는 않는다.
+
 ## Deployment
 
 `main` 브랜치에 push, GitHub Actions가 정적 사이트를 빌드하고 GitHub Pages로 배포.

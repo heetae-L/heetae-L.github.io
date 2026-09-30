@@ -29,6 +29,28 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://heetae-l.gi
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {import.meta.env.PROD && (
+      <script is:inline>
+        (() => {
+          // Production builds can also be previewed locally without collecting visits.
+          if (window.location.hostname !== "heetae-l.github.io") return;
+
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag("js", new Date());
+          window.gtag("config", "G-B05RJDTZCM", {
+            allow_google_signals: false,
+            allow_ad_personalization_signals: false,
+            page_location: window.location.origin + window.location.pathname
+          });
+
+          const tag = document.createElement("script");
+          tag.async = true;
+          tag.src = "https://www.googletagmanager.com/gtag/js?id=G-B05RJDTZCM";
+          document.head.appendChild(tag);
+        })();
+      </script>
+    )}
     <meta name="description" content={description} />
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:title" content={title} />
