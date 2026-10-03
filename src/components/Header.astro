@@ -1,7 +1,8 @@
 ---
-import { Download, GitBranch, Menu, Moon, Sun, X } from "@lucide/astro";
+import { GitBranch, Menu, Moon, Sun, X } from "@lucide/astro";
+import DocumentActions from "./DocumentActions.astro";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { portfolioDownloadPath, type Locale, withLocale } from "../i18n/config";
+import { type Locale, withLocale } from "../i18n/config";
 import type { SiteContent } from "../data";
 
 interface Props {
@@ -13,8 +14,6 @@ interface Props {
 
 const { locale, content, currentPath, portfolioMode = false } = Astro.props;
 const homeHref = portfolioMode ? withLocale(locale, "/portfolio") : withLocale(locale);
-const downloadPath = portfolioDownloadPath(portfolioMode);
-const downloadFileName = downloadPath.split("/").at(-1);
 
 const navItems = [
   { label: content.nav.home, href: homeHref, isHome: true },
@@ -34,7 +33,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
       <span class="text-blue-accent">Heetae</span> Lee
     </a>
 
-    <nav class="hidden shrink-0 items-center gap-7 text-[13px] font-bold text-ink-600 min-[700px]:flex" aria-label="Primary navigation">
+    <nav class="hidden shrink-0 items-center gap-4 text-[13px] font-bold text-ink-600 min-[700px]:flex min-[1100px]:gap-7" aria-label="Primary navigation">
       {
         navItems.map((item) => {
           const itemPath = item.href.replace(/\/$/, "") || `/${locale}`;
@@ -60,28 +59,10 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
 
     <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
       <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
-        <div class="hidden items-center gap-3 min-[940px]:flex">
-          <a
-            href={downloadPath}
-            download={downloadFileName}
-            data-portfolio-download
-            class="inline-flex h-10 items-center gap-2 rounded-xl bg-blue-action px-4 text-sm font-extrabold text-white shadow-[0_10px_24px_rgba(15,91,255,0.22)] transition hover:bg-blue-700"
-          >
-            <Download class="h-4 w-4" />
-            {content.common.downloadPortfolio}
-          </a>
+        <DocumentActions locale={locale} portfolioMode={portfolioMode} />
+        <div class="hidden min-[940px]:block">
           <LanguageSwitcher locale={locale} currentPath={currentPath} />
         </div>
-        <a
-          href={downloadPath}
-          download={downloadFileName}
-          data-portfolio-download
-          class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-action text-white shadow-sm transition hover:bg-blue-700 sm:h-10 sm:w-10 min-[940px]:hidden"
-          aria-label={content.common.downloadPortfolio}
-          title={content.common.downloadPortfolio}
-        >
-          <Download class="h-4 w-4" aria-hidden="true" />
-        </a>
         <button
           type="button"
           class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/40 hover:text-blue-accent sm:h-10 sm:w-10 dark:bg-surface-raised"
@@ -146,8 +127,6 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
 </header>
 
 <script>
-  import { portfolioDownloadPath } from "../i18n/config";
-
   if (document.documentElement.classList.contains("portfolio-mode")) {
     document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-home]").forEach((link) => {
       const locale = link.dataset.portfolioHome;
@@ -156,17 +135,28 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
         link.href = `/${locale}/portfolio`;
       }
     });
-    document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-download]").forEach((link) => {
-      const path = portfolioDownloadPath(true);
-      link.href = path;
-      link.download = path.split("/").at(-1) ?? "heetae-lee-portfolio-submission.pdf";
-    });
   }
 
   const menuButton = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
   const openIcon = document.querySelector('[data-menu-icon="open"]');
   const closeIcon = document.querySelector('[data-menu-icon="close"]');
+
+  function closeMobileMenu() {
+    menuButton?.setAttribute("aria-expanded", "false");
+    mobileMenu?.classList.add("hidden");
+    openIcon?.classList.remove("hidden");
+    closeIcon?.classList.add("hidden");
+  }
+
+  document.addEventListener("document-menu-open", closeMobileMenu);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
+      closeMobileMenu();
+      (menuButton as HTMLButtonElement).focus();
+    }
+  });
+  window.addEventListener("resize", closeMobileMenu);
 
   const themeButtons = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
   let manualTheme: "light" | "dark" | null = null;
@@ -209,6 +199,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
   });
 
   menuButton?.addEventListener("click", () => {
+    document.querySelectorAll<HTMLDetailsElement>("[data-document-menu]").forEach((menu) => { menu.open = false; });
     const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
     menuButton.setAttribute("aria-expanded", String(!isExpanded));
     mobileMenu?.classList.toggle("hidden", isExpanded);

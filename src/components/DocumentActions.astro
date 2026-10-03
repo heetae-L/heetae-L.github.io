@@ -1,0 +1,138 @@
+---
+import { BookOpen, ChevronDown, Download, ExternalLink, Files, FileText } from "@lucide/astro";
+import { portfolioDownloadPath, type Locale } from "../i18n/config";
+
+interface Props {
+  locale: Locale;
+  portfolioMode?: boolean;
+  variant?: "header" | "hero";
+}
+
+const { locale, portfolioMode = false, variant = "header" } = Astro.props;
+const documents = [
+  {
+    key: "resume",
+    label: "Resume",
+    icon: FileText,
+    preview: "/downloads/heetae-lee-resume.html",
+    download: "/downloads/heetae-lee-resume.pdf",
+    viewLabel: locale === "ko" ? "웹으로 보기" : "View online"
+  },
+  {
+    key: "portfolio",
+    label: "Portfolio",
+    icon: BookOpen,
+    preview: portfolioDownloadPath(portfolioMode),
+    download: portfolioDownloadPath(portfolioMode),
+    viewLabel: locale === "ko" ? "PDF 미리보기" : "Preview PDF"
+  }
+].filter((document) => !portfolioMode || document.key !== "resume");
+const downloadLabel = locale === "ko" ? "PDF 다운로드" : "Download PDF";
+const documentsLabel = locale === "ko" ? "이력서 및 포트폴리오" : "Resume and portfolio";
+const panelClass = "absolute top-full z-50 mt-2 w-56 max-w-[calc(100vw-2rem)] rounded-lg border border-line-200 bg-surface p-2 text-sm text-ink-900 shadow-xl";
+const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-semibold transition hover:bg-blue-soft hover:text-blue-accent focus-visible:bg-blue-soft";
+---
+
+<div class:list={["no-print flex flex-wrap items-center gap-2", variant === "header" ? "shrink-0" : "relative"]}>
+  {documents.map((document) => (
+    <details
+      data-document-menu
+      data-hide-in-portfolio={document.key === "resume" ? true : undefined}
+      class:list={["group", variant === "header" ? "relative hidden min-[940px]:block" : "sm:relative"]}
+    >
+      <summary
+        class:list={[
+          "inline-flex cursor-pointer list-none items-center justify-center whitespace-nowrap font-extrabold transition [&::-webkit-details-marker]:hidden",
+          variant === "header" ? "h-10 gap-1.5 rounded-xl px-3 text-[13px]" : "h-12 gap-1.5 rounded-xl px-3 text-[13px] sm:px-4 sm:text-sm",
+          document.key === "portfolio"
+            ? "bg-blue-action text-white shadow-sm hover:bg-blue-700"
+            : "border border-line-200 bg-surface-raised text-ink-900 shadow-sm hover:border-blue-accent/40 hover:text-blue-accent"
+        ]}
+      >
+        <document.icon class="h-4 w-4" aria-hidden="true" />
+        {document.label}
+        <ChevronDown class="h-3 w-3 transition group-open:rotate-180" aria-hidden="true" />
+      </summary>
+      <div class:list={[panelClass, variant === "header" ? "right-0" : "left-0"]}>
+        {locale === "en" && <p class="px-3 py-2 text-xs font-bold text-ink-500">{document.label} · KO</p>}
+        <a href={document.preview} target="_blank" rel="noopener noreferrer" data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+          <ExternalLink class="h-4 w-4 shrink-0" aria-hidden="true" />
+          {document.viewLabel}
+        </a>
+        <a href={document.download} download={document.download.split("/").at(-1)} data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+          <Download class="h-4 w-4 shrink-0" aria-hidden="true" />
+          {downloadLabel}
+        </a>
+      </div>
+    </details>
+  ))}
+
+  {variant === "header" && (
+    <details class="group min-[940px]:hidden" data-document-menu>
+      <summary class="inline-flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-xl bg-blue-action text-white shadow-sm transition hover:bg-blue-700 sm:h-10 sm:w-10 [&::-webkit-details-marker]:hidden" aria-label={documentsLabel} title={documentsLabel}>
+        <Files class="h-4 w-4" aria-hidden="true" />
+      </summary>
+      <div class:list={[panelClass, "right-4 sm:right-6"]}>
+        {documents.map((document) => (
+          <section data-hide-in-portfolio={document.key === "resume" ? true : undefined} class:list={[document.key === "resume" && "mb-2 border-b border-line-200 pb-2"]}>
+            <p class="flex items-center gap-2 px-3 py-2 text-xs font-extrabold text-ink-500">
+              <document.icon class="h-3.5 w-3.5" aria-hidden="true" />
+              {document.label}
+              {locale === "en" && <span class="ml-auto text-[10px]">KO</span>}
+            </p>
+            <a href={document.preview} target="_blank" rel="noopener noreferrer" data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+              <ExternalLink class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {document.viewLabel}
+            </a>
+            <a href={document.download} download={document.download.split("/").at(-1)} data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+              <Download class="h-4 w-4 shrink-0" aria-hidden="true" />
+              {downloadLabel}
+            </a>
+          </section>
+        ))}
+      </div>
+    </details>
+  )}
+</div>
+
+<script>
+  import { portfolioDownloadPath } from "../i18n/config";
+
+  if (document.documentElement.classList.contains("portfolio-mode")) {
+    document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-file]").forEach((link) => {
+      const path = portfolioDownloadPath(true);
+      link.href = path;
+      if (link.hasAttribute("download")) link.download = path.split("/").at(-1) ?? "";
+    });
+  }
+
+  const menus = document.querySelectorAll<HTMLDetailsElement>("[data-document-menu]");
+  menus.forEach((menu) => {
+    menu.addEventListener("toggle", () => {
+      if (!menu.open) return;
+      menus.forEach((other) => { if (other !== menu) other.open = false; });
+      document.dispatchEvent(new CustomEvent("document-menu-open"));
+    });
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => { menu.open = false; });
+    });
+    menu.addEventListener("focusout", (event) => {
+      if (event.relatedTarget instanceof Node && !menu.contains(event.relatedTarget)) menu.open = false;
+    });
+  });
+
+  document.addEventListener("pointerdown", (event) => {
+    menus.forEach((menu) => {
+      if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    });
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    menus.forEach((menu) => {
+      if (!menu.open) return;
+      menu.open = false;
+      menu.querySelector("summary")?.focus();
+    });
+  });
+  window.addEventListener("resize", () => { menus.forEach((menu) => { menu.open = false; }); });
+</script>
