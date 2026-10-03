@@ -5,7 +5,7 @@ import { portfolioDownloadPath, type Locale } from "../i18n/config";
 interface Props {
   locale: Locale;
   portfolioMode?: boolean;
-  variant?: "header" | "hero";
+  variant?: "header" | "hero" | "menu";
 }
 
 const { locale, portfolioMode = false, variant = "header" } = Astro.props;
@@ -29,12 +29,13 @@ const documents = [
 ].filter((document) => !portfolioMode || document.key !== "resume");
 const downloadLabel = locale === "ko" ? "PDF 다운로드" : "Download PDF";
 const documentsLabel = locale === "ko" ? "이력서 및 포트폴리오" : "Resume and portfolio";
+const MenuContainer = variant === "menu" ? "div" : "details";
 const panelClass = "absolute top-full z-50 mt-2 w-56 max-w-[calc(100vw-2rem)] rounded-lg border border-line-200 bg-surface p-2 text-sm text-ink-900 shadow-xl";
 const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-semibold transition hover:bg-blue-soft hover:text-blue-accent focus-visible:bg-blue-soft";
 ---
 
-<div class:list={["no-print flex flex-wrap items-center gap-2", variant === "header" ? "shrink-0" : "relative"]}>
-  {documents.map((document) => (
+<div class:list={["no-print", variant === "menu" ? "w-full" : "flex flex-wrap items-center gap-2", variant === "header" && "shrink-0", variant === "hero" && "relative"]}>
+  {variant !== "menu" && documents.map((document) => (
     <details
       data-document-menu
       data-hide-in-portfolio={document.key === "resume" ? true : undefined}
@@ -67,14 +68,14 @@ const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-se
     </details>
   ))}
 
-  {variant === "header" && (
-    <details class="group min-[940px]:hidden" data-document-menu>
-      <summary class="inline-flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-xl bg-blue-action text-white shadow-sm transition hover:bg-blue-700 sm:h-10 sm:w-10 [&::-webkit-details-marker]:hidden" aria-label={documentsLabel} title={documentsLabel}>
+  {variant !== "hero" && (
+    <MenuContainer class:list={[variant === "header" && "group min-[940px]:hidden"]} data-document-menu={variant === "header" ? true : undefined}>
+      {variant === "header" && <summary class="inline-flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-xl bg-blue-action text-white shadow-sm transition hover:bg-blue-700 sm:h-10 sm:w-10 [&::-webkit-details-marker]:hidden" aria-label={documentsLabel} title={documentsLabel}>
         <Files class="h-4 w-4" aria-hidden="true" />
-      </summary>
-      <div class:list={[panelClass, "right-4 sm:right-6"]}>
+      </summary>}
+      <div class:list={[variant === "header" ? [panelClass, "right-4 sm:right-6"] : "grid gap-3 sm:grid-cols-2"]}>
         {documents.map((document) => (
-          <section data-hide-in-portfolio={document.key === "resume" ? true : undefined} class:list={[document.key === "resume" && "mb-2 border-b border-line-200 pb-2"]}>
+          <section data-hide-in-portfolio={document.key === "resume" ? true : undefined} class:list={[variant === "header" && document.key === "resume" && "mb-2 border-b border-line-200 pb-2"]}>
             <p class="flex items-center gap-2 px-3 py-2 text-xs font-extrabold text-ink-500">
               <document.icon class="h-3.5 w-3.5" aria-hidden="true" />
               {document.label}
@@ -91,7 +92,7 @@ const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-se
           </section>
         ))}
       </div>
-    </details>
+    </MenuContainer>
   )}
 </div>
 

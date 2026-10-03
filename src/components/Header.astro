@@ -14,40 +14,41 @@ interface Props {
 
 const { locale, content, currentPath, portfolioMode = false } = Astro.props;
 const homeHref = portfolioMode ? withLocale(locale, "/portfolio") : withLocale(locale);
+const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
 
 const navItems = [
   { label: content.nav.home, href: homeHref, isHome: true },
   { label: content.nav.projects, href: withLocale(locale, "/projects") },
   { label: content.nav.experience, href: withLocale(locale, "/experience") },
   { label: content.nav.techStack, href: withLocale(locale, "/tech-stack") }
-];
+].map((item) => {
+  const itemPath = item.href.replace(/\/$/, "");
+  return { ...item, active: normalizedPath === itemPath || (!item.isHome && normalizedPath.startsWith(`${itemPath}/`)) };
+});
 
-const normalizedPath = currentPath.replace(/\/$/, "") || `/${locale}`;
 const switchToDarkLabel = locale === "ko" ? "다크 모드로 전환" : "Switch to dark mode";
 const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Switch to light mode";
+const menuOpenLabel = locale === "ko" ? "메뉴 열기" : "Open menu";
+const menuCloseLabel = locale === "ko" ? "메뉴 닫기" : "Close menu";
 ---
 
 <header class="no-print sticky top-0 z-40 border-b border-line-200/80 bg-white/86 backdrop-blur-xl dark:bg-surface/95">
-  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-    <a href={homeHref} data-portfolio-home={locale} class="shrink-0 whitespace-nowrap text-lg font-extrabold tracking-tight text-ink-950 sm:text-xl">
+  <div class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-2 px-3 sm:px-6 min-[700px]:h-16 min-[700px]:gap-0 lg:px-8">
+    <a href={homeHref} data-portfolio-home={locale} class="hidden shrink-0 whitespace-nowrap text-lg font-extrabold tracking-tight text-ink-950 sm:text-xl min-[700px]:block">
       <span class="text-blue-accent">Heetae</span> Lee
     </a>
 
-    <nav class="hidden shrink-0 items-center gap-4 text-[13px] font-bold text-ink-600 min-[700px]:flex min-[1100px]:gap-7" aria-label="Primary navigation">
+    <nav class="flex min-w-0 flex-1 items-center justify-start gap-1 text-xs font-bold text-ink-600 min-[700px]:flex-none min-[700px]:shrink-0 min-[700px]:gap-4 min-[700px]:text-[13px] min-[1100px]:gap-7" aria-label="Primary navigation">
       {
         navItems.map((item) => {
-          const itemPath = item.href.replace(/\/$/, "") || `/${locale}`;
-          const isHome = itemPath === `/${locale}`;
-          const active = isHome ? normalizedPath === itemPath : normalizedPath === itemPath || normalizedPath.startsWith(`${itemPath}/`);
-
           return (
             <a
               href={item.href}
               data-portfolio-home={item.isHome ? locale : undefined}
-              aria-current={active ? "page" : undefined}
+              aria-current={item.active ? "page" : undefined}
               class:list={[
-                "relative py-6 transition hover:text-blue-accent",
-                active && "text-blue-accent after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-7 after:-translate-x-1/2 after:rounded-full after:bg-blue-accent"
+                "relative flex h-14 min-w-max flex-1 items-center justify-center whitespace-nowrap transition hover:text-blue-accent min-[700px]:h-auto min-[700px]:min-w-0 min-[700px]:flex-none min-[700px]:shrink-0 min-[700px]:py-6",
+                item.active && "text-blue-accent after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-7 after:-translate-x-1/2 after:rounded-full after:bg-blue-accent"
               ]}
             >
               {item.label}
@@ -58,7 +59,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
     </nav>
 
     <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
-      <div class="flex shrink-0 items-center gap-1.5 sm:gap-3">
+      <div class="hidden shrink-0 items-center gap-3 min-[700px]:flex">
         <DocumentActions locale={locale} portfolioMode={portfolioMode} />
         <div class="hidden min-[940px]:block">
           <LanguageSwitcher locale={locale} currentPath={currentPath} />
@@ -94,11 +95,13 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
 
       <button
         type="button"
-        class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-900 sm:h-10 sm:w-10 min-[940px]:hidden dark:bg-surface-raised"
-        aria-label="Open menu"
+        class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-900 min-[700px]:h-10 min-[700px]:w-10 min-[940px]:hidden dark:bg-surface-raised"
+        aria-label={menuOpenLabel}
         aria-expanded="false"
         aria-controls="mobile-menu"
         data-menu-toggle
+        data-open-label={menuOpenLabel}
+        data-close-label={menuCloseLabel}
       >
         <Menu class="h-5 w-5" data-menu-icon="open" />
         <X class="hidden h-5 w-5" data-menu-icon="close" />
@@ -106,22 +109,32 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden border-t border-line-200 bg-white px-4 py-5 sm:px-6 min-[940px]:hidden dark:bg-surface" data-mobile-menu>
-    <nav class="grid gap-2 text-sm font-bold text-ink-700 min-[700px]:hidden" aria-label="Mobile navigation">
-      {
-        navItems.map((item) => (
-          <a
-            href={item.href}
-            data-portfolio-home={item.isHome ? locale : undefined}
-            class="rounded-xl px-3 py-3 hover:bg-blue-soft hover:text-blue-accent"
-          >
-            {item.label}
-          </a>
-        ))
-      }
-    </nav>
-    <div class="mt-5 flex items-center min-[700px]:mt-0 min-[700px]:justify-end">
+  <div id="mobile-menu" class="absolute inset-x-0 top-full hidden max-h-[calc(100dvh-3.5rem-1px)] overflow-y-auto border-t border-line-200 bg-white px-4 py-4 shadow-lg sm:px-6 min-[700px]:max-h-[calc(100dvh-4rem-1px)] min-[940px]:hidden dark:bg-surface" data-mobile-menu>
+    <div class="min-[700px]:hidden">
+      <DocumentActions locale={locale} portfolioMode={portfolioMode} variant="menu" />
+    </div>
+    <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line-200 pt-4 min-[700px]:mt-0 min-[700px]:justify-end min-[700px]:border-0 min-[700px]:pt-0">
       <LanguageSwitcher locale={locale} currentPath={currentPath} />
+      <div class="flex items-center gap-2 min-[700px]:hidden">
+        <button
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line-200 bg-white text-ink-800 shadow-sm transition hover:border-blue-accent/40 hover:text-blue-accent dark:bg-surface-raised"
+          aria-label={switchToDarkLabel}
+          title={switchToDarkLabel}
+          data-theme-toggle
+          data-light-label={switchToDarkLabel}
+          data-dark-label={switchToLightLabel}
+        >
+          <Moon class="h-5 w-5 dark:hidden" aria-hidden="true" />
+          <Sun class="hidden h-5 w-5 dark:block" aria-hidden="true" />
+        </button>
+        {!portfolioMode && (
+          <a href="https://github.com/heetae-L" data-hide-in-portfolio target="_blank" rel="noreferrer" class="inline-flex h-10 items-center gap-2 rounded-xl border border-line-200 bg-white px-3 text-xs font-bold text-ink-800 shadow-sm transition hover:border-blue-accent/30 hover:text-blue-accent dark:bg-surface-raised">
+            <GitBranch class="h-4 w-4" aria-hidden="true" />
+            GitHub
+          </a>
+        )}
+      </div>
     </div>
   </div>
 </header>
@@ -147,6 +160,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
     mobileMenu?.classList.add("hidden");
     openIcon?.classList.remove("hidden");
     closeIcon?.classList.add("hidden");
+    menuButton?.setAttribute("aria-label", (menuButton as HTMLElement).dataset.openLabel ?? "Open menu");
   }
 
   document.addEventListener("document-menu-open", closeMobileMenu);
@@ -157,6 +171,10 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
     }
   });
   window.addEventListener("resize", closeMobileMenu);
+  document.addEventListener("pointerdown", (event) => {
+    if (event.target instanceof Node && !menuButton?.contains(event.target) && !mobileMenu?.contains(event.target)) closeMobileMenu();
+  });
+  mobileMenu?.querySelectorAll("a").forEach((link) => { link.addEventListener("click", closeMobileMenu); });
 
   const themeButtons = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
   let manualTheme: "light" | "dark" | null = null;
@@ -202,6 +220,7 @@ const switchToLightLabel = locale === "ko" ? "라이트 모드로 전환" : "Swi
     document.querySelectorAll<HTMLDetailsElement>("[data-document-menu]").forEach((menu) => { menu.open = false; });
     const isExpanded = menuButton.getAttribute("aria-expanded") === "true";
     menuButton.setAttribute("aria-expanded", String(!isExpanded));
+    menuButton.setAttribute("aria-label", (menuButton as HTMLElement).dataset[isExpanded ? "openLabel" : "closeLabel"] ?? "Open menu");
     mobileMenu?.classList.toggle("hidden", isExpanded);
     openIcon?.classList.toggle("hidden", !isExpanded);
     closeIcon?.classList.toggle("hidden", isExpanded);
