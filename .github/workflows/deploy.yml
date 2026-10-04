@@ -32,6 +32,8 @@ jobs:
         run: npm ci
 
       - name: Build site
+        env:
+          PUBLIC_VISITOR_ALERT_URL: ${{ vars.PUBLIC_VISITOR_ALERT_URL }}
         run: npm run build
 
       - name: Upload artifact

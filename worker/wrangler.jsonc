@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "heetae-visitor-alerts",
+  "main": "visitor-alerts.mjs",
+  "compatibility_date": "2026-10-04",
+  "workers_dev": true,
+  "vars": { "NOTIFY_ENABLED": "true", "INCLUDE_LOCATION": "true" },
+  "durable_objects": { "bindings": [{ "name": "VISIT_GATE", "class_name": "VisitGate" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["VisitGate"] }],
+  "observability": { "enabled": false }
+}

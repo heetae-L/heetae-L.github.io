@@ -3,6 +3,9 @@ dist/
 .astro/
 .idea/
 .DS_Store
+.env*
+.dev.vars*
+.wrangler/
 
 # Qodana local/IDE-generated files
 qodana.yaml
