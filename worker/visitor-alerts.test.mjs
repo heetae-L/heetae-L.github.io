@@ -117,7 +117,7 @@ test("public endpoint validates origin, method, config, privacy headers, body", 
     [request(), { ...env, TELEGRAM_BOT_TOKEN: "" }, 503],
     [request(), { ...env, TELEGRAM_CHAT_ID: "bad" }, 503],
     [request(), { ...env, VISIT_HASH_SECRET: "short" }, 503],
-    [request({}, { DNT: "1" }), env, 204],
+    [request({}, { DNT: "1" }), env, 400],
     [request({}, { "Sec-GPC": "1" }), env, 204],
     [request({}, { "Content-Type": "text/plain" }), env, 415],
     [request({}, { "CF-Connecting-IP": "" }), env, 400],
@@ -182,12 +182,11 @@ function browser(path = "/ko/") {
   return { win, doc, requests, listeners };
 }
 
-test("browser gates disabled/local, opt-out, DNT/GPC, unsafe endpoints", () => {
-  for (const mode of ["disabled", "development", "localhost", "owner", "dnt", "gpc", "unsafe", "credentials", "storage"]) {
+test("browser gates disabled/local, opt-out, GPC, unsafe endpoints", () => {
+  for (const mode of ["disabled", "development", "localhost", "owner", "gpc", "unsafe", "credentials", "storage"]) {
     const { win, doc, requests } = browser();
     if (mode === "localhost") win.location.hostname = "localhost";
     if (mode === "owner") win.localStorage.setItem("heetae-visit-opt-out", "1");
-    if (mode === "dnt") win.navigator.doNotTrack = "1";
     if (mode === "gpc") win.navigator.globalPrivacyControl = true;
     if (mode === "storage") win.sessionStorage.getItem = () => { throw new Error("blocked"); };
     const url = mode === "disabled" ? "" : mode === "unsafe" ? "https://evil.example/visit" :
@@ -231,6 +230,7 @@ test("browser network failures are silent and not retried on refresh", async () 
 
 test("footer preference persists opt-out and restore for subsequent visits", () => {
   const { win, doc, requests } = browser();
+  win.navigator.doNotTrack = "1";
   let change;
   const input = { dataset: {}, addEventListener(name, fn) { assert.equal(name, "change"); change = fn; } };
   bindVisitorAlertPreference(win, input);
@@ -247,16 +247,30 @@ test("footer preference persists opt-out and restore for subsequent visits", () 
   assert.equal(requests.length, 1);
 });
 
-test("footer preference fails closed for DNT/GPC and storage restrictions", () => {
-  for (const mode of ["dnt", "gpc", "read", "write"]) {
+test("DNT alone permits browser notification and an enabled preference", () => {
+  const { win, doc, requests } = browser();
+  win.navigator.doNotTrack = "1";
+  const input = { disabled: false, dataset: {}, addEventListener() {} };
+  const status = { dataset: {} };
+  bindVisitorAlertPreference(win, input, status);
+  assert.equal(input.checked, true);
+  assert.equal(input.disabled, false);
+  assert.equal(input.dataset.visitorAlertReason, "allowed");
+  assert.equal(status.hidden, true);
+  installVisitorAlerts(win, doc, endpoint, true);
+  installVisitorAlerts(win, doc, endpoint, true);
+  assert.equal(requests.length, 1);
+});
+
+test("footer preference fails closed for GPC and storage restrictions", () => {
+  for (const mode of ["gpc", "read", "write"]) {
     const { win } = browser();
-    if (mode === "dnt") win.navigator.doNotTrack = "1";
     if (mode === "gpc") win.navigator.globalPrivacyControl = true;
     if (mode === "read") win.localStorage.getItem = () => { throw new Error("blocked"); };
     if (mode === "write") win.localStorage.setItem = () => { throw new Error("blocked"); };
     let change;
     const input = { dataset: {}, addEventListener(name, fn) { change = fn; } };
-    const status = { dataset: { dnt: "dnt", gpc: "gpc", storageRead: "read", storageWrite: "write" } };
+    const status = { dataset: { gpc: "gpc", storageRead: "read", storageWrite: "write" } };
     bindVisitorAlertPreference(win, input, status);
     if (mode === "write") change();
     assert.equal(input.checked, false, mode);
@@ -288,7 +302,7 @@ test("actual workerd + SQLite binding: delivery mock, dedup, CORS and failure su
     body: JSON.stringify(body), cf: { country: "KR", city: "Seoul" }
   });
   const one = event();
-  const simultaneous = await Promise.all(Array.from({ length: 12 }, () => post(one)));
+  const simultaneous = await Promise.all(Array.from({ length: 12 }, () => post(one, { DNT: "1" })));
   assert.ok(simultaneous.every((response) => response.status === 202));
   await poll(() => calls.length === 1);
   assert.match(calls[0].text, /Home \[KO\]/);
@@ -296,6 +310,8 @@ test("actual workerd + SQLite binding: delivery mock, dedup, CORS and failure su
   assert.doesNotMatch(calls[0].text, /192\.0\.2/);
   assert.equal(calls[0].parse_mode, undefined);
   assert.equal(calls[0].link_preview_options.is_disabled, true);
+  assert.equal((await post(event(), { DNT: "1", "Sec-GPC": "1" })).status, 204);
+  assert.equal(calls.length, 1);
   await post(one);
   const gate = await mf.getDurableObjectNamespace("VISIT_GATE");
   assert.equal((await gate.get(gate.idFromName("global")).fetch("https://internal/reserve", {

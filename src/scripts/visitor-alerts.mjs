@@ -14,10 +14,10 @@ export function bindVisitorAlertPreference(win, input, status) {
   };
   try {
     input.checked = win.localStorage.getItem("heetae-visit-opt-out") !== "1";
-    if (win.navigator.doNotTrack === "1" || win.navigator.globalPrivacyControl === true) {
+    if (win.navigator.globalPrivacyControl === true) {
       input.checked = false;
       input.disabled = true;
-      explain(win.navigator.globalPrivacyControl === true ? "gpc" : "dnt");
+      explain("gpc");
       return;
     }
     explain(input.checked ? "allowed" : "owner");
@@ -41,8 +41,7 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
   } catch { return; }
 
   const notify = () => {
-    if (doc.visibilityState !== "visible" || win.navigator.doNotTrack === "1" ||
-        win.navigator.globalPrivacyControl === true) return;
+    if (doc.visibilityState !== "visible" || win.navigator.globalPrivacyControl === true) return;
     try {
       if (win.localStorage.getItem("heetae-visit-opt-out") === "1") return;
       const now = Date.now();

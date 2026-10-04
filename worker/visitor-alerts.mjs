@@ -141,7 +141,7 @@ export default {
     if (env.NOTIFY_ENABLED !== "true") return respond(204);
     if (!env.TELEGRAM_BOT_TOKEN || !/^-?\d+$/.test(env.TELEGRAM_CHAT_ID || "") ||
         (env.VISIT_HASH_SECRET || "").length < 32 || !env.VISIT_GATE) return respond(503);
-    if (request.headers.get("DNT") === "1" || request.headers.get("Sec-GPC") === "1") {
+    if (request.headers.get("Sec-GPC") === "1") {
       console.info("Visitor notification suppressed: privacy preference");
       return respond(204);
     }
