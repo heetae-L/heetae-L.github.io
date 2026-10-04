@@ -111,7 +111,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://heetae-l.gi
   <body>
     <script>
       import { bindVisitorAlertPreference, installVisitorAlerts } from "../scripts/visitor-alerts.mjs";
-      bindVisitorAlertPreference(window, document.querySelector<HTMLInputElement>("[data-visitor-alert-preference]"));
+      bindVisitorAlertPreference(window, document.querySelector<HTMLInputElement>("[data-visitor-alert-preference]"),
+        document.querySelector<HTMLElement>("[data-visitor-alert-status]"));
       installVisitorAlerts(window, document, import.meta.env.PUBLIC_VISITOR_ALERT_URL, import.meta.env.PROD);
     </script>
     <Header locale={locale} content={content} currentPath={Astro.url.pathname} portfolioMode={portfolioMode} />
@@ -133,6 +134,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://heetae-l.gi
             <input type="checkbox" checked data-visitor-alert-preference class="h-4 w-4 accent-blue-accent" />
             {locale === "ko" ? "방문 알림 정보 전송 허용" : "Allow visitor alert data"}
           </label>
+          <p hidden data-visitor-alert-status class="mt-1 text-ink-500" role="status"
+            data-dnt={locale === "ko" ? "브라우저의 추적 금지(DNT) 설정으로 전송하지 않습니다." : "Not sent because your browser requests Do Not Track (DNT)."}
+            data-gpc={locale === "ko" ? "브라우저의 개인정보 보호(GPC) 설정으로 전송하지 않습니다." : "Not sent because your browser enables Global Privacy Control (GPC)."}
+            data-owner={locale === "ko" ? "이 브라우저의 방문 알림 전송을 제외했습니다." : "Visitor alerts are excluded for this browser."}
+            data-storage-read={locale === "ko" ? "브라우저 저장소를 읽을 수 없어 전송하지 않습니다." : "Not sent because browser storage is unavailable."}
+            data-storage-write={locale === "ko" ? "설정을 저장할 수 없습니다. 브라우저 저장소 권한을 확인하세요." : "Could not save your preference. Check browser storage permissions."} />
         </div>
       </details>
     </footer>

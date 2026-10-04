@@ -141,7 +141,10 @@ export default {
     if (env.NOTIFY_ENABLED !== "true") return respond(204);
     if (!env.TELEGRAM_BOT_TOKEN || !/^-?\d+$/.test(env.TELEGRAM_CHAT_ID || "") ||
         (env.VISIT_HASH_SECRET || "").length < 32 || !env.VISIT_GATE) return respond(503);
-    if (request.headers.get("DNT") === "1" || request.headers.get("Sec-GPC") === "1") return respond(204);
+    if (request.headers.get("DNT") === "1" || request.headers.get("Sec-GPC") === "1") {
+      console.info("Visitor notification suppressed: privacy preference");
+      return respond(204);
+    }
     if (request.headers.get("Content-Type")?.split(";")[0].trim() !== "application/json") return respond(415);
     const ip = request.headers.get("CF-Connecting-IP");
     if (!ip || ip.length > 64) return respond(400);
@@ -156,6 +159,7 @@ export default {
         })
       }));
       if (reservation.status === 201) ctx.waitUntil(sendMessage(env, messageFor(event, request, env.INCLUDE_LOCATION === "true")));
+      else console.info("Visitor notification suppressed: limits or duplicate");
       return respond(202);
     } catch { return respond(503); }
   }

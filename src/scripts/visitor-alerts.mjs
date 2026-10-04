@@ -3,21 +3,31 @@ const WINDOW_MS = 30 * 60 * 1000;
 const SESSION_KEY = "heetae-visit-session";
 const SEEN_KEY = "heetae-visit-pages";
 
-export function bindVisitorAlertPreference(win, input) {
+export function bindVisitorAlertPreference(win, input, status) {
   if (!input) return;
+  const explain = (reason) => {
+    input.dataset.visitorAlertReason = reason;
+    if (status) {
+      status.textContent = status.dataset[reason] || "";
+      status.hidden = !status.textContent;
+    }
+  };
   try {
     input.checked = win.localStorage.getItem("heetae-visit-opt-out") !== "1";
     if (win.navigator.doNotTrack === "1" || win.navigator.globalPrivacyControl === true) {
       input.checked = false;
       input.disabled = true;
+      explain(win.navigator.globalPrivacyControl === true ? "gpc" : "dnt");
       return;
     }
+    explain(input.checked ? "allowed" : "owner");
     input.addEventListener("change", () => {
       try {
         win.localStorage.setItem("heetae-visit-opt-out", input.checked ? "0" : "1");
-      } catch { input.checked = false; input.disabled = true; }
+        explain(input.checked ? "allowed" : "owner");
+      } catch { input.checked = false; input.disabled = true; explain("storageWrite"); }
     });
-  } catch { input.checked = false; input.disabled = true; }
+  } catch { input.checked = false; input.disabled = true; explain("storageRead"); }
 }
 
 export function installVisitorAlerts(win, doc, endpoint, production) {

@@ -232,7 +232,7 @@ test("browser network failures are silent and not retried on refresh", async () 
 test("footer preference persists opt-out and restore for subsequent visits", () => {
   const { win, doc, requests } = browser();
   let change;
-  const input = { addEventListener(name, fn) { assert.equal(name, "change"); change = fn; } };
+  const input = { dataset: {}, addEventListener(name, fn) { assert.equal(name, "change"); change = fn; } };
   bindVisitorAlertPreference(win, input);
   assert.equal(input.checked, true);
   input.checked = false;
@@ -255,11 +255,15 @@ test("footer preference fails closed for DNT/GPC and storage restrictions", () =
     if (mode === "read") win.localStorage.getItem = () => { throw new Error("blocked"); };
     if (mode === "write") win.localStorage.setItem = () => { throw new Error("blocked"); };
     let change;
-    const input = { addEventListener(name, fn) { change = fn; } };
-    bindVisitorAlertPreference(win, input);
+    const input = { dataset: {}, addEventListener(name, fn) { change = fn; } };
+    const status = { dataset: { dnt: "dnt", gpc: "gpc", storageRead: "read", storageWrite: "write" } };
+    bindVisitorAlertPreference(win, input, status);
     if (mode === "write") change();
     assert.equal(input.checked, false, mode);
     assert.equal(input.disabled, true, mode);
+    assert.equal(status.textContent, mode);
+    assert.equal(status.hidden, false);
+    assert.equal(input.dataset.visitorAlertReason, ({read: "storageRead", write: "storageWrite"}[mode] || mode));
   }
   bindVisitorAlertPreference(browser().win, null);
 });
