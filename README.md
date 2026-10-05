@@ -24,6 +24,12 @@
 - Tailwind CSS
 - TypeScript
 
+## Duo Flex Privacy Policy
+
+- 공개 URL: [Duo Flex 개인정보처리방침 / Privacy Policy](https://heetae-l.github.io/duo-flex/privacy/)
+- 정본: [public/duo-flex/privacy/index.html](public/duo-flex/privacy/index.html). 한국어·영어를 함께 제공하는 독립 HTML이며 앱 코드는 이 공개 저장소에 포함하지 않는다.
+- 공통 `SiteLayout.astro`를 사용하지 않아 GA4·Telegram 방문 알림·외부 리소스를 로드하지 않는다. `main` push 시 기존 Pages workflow가 이 파일도 배포한다.
+
 ## Portfolio Files
 
 - 편집 정본: [heetae-lee-portfolio.pptx](public/downloads/heetae-lee-portfolio.pptx) (12장, 기본 URL `/ko/`)
