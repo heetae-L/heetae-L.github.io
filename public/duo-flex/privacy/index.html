@@ -48,7 +48,7 @@
       <div class="meta">
         <p>앱 / App: <strong>Duo Flex</strong> · <code>com.htleestudio.duoflex</code></p>
         <p>개발자 / Developer: HTLee Studio</p>
-        <p>적용일 / Effective date: <time datetime="2026-10-06">2026-10-06</time></p>
+        <p>적용일 / Effective date: <time datetime="2026-10-09">2026-10-09</time></p>
         <p>문의 / Contact: <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a></p>
       </div>
       <nav aria-label="방침 언어 / Policy language">
@@ -57,150 +57,57 @@
       </nav>
     </header>
     <main>
-      <article id="ko" lang="ko" aria-labelledby="ko-title">
-        <h2 id="ko-title">한국어 개인정보처리방침</h2>
-        <p>HTLee Studio는 Duo Flex의 데이터 처리 방식과 이용자의 선택을 다음과 같이 안내합니다. 이 방침은 Duo Flex 앱, 이 방침 웹페이지 및 개발자에게 보내는 문의에 적용됩니다.</p>
-        <div class="summary">
-          <p><strong>Duo Flex의 화면 효과는 기기 안에서 처리됩니다.</strong> 앱은 화면 이미지, 접근성 창 정보, 페어링 코드, 연결 키 및 진단 기록을 개발자 서버나 광고·분석 서비스에 자동 전송하지 않습니다. 회원가입, 광고, 분석 SDK 또는 자동 오류 보고 서비스를 사용하지 않습니다. 다만 기기 내 통신과 Wi-Fi 서비스 탐색을 사용하며, 이메일 문의와 이 웹페이지의 호스팅은 아래에 별도로 설명합니다.</p>
-        </div>
-
-        <section aria-labelledby="ko-screen">
-          <h3 id="ko-screen">1. 화면 캡처 및 화면 효과</h3>
-          <p>이용자가 앱 내 화면 정보 안내에 동의하고 효과를 켜면, 앱은 홈 화면이나 지원되는 일반 앱 화면을 캡처하여 블러 및 접힘 애니메이션을 표시하는 데 사용합니다. 화면 이미지에는 당시 화면에 보이는 개인정보가 포함될 수 있습니다.</p>
-          <p>이미지는 기기 내 앱과 동일 APK의 로컬 도우미 사이에서 전달되고, 이미지·그래픽 버퍼 및 임시 캐시로 메모리에서 처리됩니다. 스크린샷·영상 파일로 저장하거나 기기 밖으로 업로드하지 않습니다. 화면이 잠겼거나 시스템 설정·권한 화면·Duo Flex 자체 화면 등 제외 대상이 표시되면 효과를 일시 중지하거나 숨깁니다. 보안 화면 캡처를 허용하는 옵션은 요청하지 않으며, 보호 콘텐츠가 감지된 캡처 결과는 버립니다.</p>
-          <p>효과 중지, 동의 철회 또는 연결 종료 시 임시 이미지·버퍼와 표시 자원을 해제하도록 처리합니다. 화면 정보 동의 여부와 안내 버전은 기기에 저장하지만 캡처된 화면 내용은 동의 기록에 포함하지 않습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-accessibility">
-          <h3 id="ko-accessibility">2. 접근성 서비스</h3>
-          <p>접근성 서비스는 현재 창을 식별하고 효과의 위치·표시·중지를 제어하기 위해 창 유형, 디스플레이·창 식별자, 창 영역, 활성·포커스 상태, 앱 패키지명 및 창 클래스명을 사용합니다. 창 식별 정보가 부족하면 접근성 루트 노드에서 앱 패키지명만 확인할 수 있습니다.</p>
-          <p>현재 구현은 접근성 하위 노드 탐색, 노드의 텍스트·입력값 읽기, 자동 클릭 또는 제스처 실행을 하지 않습니다. 화면 픽셀은 접근성 노드나 접근성 스크린샷 기능이 아니라 별도의 기기 내 캡처 경로로 얻습니다. 창 메타데이터는 실행 중 메모리에서 사용하며, 다른 앱의 텍스트나 입력 내용을 진단 파일에 기록하거나 개발자에게 전송하지 않습니다.</p>
-          <p>접근성 사용 안내·동의와 화면 정보 안내·동의는 별개입니다. Android 설정에서 접근성 권한을 해제할 수 있습니다. 이 웹페이지를 읽는 것만으로 앱의 권한이나 동의가 부여되지는 않습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-device">
-          <h3 id="ko-device">3. 기기 상태 및 로컬 ADB 연결</h3>
-          <p>앱은 지원 여부, 연결 상대 확인 및 효과 제어를 위해 기기 모델, Android 버전, 실행 사용자·권한 상태, 화면 크기·회전·점등 상태, 접힘 상태·각도 및 Wi-Fi 연결 여부를 기기 안에서 확인합니다. 홈 런처와 배경화면 서비스 정보는 대상 화면 식별과 준비 상태 확인에 사용하며, 설치된 앱 전체 목록을 수집하지 않습니다.</p>
-          <p>앱은 Android의 무선 디버깅을 이용해 <code>127.0.0.1</code>(현재 기기)의 ADB 서비스에 연결합니다. 페어링·재연결에는 TLS를 사용하고 저장된 상대 키 정보를 확인합니다. 실행 중 도우미와의 화면·상태 전달에는 기기 내 Binder 통신도 사용합니다. 이는 기기 내 프로세스 사이의 전달이며, 개발자 서버로의 전송이 아닙니다.</p>
-          <p>자동 포트 찾기는 Android NSD/mDNS를 통해 Wi-Fi 네트워크에서 무선 디버깅 서비스의 이름·주소·포트 등 연결 정보를 탐색합니다. 따라서 인터넷 권한을 사용하지만 “네트워크 통신이 전혀 없다”는 의미는 아닙니다. 발견된 원격 기기의 주소로 ADB 연결하지 않고, 실제 연결은 현재 기기의 로컬 주소로 제한합니다. 이 탐색은 화면 이미지·연결 키·진단 기록을 개발자에게 보내는 기능이 아닙니다.</p>
-          <p>접힘 각도를 얻는 일부 경로는 지정된 배경화면 관련 Android 로그 태그를 기기 안에서 읽습니다. 해당 로그의 원문을 앱의 진단 파일로 저장하거나 개발자에게 전송하지 않습니다. 앱은 GPS 위치, 연락처, 마이크 또는 카메라 데이터를 수집하는 기능을 제공하지 않습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-pairing">
-          <h3 id="ko-pairing">4. 페어링 코드·연결 키·설정 저장</h3>
-          <p>입력한 페어링 코드는 현재 기기의 페어링 절차에만 사용하고 파일이나 설정에 저장하지 않습니다. 처리 시작·취소 등에서 입력란을 비우고, 처리가 끝나면 작업용 코드 배열을 지웁니다. 재연결을 위해 생성한 ADB 개인 키와 상대 공개 키의 확인 정보는 별도로 보관합니다.</p>
-          <p>연결 정보는 Android Keystore에 보관한 암호화 키를 이용해 AES-GCM으로 암호화하여 앱 전용 저장소에 저장합니다. 저장된 ADB 개인 키는 로컬 인증을 위해 실행 중 메모리에 복호화될 수 있습니다. 앱의 백업·기기 전송을 제외하도록 설정되어 있으며, 연결 키를 개발자 서버와 동기화하지 않습니다.</p>
-          <p>최근 확인한 연결 포트, 언어·효과·커버 표시 등 설정과 동의 상태는 앱 전용 로컬 저장소에 저장됩니다. 연결 키와 설정은 이용자가 삭제하거나 앱 데이터를 지우거나 앱을 제거할 때까지 보관될 수 있습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-diagnostics">
-          <h3 id="ko-diagnostics">5. 로컬 진단 기록과 보관 기간</h3>
-          <p>앱은 실행 상태와 오류 확인을 위해 앱 버전, 종료 시각·사유, 실행 시간, 처리 횟수, 자원 정리 여부, 내부 프로세스·창 식별 번호 등 제한된 수치·상태 요약을 앱 전용 저장소에 기록할 수 있습니다. 최근 화면 효과 보고서는 크기와 개수가 제한되며, 다른 로컬 상태 요약 기록이 있을 수 있습니다. 화면 이미지, 다른 앱의 텍스트·입력 내용, 페어링 코드, 연결 키 또는 읽은 Android 로그 원문을 이 보고서에 저장하지 않습니다.</p>
-          <p>진단 파일은 자동 업로드하지 않습니다. 최근 실행 기록으로 덮어쓰거나 앱 데이터 삭제·제거 시 삭제하며, 별도의 시간 기반 자동 만료는 적용하지 않습니다. 일부 종료·오류 상태는 Android 시스템 로그에 기록될 수 있습니다. 시스템 로그의 보관·삭제는 Android가 관리하며 앱이 자동으로 개발자에게 전송하지 않습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-control">
-          <h3 id="ko-control">6. 중지·동의 철회·삭제</h3>
-          <ul>
-            <li>앱의 효과 끄기 또는 제공되는 종료 동작으로 효과를 중지할 수 있습니다. 중지만으로 저장된 연결 키·설정·진단 파일이 모두 삭제되지는 않습니다.</li>
-            <li>앱 설정의 화면 정보 동의 철회 기능으로 효과를 중지하고 저장된 화면 정보 동의를 삭제할 수 있습니다. 다시 시작하려면 해당 안내에 다시 동의해야 합니다.</li>
-            <li>연결 설정의 앱 연결 키 삭제 기능으로 앱이 보관하는 재연결 키와 상대 확인 정보를 삭제할 수 있습니다. Android 무선 디버깅의 ‘페어링된 기기’에 남는 등록은 별개이므로 Android 설정에서 Duo Flex에 해당하는 항목도 직접 삭제해야 합니다.</li>
-            <li>Android 설정에서 Duo Flex의 앱 데이터를 삭제하거나 앱을 제거하면 앱이 보관하는 키·설정·로컬 진단 기록을 삭제할 수 있습니다. Android의 별도 페어링 등록은 앞 항목의 방법으로 해제합니다.</li>
-            <li>Android 설정에서 접근성·다른 앱 위에 표시·알림 권한을 해제할 수 있습니다. 더 이상 사용하지 않으면 무선 디버깅도 끄고 개발자 옵션과 보안 설정을 원하는 상태로 복원할 수 있습니다.</li>
-          </ul>
-          <p>앱에는 회원 계정이나 개발자 측 사용자 데이터베이스가 없습니다. 개발자는 기기에만 있는 데이터를 원격으로 조회하거나 삭제할 수 없습니다. 데이터 처리 문의나 이메일로 제공한 정보의 삭제 요청은 아래 문의처로 보낼 수 있습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-support">
-          <h3 id="ko-support">7. 이메일 문의·제3자 처리</h3>
-          <p>이용자가 <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a>으로 문의하면 발신 이메일 주소, 메시지 및 직접 첨부한 자료를 문의 응답·문제 해결을 위해 받게 됩니다. 앱이 자동으로 보내는 데이터가 아니라 이용자가 직접 제공하는 정보입니다. 화면의 개인정보, 페어링 코드, 개인 키, 비밀번호 또는 정리하지 않은 원본 로그를 보내지 마세요.</p>
-          <p>문의 정보는 응답·문제 해결에 필요한 기간 동안 보관하고, 더 이상 필요하지 않으면 삭제합니다. 적용 법령에 따라 보관이 필요한 경우에는 해당 목적과 기간으로 제한합니다. 이메일은 Google의 Gmail 서비스에서 처리되므로 해당 서비스의 <a href="https://policies.google.com/privacy" rel="noreferrer">개인정보처리방침</a>도 적용됩니다. 개발자는 이용자 정보를 판매하거나 광고·행동 분석 목적으로 제공하지 않습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-web">
-          <h3 id="ko-web">8. 이 웹페이지</h3>
-          <p>이 방침 페이지는 GitHub Pages에서 제공합니다. 이 페이지에는 개발자가 추가한 분석 태그, 광고, 방문 알림, 추적 쿠키 또는 외부 폰트가 없습니다. GitHub는 웹페이지 전달·보안·서비스 운영을 위해 IP 주소와 요청 관련 정보를 처리할 수 있습니다. GitHub의 처리·보관·권리 행사에 관한 내용은 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noreferrer">GitHub 개인정보처리방침</a>을 확인하세요. 다른 포트폴리오 페이지의 기능과 추적 설정은 이 독립 방침 페이지에 포함되지 않습니다.</p>
-        </section>
-
-        <section aria-labelledby="ko-changes">
-          <h3 id="ko-changes">9. 방침 변경 및 문의</h3>
-          <p>데이터 처리 방식이 바뀌면 이 페이지와 적용일을 갱신합니다. 새로운 민감정보 접근에 안내·동의가 필요한 경우에는 해당 처리 전에 앱 안에서 별도로 안내하고 동의를 받습니다.</p>
-          <p>개인정보 관련 문의처: <strong>HTLee Studio</strong> · <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a></p>
-        </section>
-      </article>
-
-      <article id="en" lang="en" aria-labelledby="en-title">
-        <h2 id="en-title">English Privacy Policy</h2>
-        <p>HTLee Studio explains how Duo Flex handles data and the choices available to users below. This policy covers the Duo Flex app, this policy webpage, and inquiries sent to the developer.</p>
-        <div class="summary">
-          <p><strong>Duo Flex processes its screen effects on your device.</strong> The app does not automatically send screen images, accessibility window information, pairing codes, connection keys, or diagnostics to developer servers or advertising or analytics services. It has no user accounts, advertising, analytics SDKs, or automatic crash-reporting service. It does use on-device communication and Wi-Fi service discovery. Email support and webpage hosting are described separately below.</p>
-        </div>
-
-        <section aria-labelledby="en-screen">
-          <h3 id="en-screen">1. Screen capture and screen effects</h3>
-          <p>After you accept the in-app screen-information disclosure and enable the effect, the app captures the home screen or supported ordinary app screens to display blur and folding animations. Images may contain personal information visible on the screen at that moment.</p>
-          <p>Images pass between the app and a local helper from the same APK on your device. They are processed in memory as images, graphics buffers, and temporary caches. They are not saved as screenshot or video files or uploaded off the device. The effect pauses or hides when the device is locked or an excluded screen is shown, such as system settings, permission screens, or Duo Flex itself. The app does not request capture options that allow secure content and discards capture results when protected content is detected.</p>
-          <p>Stopping the effect, withdrawing consent, or ending the connection triggers cleanup of temporary images, buffers, and display resources. The app stores the accepted disclosure version and consent state locally, not the captured screen content.</p>
-        </section>
-
-        <section aria-labelledby="en-accessibility">
-          <h3 id="en-accessibility">2. Accessibility service</h3>
-          <p>The accessibility service uses window types, display and window identifiers, window bounds, active and focus states, app package names, and window class names to identify the current window and control the effect's placement, visibility, and stopping. If window identity is unavailable, it may read only the app package name from an accessibility root node.</p>
-          <p>The current implementation does not traverse accessibility child nodes, read node text or input values, perform automatic clicks, or execute gestures. Screen pixels come from a separate on-device capture path, not accessibility nodes or the accessibility screenshot feature. Window metadata is used in memory during operation. Other apps' text and input contents are not written to diagnostic files or sent to the developer.</p>
-          <p>Accessibility disclosure and consent are separate from screen-information disclosure and consent. You can disable accessibility access in Android settings. Reading this webpage does not grant any app permissions or consent.</p>
-        </section>
-
-        <section aria-labelledby="en-device">
-          <h3 id="en-device">3. Device state and local ADB connection</h3>
-          <p>The app checks the device model, Android version, execution user and permission state, display size, rotation and power state, folding state and angle, and Wi-Fi connection status locally for compatibility, peer verification, and effect control. Home launcher and wallpaper-service information is used to identify target screens and check readiness; the app does not collect a complete inventory of installed apps.</p>
-          <p>The app uses Android wireless debugging to connect to the ADB service at <code>127.0.0.1</code> (the current device). Pairing and reconnection use TLS, and reconnection checks stored peer-key information. Running helpers also exchange screen and state data through on-device Binder communication. This is communication between processes on your device, not transmission to a developer server.</p>
-          <p>Automatic port discovery uses Android NSD/mDNS on the Wi-Fi network to discover wireless-debugging service information, including service names, addresses, and ports. The app therefore uses network permission; this does not mean there is no network communication. It does not connect ADB to discovered remote device addresses: actual ADB connections are restricted to the current device's loopback address. Discovery does not send screen images, connection keys, or diagnostics to the developer.</p>
-          <p>Some folding-angle paths read specified wallpaper-related Android log tags locally. Raw log contents are not saved to the app's diagnostic files or sent to the developer. The app does not provide features that collect GPS location, contacts, microphone data, or camera data.</p>
-        </section>
-
-        <section aria-labelledby="en-pairing">
-          <h3 id="en-pairing">4. Pairing codes, connection keys, and settings</h3>
-          <p>Your pairing code is used only for pairing with the current device and is not saved to files or preferences. The input field is cleared when processing starts or is cancelled, and the working code array is cleared when processing ends. The generated ADB private key and verification information for the peer's public key are retained separately for reconnection.</p>
-          <p>Connection credentials are encrypted with AES-GCM using an encryption key held in Android Keystore and stored in app-private storage. The stored ADB private key may be decrypted in memory for local authentication. App data is configured to be excluded from backup and device transfer. Connection keys are not synchronized with a developer server.</p>
-          <p>The last verified connection port, settings such as language, effect and cover-display options, and consent state are stored locally in app-private storage. Keys and settings may remain until you delete them, clear the app's data, or uninstall the app.</p>
-        </section>
-
-        <section aria-labelledby="en-diagnostics">
-          <h3 id="en-diagnostics">5. Local diagnostics and retention</h3>
-          <p>To check execution state and errors, the app may write limited numerical and status summaries to app-private storage, such as app version, completion time and reason, duration, operation counts, resource-cleanup status, and internal process or window identifiers. Recent screen-effect reports have size and count limits; other local status-summary records may also exist. Reports do not contain screen images, other apps' text or input contents, pairing codes, connection keys, or raw Android logs read by the app.</p>
-          <p>Diagnostic files are not automatically uploaded. They are overwritten by recent execution records or removed when app data is cleared or the app is uninstalled; they do not have a separate time-based automatic expiry. Some termination or error states may be written to Android system logs. Android controls retention and deletion of those system logs, and the app does not automatically send them to the developer.</p>
-        </section>
-
-        <section aria-labelledby="en-control">
-          <h3 id="en-control">6. Stopping, withdrawing consent, and deletion</h3>
-          <ul>
-            <li>Turn the effect off in the app or use an available stop action. Stopping alone does not delete all stored keys, settings, or diagnostic files.</li>
-            <li>Use the screen-information consent withdrawal option in app settings to stop the effect and remove stored screen-information consent. Starting again requires accepting that disclosure again.</li>
-            <li>Use the app's connection-key deletion option to delete its stored reconnection key and peer-verification information. Android's separate entry under wireless debugging's paired devices is not deleted by this action; remove the Duo Flex entry yourself in Android settings as well.</li>
-            <li>Clear Duo Flex app data in Android settings or uninstall the app to delete app-held keys, settings, and local diagnostics. Revoke Android's separate pairing registration as described above.</li>
-            <li>You can revoke accessibility, display-over-other-apps, and notification permissions in Android settings. When you stop using the app, you can also turn off wireless debugging and restore developer options and security settings to your preferred state.</li>
-          </ul>
-          <p>The app has no user accounts or developer-side user database. The developer cannot remotely inspect or delete data held only on your device. You may contact the address below about data processing or to request deletion of information you provided by email.</p>
-        </section>
-
-        <section aria-labelledby="en-support">
-          <h3 id="en-support">7. Email support and third-party processing</h3>
-          <p>If you contact <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a>, the developer receives your sender email address, message, and any attachments you choose to provide to respond and troubleshoot. This is information you send voluntarily, not an automatic app upload. Do not send personal information visible on your screen, pairing codes, private keys, passwords, or unredacted raw logs.</p>
-          <p>Support information is retained for as long as needed to respond and resolve the issue and deleted when no longer needed. If applicable law requires retention, it is limited to that purpose and period. Email is processed through Google's Gmail service, so Google's <a href="https://policies.google.com/privacy" rel="noreferrer">Privacy Policy</a> also applies. The developer does not sell user information or provide it for advertising or behavioral analytics.</p>
-        </section>
-
-        <section aria-labelledby="en-web">
-          <h3 id="en-web">8. This webpage</h3>
-          <p>This policy page is hosted on GitHub Pages. It contains no developer-added analytics tags, advertising, visitor notifications, tracking cookies, or external fonts. GitHub may process IP addresses and request information to deliver the webpage, secure it, and operate its services. For GitHub's processing, retention, and privacy rights, see the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noreferrer">GitHub Privacy Statement</a>. Other portfolio pages' features and tracking configuration are not included in this independent policy page.</p>
-        </section>
-
-        <section aria-labelledby="en-changes">
-          <h3 id="en-changes">9. Changes and contact</h3>
-          <p>When data practices change, this page and its effective date will be updated. If new sensitive-data access requires disclosure and consent, the app will provide a separate in-app disclosure and obtain consent before that processing begins.</p>
-          <p>Privacy contact: <strong>HTLee Studio</strong> · <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a></p>
-        </section>
-      </article>
-    </main>
+<p>광고 관련 항목은 광고 SDK가 포함된 버전에 적용됩니다. 광고 SDK가 없는 이전 버전에는 해당 광고 처리가 적용되지 않습니다.</p>
+<p lang="en">Advertising provisions apply to versions that include the advertising SDK. Earlier versions without that SDK do not perform this advertising processing.</p>
+<article id="ko" lang="ko" aria-labelledby="ko-title"><h2 id="ko-title">한국어 개인정보처리방침</h2>
+<section aria-labelledby="ko-section-1"><h3 id="ko-section-1">1. 앱과 개발자</h3>
+<p>Duo Flex: Foldable Animation은 HTLee Studio의 폴더블 화면 효과 앱이다. 앱 내 회원 계정이나 개발자의 별도 분석 SDK는 사용하지 않는다. Google Mobile Ads와 UMP를 포함하며 앱 하단에 배너 광고를 표시한다. 개발용 빌드는 테스트 광고를 사용한다.</p>
+</section>
+<section aria-labelledby="ko-section-2"><h3 id="ko-section-2">2. 접근하는 정보와 사용 목적</h3>
+<ul><li><strong>화면 이미지:</strong> 최초 사용 또는 고지 버전 변경 시 전체 설명을 읽고 연결 및 권한 페이지에서 체크박스와 ‘동의하고 저장’을 선택하면, 이후 사용자가 효과를 켤 때 기기 내부 연결을 통해 홈과 지원 앱의 화면 이미지를 읽어 블러 효과를 만든다. 픽셀은 메모리에서만 처리한다. 스크린샷 파일로 저장하거나 개발자·외부 서버에 전송하지 않는다. 잠금·설정·권한·Duo Flex 화면에서는 캡처와 효과를 일시 정지한다. 보호된 콘텐츠를 포함하도록 캡처 옵션을 켜지 않으며 보호된 결과는 제외한다.</li><li><strong>접근성 정보:</strong> 별도 고지·동의 후 허용한 접근성 서비스는 창 종류, 화면·창 식별자, 패키지·창 클래스, 위치·크기·포커스 등의 메타데이터로 효과 위치와 숨김 여부를 판단한다. 창 식별 이벤트가 없을 때 최상위 항목의 앱 이름만 확인하고, 하위 항목을 미리 가져오거나 탐색하지 않는다. 접근성 노드의 글자·입력 내용은 읽지 않고 제스처를 실행하지 않는다. 화면 픽셀은 접근성 노드가 아니라 같은 APK의 기기 내부 연결 코드에서 얻는다.</li><li><strong>접힘·기기 정보:</strong> 지원 여부와 연결 상대를 확인하기 위해 모델·Android 버전·기본 사용자 여부를 확인한다. 접힘 정보와 화면 상태를 효과에 사용한다. 원문 로그를 보고서로 저장하거나 전송하지 않는다.</li><li><strong>연결 정보:</strong> 최초 페어링 코드와 포트를 입력한다. 코드는 저장하지 않는다. 재연결용 앱 키와 상대 확인 정보는 Android Keystore를 이용해 암호화하고 앱의 백업 제외 영역에 보관한다. 최근 연결 포트와 효과·언어 설정을 기기에 저장한다. 화면 접근에 동의한 고지 버전 번호만 기기에 저장하며, 동의한 화면 내용·페어링 코드는 저장하지 않는다.</li><li><strong>로컬 진단:</strong> 앱 실행 결과는 완료 시간, 종료 이유, 소요 시간, 프레임·응답·자원 개수 등의 제한된 수치와 상태만 저장한다. 최근 결과·최근 정상·최근 실패와 실패 이력 최대5건, 실행 중 중단 진단을 위한 제한된 기록을 보관하며 각 파일은 16KiB 이하다. 이미지·입력 내용·창 메타데이터·원문 로그·페어링 코드·키를 보고서에 넣지 않는다.</li></ul>
+</section>
+<section aria-labelledby="ko-section-3"><h3 id="ko-section-3">3. 통신과 제3자</h3>
+<p>INTERNET 권한은 무선 디버깅의 연결 포트 발견과 <strong>이 기기 내부(127.0.0.1)의 TLS 연결</strong>, Google 광고 서비스 통신에 사용한다. Wi-Fi에서 Android의 로컬 서비스 발견을 사용하므로 네트워크 통신 자체가 전혀 없다고 설명하지 않는다. 화면 처리 도우미는 동일 APK 코드이며 외부 앱 또는 클라우드 캡처 서비스가 아니다. 화면 이미지와 로컬 효과 진단 보고서는 개발자 서버·광고·분석 업체에 보내지 않는다. 아래의 광고 SDK 자체 진단과 구분한다. 사용자가 문의할 때 제공한 내용은 해당 문의 채널의 별도 취급 절차를 따르므로 이메일 문의 항목에 따라 처리한다.</p>
+</section>
+<section aria-labelledby="ko-section-4"><h3 id="ko-section-4">4. 광고 정보 처리</h3>
+<p>광고 SDK가 없는 이전 버전에는 아래 광고 처리가 적용되지 않는다. Google 광고 SDK는 광고 제공·측정·진단·부정 사용 방지를 위해 IP 주소(대략적인 위치 추정 가능), 앱·광고 이용 정보, 진단 정보와 기기/계정 식별자 등을 Google에 전송할 수 있다. 테스트 광고도 네트워크 요청을 하므로 ‘외부 수집 없음’으로 설명하지 않는다. 광고가 포함된 현재 버전은 Android 광고 ID와 AdServices ID/Attribution/Topics 권한을 선언하지 않는다. 이 조치가 다른 SDK 정보 처리까지 없애지는 않는다. 화면 이미지·접근성 창 정보·페어링 코드/키·로컬 효과 진단은 광고 SDK에 전달하지 않는다.</p>
+<p>앱 설정의 ‘광고 및 개인정보’에서 관련 안내와 <a href="https://policies.google.com/privacy" rel="noreferrer">Google 개인정보처리방침</a>을 볼 수 있다. Google의 처리·보관·선택은 Google 방침을 따른다. 배포용은 UMP로 광고 요청 가능 여부를 확인하고 필요한 동의 폼과 설정의 선택 변경 기능을 제공한다. 개발용 테스트 모드에서는 이 폼을 호출하지 않는다. 광고 동의 안내와 선택 변경 항목의 표시 여부는 지역·기기와 Google의 동의 상태 판단에 따라 달라질 수 있다. 광고 오류가 나면 광고를 표시하지 않고 효과 기능과 별개로 처리한다.</p>
+</section>
+<section aria-labelledby="ko-section-5"><h3 id="ko-section-5">5. 보관·종료·삭제</h3>
+<p>효과 OFF·권한 해제·연결 종료 때 메모리 이미지와 효과 창, 임시 화면 요청을 정리한다. 설정의 ‘화면 효과 동의 철회’로 동의를 지우고 실행 중 효과를 중지할 수 있다. 다음 시작에는 다시 명시적 동의를 받는다. 앱 연결 키는 연결 설정에서 삭제할 수 있다. Android 무선 디버깅의 앱에 표시된 페어링 이름(<code>duoflex-&lt;12hex&gt;@local</code>) 등록은 별도로 사용자가 삭제해야 한다. 앱 데이터 삭제 또는 앱 제거로 로컬 키·설정·진단 기록을 지울 수 있다. 접근성·다른 앱 위 표시·알림 권한도 Android 설정에서 해제할 수 있다. 사용 종료 안내에서 무선 디버깅·개발자 옵션을 끄고 삼성 자동 차단을 다시 켜는 절차를 제공한다.</p>
+</section>
+<section aria-labelledby="ko-section-6"><h3 id="ko-section-6">6. 방침 웹페이지</h3>
+<p>이 방침 페이지는 GitHub Pages에서 제공한다. 페이지 자체에는 개발자가 추가한 광고·분석 태그·추적 쿠키·외부 폰트가 없다. GitHub는 페이지 전달·보안·서비스 운영을 위해 IP 주소와 요청 정보를 처리할 수 있다. 처리·보관·권리 행사는 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noreferrer">GitHub 개인정보처리방침</a>을 따른다. 다른 웹사이트 페이지의 기능은 이 독립 방침에 포함되지 않는다.</p>
+</section>
+<section aria-labelledby="ko-section-7"><h3 id="ko-section-7">7. 문의와 변경</h3>
+<p>개인정보 문의: HTLee Studio · <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a>. 직접 이메일을 보내면 발신 주소, 메시지와 자발적 첨부 자료를 응답·문제 해결에 필요한 기간 보관하고 불필요해지면 삭제한다. 법령상 보관 의무는 해당 목적·기간으로 제한한다. 문의 정보 삭제도 같은 주소로 요청할 수 있다. 화면 개인정보·페어링 코드·키·비밀번호는 보내지 않는다. 이메일은 Google Gmail에서 처리된다. 데이터 처리 또는 지원 조건이 바뀌면 방침과 앱 내 고지, 스토어 신고 내용을 함께 갱신한다. 적용일은 페이지 상단에 표시한다.</p>
+</section>
+</article>
+<article id="en" lang="en" aria-labelledby="en-title"><h2 id="en-title">English Privacy Policy</h2>
+<section aria-labelledby="en-section-1"><h3 id="en-section-1">1. App and developer</h3>
+<p>Duo Flex: Foldable Animation is a foldable screen-effects app by HTLee Studio. It has no in-app user accounts or separate developer analytics SDK. Advertising-enabled versions include Google Mobile Ads and UMP and display a footer banner. Development builds request test ads. Earlier versions without the advertising SDK do not perform this advertising processing.</p>
+</section>
+<section aria-labelledby="en-section-2"><h3 id="en-section-2">2. Information accessed and why</h3>
+<ul><li><strong>Screen images:</strong> On first use or after the disclosure version changes, the user reads the full notice and checks the box and selects “Agree and save” on the connection and permissions page. Later, the user can turn effects on directly using the locally stored consent version. Local connection code reads home and supported-app images to create blur effects. Pixels stay in device memory, are not saved as screenshot files, and are not sent to the developer or external servers. Capture and effects pause on lock, settings, permission and Duo Flex screens. Capture options do not enable protected content, and protected results are excluded.</li><li><strong>Accessibility information:</strong> After a separate disclosure and consent, the accessibility service uses window type, display/window identifiers, package/window class, position, size and focus metadata to position and hide effects. When a window-identification event is missing, only the root item&#x27;s app name is checked, without prefetching or traversing child items. It does not read text or inputs through accessibility nodes or perform gestures. Screen pixels come from the same APK&#x27;s local connection code, not accessibility nodes.</li><li><strong>Fold/device information:</strong> Model, Android version and primary-user status are checked for compatibility and connection identity. Fold information and display state drive effects. Raw logs are not saved as reports or transmitted.</li><li><strong>Connection information:</strong> A pairing code and ports are entered initially. Codes are not saved. Reconnection keys and peer-verification data are encrypted using Android Keystore and stored in app storage excluded from backup. Recent connection ports, effect preferences and language are saved locally. Only the accepted screen-access disclosure version is retained; screen content and pairing codes are not retained as consent records.</li><li><strong>Local diagnostics:</strong> Completion time, reason, duration and bounded frame, response and resource counts are retained locally. Bounded files hold the latest, latest normal and latest failed result, up to five recent failures and a running-session marker, each limited to 16KiB. Reports exclude images, input content, window metadata, raw logs, pairing codes and keys.</li></ul>
+</section>
+<section aria-labelledby="en-section-3"><h3 id="en-section-3">3. Communication and third parties</h3>
+<p>The INTERNET permission supports local wireless-debugging port discovery, a TLS connection to <strong>this device (127.0.0.1)</strong> and communication with Google advertising services. Android local-service discovery uses Wi-Fi, so the app does not claim that no network communication occurs. The processing helper runs code from the same APK; it is not a separate third-party capture app or cloud service. The app does not send screen images or local effect diagnostic reports to developer, advertising or analytics servers. This is separate from the advertising SDK diagnostics described below. Voluntarily submitted support information is handled as described in the email-support section.</p>
+</section>
+<section aria-labelledby="en-section-4"><h3 id="en-section-4">4. Advertising data</h3>
+<p>This advertising processing does not apply to earlier versions without the advertising SDK. Google&#x27;s advertising SDK may send IP addresses (which can be used to estimate approximate location), app/ad interaction information, diagnostics and device/account identifiers to Google for ad delivery, measurement, diagnostics and fraud prevention. Test ads also involve network requests and advertising SDK data processing. Advertising-enabled versions covered by this policy do not declare Android advertising-ID and AdServices ID/Attribution/Topics permissions. This does not eliminate other SDK data processing. Screen images, accessibility window metadata, pairing codes/keys and local effect diagnostics are not passed to the advertising SDK.</p>
+<p>“Ads and privacy” in app Settings provides the notice and a link to <a href="https://policies.google.com/privacy" rel="noreferrer">Google&#x27;s Privacy Policy</a>. Google&#x27;s policy governs its processing, retention and choices. Release builds use UMP to check whether ads can be requested and show applicable consent forms and privacy options in Settings. Development test mode does not invoke these forms. The availability of consent forms and privacy options depends on the region, device and Google&#x27;s consent-status determination. Ad load failures are handled separately from screen effects.</p>
+</section>
+<section aria-labelledby="en-section-5"><h3 id="en-section-5">5. Retention, stopping and deletion</h3>
+<p>Turning effects off, revoking permissions or losing the connection triggers cleanup of memory images, effect windows and temporary display requests. “Revoke screen-effects consent” in Settings removes consent and stops running effects. The next start requires affirmative consent again. Connection keys can be deleted in the app. The user separately removes the entry matching the pairing name shown in Duo Flex (<code>duoflex-&lt;12hex&gt;@local</code>) from Android Wireless debugging. Clearing app data or uninstalling removes local keys, preferences and diagnostic records. Accessibility, overlay and notification permissions can be revoked in Android Settings. The end-use guide explains disabling wireless debugging and developer options, then restoring Samsung Auto Blocker.</p>
+</section>
+<section aria-labelledby="en-section-6"><h3 id="en-section-6">6. Policy webpage</h3>
+<p>This page is hosted by GitHub Pages. The webpage itself contains no developer-added advertisements, analytics tags, tracking cookies or external fonts. GitHub may process IP addresses and request information to deliver and secure the page and operate its services. See the <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noreferrer">GitHub Privacy Statement</a> for processing, retention and rights. Features of other website pages are outside this standalone policy.</p>
+</section>
+<section aria-labelledby="en-section-7"><h3 id="en-section-7">7. Contact and updates</h3>
+<p>Privacy contact: HTLee Studio · <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a>. When you email us, your sender address, message and voluntary attachments are retained as needed to respond and troubleshoot, then deleted when no longer needed. Legal retention obligations are limited to the applicable purpose and period. Support correspondence deletion can be requested at the same address. Do not send personal screen content, pairing codes, keys or passwords. Email is processed through Google Gmail. Changes will be reflected in this policy, in-app disclosures and store declarations. The effective date is shown at the top of this page.</p>
+</section>
+</article>
+</main>
     <footer>
       <p>Duo Flex · HTLee Studio · <a href="#ko" lang="ko">한국어</a> · <a href="#en" lang="en">English</a></p>
     </footer>
