@@ -30,6 +30,14 @@
 - 정본: [public/duo-flex/privacy/index.html](public/duo-flex/privacy/index.html). 한국어·영어를 함께 제공하는 독립 HTML이며 앱 코드는 이 공개 저장소에 포함하지 않는다.
 - 공통 `SiteLayout.astro`를 사용하지 않아 GA4·Telegram 방문 알림·외부 리소스를 로드하지 않는다. `main` push 시 기존 Pages workflow가 이 파일도 배포한다.
 
+## OnSlope Privacy Policy
+
+- 공개 URL: [OnSlope 개인정보처리방침 / Privacy Policy](https://heetae-l.github.io/onslope/privacy/).
+- 정본: [public/onslope/privacy/index.html](public/onslope/privacy/index.html). KO/EN 독립 HTML이며 Duo Flex 방침의 자체 포함 스타일을 재사용한다. GA4·Telegram 방문 알림·광고·외부 리소스를 로드하지 않는다.
+- 적용 대상: `slope_now` main `00e9803` 기준 Android Resorts·설정, 원격 카탈로그/사진 metadata URL 미설정 배포. GPS 활동 기록·지도·회원/동기화·광고·결제는 대상 밖이며 공개 제공 전에 방침·고지·스토어 신고를 갱신한다.
+- 2026-10-18 운영자 확인: 최종 표시 이름 OnSlope, 시행일은 게시일, 문의는 답변/문제 해결에 필요한 동안 보관 후 삭제. 저장소명·앱 코드/ID·기존 초안 브랜치는 변경하지 않는다. 공개 운영자/문의처는 정책 페이지에서 관리한다.
+- `main` push로 기존 Pages workflow가 배포한다. 최종 앱/AAB 및 앱 내·Play Console URL 연결은 별도 확인이 필요하다.
+
 ## Portfolio Files
 
 - 편집 정본: [heetae-lee-portfolio.pptx](public/downloads/heetae-lee-portfolio.pptx) (12장, 기본 URL `/ko/`)
