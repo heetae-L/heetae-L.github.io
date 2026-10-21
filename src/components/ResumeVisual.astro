@@ -1,5 +1,5 @@
 ---
-import { Activity, Braces, Database, Upload } from "@lucide/astro";
+import { GitBranch, PanelRight, SquareCode } from "@lucide/astro";
 
 interface Props {
   title: string;
@@ -7,53 +7,169 @@ interface Props {
 }
 
 const { title, lines } = Astro.props;
-
-const nodes = [
-  { label: "API", icon: Braces, className: "bottom-6 left-0 lg:bottom-20 lg:left-3" },
-  { label: "Deploy", icon: Upload, className: "bottom-0 left-[25%] lg:bottom-8 lg:left-24" },
-  { label: "Monitor", icon: Activity, className: "bottom-2 right-[24%] lg:bottom-4 lg:right-12" },
-  { label: "DB", icon: Database, className: "bottom-7 right-0 lg:bottom-20" }
-];
+const lineNumbers = Array.from({ length: lines.length + 4 }, (_, index) => index + 1);
 ---
 
-<div class="relative isolate mx-auto h-[370px] w-full max-w-[360px] sm:h-[410px] lg:h-auto lg:min-h-[420px] lg:max-w-[400px]" aria-label={title}>
-  <div class="absolute inset-x-10 bottom-8 hidden h-28 rounded-[50%] bg-blue-accent/12 blur-2xl lg:block"></div>
-  <div class="absolute left-12 top-36 hidden h-64 w-64 rounded-full border border-blue-accent/10 lg:block"></div>
-  <div class="absolute left-4 top-48 hidden h-48 w-48 rounded-full border border-blue-accent/10 lg:block"></div>
-
-  <div class="absolute right-3 top-2 z-20 w-[calc(100%-24px)] max-w-[320px] rotate-2 rounded-[24px] border border-slate-700/30 bg-[#07142b] p-3 shadow-[0_24px_48px_rgba(8,21,48,0.18)] sm:p-5 lg:right-0 lg:top-6 lg:w-[320px] lg:rounded-[28px] lg:shadow-[0_34px_90px_rgba(8,21,48,0.28)] dark:border-line-300 dark:shadow-[0_34px_90px_rgba(0,0,0,0.45)]">
-    <div class="mb-5 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="h-3 w-3 rounded-full bg-red-400"></span>
-        <span class="h-3 w-3 rounded-full bg-yellow-300"></span>
-        <span class="h-3 w-3 rounded-full bg-emerald-400"></span>
-      </div>
-      <div class="inline-flex h-8 items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 text-[11px] font-black text-blue-200">
-        <span class="font-mono text-sm">&lt;/&gt;</span>
-        Code
-      </div>
+<div class="resume-visual relative isolate mx-auto h-[370px] w-full max-w-[360px] sm:h-[410px] lg:h-auto lg:min-h-[420px] lg:max-w-[400px]" aria-label={title}>
+  <div class="code-window absolute right-3 top-2 w-[calc(100%-24px)] max-w-[320px] lg:right-0 lg:top-6 lg:w-[320px]" lang="en">
+    <div class="code-header">
+      <SquareCode size={14} class="file-icon" aria-hidden="true" />
+      <span>BackendService.java</span>
+      <PanelRight size={13} class="panel-icon" aria-hidden="true" />
     </div>
-    <pre class="overflow-hidden font-mono text-[10px] font-semibold leading-5 text-slate-200 sm:text-[12px] sm:leading-6"><code><span class="text-violet-300">public class</span> <span class="text-cyan-300">BackendService</span> {"{"}
-  <span class="text-violet-300">void</span> <span class="text-cyan-300">build</span>() {"{"}
-{lines.map((line) => `    ${line}\n`).join("")}  {"}"}
+    <div class="code-editor">
+      <div class="line-numbers" aria-hidden="true">{lineNumbers.map((number) => <span>{number}</span>)}</div>
+      <pre><code><span class="keyword">public class</span> <span class="type">BackendService</span> {"{"}
+  <span class="keyword">void</span> <span class="method">build</span>() {"{"}
+{lines.map((line) => <Fragment>{"    "}<span class="method">{line.replace(/\(\);$/, "")}</span>{"();\n"}</Fragment>)}  {"}"}
 {"}"}</code></pre>
-  </div>
-
-  <div class="absolute bottom-7 left-2 right-2 z-10 h-16 rounded-[24px] border border-line-200 bg-white/70 shadow-[0_28px_70px_rgba(48,80,145,0.14)] backdrop-blur-sm lg:bottom-9 lg:left-4 lg:right-4 lg:h-28 lg:rounded-[34px] dark:bg-surface-raised/90"></div>
-  <div class="absolute bottom-3 left-5 right-1 z-0 h-12 rounded-[24px] bg-blue-accent/70 shadow-[0_20px_36px_rgba(15,91,255,0.18)] lg:bottom-1 lg:left-9 lg:right-0 lg:h-16 lg:rounded-[34px] lg:shadow-[0_28px_54px_rgba(15,91,255,0.24)] dark:bg-blue-action/80"></div>
-
-  {
-    nodes.map((node) => (
-      <div class:list={["absolute z-30 grid h-[60px] w-[52px] place-items-center rounded-2xl border border-line-200 bg-white text-center shadow-lg lg:h-20 lg:w-20 lg:rounded-3xl lg:shadow-xl dark:bg-surface-raised dark:shadow-[0_14px_32px_rgba(0,0,0,0.3)]", node.className]}>
-        <div>
-          <node.icon class="mx-auto h-4 w-4 text-blue-accent lg:hidden" aria-hidden="true" />
-          <span class="mx-auto hidden h-6 w-6 rounded-xl bg-blue-accent/12 ring-1 ring-blue-accent/15 lg:block"></span>
-          <span class="mt-2 block text-[10px] font-black text-ink-900 lg:text-xs">{node.label}</span>
-        </div>
-      </div>
-    ))
-  }
-  <div class="absolute bottom-12 left-[58%] z-20 hidden h-20 w-20 -translate-x-1/2 rounded-3xl border border-line-200 bg-white shadow-xl lg:block dark:bg-surface-raised">
-    <div class="absolute inset-5 rounded-2xl bg-blue-accent shadow-inner dark:bg-blue-action"></div>
+    </div>
+    <div class="code-footer">
+      <span class="profile" aria-label="HT profile">HT</span>
+      <span class="branch"><GitBranch size={11} aria-hidden="true" />main</span>
+      <span class="language">Java</span>
+    </div>
   </div>
 </div>
+
+<style>
+  .resume-visual {
+    container-type: inline-size;
+    --code-bg: #fff;
+    --code-chrome: #f8f9fb;
+    --code-ink: #43516a;
+    --code-muted: #778295;
+    --code-line: #e7ebf2;
+    --code-blue: #245cd7;
+    --code-purple: #7860a5;
+    --code-type: #283b58;
+    --code-profile-bg: #e2e8f1;
+    --code-profile-ink: #44546c;
+    --code-shadow: 0 22px 48px #1e38631c, 0 2px 5px #1e386308;
+  }
+
+  :global(html.dark) .resume-visual {
+    --code-bg: #212329;
+    --code-chrome: #282b32;
+    --code-ink: #bdc7d8;
+    --code-muted: #929daf;
+    --code-line: #3a404a;
+    --code-blue: #9ab9ff;
+    --code-purple: #b8a6d4;
+    --code-type: #e0e8f5;
+    --code-profile-bg: #414a59;
+    --code-profile-ink: #edf1f8;
+    --code-shadow: 0 22px 48px #0006, 0 2px 5px #0003;
+  }
+
+  .code-window {
+    overflow: hidden;
+    border: 1px solid var(--code-line);
+    border-radius: 16px;
+    background: var(--code-bg);
+    color: var(--code-ink);
+    box-shadow: var(--code-shadow);
+    transform: rotate(1.5deg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    height: 40px;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--code-line);
+    background: var(--code-chrome);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1px;
+  }
+
+  .file-icon { color: var(--code-blue); flex: none; }
+  .panel-icon { margin-left: auto; color: var(--code-muted); flex: none; }
+  .code-editor { display: flex; gap: 13px; padding: 20px 16px 22px 13px; }
+
+  .line-numbers {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    width: 15px;
+    color: var(--code-muted);
+    opacity: .65;
+    text-align: right;
+    font: 11px/24px Consolas, "SFMono-Regular", "Liberation Mono", monospace;
+    user-select: none;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--code-ink);
+    white-space: pre;
+    overflow-wrap: normal;
+    font: 11.5px/24px Consolas, "SFMono-Regular", "Liberation Mono", monospace;
+    letter-spacing: -.15px;
+  }
+
+  code { font: inherit; }
+  .keyword { color: var(--code-purple); }
+  .type { color: var(--code-type); }
+  .method { color: var(--code-blue); }
+
+  .code-footer {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    height: 36px;
+    padding: 0 13px;
+    border-top: 1px solid var(--code-line);
+    background: var(--code-chrome);
+    color: var(--code-muted);
+    font-size: 10px;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: var(--code-profile-bg);
+    color: var(--code-profile-ink);
+    font-size: 8px;
+    font-weight: 650;
+    letter-spacing: .15px;
+  }
+
+  .branch { display: flex; align-items: center; gap: 4px; }
+  .language { margin-left: auto; }
+
+  @container (max-width: 290px) {
+    .code-window { transform: none; }
+    .line-numbers { display: none; }
+    .code-editor { padding-right: 12px; padding-left: 12px; }
+    pre { font-size: clamp(9px, 4cqw, 11.5px); }
+    .code-header { padding: 0 12px; gap: 7px; }
+  }
+
+  @media print {
+    .resume-visual, :global(html.dark) .resume-visual {
+      --code-bg: #fff;
+      --code-chrome: #f8f9fb;
+      --code-ink: #43516a;
+      --code-muted: #778295;
+      --code-line: #e7ebf2;
+      --code-blue: #245cd7;
+      --code-purple: #7860a5;
+      --code-type: #283b58;
+      --code-profile-bg: #e2e8f1;
+      --code-profile-ink: #44546c;
+      --code-shadow: none;
+    }
+    .code-window { transform: none; }
+  }
+</style>
