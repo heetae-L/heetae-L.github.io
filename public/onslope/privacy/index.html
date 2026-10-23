@@ -47,7 +47,7 @@
       <div class="meta">
         <p>앱 / App: <strong>OnSlope</strong></p>
         <p>운영자 / Operator: HTLee Studio</p>
-        <p>시행일 / Effective date: <time datetime="2026-10-18">2026-10-18</time></p>
+        <p>시행일 / Effective date: <time datetime="2026-10-23">2026-10-23</time></p>
         <p>문의 / Contact: <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a></p>
         <p>적용 대상 / Scope: Android · Resorts · 설정 / Settings</p>
       </div>
@@ -58,6 +58,8 @@
       <div class="summary">
         <p>검색·즐겨찾기는 기기에서 처리합니다. 선택적 위치는 거리 정렬에 사용하고, 날씨 요청에는 리조트 좌표를 사용합니다.</p>
         <p lang="en">Search and favorites are handled on your device. Optional location supports distance sorting; weather requests use resort coordinates.</p>
+        <p>광고를 사용하는 버전은 Google AdMob을 사용합니다. 광고 관련 정보 처리와 선택 방법은 <a href="#ko-ads">광고 및 동의</a>를 확인해 주세요.</p>
+        <p lang="en">Versions with advertising use Google AdMob. See <a href="#en-ads">Advertising and consent</a> for data use and your choices.</p>
       </div>
     </header>
     <main>
@@ -66,7 +68,8 @@
         <section aria-labelledby="ko-section-1">
           <h3 id="ko-section-1">1. 운영자와 적용 범위</h3>
           <p>HTLee Studio는 OnSlope를 운영합니다. 이 방침은 Android의 스키장 탐색·검색·즐겨찾기·날씨 예보·리조트 사진·공식 웹캠/사이트 바로가기와 설정을 제공하는 Resorts 배포에 적용됩니다.</p>
-          <p>이 배포에는 GPS 활동 기록·백그라운드 위치 수집·지도 SDK/지도 타일 요청·회원가입/로그인·서버 동기화·결제·광고 SDK·분석 SDK·자동 오류 보고 전송 기능이 없습니다. 계정 자격정보·결제 정보·광고 식별자를 요구하지 않습니다. 별도 개발·테스트용 기록 기능은 이 방침의 적용 대상이 아니며, 공개 제공 전 방침과 필요한 고지를 갱신합니다.</p>
+          <p>현재 Play 테스트의 기존 Resorts 배포에는 GPS 활동 기록·백그라운드 위치 수집·지도 SDK/지도 타일 요청·회원가입/로그인·서버 동기화·결제·광고 SDK가 없습니다. 별도로 광고가 활성화된 OnSlope 개발·테스트 버전의 광고 처리는 아래 광고 및 동의 항목에 적용됩니다. 버전에 따라 포함된 기능이 다르며 이 방침 변경이 기존 앱에 기능을 추가하지는 않습니다.</p>
+          <p>별도 개발·테스트용 Record·History·지도 기능 전체의 처리는 이 Resorts 방침의 적용 대상이 아닙니다. 해당 기능을 공개 제공하기 전에 별도 고지를 갱신합니다. 앱은 계정 자격정보나 결제 정보를 요구하지 않습니다. 광고 SDK가 처리하는 식별자·진단 정보는 아래에서 설명합니다.</p>
         </section>
         <section aria-labelledby="ko-section-2">
           <h3 id="ko-section-2">2. 기기에서 처리하거나 저장하는 정보</h3>
@@ -75,7 +78,7 @@
             <li><strong>목록·캐시:</strong> 내장 리조트 목록·사진 출처 정보를 읽고 기기에 저장하며, 날씨 예보·유효 시각·요청/갱신 상태를 캐시합니다. 실제 사진 파일은 일반 메모리 이미지 캐시로 표시합니다.</li>
             <li><strong>검색·기기 지역:</strong> 검색어는 기기에서 검색에 사용하고 운영자 서버에 업로드하지 않습니다. 초기 언어·탐색 국가에는 기기의 언어·지역 설정을 사용합니다. 지역 설정은 GPS 위치가 아닙니다.</li>
           </ul>
-          <p>현재 운영자는 사용자별 설정·즐겨찾기·검색어·위치를 받는 자체 서버를 운영하지 않습니다. 외부 날씨·사진 요청과 사용자가 직접 보내는 이메일 문의는 아래와 같이 별도로 처리됩니다.</p>
+          <p>현재 운영자는 사용자별 설정·즐겨찾기·검색어·위치를 받는 자체 서버를 운영하지 않습니다. 외부 날씨·사진 요청, 광고 서비스와 사용자가 직접 보내는 이메일 문의는 아래와 같이 별도로 처리됩니다.</p>
         </section>
         <section aria-labelledby="ko-section-3">
           <h3 id="ko-section-3">3. 선택적 위치 권한</h3>
@@ -105,6 +108,13 @@
           <p>Android 설정에서 앱의 저장 공간/데이터를 지우거나 앱을 제거하면 기기의 앱 전용 데이터를 제거할 수 있습니다. 앱 데이터 지우기는 설정·즐겨찾기·파일 캐시를 함께 제거하며 되돌릴 수 없습니다. 위치 권한 철회는 저장된 즐겨찾기·설정의 삭제와 별개입니다.</p>
           <p>운영체제·기기·백업 계정 설정에 따라 앱 데이터가 시스템 백업이나 기기 이전에 포함될 수 있습니다. 이는 OnSlope 자체 서버 동기화가 아닙니다. 앱 제거만으로 시스템 백업 사본·외부 서비스 로그가 모두 삭제되지는 않으며 시스템 백업은 플랫폼 설정과 정책으로 관리합니다. 기기 분실·재설치 후 로컬 정보 복구를 보장하지 않습니다.</p>
         </section>
+        <section aria-labelledby="ko-ads">
+          <h3 id="ko-ads">광고 및 동의 — 광고를 사용하는 버전</h3>
+          <p>광고가 활성화된 버전은 리조트 목록과 날씨 영역에 Google AdMob의 광고를 요청합니다. Google Mobile Ads SDK는 광고 제공·측정·부정 사용 방지를 위해 접속 IP(대략적 지역 추정에 사용될 수 있음), 앱 실행·광고 상호작용·영상 조회 정보, 성능·진단 정보, Android 광고 ID·앱 세트 ID 등 기기/계정 관련 식별자를 수집·공유할 수 있습니다. 처리 범위는 SDK 설정, 지역, 기기 설정과 사용자의 선택에 따라 달라집니다.</p>
+          <p>OnSlope는 검색어·즐겨찾기 목록·Record 원본 경로·직접 조회한 GPS 좌표를 광고 요청 데이터로 지정해 보내지 않습니다. 광고 서비스의 네트워크·식별자 처리는 이와 별개입니다. Google의 SDK 안내에 따르면 전송은 TLS로 암호화됩니다. 처리 목적·보관·국외 처리·삭제 및 권리 행사에 대한 자세한 내용은 <a href="https://policies.google.com/privacy" rel="noreferrer">Google 개인정보처리방침</a>과 <a href="https://policies.google.com/technologies/partner-sites" rel="noreferrer">Google 서비스를 사용하는 앱의 정보 처리 안내</a>를 확인해 주세요. 운영자가 Google의 모든 정보 보관 기간을 지정하거나 대신 삭제할 수는 없습니다.</p>
+          <p>앱은 Google User Messaging Platform(UMP)으로 동의 상태를 확인하고, 지역과 적용 규정에 따라 필요한 동의 또는 판매·공유 거부 선택 화면을 제공합니다. UMP가 선택 관리 진입점을 요구하는 경우 설정의 ‘광고 개인정보 설정’에서 선택을 변경할 수 있습니다. 거부하더라도 리조트 탐색 기능은 사용할 수 있으며, 광고가 제한되거나 개인 맞춤이 아닌 광고가 표시될 수 있습니다. 동의 거부가 모든 네트워크 통신이나 광고 관련 처리를 없앤다는 뜻은 아닙니다.</p>
+          <p>Android의 광고 관련 기기 설정에서 광고 ID를 재설정하거나 삭제할 수도 있습니다. 기기·OS 버전에 따라 메뉴가 다릅니다. 광고 ID 삭제, 광고 개인정보 선택 변경과 앱 기록·즐겨찾기 삭제는 서로 다른 동작입니다. 광고가 보이지 않거나 광고 요청이 꺼져 있다는 이유만으로 포함된 SDK의 모든 처리가 없다고 단정할 수 없습니다.</p>
+        </section>
         <section aria-labelledby="ko-section-8">
           <h3 id="ko-section-8">8. 이용자의 선택과 문의</h3>
           <p>설정 변경·즐겨찾기 해제·기기 데이터 삭제·위치 권한 철회는 위 방법으로 직접 할 수 있습니다. 운영자에게 제공한 개인정보의 열람·정정·삭제·처리 중단 관련 문의는 <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a>으로 보내 주세요. 운영자는 받거나 보유하지 않은 기기 파일에 원격 접근할 수 없습니다. 외부 공급원의 접속 로그에 관한 권리 요청은 해당 공급원의 방침과 문의 경로를 이용해 주세요.</p>
@@ -116,7 +126,7 @@
         </section>
         <section aria-labelledby="ko-section-10">
           <h3 id="ko-section-10">10. 정책 변경</h3>
-          <p>정보 처리 방식이 바뀌면 이 페이지의 내용과 시행일을 갱신하고 관련 앱 고지·스토어 신고에 반영합니다. GPS 기록·회원/동기화·광고·결제·지도 또는 새 외부 공급원을 공개 제공하기 전에 실제 배포 구성에 맞게 이 방침과 필요한 안내·선택 절차를 갱신합니다. 현재 시행일은 페이지 상단에 표시합니다.</p>
+          <p>정보 처리 방식이 바뀌면 이 페이지의 내용과 시행일을 갱신하고 관련 앱 고지·스토어 신고에 반영합니다. 2026-10-23에는 광고를 사용하는 버전의 AdMob 정보 처리와 동의·선택 설명을 추가했습니다. GPS 기록·회원/동기화·결제·지도 또는 새 외부 공급원을 공개 제공하기 전에 실제 배포 구성에 맞게 이 방침과 필요한 안내·선택 절차를 갱신합니다. 현재 시행일은 페이지 상단에 표시합니다.</p>
         </section>
       </article>
       <article id="en" lang="en" aria-labelledby="en-title">
@@ -124,7 +134,8 @@
         <section aria-labelledby="en-section-1">
           <h3 id="en-section-1">1. Operator and scope</h3>
           <p>HTLee Studio operates OnSlope. This policy covers the Android Resorts distribution providing resort browsing, search, favorites, weather forecasts, resort photographs, links to official webcam pages/websites, and settings.</p>
-          <p>This distribution has no GPS activity recording, background location collection, map SDK/tile requests, account creation/sign-in, server synchronization, payments, advertising SDK, analytics SDK, or automatic crash-report uploads. It does not request account credentials, payment information, or advertising identifiers. Separate development/test recording features are outside this policy's scope; the policy and required notices will be updated before those features are publicly offered.</p>
+          <p>The existing Resorts distribution currently in Play testing has no GPS activity recording, background location collection, map SDK/tile requests, account creation/sign-in, server synchronization, payments, or advertising SDK. The advertising section below also applies to advertising in separate OnSlope development/test versions where ads are enabled. Included features vary by version; this policy update does not add features to an existing app.</p>
+          <p>This Resorts policy does not cover the full processing of separate development/test Record, History, and map features. Notices will be updated before those features are publicly offered. The app does not request account credentials or payment information. Identifiers and diagnostics handled by the advertising SDK are described below.</p>
         </section>
         <section aria-labelledby="en-section-2">
           <h3 id="en-section-2">2. Information processed or stored on your device</h3>
@@ -133,7 +144,7 @@
             <li><strong>Catalogs and caches:</strong> The app reads bundled resort catalogs/photo credits and stores them locally, together with cached forecasts, validity times, and request/update status. Photograph bytes use the normal in-memory image cache.</li>
             <li><strong>Search and device region:</strong> Search terms are used locally and are not uploaded to an operator server. Device language/region settings help select initial preferences; the region setting is not your GPS location.</li>
           </ul>
-          <p>The operator currently runs no server receiving your individual preferences, favorites, search terms, or device location. External weather/photo requests and emails you choose to send are handled separately as described below.</p>
+          <p>The operator currently runs no server receiving your individual preferences, favorites, search terms, or device location. External weather/photo requests, advertising services, and emails you choose to send are handled separately as described below.</p>
         </section>
         <section aria-labelledby="en-section-3">
           <h3 id="en-section-3">3. Optional location permission</h3>
@@ -163,6 +174,13 @@
           <p>Clearing app storage/data in Android settings or uninstalling can remove device-local app-private data. Clearing app data removes preferences, favorites, and file caches together and cannot be undone. Revoking location permission is separate from deleting saved favorites/preferences.</p>
           <p>Operating-system, device, and backup-account settings may include app data in system backups or device transfers. This is separate from OnSlope server synchronization. Uninstalling does not remove every system backup copy or external service log. Manage system backups through platform settings and policies. Recovery of local information after device loss or reinstallation is not guaranteed.</p>
         </section>
+        <section aria-labelledby="en-ads">
+          <h3 id="en-ads">Advertising and consent — versions with advertising</h3>
+          <p>Versions with ads enabled request Google AdMob ads in resort lists and weather sections. Google Mobile Ads SDK may collect and share connection IP addresses (which can indicate a general location), app launches, ad interactions and video views, performance/diagnostic information, and device/account-related identifiers such as Android advertising IDs and app set IDs for advertising, measurement, and fraud prevention. Processing depends on SDK configuration, region, device settings, and user choices.</p>
+          <p>OnSlope does not supply search terms, favorites lists, original Record routes, or directly obtained GPS coordinates as ad request data. Network and identifier processing by advertising services is separate. Google states that SDK data is encrypted in transit using TLS. See the <a href="https://policies.google.com/privacy" rel="noreferrer">Google Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites" rel="noreferrer">how Google uses information from apps using its services</a> for purposes, retention, international processing, deletion, and rights. The operator cannot set all of Google's retention periods or delete all information held by Google on your behalf.</p>
+          <p>The app checks consent status through Google's User Messaging Platform (UMP) and provides required consent or sale/sharing opt-out choices according to region and applicable rules. When UMP requires a privacy options entry point, you can change choices under Settings → Ad privacy choices. Declining does not prevent resort browsing; ads may be limited or non-personalized. Declining consent does not mean all network communication or ad-related processing stops.</p>
+          <p>You can also reset or delete your advertising ID using Android's advertising settings; menus vary by device and OS version. Deleting an advertising ID, changing ad privacy choices, and deleting app records/favorites are separate actions. Ads being absent or ad requests being disabled does not by itself establish that an included SDK performs no processing.</p>
+        </section>
         <section aria-labelledby="en-section-8">
           <h3 id="en-section-8">8. Your choices and contact</h3>
           <p>You can change preferences, unfavorite resorts, clear device data, and revoke location permission as described above. For access, correction, deletion, or stopping processing of personal information provided to the operator, contact <a href="mailto:htlee.studio@gmail.com">htlee.studio@gmail.com</a>. The operator cannot remotely access device files it has not received or retained. For external provider logs, use that provider's policy and contact process.</p>
@@ -174,7 +192,7 @@
         </section>
         <section aria-labelledby="en-section-10">
           <h3 id="en-section-10">10. Policy changes</h3>
-          <p>When data practices change, we update this page and its effective date, related app notices, and store disclosures. Before publicly offering GPS recording, accounts/synchronization, advertising, payments, maps, or new external providers, we will update this policy and required notices/choices to match the actual distribution. The current effective date appears at the top of this page.</p>
+          <p>When data practices change, we update this page and its effective date, related app notices, and store disclosures. On 2026-10-23, we added AdMob processing and consent/choice information for versions with advertising. Before publicly offering GPS recording, accounts/synchronization, payments, maps, or new external providers, we will update this policy and required notices/choices to match the actual distribution. The current effective date appears at the top of this page.</p>
         </section>
       </article>
     </main>
