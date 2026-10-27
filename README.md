@@ -40,13 +40,15 @@
 
 ## Portfolio Files
 
-- 편집 정본: [heetae-lee-portfolio.pptx](public/downloads/heetae-lee-portfolio.pptx) (12장, 기본 URL `/ko/`)
+- 편집 정본: [heetae-lee-portfolio.pptx](public/downloads/heetae-lee-portfolio.pptx) (13장, 기본 URL `/ko/`)
 - 일반 PDF: [heetae-lee-portfolio.pdf](public/downloads/heetae-lee-portfolio.pdf) (기본 URL `/ko/`)
 - 제출용 PDF: [heetae-lee-portfolio-submission.pdf](public/downloads/heetae-lee-portfolio-submission.pdf) (개인정보 제외 URL `/ko/portfolio/`)
 - 이전 버전은 `portfolio/archive/`에 PPTX 한 개만 보관. PDF는 필요한 경우 다시 변환.
 - 슬라이드 미리보기: [portfolio-preview.png](portfolio/preview/portfolio-preview.png)
 
 두 PDF는 표지와 마지막 페이지의 URL만 다르며, 사이트 다운로드 버튼은 일반·제출용 화면에 맞는 PDF를 제공. 제출용 PDF는 편집 정본에서 URL만 바꾼 임시 PPTX로 생성하고 임시 파일은 배포하지 않음.
+
+- 2026-10-27: 12번에 Duo Flex 개인 프로젝트를 추가했다. 폴드·플립 이미지를 함께 배치하고 공식 Google Play 배지에 앱 링크를 연결했다. PPTX와 일반·제출용 PDF는 13페이지이며, PDF 링크는 변환 후 별도 확인·보완한다.
 `public/downloads/`의 파일은 배포 후 직접 URL로 접근 가능.
 
 ## Resume Files
@@ -55,7 +57,7 @@
 - 제출용 PDF: [heetae-lee-resume.pdf](public/downloads/heetae-lee-resume.pdf) (A4 4페이지)
 - 2026-09-30 현대오토에버 지원에 사용한 범용 이력서. PDF 제출 시 파일명은 `heetae-lee_Resume.pdf`.
 - HTML의 인쇄 스타일을 적용해 PDF를 생성한다. HTML을 수정하면 PDF도 다시 생성해야 한다.
-- 2026-10-27: HTML과 PDF 마지막에 Duo Flex 개인 프로젝트를 추가했다. AI 에이전트 활용·제품 기획·하네스 기록·출시 중심이며 기존 회사 경력·기술 스택은 유지했다. PDF는 HTML에서 재생성해 4페이지 전체 렌더·줄 잘림 없음·Google Play 링크를 확인했다. 포트폴리오 PPT 검토본과 PDF 반영은 별도이며 승인 전 공개 파일을 교체하지 않는다.
+- 2026-10-27: HTML과 PDF 마지막에 Duo Flex 개인 프로젝트를 추가했다. AI 에이전트 활용·제품 기획·하네스 기록·출시 중심이며 기존 회사 경력·기술 스택은 유지했다. PDF는 HTML에서 재생성해 4페이지 전체 렌더·줄 잘림 없음·Google Play 링크를 확인했다. 포트폴리오에도 사용자 승인 후 개인 프로젝트를 반영했다.
 - 헤더·Home의 Resume 메뉴에서 HTML 웹 보기와 PDF 다운로드를 제공한다. EN에서도 파일은 한국어이므로 메뉴 안에 KO로 표시한다.
 - Portfolio 메뉴는 기존 PDF의 미리보기(새 탭)와 다운로드를 제공한다. 700px 미만은 상단 이름을 생략하고 페이지 메뉴·햄버거를 한 줄로 고정하며 문서·언어·테마·GitHub를 햄버거 안에 둔다. 700~939px은 문서 아이콘을, 940px 이상은 문서 버튼을 사용한다. 별도 문서 파일이나 PDF 뷰어는 만들지 않는다.
 - 개인정보 제외 모드에서는 연락처가 있는 Resume 메뉴를 숨기고 Portfolio 보기·다운로드를 모두 제출용 PDF로 연결한다. 기존 public 파일의 직접 URL 접근까지 차단하는 기능은 아니다.
