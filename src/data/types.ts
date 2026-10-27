@@ -114,6 +114,7 @@ export interface ProjectData {
   title: string;
   summary: string;
   meta: ProjectMetaData;
+  subtitle?: string;
   tags: string[];
   featured?: boolean;
   homeOrder?: number;

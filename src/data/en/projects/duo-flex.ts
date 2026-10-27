@@ -6,7 +6,8 @@ export const duoFlex: ProjectData = {
   icon: "smartphone",
   personal: true,
   featured: false,
-  title: "Duo Flex — Foldable Screen Effects",
+  title: "Duo Flex : Foldable Animation",
+  subtitle: "Fold-responsive screen effects",
   summary: "A personal Android app that responds to folding movements on Galaxy Z Fold and Z Flip. Released on Google Play through product planning, AI-assisted development, and hands-on device feedback.",
   meta: {
     sourceType: "Personal Project",

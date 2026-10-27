@@ -6,7 +6,8 @@ export const duoFlex: ProjectData = {
   icon: "smartphone",
   personal: true,
   featured: false,
-  title: "Duo Flex — 폴더블 화면 효과 앱",
+  title: "Duo Flex : Foldable Animation",
+  subtitle: "폴더블 화면 효과 앱",
   summary: "Galaxy Z Fold·Flip의 접힘 움직임에 반응하는 개인 Android 앱. 제품 기획과 AI 협업 개발, 실기기 피드백을 거쳐 Google Play에 출시.",
   meta: {
     sourceType: "Personal Project",

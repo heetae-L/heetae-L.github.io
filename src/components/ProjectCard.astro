@@ -8,9 +8,13 @@ interface Props {
   href: string;
   variant?: "compact" | "wide";
   label?: string;
+  showStoreBadge?: boolean;
 }
 
-const { project, href, variant = "compact", label = "Details" } = Astro.props;
+const { project, href, variant = "compact", label = "Details", showStoreBadge = false } = Astro.props;
+const storeLink = showStoreBadge ? project.links?.find((link) => link.badge) : undefined;
+const CardTag = storeLink ? "div" : "a";
+const ContentTag = storeLink ? "a" : "div";
 
 const tone = {
   brain: "purple",
@@ -26,23 +30,34 @@ const metaLine = [project.meta.sourceType, project.meta.company, project.meta.pe
 const scopeLine = project.meta.scope.join(" · ");
 ---
 
-<a
-  href={href}
+<CardTag
+  href={storeLink ? undefined : href}
   class:list={[
     "group soft-card-flat rounded-2xl transition hover:-translate-y-0.5 hover:border-blue-accent/30 hover:shadow-[0_22px_54px_rgba(15,91,255,0.08)]",
-    variant === "wide"
+    storeLink
+      ? "relative flex flex-col items-stretch gap-4 p-5"
+      : variant === "wide"
       ? project.personal
         ? "flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center sm:gap-5"
         : "flex items-center gap-5 p-5"
       : "flex h-full flex-col p-5"
   ]}
 >
+  <ContentTag
+    href={storeLink ? href : undefined}
+    class:list={[
+      storeLink
+        ? "flex w-full min-w-0 flex-1 flex-col items-start gap-4 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-accent sm:flex-row sm:items-center sm:gap-5"
+        : "contents"
+    ]}
+  >
   <IconBadge name={project.icon} tone={tone as "blue" | "green" | "purple" | "orange"} size="lg" />
   <div class:list={[variant === "wide" ? "min-w-0 flex-1" : "mt-5 flex flex-1 flex-col", project.personal && variant === "wide" && "w-full"]}>
-    <div class="flex items-start justify-between gap-4">
+    <div class:list={["flex items-start justify-between gap-4", storeLink && "sm:pr-44"]}>
       <h3 class="text-base font-extrabold leading-snug text-ink-950 sm:text-lg">{project.title}</h3>
-      {variant === "wide" && <ArrowRight class="mt-1 h-5 w-5 shrink-0 text-blue-accent transition group-hover:translate-x-1" />}
+      {variant === "wide" && !storeLink && <ArrowRight class="mt-1 h-5 w-5 shrink-0 text-blue-accent transition group-hover:translate-x-1" />}
     </div>
+    {project.subtitle && <p class:list={["mt-1 text-sm font-semibold leading-6 text-ink-500", storeLink && "sm:pr-44"]}>{project.subtitle}</p>}
     <div class="mt-2 grid gap-1 text-[11px] font-extrabold leading-5 text-ink-400">
       <p>{metaLine}</p>
       <p class="text-blue-accent">{scopeLine}</p>
@@ -60,4 +75,23 @@ const scopeLine = project.meta.scope.join(" · ");
       )
     }
   </div>
-</a>
+  </ContentTag>
+  {
+    storeLink?.badge && (
+      <div class="flex w-full items-center justify-between gap-3">
+        <a href={href} class="inline-flex shrink-0 items-center gap-1 rounded text-sm font-extrabold text-blue-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-accent">
+          {label}
+          <ArrowRight class="h-4 w-4 transition group-hover:translate-x-1" />
+        </a>
+      <a
+        href={storeLink.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="absolute right-5 top-5 block w-32 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-accent sm:w-40"
+      >
+        <img src={storeLink.badge.src} alt={storeLink.value} width={storeLink.badge.width} height={storeLink.badge.height} class="block h-auto w-full" loading="lazy" decoding="async" />
+      </a>
+      </div>
+    )
+  }
+</CardTag>

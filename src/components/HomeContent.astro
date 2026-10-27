@@ -105,7 +105,7 @@ const educationTitle = hideContact ? t.home.educationTitle.replace(/\s*&\s*Conta
         <section class="mt-12" aria-label={t.home.personalProjectsTitle}>
           <SectionHeading title={t.home.personalProjectsTitle} actionHref={`${withLocale(locale, "/projects")}?filter=personal`} actionLabel={t.common.viewPersonalProjects} />
           <div class="grid gap-4">
-            {personalProjects.map((project) => <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} variant="wide" />)}
+            {personalProjects.map((project) => <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} variant="wide" label={t.common.details} showStoreBadge />)}
           </div>
         </section>
       )

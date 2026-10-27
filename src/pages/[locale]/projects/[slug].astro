@@ -110,6 +110,7 @@ function splitParagraphs(body: string) {
       <div class="mt-7 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div class="min-w-0">
           <h1 class="break-words text-3xl font-black tracking-tight text-ink-950 [overflow-wrap:anywhere] sm:text-4xl">{project.title}</h1>
+          {projectData.subtitle && <p class="mt-2 text-base font-semibold leading-7 text-ink-500">{projectData.subtitle}</p>}
           <section class="mt-5 rounded-3xl border border-line-200 bg-white/80 p-5 shadow-[0_14px_34px_rgba(15,91,255,0.05)] dark:bg-surface-raised">
             <dl class="grid gap-4 sm:grid-cols-2">
               {
