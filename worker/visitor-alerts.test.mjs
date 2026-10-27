@@ -44,12 +44,14 @@ test("server route allowlist covers localized site pages only", () => {
   for (const locale of ["ko", "en"]) {
     for (const suffix of ["", "/portfolio", "/projects", "/experience", "/tech-stack",
       ...["partner-order-product-integration", "travel-ai-qa-api", "ai-dlc-knowledge-workflow",
-        "kto-hyugashop-quality-reporting", "benepia-service-operations"].map((slug) => `/projects/${slug}`)]) {
+        "kto-hyugashop-quality-reporting", "benepia-service-operations", "duo-flex"].map((slug) => `/projects/${slug}`)]) {
       assert.ok(pageTitle(`/${locale}${suffix}`));
     }
   }
   for (const path of ["/", "/ko/", "/ko?email=private", "/ko#private", "/ko/projects/nope",
     "/ko/experience/nope", "/ko/projects/__proto__", "/downloads/resume.pdf", "/fr", null]) assert.equal(pageTitle(path), null);
+  assert.equal(pageTitle("/ko/projects/duo-flex"), "Duo Flex [KO]");
+  assert.equal(pageTitle("/en/projects/duo-flex"), "Duo Flex [EN]");
 });
 
 test("notification text excludes identity and handles missing/unsafe geolocation", () => {

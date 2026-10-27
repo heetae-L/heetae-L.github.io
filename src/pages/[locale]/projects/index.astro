@@ -41,7 +41,7 @@ const inactiveFilterClasses = "border-line-200 bg-white text-ink-600 hover:borde
       <div class="grid gap-4">
         {
           t.projects.items.map((project) => (
-            <div data-project-card data-categories={project.categories.join(" ")}>
+            <div data-project-card data-categories={project.categories.join(" ")} data-personal={project.personal ? "true" : undefined}>
               <ProjectCard project={project} href={withLocale(locale, `/projects/${project.slug}`)} variant="wide" />
             </div>
           ))
@@ -54,6 +54,8 @@ const inactiveFilterClasses = "border-line-200 bg-white text-ink-600 hover:borde
 <script>
   const filterButtons = Array.from(document.querySelectorAll("[data-project-filter]"));
   const projectCards = Array.from(document.querySelectorAll("[data-project-card]"));
+  const validFilters = new Set(filterButtons.map((button) => button.getAttribute("data-filter-key")));
+  const languageLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-language-switch]"));
 
   function setButtonState(button: Element, isActive: boolean) {
     button.classList.toggle("border-blue-action", isActive);
@@ -75,14 +77,34 @@ const inactiveFilterClasses = "border-line-200 bg-white text-ink-600 hover:borde
 
     projectCards.forEach((card) => {
       const categories = card.getAttribute("data-categories")?.split(" ") ?? [];
-      const shouldShow = filterKey === "all" || categories.includes(filterKey);
+      const shouldShow = filterKey === "all" || (filterKey === "personal" ? card.hasAttribute("data-personal") : categories.includes(filterKey));
       (card as HTMLElement).hidden = !shouldShow;
     });
+
+    languageLinks.forEach((link) => {
+      const url = new URL(link.href);
+      if (filterKey === "all") url.searchParams.delete("filter");
+      else url.searchParams.set("filter", filterKey);
+      link.href = `${url.pathname}${url.search}${url.hash}`;
+    });
+  }
+
+  function restoreProjectFilter() {
+    const requested = new URL(window.location.href).searchParams.get("filter");
+    applyProjectFilter(requested && validFilters.has(requested) ? requested : "all");
   }
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
-      applyProjectFilter(button.getAttribute("data-filter-key") ?? "all");
+      const filterKey = button.getAttribute("data-filter-key") ?? "all";
+      const url = new URL(window.location.href);
+      if (filterKey === "all") url.searchParams.delete("filter");
+      else url.searchParams.set("filter", filterKey);
+      if (url.href !== window.location.href) window.history.pushState(null, "", url);
+      applyProjectFilter(filterKey);
     });
   });
+
+  window.addEventListener("popstate", restoreProjectFilter);
+  restoreProjectFilter();
 </script>

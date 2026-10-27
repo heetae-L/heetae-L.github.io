@@ -109,6 +109,16 @@ export const techStack: TechStackData = {
       ]
     },
     {
+      id: "personal-products",
+      icon: "smartphone",
+      title: "Personal Products",
+      summary: "AI-assisted Android product development and release",
+      featured: false,
+      items: [
+        { name: "AI-assisted Android Development", description: "Product planning, AI-assisted development, device feedback, and Google Play release through Duo Flex" }
+      ]
+    },
+    {
       id: "enterprise-systems",
       icon: "briefcase",
       title: "Enterprise Systems",

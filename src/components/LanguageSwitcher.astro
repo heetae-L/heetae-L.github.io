@@ -13,6 +13,7 @@ const { locale, currentPath } = Astro.props;
   {
     locales.map((item) => (
       <a
+        data-language-switch
         href={switchLocalePath(currentPath, item)}
         aria-current={item === locale ? "page" : undefined}
         class:list={[

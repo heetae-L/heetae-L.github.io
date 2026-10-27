@@ -30,11 +30,15 @@ const scopeLine = project.meta.scope.join(" · ");
   href={href}
   class:list={[
     "group soft-card-flat rounded-2xl transition hover:-translate-y-0.5 hover:border-blue-accent/30 hover:shadow-[0_22px_54px_rgba(15,91,255,0.08)]",
-    variant === "wide" ? "flex items-center gap-5 p-5" : "flex h-full flex-col p-5"
+    variant === "wide"
+      ? project.personal
+        ? "flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center sm:gap-5"
+        : "flex items-center gap-5 p-5"
+      : "flex h-full flex-col p-5"
   ]}
 >
   <IconBadge name={project.icon} tone={tone as "blue" | "green" | "purple" | "orange"} size="lg" />
-  <div class:list={[variant === "wide" ? "min-w-0 flex-1" : "mt-5 flex flex-1 flex-col"]}>
+  <div class:list={[variant === "wide" ? "min-w-0 flex-1" : "mt-5 flex flex-1 flex-col", project.personal && variant === "wide" && "w-full"]}>
     <div class="flex items-start justify-between gap-4">
       <h3 class="text-base font-extrabold leading-snug text-ink-950 sm:text-lg">{project.title}</h3>
       {variant === "wide" && <ArrowRight class="mt-1 h-5 w-5 shrink-0 text-blue-accent transition group-hover:translate-x-1" />}

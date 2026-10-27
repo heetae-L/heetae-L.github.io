@@ -10,6 +10,7 @@ export const home: HomeData = {
   careerSummaryTitle: "Career Summary",
   workTitle: "Work Experience",
   projectsTitle: "Core Projects",
+  personalProjectsTitle: "Personal Projects",
   techTitle: "Tech Stack",
   educationTitle: "Education, Certifications & Contact",
   heroSignals: [

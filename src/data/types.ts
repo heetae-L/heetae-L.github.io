@@ -16,6 +16,10 @@ export interface ContactLinkData {
   href: string;
 }
 
+export interface ProjectLinkData extends ContactLinkData {
+  badge?: { src: string; width: number; height: number };
+}
+
 export interface ProjectScreenshotData {
   src: string;
   alt: string;
@@ -44,6 +48,7 @@ export interface HomeData {
   careerSummaryTitle: string;
   workTitle: string;
   projectsTitle: string;
+  personalProjectsTitle: string;
   techTitle: string;
   educationTitle: string;
   heroSignals: HeroSignalData[];
@@ -83,8 +88,8 @@ export interface ExperienceData {
   items: ExperienceItemData[];
 }
 
-export type ProjectFilterKey = "all" | "development" | "integration" | "ai" | "operations" | "devops";
-export type ProjectCategoryKey = Exclude<ProjectFilterKey, "all">;
+export type ProjectFilterKey = "all" | "personal" | "development" | "integration" | "ai" | "operations" | "devops";
+export type ProjectCategoryKey = Exclude<ProjectFilterKey, "all" | "personal">;
 
 export interface ProjectFilterData {
   key: ProjectFilterKey;
@@ -96,6 +101,7 @@ export interface ProjectMetaData {
   company?: string;
   service?: string;
   period?: string;
+  status?: string;
   role?: string;
   scope: string[];
   relatedExperience?: string;
@@ -111,6 +117,7 @@ export interface ProjectData {
   tags: string[];
   featured?: boolean;
   homeOrder?: number;
+  personal?: boolean;
   overview?: string;
   problem?: string;
   role?: string[];
@@ -122,6 +129,7 @@ export interface ProjectData {
   techStack?: string[];
   devops?: string[];
   sectionLabels?: {
+    architecture?: string;
     overview?: string;
     problem?: string;
     role?: string;
@@ -132,7 +140,7 @@ export interface ProjectData {
     techStack?: string;
     screenshots?: string;
   };
-  links?: ContactLinkData[];
+  links?: ProjectLinkData[];
   architecture?: string[];
   architectureGroups?: ArchitectureGroupData[];
   architectureVariant?: "flow" | "hub";

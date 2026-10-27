@@ -109,6 +109,16 @@ export const techStack: TechStackData = {
       ]
     },
     {
+      id: "personal-products",
+      icon: "smartphone",
+      title: "Personal Products",
+      summary: "AI 협업 Android 제품 개발·출시",
+      featured: false,
+      items: [
+        { name: "AI-assisted Android Development", description: "Duo Flex의 제품 기획·AI 에이전트 활용 개발·실기기 피드백·Google Play 출시 경험" }
+      ]
+    },
+    {
       id: "enterprise-systems",
       icon: "briefcase",
       title: "Enterprise Systems",

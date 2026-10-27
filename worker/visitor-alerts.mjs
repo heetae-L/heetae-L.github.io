@@ -6,7 +6,8 @@ const PROJECTS = {
   "travel-ai-qa-api": "Travel AI Q&A API",
   "ai-dlc-knowledge-workflow": "AI-DLC Knowledge Workflow",
   "kto-hyugashop-quality-reporting": "KTO Hyugashop",
-  "benepia-service-operations": "Benepia Platform"
+  "benepia-service-operations": "Benepia Platform",
+  "duo-flex": "Duo Flex"
 };
 
 export function pageTitle(path) {
