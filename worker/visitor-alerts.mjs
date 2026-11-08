@@ -1,17 +1,23 @@
 const ORIGIN = "https://heetae-l.github.io";
 const MINUTE = 60_000;
 const DAY = 24 * 60 * MINUTE;
+const RESUME_HTML = "/downloads/heetae-lee-resume.html";
+const RESUME_PDF = "/downloads/heetae-lee-resume.pdf";
+const PORTFOLIO_PDF = /^\/downloads\/heetae-lee-portfolio(?:-submission)?\.pdf$/;
+const PORTFOLIO_VIEW = /^\/(ko|en)\/portfolio-view(\/submission)?$/;
 const PROJECTS = {
   "partner-order-product-integration": "Travel & Leisure Integration",
   "travel-ai-qa-api": "Travel AI Q&A API",
   "ai-dlc-knowledge-workflow": "AI-DLC Knowledge Workflow",
   "kto-hyugashop-quality-reporting": "KTO Hyugashop",
-  "benepia-service-operations": "Benepia Platform",
-  "duo-flex": "Duo Flex"
+  "benepia-service-operations": "Benepia Platform"
 };
 
 export function pageTitle(path) {
   if (typeof path !== "string" || path.length > 160) return null;
+  if (path === RESUME_HTML) return "이력서 웹 페이지 열림";
+  const view = path.match(PORTFOLIO_VIEW);
+  if (view) return `포트폴리오 웹 페이지 열림${view[2] ? " (제출용)" : ""} [${view[1].toUpperCase()}]`;
   const match = path.match(/^\/(ko|en)(?:\/(portfolio|projects|experience|tech-stack))?(?:\/([a-z-]+))?$/);
   if (!match) return null;
   const [, locale, section, slug] = match;
@@ -19,6 +25,20 @@ export function pageTitle(path) {
   const name = slug ? PROJECTS[slug] : ({ portfolio: "Home (submission)", projects: "Projects",
     experience: "Experience", "tech-stack": "Tech Stack" }[section] || "Home");
   return `${name} [${locale.toUpperCase()}]`;
+}
+
+function actionTitle(path, action) {
+  if (typeof path !== "string" || path.length > 160) return null;
+  if (action === "open") {
+    if (path === RESUME_HTML) return "이력서 웹 보기 버튼 클릭";
+    if (PORTFOLIO_VIEW.test(path)) return "포트폴리오 웹 보기 버튼 클릭";
+    if (PORTFOLIO_PDF.test(path)) return "포트폴리오 PDF 열기 버튼 클릭";
+  }
+  if (action === "download") {
+    if (path === RESUME_PDF) return "이력서 PDF 다운로드 버튼 클릭";
+    if (PORTFOLIO_PDF.test(path)) return "포트폴리오 PDF 다운로드 버튼 클릭";
+  }
+  return null;
 }
 
 async function digest(secret, value) {
@@ -47,10 +67,11 @@ async function readEvent(request) {
   for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
   const event = JSON.parse(new TextDecoder().decode(bytes));
   if (!event || typeof event !== "object" || Array.isArray(event) ||
-      Object.keys(event).sort().join(",") !== "path,session" ||
       typeof event.session !== "string" ||
-      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(event.session) ||
-      !pageTitle(event.path)) throw new Error("event");
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(event.session)) throw new Error("event");
+  const keys = Object.keys(event).sort().join(",");
+  if (!(keys === "path,session" && pageTitle(event.path)) &&
+      !(keys === "action,path,session" && actionTitle(event.path, event.action))) throw new Error("event");
   return event;
 }
 
@@ -68,9 +89,12 @@ function cleanLocation(value) {
 export function messageFor(event, request, includeLocation, now = Date.now()) {
   const time = new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul", dateStyle: "short", timeStyle: "medium" }).format(now);
   const region = includeLocation ? [request.cf?.country, request.cf?.city].map(cleanLocation).filter(Boolean).join(" / ") : "";
-  return ["Portfolio page opened", pageTitle(event.path), `${time} KST`,
+  const title = event.action ? actionTitle(event.path, event.action) : pageTitle(event.path);
+  const documentEvent = event.action || event.path === RESUME_HTML || PORTFOLIO_VIEW.test(event.path);
+  const suffix = /\.(?:html|pdf)$/.test(event.path) ? "" : "/";
+  return [...(documentEvent ? [title] : ["Portfolio page opened", title]), `${time} KST`,
     ...(includeLocation ? [`Approx. location: ${region || "Unknown"}`] : []),
-    coarseClient((request.headers.get("User-Agent") || "").slice(0, 512)), `${ORIGIN}${event.path}/`].join("\n");
+    coarseClient((request.headers.get("User-Agent") || "").slice(0, 512)), `${ORIGIN}${event.path}${suffix}`].join("\n");
 }
 
 async function sendMessage(env, text) {
@@ -156,7 +180,7 @@ export default {
       const reservation = await gate.fetch(new Request("https://internal/reserve", {
         method: "POST", body: JSON.stringify({
           ip: await digest(env.VISIT_HASH_SECRET, `ip:${ip}`),
-          visit: await digest(env.VISIT_HASH_SECRET, `visit:${event.session}:${event.path}`)
+          visit: await digest(env.VISIT_HASH_SECRET, `visit:${event.session}:${event.action ? `${event.action}:` : ""}${event.path}`)
         })
       }));
       if (reservation.status === 201) ctx.waitUntil(sendMessage(env, messageFor(event, request, env.INCLUDE_LOCATION === "true")));

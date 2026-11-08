@@ -40,18 +40,43 @@ const reserve = (gate, ip, visit) => gate.fetch(new Request("https://internal/re
   method: "POST", body: JSON.stringify({ ip, visit })
 }));
 
-test("server route allowlist covers localized site pages only", () => {
+test("server route allowlist covers localized site pages and document viewers", () => {
   for (const locale of ["ko", "en"]) {
-    for (const suffix of ["", "/portfolio", "/projects", "/experience", "/tech-stack",
+    for (const suffix of ["", "/portfolio", "/portfolio-view", "/portfolio-view/submission", "/projects", "/experience", "/tech-stack",
       ...["partner-order-product-integration", "travel-ai-qa-api", "ai-dlc-knowledge-workflow",
-        "kto-hyugashop-quality-reporting", "benepia-service-operations", "duo-flex"].map((slug) => `/projects/${slug}`)]) {
+        "kto-hyugashop-quality-reporting", "benepia-service-operations"].map((slug) => `/projects/${slug}`)]) {
       assert.ok(pageTitle(`/${locale}${suffix}`));
     }
   }
   for (const path of ["/", "/ko/", "/ko?email=private", "/ko#private", "/ko/projects/nope",
     "/ko/experience/nope", "/ko/projects/__proto__", "/downloads/resume.pdf", "/fr", null]) assert.equal(pageTitle(path), null);
-  assert.equal(pageTitle("/ko/projects/duo-flex"), "Duo Flex [KO]");
-  assert.equal(pageTitle("/en/projects/duo-flex"), "Duo Flex [EN]");
+  assert.equal(pageTitle("/ko/projects/duo-flex"), null);
+  assert.equal(pageTitle("/en/projects/duo-flex"), null);
+  assert.equal(pageTitle("/downloads/heetae-lee-resume.html"), "이력서 웹 페이지 열림");
+  assert.equal(pageTitle("/downloads/heetae-lee-portfolio.pdf"), null);
+  assert.equal(pageTitle("/duo-flex/privacy"), null);
+});
+
+test("document opens and clicks reserve separately, without accepting arbitrary destinations", async () => {
+  const keys = [];
+  const env = { ...config, VISIT_GATE: { idFromName() { return "global"; }, get() {
+    return { async fetch(req) { keys.push((await req.json()).visit); return new Response(null, { status: 204 }); } };
+  } } };
+  const view = event("/downloads/heetae-lee-resume.html");
+  const open = { ...view, action: "open" };
+  const download = { ...view, path: "/downloads/heetae-lee-resume.pdf", action: "download" };
+  for (const payload of [view, open, download, open]) {
+    assert.equal((await worker.fetch(request(payload), env, {})).status, 202);
+  }
+  assert.equal(new Set(keys.slice(0, 3)).size, 3);
+  assert.equal(keys[1], keys[3]);
+  assert.match(messageFor(open, request(), false, 0), /^이력서 웹 보기 버튼 클릭\n/);
+  assert.ok(messageFor(view, request(), false, 0).endsWith(origin + view.path));
+  assert.match(messageFor(download, request(), false, 0), /^이력서 PDF 다운로드 버튼 클릭\n/);
+  for (const payload of [{ ...download, action: "unknown" }, event(download.path),
+    { ...open, path: "/duo-flex/privacy" }, { ...open, path: "/ko/portfolio-view?private=1" }]) {
+    assert.equal((await worker.fetch(request(payload), env, {})).status, 400);
+  }
 });
 
 test("notification text excludes identity and handles missing/unsafe geolocation", () => {
@@ -177,7 +202,7 @@ function browser(path = "/ko/") {
   }; };
   const requests = [];
   const listeners = {};
-  const win = { location: { hostname: "heetae-l.github.io", pathname: path }, navigator: {}, crypto: { randomUUID },
+  const win = { location: { hostname: "heetae-l.github.io", pathname: path, origin, href: origin + path }, navigator: {}, crypto: { randomUUID },
     localStorage: makeStorage(), sessionStorage: makeStorage(),
     fetch: async (...args) => { requests.push(args); return new Response(null, { status: 202 }); } };
   const doc = { visibilityState: "visible", addEventListener: (name, fn) => { listeners[name] = fn; } };
@@ -228,6 +253,25 @@ test("browser network failures are silent and not retried on refresh", async () 
   await Promise.resolve();
   installVisitorAlerts(win, doc, endpoint, true);
   assert.equal(attempts, 1);
+});
+
+test("document clicks keep navigation intact and honor opt-out and deduplication", () => {
+  const { win, doc, requests, listeners } = browser();
+  installVisitorAlerts(win, doc, endpoint, true);
+  const click = (path, action, method = "click", button = 0) => listeners[method]({
+    type: method, button, target: { closest: () => ({ href: path, dataset: { documentAction: action } }) }
+  });
+  click("/ko/portfolio-view/?private=1#private", "open");
+  click("/ko/portfolio-view/", "open");
+  click("/downloads/heetae-lee-portfolio.pdf", "download", "auxclick", 1);
+  click("https://elsewhere.example/file.pdf", "download");
+  win.localStorage.setItem("heetae-visit-opt-out", "1");
+  click("/downloads/heetae-lee-resume.html", "open");
+  assert.equal(requests.length, 3);
+  assert.deepEqual(requests.slice(1).map(([, init]) => {
+    const { path, action } = JSON.parse(init.body);
+    return [path, action];
+  }), [["/ko/portfolio-view", "open"], ["/downloads/heetae-lee-portfolio.pdf", "download"]]);
 });
 
 test("footer preference persists opt-out and restore for subsequent visits", () => {

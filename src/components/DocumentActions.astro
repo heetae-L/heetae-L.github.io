@@ -1,6 +1,6 @@
 ---
 import { BookOpen, ChevronDown, Download, ExternalLink, Files, FileText } from "@lucide/astro";
-import { portfolioDownloadPath, type Locale } from "../i18n/config";
+import { portfolioDownloadPath, portfolioViewPath, type Locale } from "../i18n/config";
 
 interface Props {
   locale: Locale;
@@ -22,9 +22,9 @@ const documents = [
     key: "portfolio",
     label: "Portfolio",
     icon: BookOpen,
-    preview: portfolioDownloadPath(portfolioMode),
+    preview: portfolioViewPath(locale, portfolioMode),
     download: portfolioDownloadPath(portfolioMode),
-    viewLabel: locale === "ko" ? "PDF 미리보기" : "Preview PDF"
+    viewLabel: locale === "ko" ? "웹으로 보기" : "View online"
   }
 ].filter((document) => !portfolioMode || document.key !== "resume");
 const downloadLabel = locale === "ko" ? "PDF 다운로드" : "Download PDF";
@@ -56,11 +56,11 @@ const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-se
       </summary>
       <div class:list={[panelClass, variant === "header" ? "right-0" : "left-0"]}>
         {locale === "en" && <p class="px-3 py-2 text-xs font-bold text-ink-500">{document.label} · KO</p>}
-        <a href={document.preview} target="_blank" rel="noopener noreferrer" data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+        <a href={document.preview} target="_blank" rel="noopener noreferrer" data-document-action="open" data-portfolio-view={document.key === "portfolio" ? portfolioViewPath(locale, true) : undefined} class={linkClass}>
           <ExternalLink class="h-4 w-4 shrink-0" aria-hidden="true" />
           {document.viewLabel}
         </a>
-        <a href={document.download} download={document.download.split("/").at(-1)} data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+        <a href={document.download} download={document.download.split("/").at(-1)} data-document-action="download" data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
           <Download class="h-4 w-4 shrink-0" aria-hidden="true" />
           {downloadLabel}
         </a>
@@ -81,11 +81,11 @@ const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-se
               {document.label}
               {locale === "en" && <span class="ml-auto text-[10px]">KO</span>}
             </p>
-            <a href={document.preview} target="_blank" rel="noopener noreferrer" data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+            <a href={document.preview} target="_blank" rel="noopener noreferrer" data-document-action="open" data-portfolio-view={document.key === "portfolio" ? portfolioViewPath(locale, true) : undefined} class={linkClass}>
               <ExternalLink class="h-4 w-4 shrink-0" aria-hidden="true" />
               {document.viewLabel}
             </a>
-            <a href={document.download} download={document.download.split("/").at(-1)} data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
+            <a href={document.download} download={document.download.split("/").at(-1)} data-document-action="download" data-portfolio-file={document.key === "portfolio" ? true : undefined} class={linkClass}>
               <Download class="h-4 w-4 shrink-0" aria-hidden="true" />
               {downloadLabel}
             </a>
@@ -100,6 +100,9 @@ const linkClass = "flex min-h-11 items-center gap-3 rounded-md px-3 py-2 font-se
   import { portfolioDownloadPath } from "../i18n/config";
 
   if (document.documentElement.classList.contains("portfolio-mode")) {
+    document.querySelectorAll<HTMLAnchorElement>("a[data-portfolio-view]").forEach((link) => {
+      if (link.dataset.portfolioView) link.href = link.dataset.portfolioView;
+    });
     document.querySelectorAll<HTMLAnchorElement>("[data-portfolio-file]").forEach((link) => {
       const path = portfolioDownloadPath(true);
       link.href = path;

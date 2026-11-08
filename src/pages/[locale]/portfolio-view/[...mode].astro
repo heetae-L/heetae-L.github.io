@@ -1,0 +1,33 @@
+---
+import SiteLayout from "../../../layouts/SiteLayout.astro";
+import { getContent } from "../../../data";
+import { locales, portfolioDownloadPath, type Locale } from "../../../i18n/config";
+
+export function getStaticPaths() {
+  return locales.flatMap((locale) => [
+    { params: { locale, mode: undefined } },
+    { params: { locale, mode: "submission" } }
+  ]);
+}
+
+const locale = Astro.params.locale as Locale;
+const submissionMode = Astro.params.mode === "submission";
+const pdf = portfolioDownloadPath(submissionMode);
+---
+
+<SiteLayout locale={locale} content={getContent(locale)} title="Portfolio | Heetae Lee" portfolioMode={submissionMode} noIndex>
+  <main class="mx-auto max-w-6xl px-5 py-6 sm:px-6">
+    <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+      <h1 class="text-xl font-extrabold text-ink-900">Portfolio</h1>
+      <div class="flex flex-wrap gap-3 text-sm font-semibold text-blue-accent">
+        <a href={pdf} target="_blank" rel="noopener noreferrer" data-document-action="open">
+          {locale === "ko" ? "PDF 열기" : "Open PDF"}
+        </a>
+        <a href={pdf} download data-document-action="download">
+          {locale === "ko" ? "PDF 다운로드" : "Download PDF"}
+        </a>
+      </div>
+    </div>
+    <iframe src={pdf} title="Portfolio PDF" class="h-[75vh] w-full rounded-lg border border-line-200 bg-surface-raised"></iframe>
+  </main>
+</SiteLayout>

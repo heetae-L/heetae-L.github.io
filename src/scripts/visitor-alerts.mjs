@@ -40,14 +40,14 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
         target.username || target.password || target.port) return;
   } catch { return; }
 
-  const notify = () => {
+  const notify = (path, action) => {
     if (doc.visibilityState !== "visible" || win.navigator.globalPrivacyControl === true) return;
     try {
       if (win.localStorage.getItem("heetae-visit-opt-out") === "1") return;
       const now = Date.now();
-      const path = win.location.pathname.replace(/\/+$/, "");
+      const key = action ? `${action}:${path}` : path;
       const seen = JSON.parse(win.sessionStorage.getItem(SEEN_KEY) || "{}");
-      if (now - (seen[path] || 0) < WINDOW_MS) return;
+      if (now - (seen[key] || 0) < WINDOW_MS) return;
       let session = win.sessionStorage.getItem(SESSION_KEY);
       if (!session) {
         session = win.crypto.randomUUID();
@@ -55,12 +55,12 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
       }
       // Reserve before the request: uncertain network failures must not cause repeats.
       const recent = Object.fromEntries(Object.entries(seen).filter(([, at]) => now - at < WINDOW_MS));
-      recent[path] = now;
+      recent[key] = now;
       win.sessionStorage.setItem(SEEN_KEY, JSON.stringify(recent));
       void win.fetch(target.href, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session, path }),
+        body: JSON.stringify(action ? { session, path, action } : { session, path }),
         credentials: "omit",
         referrerPolicy: "no-referrer",
         keepalive: true,
@@ -70,6 +70,21 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
       // Storage restrictions or notification failures never affect the site.
     }
   };
-  notify();
-  doc.addEventListener("visibilitychange", notify);
+  const notifyPage = () => notify(win.location.pathname.replace(/\/+$/, ""));
+  const notifyClick = (event) => {
+    if (event.defaultPrevented || (event.type === "auxclick" && event.button !== 1)) return;
+    const link = event.target?.closest?.("a[data-document-action]");
+    const action = link?.dataset.documentAction;
+    if (action !== "open" && action !== "download") return;
+    try {
+      const url = new URL(link.href, win.location.href);
+      if (url.origin === win.location.origin) notify(url.pathname.replace(/\/+$/, ""), action);
+    } catch {
+      // Tracking must not interfere with the document link.
+    }
+  };
+  notifyPage();
+  doc.addEventListener("visibilitychange", notifyPage);
+  doc.addEventListener("click", notifyClick);
+  doc.addEventListener("auxclick", notifyClick);
 }

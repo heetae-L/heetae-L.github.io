@@ -8,6 +8,10 @@ export function portfolioDownloadPath(submissionMode = false) {
     : "/downloads/heetae-lee-portfolio.pdf";
 }
 
+export function portfolioViewPath(locale: Locale, submissionMode = false) {
+  return `/${locale}/portfolio-view/${submissionMode ? "submission/" : ""}`;
+}
+
 export const localeLabels: Record<Locale, string> = {
   ko: "KO",
   en: "EN"
