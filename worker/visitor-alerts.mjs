@@ -1,7 +1,8 @@
 const ORIGIN = "https://heetae-l.github.io";
 const MINUTE = 60_000;
 const DAY = 24 * 60 * MINUTE;
-const RESUME_HTML = "/downloads/heetae-lee-resume.html";
+const RESUME_HTML = /^\/downloads\/heetae-lee-resume(?:_\d{6}-\d{2})?\.html$/;
+const RESUME_VIEW = /^\/(ko|en)\/resume-view(?:\/\d{6}-\d{2})?$/;
 const RESUME_PDF = "/downloads/heetae-lee-resume.pdf";
 const PORTFOLIO_PDF = /^\/downloads\/heetae-lee-portfolio(?:-submission)?\.pdf$/;
 const PORTFOLIO_VIEW = /^\/(ko|en)\/portfolio-view(\/submission)?$/;
@@ -15,7 +16,7 @@ const PROJECTS = {
 
 export function pageTitle(path) {
   if (typeof path !== "string" || path.length > 160) return null;
-  if (path === RESUME_HTML) return "이력서 웹 페이지 열림";
+  if (RESUME_HTML.test(path) || RESUME_VIEW.test(path)) return "이력서 웹 페이지 열림";
   const view = path.match(PORTFOLIO_VIEW);
   if (view) return `포트폴리오 웹 페이지 열림${view[2] ? " (제출용)" : ""} [${view[1].toUpperCase()}]`;
   const match = path.match(/^\/(ko|en)(?:\/(portfolio|projects|experience|tech-stack))?(?:\/([a-z-]+))?$/);
@@ -30,7 +31,7 @@ export function pageTitle(path) {
 function actionTitle(path, action) {
   if (typeof path !== "string" || path.length > 160) return null;
   if (action === "open") {
-    if (path === RESUME_HTML) return "이력서 웹 보기 버튼 클릭";
+    if (RESUME_HTML.test(path) || RESUME_VIEW.test(path)) return "이력서 웹 보기 버튼 클릭";
     if (PORTFOLIO_VIEW.test(path)) return "포트폴리오 웹 보기 버튼 클릭";
     if (PORTFOLIO_PDF.test(path)) return "포트폴리오 PDF 열기 버튼 클릭";
   }
@@ -90,7 +91,7 @@ export function messageFor(event, request, includeLocation, now = Date.now()) {
   const time = new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul", dateStyle: "short", timeStyle: "medium" }).format(now);
   const region = includeLocation ? [request.cf?.country, request.cf?.city].map(cleanLocation).filter(Boolean).join(" / ") : "";
   const title = event.action ? actionTitle(event.path, event.action) : pageTitle(event.path);
-  const documentEvent = event.action || event.path === RESUME_HTML || PORTFOLIO_VIEW.test(event.path);
+  const documentEvent = event.action || RESUME_HTML.test(event.path) || RESUME_VIEW.test(event.path) || PORTFOLIO_VIEW.test(event.path);
   const suffix = /\.(?:html|pdf)$/.test(event.path) ? "" : "/";
   return [...(documentEvent ? [title] : ["Portfolio page opened", title]), `${time} KST`,
     ...(includeLocation ? [`Approx. location: ${region || "Unknown"}`] : []),

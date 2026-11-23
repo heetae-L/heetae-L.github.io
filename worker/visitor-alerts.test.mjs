@@ -79,6 +79,19 @@ test("document opens and clicks reserve separately, without accepting arbitrary 
   }
 });
 
+test("resume viewer alerts retain the application path", async () => {
+  for (const path of ["/ko/resume-view", "/en/resume-view",
+    "/ko/resume-view/261123-01", "/downloads/heetae-lee-resume_261123-01.html"]) {
+    assert.equal(pageTitle(path), "이력서 웹 페이지 열림");
+    const suffix = path.endsWith(".html") ? "" : "/";
+    assert.ok(messageFor(event(path), request(), false, 0).endsWith(origin + path + suffix));
+  }
+  for (const path of ["/ko/resume-view/company", "/ko/resume-view/261123",
+    "/ko/resume-view/261123-01/extra", "/downloads/heetae-lee-resume_bad.html"]) {
+    assert.equal(pageTitle(path), null);
+  }
+});
+
 test("notification text excludes identity and handles missing/unsafe geolocation", () => {
   const req = request(event(), { "User-Agent": "Mozilla/5.0 Mobile Safari/123" });
   req.cf = { country: "KR", city: "Seoul\n\u202e" };
