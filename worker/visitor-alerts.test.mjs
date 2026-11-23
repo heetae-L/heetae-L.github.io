@@ -92,7 +92,7 @@ test("resume viewer alerts retain the application path", async () => {
   }
 });
 
-test("resume referral codes are validated in the browser and worker", async () => {
+test("document referral codes are validated in the browser and worker", async () => {
   const path = "/ko/resume-view";
   const ref = "261123-01";
   for (const [currentPath, search, expected] of [
@@ -102,7 +102,9 @@ test("resume referral codes are validated in the browser and worker", async () =
     [path, `?ref=${"가".repeat(65)}`, undefined],
     [path, "?ref=private@example.com", undefined],
     [path, `?ref=${ref}&ref=261123-02`, undefined],
-    ["/ko/portfolio-view", `?ref=${ref}`, undefined]
+    ["/ko/portfolio-view", `?ref=${ref}`, ref],
+    ["/en/portfolio-view/submission", `?ref=${ref}`, ref],
+    ["/ko/experience", `?ref=${ref}`, undefined]
   ]) {
     const { win, doc, requests } = browser(currentPath);
     win.location.search = search;
@@ -129,9 +131,13 @@ test("resume referral codes are validated in the browser and worker", async () =
   const message = messageFor(korean, request(), false, 0);
   assert.ok(message.includes("제출 링크 코드: 까꿍"));
   assert.ok(message.endsWith(`${origin}${path}/?ref=${encodeURIComponent(korean.ref)}`));
+  const portfolio = { ...valid, path: "/ko/portfolio-view" };
+  assert.equal((await worker.fetch(request(portfolio), env, {})).status, 202);
+  assert.notEqual(visits[0], visits[4]);
+  assert.ok(messageFor(portfolio, request(), false, 0).endsWith(`${origin}/ko/portfolio-view/?ref=${ref}`));
   for (const payload of [{ ...valid, ref: "private@example.com" },
     { ...valid, ref: "가".repeat(65) },
-    { ...valid, action: "open" }, { ...valid, path: "/ko/portfolio-view" }]) {
+    { ...valid, action: "open" }, { ...valid, path: "/ko/experience" }]) {
     assert.equal((await worker.fetch(request(payload), env, {})).status, 400);
   }
 });

@@ -72,9 +72,9 @@ async function readEvent(request) {
       typeof event.session !== "string" ||
       !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(event.session)) throw new Error("event");
   const keys = Object.keys(event).sort().join(",");
-  const taggedResume = keys === "path,ref,session" && typeof event.path === "string" &&
-    RESUME_REF_VIEW.test(event.path) && typeof event.ref === "string" && /^[\p{L}\p{N}_-]{1,64}$/u.test(event.ref);
-  if (!taggedResume && !(keys === "path,session" && pageTitle(event.path)) &&
+  const taggedDocument = keys === "path,ref,session" && typeof event.path === "string" &&
+    (RESUME_REF_VIEW.test(event.path) || PORTFOLIO_VIEW.test(event.path)) && typeof event.ref === "string" && /^[\p{L}\p{N}_-]{1,64}$/u.test(event.ref);
+  if (!taggedDocument && !(keys === "path,session" && pageTitle(event.path)) &&
       !(keys === "action,path,session" && actionTitle(event.path, event.action))) throw new Error("event");
   return event;
 }
