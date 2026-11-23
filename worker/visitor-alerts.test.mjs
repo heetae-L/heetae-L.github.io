@@ -163,8 +163,8 @@ test("concurrent duplicate reservations have a single winner", async () => {
 test("IP budget does not trust client session identity", async () => {
   const state = memoryState();
   const gate = new VisitGate(state);
-  for (let i = 0; i < 9; i++) assert.equal((await reserve(gate, "same-ip", `visit-${i}`)).status, i < 8 ? 201 : 204);
-  assert.equal(state.values.get("attempts").length, 8);
+  for (let i = 0; i < 21; i++) assert.equal((await reserve(gate, "same-ip", `visit-${i}`)).status, i < 20 ? 201 : 204);
+  assert.equal(state.values.get("attempts").length, 20);
 });
 
 test("global hourly cap applies across IPs and visits", async () => {

@@ -132,7 +132,7 @@ export class VisitGate {
       const entries = (await this.state.storage.get("attempts") || []).filter((entry) => now - entry.at < DAY);
       if (entries.length >= 100 || entries.filter((entry) => now - entry.at < 60 * MINUTE).length >= 30 ||
           entries.some((entry) => entry.visit === visit && now - entry.at < 30 * MINUTE) ||
-          entries.filter((entry) => entry.ip === ip && now - entry.at < 10 * MINUTE).length >= 8) return false;
+          entries.filter((entry) => entry.ip === ip && now - entry.at < 10 * MINUTE).length >= 20) return false;
       entries.push({ at: now, ip, visit });
       await this.state.storage.put("attempts", entries);
       if (await this.state.storage.getAlarm() === null) await this.state.storage.setAlarm(now + 30 * MINUTE);
