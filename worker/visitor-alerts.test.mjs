@@ -97,6 +97,9 @@ test("resume referral codes are validated in the browser and worker", async () =
   const ref = "261123-01";
   for (const [currentPath, search, expected] of [
     [path, `?ref=${ref}&other=private`, ref],
+    [path, `?ref=${encodeURIComponent("까꿍")}`, "까꿍"],
+    [path, "?ref=Finda_2026-v2", "Finda_2026-v2"],
+    [path, `?ref=${"가".repeat(65)}`, undefined],
     [path, "?ref=private@example.com", undefined],
     [path, `?ref=${ref}&ref=261123-02`, undefined],
     ["/ko/portfolio-view", `?ref=${ref}`, undefined]
@@ -121,7 +124,13 @@ test("resume referral codes are validated in the browser and worker", async () =
   assert.notEqual(visits[0], visits[1]);
   assert.equal(visits[0], visits[2]);
   assert.ok(messageFor(valid, request(), false, 0).endsWith(`${origin}${path}/?ref=${ref}`));
+  const korean = { ...valid, ref: "까꿍" };
+  assert.equal((await worker.fetch(request(korean), env, {})).status, 202);
+  const message = messageFor(korean, request(), false, 0);
+  assert.ok(message.includes("제출 링크 코드: 까꿍"));
+  assert.ok(message.endsWith(`${origin}${path}/?ref=${encodeURIComponent(korean.ref)}`));
   for (const payload of [{ ...valid, ref: "private@example.com" },
+    { ...valid, ref: "가".repeat(65) },
     { ...valid, action: "open" }, { ...valid, path: "/ko/portfolio-view" }]) {
     assert.equal((await worker.fetch(request(payload), env, {})).status, 400);
   }

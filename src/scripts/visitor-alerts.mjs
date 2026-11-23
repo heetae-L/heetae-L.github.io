@@ -75,7 +75,7 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
     const refs = /^\/(ko|en)\/resume-view$/.test(path)
       ? new URLSearchParams(win.location.search).getAll("ref")
       : [];
-    const ref = refs.length === 1 && /^\d{6}-\d{2}$/.test(refs[0]) ? refs[0] : undefined;
+    const ref = refs.length === 1 && /^[\p{L}\p{N}_-]{1,64}$/u.test(refs[0]) ? refs[0] : undefined;
     notify(path, undefined, ref);
   };
   const notifyClick = (event) => {

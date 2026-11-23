@@ -73,7 +73,7 @@ async function readEvent(request) {
       !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(event.session)) throw new Error("event");
   const keys = Object.keys(event).sort().join(",");
   const taggedResume = keys === "path,ref,session" && typeof event.path === "string" &&
-    RESUME_REF_VIEW.test(event.path) && typeof event.ref === "string" && /^\d{6}-\d{2}$/.test(event.ref);
+    RESUME_REF_VIEW.test(event.path) && typeof event.ref === "string" && /^[\p{L}\p{N}_-]{1,64}$/u.test(event.ref);
   if (!taggedResume && !(keys === "path,session" && pageTitle(event.path)) &&
       !(keys === "action,path,session" && actionTitle(event.path, event.action))) throw new Error("event");
   return event;
@@ -98,7 +98,9 @@ export function messageFor(event, request, includeLocation, now = Date.now()) {
   const suffix = /\.(?:html|pdf)$/.test(event.path) ? "" : "/";
   return [...(documentEvent ? [title] : ["Portfolio page opened", title]), `${time} KST`,
     ...(includeLocation ? [`Approx. location: ${region || "Unknown"}`] : []),
-    coarseClient((request.headers.get("User-Agent") || "").slice(0, 512)), `${ORIGIN}${event.path}${suffix}${event.ref ? `?ref=${event.ref}` : ""}`].join("\n");
+    coarseClient((request.headers.get("User-Agent") || "").slice(0, 512)),
+    ...(event.ref ? [`제출 링크 코드: ${event.ref}`] : []),
+    `${ORIGIN}${event.path}${suffix}${event.ref ? `?ref=${encodeURIComponent(event.ref)}` : ""}`].join("\n");
 }
 
 async function sendMessage(env, text) {
