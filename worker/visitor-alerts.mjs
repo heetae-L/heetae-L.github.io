@@ -3,6 +3,7 @@ const MINUTE = 60_000;
 const DAY = 24 * 60 * MINUTE;
 const RESUME_HTML = /^\/downloads\/heetae-lee-resume(?:_\d{6}-\d{2})?\.html$/;
 const RESUME_VIEW = /^\/(ko|en)\/resume-view(?:\/\d{6}-\d{2})?$/;
+const RESUME_REF_VIEW = /^\/(ko|en)\/resume-view$/;
 const RESUME_PDF = "/downloads/heetae-lee-resume.pdf";
 const PORTFOLIO_PDF = /^\/downloads\/heetae-lee-portfolio(?:-submission)?\.pdf$/;
 const PORTFOLIO_VIEW = /^\/(ko|en)\/portfolio-view(\/submission)?$/;
@@ -71,7 +72,9 @@ async function readEvent(request) {
       typeof event.session !== "string" ||
       !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(event.session)) throw new Error("event");
   const keys = Object.keys(event).sort().join(",");
-  if (!(keys === "path,session" && pageTitle(event.path)) &&
+  const taggedResume = keys === "path,ref,session" && typeof event.path === "string" &&
+    RESUME_REF_VIEW.test(event.path) && typeof event.ref === "string" && /^\d{6}-\d{2}$/.test(event.ref);
+  if (!taggedResume && !(keys === "path,session" && pageTitle(event.path)) &&
       !(keys === "action,path,session" && actionTitle(event.path, event.action))) throw new Error("event");
   return event;
 }
@@ -95,7 +98,7 @@ export function messageFor(event, request, includeLocation, now = Date.now()) {
   const suffix = /\.(?:html|pdf)$/.test(event.path) ? "" : "/";
   return [...(documentEvent ? [title] : ["Portfolio page opened", title]), `${time} KST`,
     ...(includeLocation ? [`Approx. location: ${region || "Unknown"}`] : []),
-    coarseClient((request.headers.get("User-Agent") || "").slice(0, 512)), `${ORIGIN}${event.path}${suffix}`].join("\n");
+    coarseClient((request.headers.get("User-Agent") || "").slice(0, 512)), `${ORIGIN}${event.path}${suffix}${event.ref ? `?ref=${event.ref}` : ""}`].join("\n");
 }
 
 async function sendMessage(env, text) {
@@ -181,7 +184,7 @@ export default {
       const reservation = await gate.fetch(new Request("https://internal/reserve", {
         method: "POST", body: JSON.stringify({
           ip: await digest(env.VISIT_HASH_SECRET, `ip:${ip}`),
-          visit: await digest(env.VISIT_HASH_SECRET, `visit:${event.session}:${event.action ? `${event.action}:` : ""}${event.path}`)
+          visit: await digest(env.VISIT_HASH_SECRET, `visit:${event.session}:${event.action ? `${event.action}:` : ""}${event.path}${event.ref ? `?ref=${event.ref}` : ""}`)
         })
       }));
       if (reservation.status === 201) ctx.waitUntil(sendMessage(env, messageFor(event, request, env.INCLUDE_LOCATION === "true")));

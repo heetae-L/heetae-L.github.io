@@ -40,12 +40,12 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
         target.username || target.password || target.port) return;
   } catch { return; }
 
-  const notify = (path, action) => {
+  const notify = (path, action, ref) => {
     if (doc.visibilityState !== "visible" || win.navigator.globalPrivacyControl === true) return;
     try {
       if (win.localStorage.getItem("heetae-visit-opt-out") === "1") return;
       const now = Date.now();
-      const key = action ? `${action}:${path}` : path;
+      const key = action ? `${action}:${path}` : ref ? `${path}?ref=${ref}` : path;
       const seen = JSON.parse(win.sessionStorage.getItem(SEEN_KEY) || "{}");
       if (now - (seen[key] || 0) < WINDOW_MS) return;
       let session = win.sessionStorage.getItem(SESSION_KEY);
@@ -60,7 +60,7 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
       void win.fetch(target.href, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(action ? { session, path, action } : { session, path }),
+        body: JSON.stringify({ session, path, ...(action && { action }), ...(ref && { ref }) }),
         credentials: "omit",
         referrerPolicy: "no-referrer",
         keepalive: true,
@@ -70,7 +70,14 @@ export function installVisitorAlerts(win, doc, endpoint, production) {
       // Storage restrictions or notification failures never affect the site.
     }
   };
-  const notifyPage = () => notify(win.location.pathname.replace(/\/+$/, ""));
+  const notifyPage = () => {
+    const path = win.location.pathname.replace(/\/+$/, "");
+    const refs = /^\/(ko|en)\/resume-view$/.test(path)
+      ? new URLSearchParams(win.location.search).getAll("ref")
+      : [];
+    const ref = refs.length === 1 && /^\d{6}-\d{2}$/.test(refs[0]) ? refs[0] : undefined;
+    notify(path, undefined, ref);
+  };
   const notifyClick = (event) => {
     if (event.defaultPrevented || (event.type === "auxclick" && event.button !== 1)) return;
     const link = event.target?.closest?.("a[data-document-action]");

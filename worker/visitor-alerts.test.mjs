@@ -92,6 +92,41 @@ test("resume viewer alerts retain the application path", async () => {
   }
 });
 
+test("resume referral codes are validated in the browser and worker", async () => {
+  const path = "/ko/resume-view";
+  const ref = "261123-01";
+  for (const [currentPath, search, expected] of [
+    [path, `?ref=${ref}&other=private`, ref],
+    [path, "?ref=private@example.com", undefined],
+    [path, `?ref=${ref}&ref=261123-02`, undefined],
+    ["/ko/portfolio-view", `?ref=${ref}`, undefined]
+  ]) {
+    const { win, doc, requests } = browser(currentPath);
+    win.location.search = search;
+    installVisitorAlerts(win, doc, endpoint, true);
+    const payload = JSON.parse(requests[0][1].body);
+    assert.equal(payload.ref, expected);
+    assert.equal(payload.path, currentPath);
+    assert.doesNotMatch(requests[0][1].body, /private/);
+  }
+
+  const visits = [];
+  const env = { ...config, VISIT_GATE: { idFromName() { return "global"; }, get() {
+    return { async fetch(req) { visits.push((await req.json()).visit); return new Response(null, { status: 204 }); } };
+  } } };
+  const valid = { ...event(path), ref };
+  for (const payload of [valid, { ...valid, ref: "261123-02" }, valid]) {
+    assert.equal((await worker.fetch(request(payload), env, {})).status, 202);
+  }
+  assert.notEqual(visits[0], visits[1]);
+  assert.equal(visits[0], visits[2]);
+  assert.ok(messageFor(valid, request(), false, 0).endsWith(`${origin}${path}/?ref=${ref}`));
+  for (const payload of [{ ...valid, ref: "private@example.com" },
+    { ...valid, action: "open" }, { ...valid, path: "/ko/portfolio-view" }]) {
+    assert.equal((await worker.fetch(request(payload), env, {})).status, 400);
+  }
+});
+
 test("notification text excludes identity and handles missing/unsafe geolocation", () => {
   const req = request(event(), { "User-Agent": "Mozilla/5.0 Mobile Safari/123" });
   req.cf = { country: "KR", city: "Seoul\n\u202e" };

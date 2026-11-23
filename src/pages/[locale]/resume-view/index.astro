@@ -1,26 +1,14 @@
 ---
-import { readdirSync } from "node:fs";
 import SiteLayout from "../../../layouts/SiteLayout.astro";
 import { getContent } from "../../../data";
 import { locales, type Locale } from "../../../i18n/config";
 
 export function getStaticPaths() {
-  const applications = readdirSync("public/downloads", { withFileTypes: true })
-    .filter((entry) => entry.isFile())
-    .flatMap((entry) => {
-      const match = /^heetae-lee-resume_(\d{6}-\d{2})\.html$/.exec(entry.name);
-      return match ? [match[1]] : [];
-    });
-
-  return locales.flatMap((locale) => [
-    { params: { locale, application: undefined } },
-    ...applications.map((application) => ({ params: { locale, application } }))
-  ]);
+  return locales.map((locale) => ({ params: { locale } }));
 }
 
 const locale = Astro.params.locale as Locale;
-const application = Astro.params.application;
-const resume = `/downloads/heetae-lee-resume${application ? `_${application}` : ""}.html`;
+const resume = "/downloads/heetae-lee-resume.html";
 const pdf = "/downloads/heetae-lee-resume.pdf";
 ---
 
